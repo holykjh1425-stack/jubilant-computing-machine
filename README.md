@@ -1,41 +1,44 @@
-# NEXUS LABS MVP starter
+# NEXUS LABS — 배포 및 검증 안내
 
-## Included
-- `index.html`: 고객용 랜딩 페이지와 신청 폼
-- `admin.html`: 관리자 로그인 및 신청 조회/상태 변경
-- `styles.css`: 미래적인 AI 자동화 디자인 및 모바일 반응형
-- `config.js`: Supabase URL과 공개 anon/publishable key 설정
-- `app.js`, `admin.js`: 고객 신청 및 관리자 기능
-- `supabase-schema.sql`: 데이터베이스 및 RLS 정책
+## 현재 구성
+- `index.html` 고객 신청 페이지 (PC·모바일 반응형)
+- `app.js` Supabase INSERT 신청 접수. 공개 사용자 SELECT 권한을 요구하지 않음
+- `admin.html`, `admin.js` 관리자 로그인·목록 조회·상태 변경
+- `config.js` Supabase 프로젝트 URL과 공개 publishable key
+- `supabase-schema.sql` 초기 데이터베이스 정의 (기존 운영 DB에 통째로 재실행하지 마세요)
 
-## 아직 완료되지 않은 것
-이 파일 묶음은 시작용 코드이며, 실제 서버 연결·배포·보안 테스트는 아직 완료되지 않았습니다. 설정 전 신청은 전송되지 않습니다.
+## 현재 제한 사항
+- 고객 화면에 접수번호가 표시되지 않습니다. 번호는 DB 기본값으로 생성되며 관리자 화면에서 조회합니다.
+- Supabase 실서버 INSERT/RLS 테스트, 관리자 조회·수정 테스트, 공개 배포는 미완료입니다.
+- 고객 정보가 포함되므로 보안·개인정보 처리방침 검토 전 실제 고객에게 공개하지 마세요.
 
-## A. GitHub에 업로드
-1. 저장소 `nexus-labs-app`을 엽니다.
-2. `Add file` → `Upload files`를 누릅니다.
-3. ZIP을 먼저 압축 해제하고, 안의 파일들을 저장소 루트에 업로드합니다. ZIP만 업로드하면 사이트로 실행되지 않습니다.
-4. `Commit changes`를 누릅니다.
+## Supabase 접수 확인 (SQL Editor에서 읽기 전용)
+```sql
+select receipt_number, created_at, status
+from public.applications
+order by created_at desc
+limit 10;
+```
 
-## B. Supabase 연결
-1. https://supabase.com/ 에서 새 프로젝트를 만듭니다.
-2. SQL Editor에서 `supabase-schema.sql` 내용을 실행합니다.
-3. 프로젝트 URL과 anon/publishable key를 `config.js`에 입력합니다.
-4. Auth에서 관리자 사용자를 생성하고 UUID를 복사합니다.
-5. SQL Editor에서 `insert into public.admin_users(user_id) values ('실제-UUID');`를 실행합니다.
-6. `service_role` 또는 secret key는 절대 브라우저 파일에 넣지 않습니다.
+## RLS 정책 및 권한 확인 (읽기 전용)
+```sql
+select policyname, cmd, roles, with_check
+from pg_policies
+where schemaname='public' and tablename='applications';
+select grantee, privilege_type
+from information_schema.role_table_grants
+where table_schema='public' and table_name='applications'
+  and grantee in ('anon','authenticated');
+```
+공개 고객 INSERT가 실패하면 `anon` 역할의 INSERT 권한, INSERT RLS 정책, 필수 필드와 CHECK 제약조건을 함께 확인하세요. **RLS를 끄거나 공개 SELECT 정책을 추가하지 마세요.**
 
-## C. Cloudflare Pages 배포
-1. https://dash.cloudflare.com/ 에 로그인합니다.
-2. Workers & Pages → Create → Pages → Connect to Git.
-3. GitHub의 `nexus-labs-app` 저장소를 선택합니다.
-4. 정적 HTML이므로 빌드 명령은 비우고, 출력 디렉터리는 저장소 루트로 설정합니다(화면의 지침이 다르면 해당 UI를 따릅니다).
-5. 배포된 `pages.dev` 주소에서 `/`와 `/admin.html`을 확인합니다.
-6. Supabase Auth URL Configuration에 배포 주소를 설정합니다.
+## 배포 순서
+1. GitHub 저장소 `holykjh1425-stack/jubilant-computing-machine`의 최신 파일을 기준으로 사용합니다.
+2. 호스팅 서비스에 저장소를 연결하고 정적 사이트로 배포합니다. 별도 빌드 명령은 필요 없습니다.
+3. 배포 URL에서 테스트 신청서를 제출한 후 위 SQL로 저장 여부를 확인합니다.
+4. 관리자 계정으로 `/admin.html`에 로그인하여 접수번호·상태 변경을 확인합니다.
+5. PC와 모바일에서 재검증하고, 개인정보 처리방침·스팸 방지·운영 모니터링을 준비합니다.
 
-## D. 테스트 전 체크
-- 개인정보 처리방침과 실제 동의 문구를 마련
-- 공개 신청 스팸 방지/속도 제한 검토
-- 관리자만 신청 내용을 읽고 상태를 변경할 수 있는지 검증
-- 휴대전화에서 폼 테스트
-- 실제 고객 정보는 보안 테스트가 끝나기 전 입력하지 않기
+## 보안
+`service_role`/secret key를 브라우저 파일 또는 GitHub에 절대 넣지 마세요. `config.js`에는 공개 publishable key만 사용합니다.
+계약 및 결제는 사람 승인 없이 자동 처리하지 않습니다.
