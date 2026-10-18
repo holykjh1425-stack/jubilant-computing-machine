@@ -27,9 +27,16 @@
     try {
       const client = window.supabase.createClient(config.SUPABASE_URL, config.SUPABASE_ANON_KEY);
       // Public users have INSERT permission only; SELECT/RETURNING would violate RLS.
-      const { error } = await client.from('applications').insert(payload);
+      const { data: receipt, error } = await client.rpc('submit_application', {
+        p_customer_name: payload.customer_name,
+        p_contact: payload.contact,
+        p_service_type: payload.service_type,
+        p_description: payload.description,
+        p_privacy_consent: payload.privacy_consent
+      });
       if (error) throw error;
-      message.textContent = '신청이 접수되었습니다. 담당자가 확인 후 연락드립니다.';
+      if (!receipt || !/^NX-[0-9]{8}-[A-F0-9]{8}$/.test(receipt)) throw new Error('Receipt number was not returned');
+      message.textContent = `신청이 접수되었습니다. 접수번호: ${receipt} — 담당자가 확인 후 연락드립니다.`;
       form.reset();
     } catch (error) {
       console.error('NEXUS application submission failed', error);
