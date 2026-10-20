@@ -1,0 +1,11 @@
+# Written support decision — 2026-10-20
+
+The operator requested that no telephone number be displayed because customers may be worldwide. Public help uses Q&A; individual inquiries are private written questions, with a logged-in administrator composing replies. Language is requested, but automatic translation and guaranteed multilingual replies are not implemented.
+
+Added support.html, support.js and an administrator reply panel. A random 256-bit access key is generated per submission; the database stores SHA-256 only. Customers look up the answer with inquiry ID plus key, not via a URL. Keys are displayed once and are not stored in browser persistent storage. Same-key retries return the same inquiry. Anonymous users cannot read/update the table; nonadministrators cannot read or reply. Administrator updates compare the prior answer to detect conflicts. Replies are rendered as text.
+
+Live database schema added with migration add_private_written_support. Transactional permission tests passed, including wrong-key denial, consent checks, duplicate prevention, anon/nonadmin denial, administrator reply and customer lookup. Test transaction was rolled back and support_inquiries row count remained zero. Six frontend mock scenarios and existing nine intake scenarios plus administrator regression passed. Latest integrated browser/mobile verification remains pending deployment.
+
+Advisors flag intentionally public SECURITY DEFINER endpoints (submit/read support plus existing submit_application). Both new support functions use an empty search_path, validate keys/input, return narrow fields and have explicit EXECUTE grants. Anonymous table access remains revoked. Leaked-password-protection warning predates this change. See https://supabase.com/docs/guides/database/database-linter?lint=0028_anon_security_definer_function_executable and https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection .
+
+WordPress home draft and private-site header/footer now use Q&A links with no operator phone. Latest runtime files remove phone links and phone-based privacy alternatives. Existing historical notes are superseded by this decision. Public deployment and WordPress front-page/public settings remain pending explicit approval.
