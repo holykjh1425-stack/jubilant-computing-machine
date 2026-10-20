@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NEXUS LABS | 서비스 체험</title>
+<style>body{margin:0;background:#f5f7fb;color:#17243b;font:16px system-ui,sans-serif}.wrap{max-width:620px;margin:6vh auto;padding:22px}.panel{background:white;border-radius:20px;padding:26px;box-shadow:0 12px 38px #16243b12}h1{font-size:24px}p{line-height:1.7;color:#516079}button{background:#1c385e;color:white;border:0;border-radius:10px;padding:13px 18px;cursor:pointer}button:focus-visible{outline:3px solid #88b8f0}.output{background:#f1f5fb;border-radius:12px;padding:16px;margin-top:18px;white-space:pre-wrap}.muted{font-size:13px}a{color:#204e85}</style></head>
+<body><main class="wrap"><div class="panel"><strong>NEXUS LABS</strong><h1 id="heading">서비스 기능 미리보기</h1><p id="intro">원하는 서비스의 작동 방식을 체험해 보세요. 이 화면은 실제 제작물이 아닌 데모입니다.</p><button id="run" type="button">기능 체험하기</button><div id="output" class="output" role="status" aria-live="polite">체험 버튼을 눌러 주세요.</div><p class="muted">샘플 데이터만 사용하며 실제 고객 정보, AI API, 결제 기능에는 연결되지 않습니다.</p><a href="./index.html">신청서로 돌아가기</a></div></main>
+<script>
+const params=new URLSearchParams(location.search);
+const types={web:{name:'홈페이지 제작',result:'메인 화면 → 서비스 소개 → 상담 신청\n모바일 화면 자동 조정\n상담 버튼 클릭 시 신청 폼 이동 (예시)'},ai:{name:'AI 업무 자동화',result:'문의 접수 → 요청 분류 → 담당 업무 배정\n자동 응답 초안 생성 (예시)\n관리자 검토 후 발송 (예시)'},order:{name:'고객 주문 접수',result:'신청 입력 → 필수 항목 검사 → 접수번호 발급\n관리자 알림 및 상태 조회 (예시)'}};
+const key=params.get('service')||'ai';const selected=types[key]||types.ai;
+document.getElementById('heading').textContent=selected.name+' 체험';
+document.getElementById('intro').textContent=selected.name+'의 일부 작동 과정을 체험해 보세요.';
+document.getElementById('run').addEventListener('click',()=>{document.getElementById('output').textContent=selected.result+'\n\n체험 완료 — 정식 작업은 결제 확인 후 시작됩니다.'});
+</script></body></html>
