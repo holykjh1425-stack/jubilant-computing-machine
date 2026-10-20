@@ -1,57 +1,32 @@
 (() => {
-  const form = document.querySelector('#application-form');
-  const message = document.querySelector('#message');
-  if (!form || !message || !window.supabase) return;
-  const button = form.querySelector('button[type="submit"]');
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    if (!form.reportValidity() || button.disabled) return;
-    const config = window.NEXUS_CONFIG || {};
-    if (!config.SUPABASE_URL || !config.SUPABASE_ANON_KEY ||
-        config.SUPABASE_URL.includes('YOUR-PROJECT')) {
-      message.textContent = '서버 설정이 완료되지 않았습니다.';
-      return;
-    }
-    const fields = new FormData(form);
-    const payload = {
-      customer_name: String(fields.get('customer_name') || '').trim(),
-      contact: String(fields.get('contact') || '').trim(),
-      service_type: String(fields.get('service_type') || ''),
-      description: String(fields.get('description') || '').trim(),
-      privacy_consent: fields.get('privacy_consent') === 'on',
-      status: 'received',
-      internal_note: null
-    };
-    button.disabled = true;
-    message.textContent = '전송 중…';
-    let submitted = false;
-    try {
-      const client = window.supabase.createClient(config.SUPABASE_URL, config.SUPABASE_ANON_KEY);
-      // Public users have INSERT permission only; SELECT/RETURNING would violate RLS.
-      const { data: receipt, error } = await client.rpc('submit_application', {
-        p_customer_name: payload.customer_name,
-        p_contact: payload.contact,
-        p_service_type: payload.service_type,
-        p_description: payload.description,
-        p_privacy_consent: payload.privacy_consent
-      });
-      if (error) throw error;
-      if (!receipt || !/^NX-[0-9]{8}-[A-F0-9]{8}$/.test(receipt)) throw new Error('Receipt number was not returned');
-      message.textContent = `신청이 접수되었습니다. 접수번호: ${receipt} — 담당자가 확인 후 연락드립니다.`;
-      submitted = true;
-      form.reset();
-      try { sessionStorage.setItem('nexus_receipt', receipt); } catch (_) { /* Receipt is still shown above. */ }
-      // Only redirect after a confirmed receipt; never put customer details in the URL.
-      const previewType = ({ website: 'web', ai_automation: 'ai', custom_system: 'order', consulting: 'ai' })[payload.service_type] || 'ai';
-      const previewUrl = new URL('preview.html', window.location.href);
-      previewUrl.searchParams.set('service', previewType);
-      message.textContent += ' 잠시 후 체험 화면으로 이동합니다.';
-      window.setTimeout(() => { window.location.assign(previewUrl.toString()); }, 1800);
-    } catch (error) {
-      console.error('NEXUS application submission failed', error);
-      message.textContent = '접수에 실패했습니다. 다시 시도하거나 관리자에게 문의해 주세요.';
-    } finally {
-      button.disabled = submitted;
-    }
-  });
+ const form=document.querySelector('#application-form'), message=document.querySelector('#message'), nextLink=document.querySelector('#preview-link');
+ if(!form||!message)return;
+ const button=form.querySelector('button[type="submit"]'), config=window.NEXUS_CONFIG||{};
+ if(!window.supabase||!config.SUPABASE_URL||!config.SUPABASE_ANON_KEY||config.SUPABASE_URL.includes('YOUR-PROJECT')){
+  message.textContent='온라인 접수 연결을 준비 중입니다. 전화로 문의해 주세요.';button.disabled=true;return;
+ }
+ const client=window.supabase.createClient(config.SUPABASE_URL,config.SUPABASE_ANON_KEY);
+ form.addEventListener('submit',async event=>{
+  event.preventDefault();if(button.disabled||!form.reportValidity())return;
+  const fields=new FormData(form), service=String(fields.get('service_type')||'');
+  if(fields.get('privacy_consent')!=='on'||fields.get('transfer_consent')!=='on'){message.textContent='필수 동의 내용을 확인해 주세요.';return;}
+  if(!String(fields.get('customer_name')||'').trim()||String(fields.get('contact')||'').trim().length<3||!String(fields.get('description')||'').trim()){message.textContent='이름·연락처·원하는 작업을 입력해 주세요.';return;}
+  button.disabled=true;message.textContent='신청을 안전하게 접수하고 있습니다…';if(nextLink)nextLink.hidden=true;
+  let submitted=false;
+  try{
+   const {data:receipt,error}=await client.rpc('submit_application',{
+    p_customer_name:String(fields.get('customer_name')||'').trim(),p_contact:String(fields.get('contact')||'').trim(),
+    p_service_type:service,p_description:String(fields.get('description')||'').trim()+'\n\n[접수 안내 v2026-10-20: 수집·이용 동의 / 국외 전송·보관 동의]',p_privacy_consent:true
+   });
+   if(error)throw error;
+   if(typeof receipt!=='string'||!/^NX-[0-9]{8}-[A-F0-9]{8}$/.test(receipt))throw Error('Receipt missing');
+   submitted=true;form.reset();
+   try{sessionStorage.setItem('nexus_receipt',receipt);}catch(_){}
+   const type=({website:'web',ai_automation:'ai',custom_system:'order',consulting:'ai'})[service]||'ai';
+   const url=new URL('preview.html',window.location.href);url.searchParams.set('service',type);
+   message.textContent='신청이 접수되었습니다. 접수번호: '+receipt+' · 아래 버튼에서 무료 체험을 시작하세요.';
+   if(nextLink){nextLink.href=url.toString();nextLink.hidden=false;nextLink.focus();}
+  }catch(_){message.textContent='접수가 완료되지 않았습니다. 다시 시도하거나 031-866-4600으로 문의해 주세요.';}
+  finally{button.disabled=submitted;}
+ });
 })();
