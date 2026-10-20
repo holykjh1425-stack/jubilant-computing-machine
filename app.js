@@ -38,6 +38,12 @@
       if (!receipt || !/^NX-[0-9]{8}-[A-F0-9]{8}$/.test(receipt)) throw new Error('Receipt number was not returned');
       message.textContent = `신청이 접수되었습니다. 접수번호: ${receipt} — 담당자가 확인 후 연락드립니다.`;
       form.reset();
+      // Only redirect after a confirmed receipt; never put customer details in the URL.
+      const previewType = ({ website: 'web', ai_automation: 'ai', custom_system: 'order', consulting: 'ai' })[payload.service_type] || 'ai';
+      const previewUrl = new URL('preview.html', window.location.href);
+      previewUrl.searchParams.set('service', previewType);
+      message.textContent += ' 잠시 후 체험 화면으로 이동합니다.';
+      window.setTimeout(() => { window.location.assign(previewUrl.toString()); }, 1800);
     } catch (error) {
       console.error('NEXUS application submission failed', error);
       message.textContent = '접수에 실패했습니다. 다시 시도하거나 관리자에게 문의해 주세요.';
