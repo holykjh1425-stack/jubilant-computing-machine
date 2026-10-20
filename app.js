@@ -6,8 +6,9 @@
   message.textContent='온라인 접수 연결을 준비 중입니다. Q&A·문의창을 이용해 주세요.';button.disabled=true;return;
  }
  const client=window.supabase.createClient(config.SUPABASE_URL,config.SUPABASE_ANON_KEY);
- const entry=new URL(window.location.href), campaigns={intro:'서비스 소개', 'website-checklist':'홈페이지 준비 체크리스트', 'inquiry-workflow':'문의 정리 가이드', 'blog-header':'블로그 상단', 'legacy-ai':'기존 AI 활용 글'};
- const campaign=entry.searchParams.get('campaign'), referral=entry.searchParams.get('source')==='blog'&&Object.hasOwn(campaigns,campaign)?'\n[유입: AI Portal 블로그 / '+campaigns[campaign]+']':'';
+ const entry=new URL(window.location.href), campaigns={intro:'서비스 소개', 'website-checklist':'홈페이지 준비 체크리스트', 'inquiry-workflow':'문의 정리 가이드', 'blog-header':'블로그 상단', 'legacy-ai':'기존 AI 활용 글', 'shorts-launch':'쇼츠 앱 소개', 'shorts-web':'쇼츠 웹사이트', 'shorts-ai':'쇼츠 AI 자동화', home:'앱 홈 화면'};
+ const campaign=entry.searchParams.get('campaign'), source=entry.searchParams.get('source'), sources={blog:'AI Portal 블로그',youtube:'YouTube Shorts',app:'넥서스랩스 앱'};
+ const referral=Object.hasOwn(sources,source)&&Object.hasOwn(campaigns,campaign)?'\n[유입: '+sources[source]+' / '+campaigns[campaign]+']':'';
  const selectedService=entry.searchParams.get('service'), serviceField=form.querySelector('[name="service_type"]');
  if(serviceField&&['website','ai_automation','custom_system','consulting'].includes(selectedService))serviceField.value=selectedService;
  form.addEventListener('submit',async event=>{

@@ -1,0 +1,26 @@
+{
+  "id": "./",
+  "name": "넥서스랩스 · NEXUS LABS",
+  "short_name": "넥서스랩스",
+  "description": "프로젝트 상담 신청과 무료 기능 체험",
+  "lang": "ko",
+  "start_url": "./?source=app&campaign=home",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f8fc",
+  "theme_color": "#6556a7",
+  "icons": [
+    {
+      "src": "icons/nexus-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/nexus-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
