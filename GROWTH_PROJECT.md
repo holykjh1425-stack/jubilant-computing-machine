@@ -1,0 +1,30 @@
+# 10억 벌기 프로젝트 — NEXUS LABS
+
+## Operating mandate (2026-10-20)
+The operator authorizes proactive blog-based acquisition work without waiting for each instruction. Treat 1 billion KRW as an ambitious goal, not a guaranteed return. Separate actual revenue, costs and net profit; deposit status alone is not booked revenue. Paid advertising, purchases and contracts still need approval. Do not send direct messages/email campaigns or publish customer replies without explicit authorization. No fabricated customers, testimonials, income, discounts or keyword-volume claims.
+
+## Confirmed public assets
+Blog site 251223773: https://holykjh1425-ulrex.wordpress.com/
+Home site 258073903: https://nexuslabs8.wordpress.com/
+Intake: https://holykjh1425-stack.github.io/jubilant-computing-machine/
+Support: /support.html; admin: /admin.html (login required).
+Intro post 32: /2026/10/20/nexus-labs-website-ai-free-demo/
+Website preparation post 38: /2026/10/20/small-business-website-checklist/
+
+## Initial measurement baseline
+WordPress statistics on 2026-10-20 before the new checklist: views 0, visitors 0, subscribers 1; source is site-wide statistics, not per-post conversion attribution. These counters may lag.
+Database: 1 received, non-QA application; its source and commercial validity are unverified. Written inquiries 0. Do not claim this existing application was acquired by the new blog work. Exclude QA names/internal notes and cancelled launch tests from lead reports. No confirmed sales amount is available.
+
+## First growth cycle
+1. Publish one useful original problem-solving article (website preparation checklist) with a practical consultation template and clear sample-vs-production terms.
+2. Replace the blog's inactive header CTA with working service, Q&A and application links.
+3. Add allowlisted URL-based campaign information to application descriptions and safely preselect the requested service. No cross-site identity tracking or cookie-based attribution. Parameters can be edited by visitors and are only indicative entry labels, not verified causal attribution.
+4. Update the existing daily evening task (rather than add a duplicate) to check views/lead counts, improve conversion and publish useful nonduplicate articles within a maximum of one per day and three per ISO week. Prefer updates over low-value new posts. Customer-specific answers stay with the administrator.
+
+## Next useful topics
+- Repeated customer inquiries: list questions, distinguish urgent/ordinary inquiries, define who replies; use virtual examples, no live-AI claims.
+- Order intake: define the minimum needed information and follow-up states without exposing customer data.
+- Website sample interpretation: what can be tested now and what requires custom scoping.
+
+## Guardrails and verification
+Do not change existing prices or make delivery promises. Do not sign up for paid services. Respect no-telephone support and the exact approved phrase '입금 확인 후 제작을 진행합니다.' Bank verification is manual and AI production remains unconnected. Publish only after links, wording and existing content are checked; disable subscriber email and automatic social sharing. Use current provider documentation for technical claims. If a connector fails, report the exact blocker and retain completed work; never report a publication that did not happen.
