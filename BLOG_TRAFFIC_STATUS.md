@@ -12,3 +12,13 @@ https://holykjh1425-ulrex.wordpress.com/2026/10/20/nexus-labs-website-ai-free-de
 - Subscriber email delivery and automatic social publishing were disabled for this post. No paid promotion or direct messages were sent.
 
 This creates an inbound route from the existing blog. Publication is not evidence of visits, leads, search indexing or revenue. No referral attribution or background traffic-monitoring automation was added.
+
+
+## 2026-10-20 evening follow-up (19:52–19:56 KST)
+- No new post published. Direct-request story posts 22 (home) and 42 (AI Portal) are both public; approved and pending comments are 0 on each.
+- Site-wide daily views/visitors unchanged: home 1/1, AI Portal 0/0. Not per-post performance; possible reporting delay/operator views. No verified new acquisition.
+- Applications: received 1, cancelled 2. The received record has no QA marker; cancelled launch tests excluded. No personal fields retrieved. Support total/unanswered 0/0. Same commercial baseline, not evidence of blog revenue.
+- Corrected the two story CTAs to source=blog&campaign=inquiry-workflow&service=ai_automation#apply, matching the existing allowlist and service preselection. Previous story-specific source/campaign parameters were not recognized by app.js. This groups both stories under the existing inquiry guide label; it does not identify which article caused a lead. Current application label says AI Portal blog even for home-story visitors; treat this label as coarse/unverified, not domain attribution.
+- Only CTA blocks changed with optimistic locking; content warnings empty. Subscriber email/social delivery settings left disabled. No customer message or SNS upload.
+- Confirmed new sales amount, costs and net profit: unverified. No paid spend executed.
+- This ISO week already contains introduction/checklist plus two direct-request stories. Freeze additional new posts for the week; focus on 24–72h and 7-day measurements and existing-link improvements.
