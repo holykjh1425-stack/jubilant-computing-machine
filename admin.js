@@ -50,6 +50,7 @@
   function show(on) {
     login.classList.toggle('hidden', on); panel.classList.toggle('hidden', !on);
     if (on) startMonitor(); else stopMonitor();
+    if (document.dispatchEvent) document.dispatchEvent(new Event('nexus-admin-session'));
   }
   async function load() {
     const request = ++displayedRowsGeneration;
