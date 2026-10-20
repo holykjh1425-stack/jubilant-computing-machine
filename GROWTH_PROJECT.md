@@ -28,3 +28,10 @@ Database: 1 received, non-QA application; its source and commercial validity are
 
 ## Guardrails and verification
 Do not change existing prices or make delivery promises. Do not sign up for paid services. Respect no-telephone support and the exact approved phrase '입금 확인 후 제작을 진행합니다.' Bank verification is manual and AI production remains unconnected. Publish only after links, wording and existing content are checked; disable subscriber email and automatic social sharing. Use current provider documentation for technical claims. If a connector fails, report the exact blocker and retain completed work; never report a publication that did not happen.
+
+## Completed first-cycle verification
+- Website checklist post 38 published; WordPress blog header replaced and introduction post 32's two CTAs now include campaign=intro.
+- Referral/service-preselection code deployed successfully with the Pages workflow. Browser click from post 38 loaded ?source=blog&campaign=website-checklist&service=website#apply and showed website selected. No additional test lead was submitted.
+- 12 intake tests (including referral allowlist/service selection), 6 support tests and administrator regression passed. Source labels persist with a successful application as tested in mocks; live database referral storage has not yet been exercised by a real customer.
+- robots.txt and sitemap.xml returned 200; sitemap contained posts 32 and 38. This does not prove Google/Naver indexing or ranking.
+- Existing enabled automation 6ad4791f09808191984c53df59cd9f6f was successfully updated to ‘넥서스랩스 고객유입 운영’, retaining its daily evening Asia/Seoul schedule. It will inspect metrics and run bounded publication/improvement work; no real-time monitoring is claimed.
