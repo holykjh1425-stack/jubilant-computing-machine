@@ -25,7 +25,9 @@ test('durable orchestration: PostgreSQL transactions, dependencies, retries, RLS
  const {db,role,rpc}=await setup();
  const before=(await db.query('select * from applications order by id')).rows;
  try{
-  await role('service_role');const key=newKey();
+  await role('service_role');
+ for(const table of ['orchestrator_jobs','orchestrator_tasks','orchestrator_events'])assert.equal((await db.query('select * from '+table)).rows.length,0);
+ const key=newKey();
   const payload={actor:admin,key,instruction:'웹 제작 요청 범위 검토',agent:'internal'};
   const job=await rpc('submit',payload);
   await t.test('idempotent registration and conflicting payload rejection',async()=>{

@@ -29,7 +29,7 @@ alter table public.orchestrator_jobs enable row level security;
 alter table public.orchestrator_tasks enable row level security;
 alter table public.orchestrator_events enable row level security;
 revoke all on public.orchestrator_jobs,public.orchestrator_tasks,public.orchestrator_events from public,anon,authenticated;
-grant select on public.orchestrator_jobs,public.orchestrator_tasks,public.orchestrator_events to authenticated;
+grant select on public.orchestrator_jobs,public.orchestrator_tasks,public.orchestrator_events to authenticated,service_role;
 create policy "admin reads orchestration jobs" on public.orchestrator_jobs for select to authenticated using(exists(select 1 from public.admin_users where user_id=(select auth.uid())));
 create policy "admin reads orchestration tasks" on public.orchestrator_tasks for select to authenticated using(exists(select 1 from public.admin_users where user_id=(select auth.uid())));
 create policy "admin reads orchestration events" on public.orchestrator_events for select to authenticated using(exists(select 1 from public.admin_users where user_id=(select auth.uid())));
