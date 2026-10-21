@@ -45,3 +45,13 @@ Do not change existing prices or make delivery promises. Do not sign up for paid
 - Only CTA blocks changed with optimistic locking; content warnings empty. Subscriber email/social delivery settings left disabled. No customer message or SNS upload.
 - Confirmed new sales amount, costs and net profit: unverified. No paid spend executed.
 - This ISO week already contains introduction/checklist plus two direct-request stories. Freeze additional new posts for the week; focus on 24–72h and 7-day measurements and existing-link improvements.
+
+
+## 2026-10-21 evening review (19:40 KST)
+- No new or scheduled post created. Published inventory: 5 AI Portal posts, 2 home posts; no future posts returned. Statistical posts_count (6 for AI Portal) differs from published inventory, so do not use it as publication proof.
+- Current-day site-wide views/visitors: AI Portal 1/1, home 0/0. Prior-day baseline was AI Portal 0/0, home 1/1. Today is partial and sources/operating-user visits are unknown; no causal or percentage growth claim. Both story posts have 0 approved and 0 pending comments.
+- Non-QA non-cancelled applications: received 1, unchanged. Non-QA support total/unanswered: 0/0. No personal customer fields read. Existing received application remains unverified as acquisition or revenue.
+- Improved home post22, paragraph5 only: added a copyable inquiry/status/next-action/person-and-time memo with an explicitly virtual example and a calm end-of-day framing. Preserved other blocks, links and settings; update returned no content warnings.
+- Both public story URLs and current inquiry-workflow application URL returned HTTP200. This is an availability check, not a live form submission or browser end-to-end conversion test. No test application submitted.
+- Current app.js has expanded source/campaign allowlists including Shorts labels; the earlier coarse attribution limitation must be evaluated against current code rather than assumed unchanged. No live customer attribution storage verified here.
+- No SNS upload, customer contact, spending, contract or API key action. Actual sales amount / related costs / net profit remain unverified. Retain weekly new-post freeze and compare again at 72h/7d; one view does not justify another promotional post.
