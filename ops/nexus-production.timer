@@ -1,0 +1,10 @@
+[Unit]
+Description=Poll approved NEXUS customer work
+
+[Timer]
+OnBootSec=60
+OnUnitInactiveSec=60
+Unit=nexus-production.service
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,19 @@
+{
+  "started": "2026-10-21T21:44:50.835Z",
+  "finished": "2026-10-21T21:46:51.301Z",
+  "actual_execution": false,
+  "provider": "codex",
+  "error_code": "provider_failed_or_unknown",
+  "automatic_retry": false,
+  "customer_data_used": false,
+  "production_database_written": false,
+  "process_started": true,
+  "model_execution_started": "unknown",
+  "completion_verified": false,
+  "outcome": "timeout_no_accepted_result",
+  "authentication_preflight": "chatgpt_session_ready",
+  "openai_api_key_used": false,
+  "repeat_attempts": 0,
+  "usage_and_cost": "unknown_no_usage_received",
+  "controller_session_stopped": true
+}

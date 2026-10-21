@@ -4,7 +4,8 @@
   "scripts": {
     "test:ai": "node --test tests/ai-server.test.mjs tests/ai-schema.test.mjs",
     "test:orchestrator": "node --test tests/orchestrator.test.mjs",
-    "test:workers": "node --test tests/agent-worker.test.mjs tests/autonomous-workers.test.mjs"
+    "test:workers": "node --test tests/agent-worker.test.mjs tests/autonomous-workers.test.mjs",
+    "test:production": "node --test tests/production-core.test.mjs tests/production-runtime.test.mjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.11"
