@@ -8,7 +8,8 @@
     form.querySelector('button').disabled = true;
     return;
   }
-  const db = window.supabase.createClient(config.SUPABASE_URL, config.SUPABASE_ANON_KEY);
+  const db = window.supabase.createClient(config.SUPABASE_URL, config.SUPABASE_ANON_KEY, { auth: { experimental: { passkey: true } } });
+  window.NEXUS_ADMIN_DB = db;
   const labels = { received: '접수 · 확인 필요', reviewing: '신청 확인 · 검토 중', deposit_confirmed: '입금 확인', in_progress: '작업 중', completed: '완료', cancelled: '취소' };
   const baseTitle = document.title;
   const monitor = document.createElement('p');

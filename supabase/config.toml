@@ -1,0 +1,7 @@
+project_id = "nexus-labs"
+
+[functions.nexus-ai]
+verify_jwt = true
+
+[functions.nexus-orchestrator]
+verify_jwt = true
