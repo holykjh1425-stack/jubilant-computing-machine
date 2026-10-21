@@ -1,0 +1,45 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+import {PGlite} from '@electric-sql/pglite';
+import {Store} from '../store.mjs';
+const admin='00000000-0000-4000-8000-000000000001',app='00000000-0000-4000-8000-000000000002';
+const request=i=>({applicationId:app,requestId:`00000000-0000-4000-8000-${String(i).padStart(12,'0')}`});
+test('real Postgres schema, private key scope, RLS, idempotency, durable daily budget and deposit gate',async()=>{
+ const db=new PGlite();
+ try {
+ await db.exec(`create role anon;create role authenticated;create schema vault;
+ create table vault.decrypted_secrets(name text,decrypted_secret text);
+ insert into vault.decrypted_secrets values('nexus_labs_claude_api_key','fixture-key'),('unrelated','must-not-read');
+ create table public.admin_users(user_id uuid primary key);
+ create table public.applications(id uuid primary key,service_type text,description text,privacy_consent boolean,status text);
+ alter table public.admin_users enable row level security;alter table public.applications enable row level security;
+ insert into public.admin_users values('${admin}');
+ insert into public.applications values('${app}','website','국외 전송·보관 동의 test',true,'received');`);
+ await db.exec(await readFile(new URL('../schema.sql',import.meta.url),'utf8'));
+ await db.exec('set role anon');
+ await assert.rejects(db.query('select * from nexus_ai_private.api_keys'),/permission denied/);
+ await db.exec('reset role;set role authenticated');
+ await assert.rejects(db.query('select * from nexus_ai_private.jobs'),/permission denied/);
+ await db.exec('reset role;set role nexus_ai_backend');
+ const keys=await db.query('select name from nexus_ai_private.api_keys');assert.deepEqual(keys.rows.map(r=>r.name),['nexus_labs_claude_api_key']);
+ await assert.rejects(db.query('select * from vault.decrypted_secrets'),/permission denied/);
+ const query=async(sql,params)=>{const r=await db.query(sql,params);return {...r,rowCount:r.rows.length || r.affectedRows || 0};};
+ const client={query,release(){}}; const store=new Store({query,connect:async()=>client});
+ assert.equal(await store.admin(admin),true);assert.equal(await store.key('claude'),'fixture-key');
+ await assert.rejects(store.begin(admin,request(3),0.4,1),{code:'DEPOSIT_APPROVAL_REQUIRED'});
+ await db.exec(`reset role;update public.applications set status='deposit_confirmed';set role nexus_ai_backend`);
+ await store.begin(admin,request(3),0.4,1);
+ assert.equal((await store.begin(admin,request(3),0.4,1)).existing,true);
+ await assert.rejects(store.begin('00000000-0000-4000-8000-000000000099',request(3),0.4,1),{code:'IDEMPOTENCY_CONFLICT'});
+ await store.record(request(3).requestId,'analysis','openai','fixture-model',{status:'started'});
+ await store.record(request(3).requestId,'analysis','openai','fixture-model',{status:'failed',errorCode:'PROVIDER_UNCERTAIN'});
+ const attempt=await db.query('select status,error_code from nexus_ai_private.calls');assert.equal(attempt.rows[0].status,'failed');
+ await store.finish(request(3).requestId,'failed','PROVIDER_UNCERTAIN');
+ await store.begin(admin,request(4),0.4,1);
+ await assert.rejects(store.begin(admin,request(5),0.4,1),{code:'DAILY_BUDGET'});
+ const total=await db.query('select sum(reserved_usd) as total from nexus_ai_private.jobs');assert.equal(Number(total.rows[0].total),0.8);
+ await db.exec(`reset role;update public.applications set description='no transfer consent';set role nexus_ai_backend`);
+ await assert.rejects(store.begin(admin,request(6),0.1,1),{code:'TRANSFER_CONSENT_REQUIRED'});
+ } finally {await db.close();}
+});
