@@ -99,7 +99,7 @@ test('HTTP boundary rejects unauthorized users, workers submitting, credentials,
  let calls=[];const handler=createHandler({url:'https://db.invalid',serviceKey:'private-service',fetchFn:async(url,options)=>{
   calls.push(url);assert.ok(url.startsWith('https://db.invalid/'));
   if(url.endsWith('/auth/v1/user'))return response({id:options.headers.Authorization==='Bearer outsider'?other:admin});
-  if(url.includes('admin_users'))return response(url.includes(other)?[]:[{user_id:admin}]);
+  if(url.includes('admin_users')){assert.notEqual(options.headers.Authorization,'Bearer private-service');return response(url.includes(other)?[]:[{user_id:admin}]);}
   if(url.includes('rpc/'))return response(null);throw Error('unexpected_path');
  }});
  assert.equal((await handler(new Request('https://example.invalid',{method:'POST',body:'{}'}))).status,401);

@@ -24,7 +24,7 @@ export function createHandler({url,serviceKey,fetchFn=fetch}) {
     if(!auth.startsWith('Bearer '))return reply({error:'login_required'},401);
     try {user=await request('/auth/v1/user','GET',undefined,auth);}catch{return reply({error:'invalid_session'},401);}
     if(!uuid(user?.id))return reply({error:'invalid_session'},401);
-    const admins=await request(`/rest/v1/admin_users?select=user_id&user_id=eq.${user.id}`);
+    const admins=await request(`/rest/v1/admin_users?select=user_id&user_id=eq.${user.id}`,'GET',undefined,auth);
     if(admins.length!==1)return reply({error:'admin_required'},403);
    }
    // Bounded streaming parser, independent of Content-Length.
