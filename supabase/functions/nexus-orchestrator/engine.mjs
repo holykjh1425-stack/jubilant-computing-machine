@@ -1,9 +1,9 @@
 // All automatic work is bounded, non-executing planning. Never interpret instructions as code.
 export const CAPABILITIES = Object.freeze({
  internal: { interface: 'transactional queue', enabled: true, mode: 'rules-only planning', paid: false },
- claude: { interface: 'Messages API', enabled: false, reason: 'budget_activation_required' },
+ claude: { interface: 'Messages API', enabled: false, reason: 'production_adapter_not_enabled' },
  openai: { interface: 'Responses API', enabled: false, reason: 'zero_credit_paid_calls_forbidden' },
- codex: { interface: 'Codex SDK / exec / app-server', enabled: false, reason: 'runner_and_budget_not_configured' },
+ codex: { interface: 'Codex SDK / exec / app-server', enabled: false, reason: 'runner_and_auth_not_configured' },
  work: { interface: null, enabled: false, reason: 'no_verified_remote_control_interface' },
 });
 export function validateInstruction(value) {

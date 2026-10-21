@@ -46,13 +46,14 @@ export function createHandler({url,serviceKey,fetchFn=fetch}) {
    if(body.action==='tick')return reply(await tick(rpc));
    if(body.action==='snapshot'){
     const jobs=await request('/rest/v1/orchestrator_jobs?select=*&order=created_at.desc&limit=50');
+    const worker_state=await request('/rest/v1/rpc/nexus_worker_command','POST',{p_action:'state',p_data:{}});
     const ids=jobs.map(x=>x.id);if(!ids.every(uuid))throw Error('invalid_backend');
-    if(!ids.length)return reply({jobs,tasks:[],events:[],agents:CAPABILITIES});
+    if(!ids.length)return reply({jobs,tasks:[],events:[],agents:CAPABILITIES,worker_state});
     const filter=`job_id=in.(${ids.join(',')})`;
     const [tasks,events]=await Promise.all([
      request(`/rest/v1/orchestrator_tasks?select=*&${filter}&order=ordinal.asc&limit=200`),
      request(`/rest/v1/orchestrator_events?select=*&${filter}&order=id.desc&limit=200`)]);
-    return reply({jobs,tasks,events,agents:CAPABILITIES,paid_calls:0});
+    return reply({jobs,tasks,events,agents:CAPABILITIES,worker_state,paid_calls:0});
    }
    return reply({error:'unsupported_action'},400);
   } catch {return reply({error:'orchestrator_unavailable_no_paid_retry'},503);}
