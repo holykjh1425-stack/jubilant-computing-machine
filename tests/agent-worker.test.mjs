@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';
 import {createHandler} from '../supabase/functions/nexus-agent-worker/handler.mjs';
-const token='1'.repeat(64),key='sk-ant-synthetic-test-placeholder';
+const token='1'.repeat(64)+'.'+String(Math.floor(Date.now()/1000)+60),key='sk-ant-synthetic-test-placeholder';
 function fixture({used=false,status=200,failAudit=false,failNetwork=false}={}){
  let provider=0,claims=0,records=[],reserved=used;
  const handler=createHandler({url:'https://db.invalid',serviceKey:'server-only',fetchFn:async(url,o)=>{

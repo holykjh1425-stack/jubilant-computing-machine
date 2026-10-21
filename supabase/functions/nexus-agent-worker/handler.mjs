@@ -13,7 +13,7 @@ export function createHandler({url,serviceKey,fetchFn=fetch}){
    if(req.headers.has('origin'))return reply({error:'machine_only'},403);
    if(!url||!serviceKey)return reply({error:'server_not_configured'},503);
    const token=(req.headers.get('authorization')||'').replace(/^Bearer /,'');
-   if(!/^[0-9a-f]{64}$/.test(token))return reply({error:'worker_credential_required'},401);
+   if(!/^[0-9a-f]{64}\.[0-9]{10}$/.test(token))return reply({error:'worker_credential_required'},401);
    if(await rpc('authorize',{token})!==true)return reply({error:'worker_credential_invalid'},401);
    let size=0,body='';if(!req.body)return reply({error:'invalid_body'},400);
    for await(const chunk of req.body){size+=chunk.length;if(size>256)return reply({error:'body_too_large'},413);body+=new TextDecoder().decode(chunk);}
