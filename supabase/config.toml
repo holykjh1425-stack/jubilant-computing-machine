@@ -1,0 +1,4 @@
+project_id = "nexus-labs"
+
+[functions.nexus-ai]
+verify_jwt = true
