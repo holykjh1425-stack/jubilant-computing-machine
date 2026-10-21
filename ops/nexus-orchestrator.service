@@ -1,0 +1,13 @@
+[Unit]
+Description=NEXUS LABS free orchestration queue worker
+After=network-online.target
+[Service]
+Type=oneshot
+User=nexus
+WorkingDirectory=/srv/nexus-labs
+EnvironmentFile=/etc/nexus-labs/worker.env
+ExecStart=/usr/bin/node /srv/nexus-labs/ops/orchestrator-worker.mjs
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true

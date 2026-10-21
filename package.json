@@ -1,6 +1,11 @@
 {
   "name": "nexus-labs-validation",
   "private": true,
-  "scripts": { "test:ai": "node --test tests/ai-server.test.mjs tests/ai-schema.test.mjs" },
-  "devDependencies": { "@electric-sql/pglite": "0.5.11" }
+  "scripts": {
+    "test:ai": "node --test tests/ai-server.test.mjs tests/ai-schema.test.mjs",
+    "test:orchestrator": "node --test tests/orchestrator.test.mjs"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.11"
+  }
 }
