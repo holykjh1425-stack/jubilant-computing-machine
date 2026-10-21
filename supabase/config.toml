@@ -5,3 +5,7 @@ verify_jwt = true
 
 [functions.nexus-orchestrator]
 verify_jwt = true
+
+# Machine-only endpoint authenticates its narrow Vault worker token in its handler.
+[functions.nexus-agent-worker]
+verify_jwt = false

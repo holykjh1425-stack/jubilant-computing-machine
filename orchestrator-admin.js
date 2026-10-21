@@ -29,7 +29,8 @@
     for(const event of data.events.filter(e=>e.job_id===job.id))audit.append(el('p',`${new Date(event.created_at).toLocaleString('ko-KR')} · ${event.event}${event.code?' · '+event.code:''}`));
     card.append(audit);jobs.append(card);
    }
-   message.textContent=`최근 작업 ${data.jobs.length}건 · 유료 호출 비활성 · 관리자 화면이 열려 있는 동안 자동 갱신합니다.`;
+   const worker=data.worker_state?.worker, trial=data.worker_state?.claude_test;
+   message.textContent=`최근 작업 ${data.jobs.length}건 · 상시 무료 워커: ${worker?.last_finished_at?new Date(worker.last_finished_at).toLocaleString('ko-KR'):'실행 기록 없음'}${worker?.last_error?' · '+worker.last_error:''} · Claude 연결 시험: ${trial?.status||'기록 없음'}${trial?.error_code?' · '+trial.error_code:''} · 유료 고객 제작 비활성`;
   }catch{if(current===generation)message.textContent='중앙 작업 서버에 연결하지 못했습니다. 운영 적용·권한을 확인해 주세요. 완료로 처리되지 않았습니다.';}
   finally{busy=false;}
  }
