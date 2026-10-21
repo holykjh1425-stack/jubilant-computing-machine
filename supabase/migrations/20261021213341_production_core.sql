@@ -137,6 +137,7 @@ begin
  elsif p_action='snapshot' then
   return jsonb_build_object('jobs',(select coalesce(jsonb_agg(x),'[]'::jsonb) from(select * from public.production_jobs order by created_at desc limit 30)x),
    'providers',(select jsonb_agg(jsonb_build_object('provider',provider,'enabled',enabled,'verified_at',verified_at,'readiness',readiness,'heartbeat_at',heartbeat_at)) from nexus_production_private.providers),
+   'attempts',(select coalesce(jsonb_agg(x),'[]'::jsonb) from(select * from public.production_attempts order by created_at desc limit 100)x),
    'events',(select coalesce(jsonb_agg(x),'[]'::jsonb) from(select * from public.production_events order by id desc limit 100)x));
  elsif p_action='issue_link' then
   select * into strict j from public.production_jobs where id=(p_data->>'job_id')::uuid for update;

@@ -50,6 +50,7 @@ test('customer pipeline: immutable legacy data, payment/budget gates, durable ex
  await rpc('finish',{job_id:j.id,lease:claimed.lease,success:true,result:artifact,validation:{passed:true},usage:{input_tokens:1,output_tokens:1}});
  const ready=(await db.query('select * from production_jobs where id=$1',[j.id])).rows[0];
  await t.test('result stays private until exact-hash admin review and release',async()=>{
+  const snapshot=await rpc('snapshot',{actor:admin});assert.equal(snapshot.attempts.length,1);assert.equal(snapshot.attempts[0].status,'succeeded');assert.equal(snapshot.jobs.find(x=>x.id===j.id).validation.passed,true);
   assert.equal(ready.status,'awaiting_review');assert.equal((await rpc('portal',{receipt_number:receipt.receipt_number,token:k})).result,null);
   await assert.rejects(rpc('release',{actor:other,job_id:j.id,expected_hash:ready.result_hash}),/admin required/);
   await assert.rejects(rpc('release',{actor:admin,job_id:j.id,expected_hash:'stale'}),/review stale/);
