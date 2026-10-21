@@ -13,6 +13,16 @@
 - 신규 `nexus-agent-worker`는 opaque 워커 자격증명을 자체 검증하므로 gateway verify_jwt=false로 배포한다. 일반 관리자 서버는 verify_jwt=true 유지한다. 기계 함수는 브라우저 요청·임의 prompt·다른 action을 거부한다. 공개 무인증 실행 경로가 아니다.
 - 마이그레이션 자체로 Claude 시험을 시작하지 않는다. 함수 배포와 무료 검증 후, 기존 시험 기록이 없을 때만 비공개 test_requested를 한 번 설정한다. 한 번 dispatch된 요청은 자동 재전송하지 않는다.
 
+## 운영 적용 상태
+
+- 비공개 워커 구조 적용, 신규 기계 함수 v1 및 관리자 서버 v3 배포 완료.
+- 실제 Cron이 1분마다 실행되는 기록 확인. 초기 10주기 오류 없음.
+- 새 pg_net 확장의 설치 스키마를 extensions로 정리하고 비공개 상태 표의 명시적 거부 정책을 추가함. 이 작업은 새 HTTP 큐·응답이 비었고 시험 미시작인 것을 확인한 뒤 수행했으며 CASCADE는 사용하지 않음.
+- 기계 함수의 인증 없는 실제 HTTP 요청은 401 worker_credential_required로 차단됨.
+- 화면·웹 버튼을 사용하지 않고 TEST AUTO-20261022 내부 작업 1건을 등록하고 다음 Cron 자동 처리를 기다리는 중.
+- 기존 전역 Claude 시험 기록 0건 확인 후 기존 승인 범위의 합성 시험 1회만 예약. 실제 제공자 결과는 실행 기록 확인 후 별도 확정.
+- Codex 로컬 사전 점검: installed=false, authenticated=false, execution_started=false.
+
 ## 실제 완료로 표시하지 않는 것
 
 - Claude 연결 시험 성공과 고객 주문의 Claude 자동 제작은 서로 다르다. 시험 성공 후에도 고객 제작은 비활성이다. 운영 예산·인증 게이트·고객 데이터 전송 범위가 검증되기 전에 켜지 않는다.
