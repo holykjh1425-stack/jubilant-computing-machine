@@ -1,4 +1,4 @@
-# NEXUS customer automation — review before activation
+# NEXUS customer automation — deployment and activation record
 
 This branch adds an independent customer pipeline. It does not change the existing application form, receipt RPC, deposit-confirmation logic, support logic, customer policies or the three existing application rows. The only existing page change loads an additional administrator panel. No new project or account is needed.
 
@@ -31,7 +31,7 @@ The original central free-orchestrator remains installed. This module adds a cus
 
 ## Deployment and activation checklist
 
-This branch is not a live deployment. Review and approve before merging to the publicly hosted branch or applying the new migration/Edge function. Customer-data changing tests must not be run in production.
+User approval was received on 2026-10-22 (Asia/Seoul). PR #6 was merged at `a69f6d0c554211f261a34183eee86d0f15bfb765`; the additive `production_core` migration and `nexus-production` Edge function v1 were applied to the existing project. Static publishing is verified separately below. Model workers remain disabled with zero approved call capacity. Customer-data changing tests must not be run in production.
 
 1. Check the original customer count and full-row digest against the recorded three-row baseline. Apply `supabase/migrations/20261021213341_production_core.sql` through the Supabase connector, not the blocked CLI invocation.
 2. Deploy `supabase/functions/nexus-production/index.ts`, `handler.mjs`, `artifact.mjs` to the existing project. `verify_jwt=false` is required for public capability/intake endpoints; the function validates administrator sessions/membership and worker machine credentials itself. Existing functions are not replaced.
@@ -49,3 +49,18 @@ This branch is not a live deployment. Review and approve before merging to the p
 - No Claude API call, OpenAI API call, live customer workflow run or administrator login/full-screen verification was performed.
 
 A Supabase CLI invocation was automatically rejected because of attempted analytics transmission. It is not retried or bypassed; SQL and validation use local disposable databases and the supported connector instead.
+
+## Operational deployment evidence — 2026-10-22, Asia/Seoul
+
+- Supabase migration `production_core`: applied successfully through the connector. Existing applications/functions/policies were not replaced.
+- Edge function `nexus-production`: ACTIVE v1, built-in JWT gate disabled because the handler applies capability, administrator JWT/membership, and machine authentication per action.
+- Actual endpoint checks passed: wrong customer capability 404, missing admin session 401, missing worker credential 403, foreign origin 403, unsupported Claude action 400. These checks created no application or task.
+- `nexus-production-capture` minute schedule executed successfully at least twice. Existing three customers were excluded: production jobs 0, attempts 0.
+- Both provider rows: enabled=false, approved_calls=0, reserved_calls=0, approved_micro_usd=0. Claude test_requested=false; original consumed failure record and Vault secrets preserved.
+- Production customer count remains 3; full-row MD5 remains `feb572fff533b9831500efb7c1b4d316`.
+- No new security-advisor findings compared with the pre-deployment baseline. Existing intake/support function advisories and password-protection setting are unchanged.
+- No model call, paid call, Codex retest, customer-data changing test or administrator login/full-screen verification was performed during deployment. The earlier Codex timeout remains unresolved.
+- Private always-on controller service, approved provider activation, Work remote control and WebAuthn passkeys remain incomplete.
+
+- GitHub Pages run `39682932610`: completed/success for merge `a69f6d0c554211f261a34183eee86d0f15bfb765`. Public `order.html`, `order.js`, `production-admin.js` and `admin.html` returned HTTP 200 and matched SHA-256 of the approved source. Existing `app.js` also matched. Initial probes during publishing saw the previous site; checks passed after the deployment completed.
+- Live server-side claim checks for both providers returned `provider_not_enabled_or_verified`; no model execution was started.
