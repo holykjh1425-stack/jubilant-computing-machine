@@ -55,3 +55,13 @@ Do not change existing prices or make delivery promises. Do not sign up for paid
 - Both public story URLs and current inquiry-workflow application URL returned HTTP200. This is an availability check, not a live form submission or browser end-to-end conversion test. No test application submitted.
 - Current app.js has expanded source/campaign allowlists including Shorts labels; the earlier coarse attribution limitation must be evaluated against current code rather than assumed unchanged. No live customer attribution storage verified here.
 - No SNS upload, customer contact, spending, contract or API key action. Actual sales amount / related costs / net profit remain unverified. Retain weekly new-post freeze and compare again at 72h/7d; one view does not justify another promotional post.
+
+
+## 2026-10-22 evening review (19:08 KST)
+- No new publication or scheduling. Published inventory unchanged: AI Portal5, home2. Both story posts public; approved/pending comments0 on both.
+- Current partial-day site-wide views/visitors: AI Portal0/0, home0/0. The previous partial-day snapshot (Oct21) was1/1 and0/0 respectively. Do not interpret this as a complete-day decline or article-level performance.
+- Important measurement correction: QA-prefix-only filtering returned received1 and reviewing1, but broader read-only test-marker aggregation found all4 application records marked test/테스트/검증 in name or internal note. Treat the2 noncancelled records as test/unknown, not acquired customers. Previous received1 remains unverified, not a validated lead. No customer data was changed. Stronger marker filtering is conservative and can have false positives; commercial validity requires operator confirmation. No customer text or identity was retrieved or published.
+- Non-test support total0; unanswered0. No confirmed new commercial inquiry or revenue amount.
+- Future reporting: show raw noncancelled state counts separately from test-excluded candidates. Never call an increase in raw rows new customer acquisition without checking the test markers and commercial provenance. Preserve all existing rows.
+- Rechecked current GitHub index and public article/intake routes. Availability verification does not validate submission or admin end-to-end behavior; no live test lead inserted.
+- No further wording edits made without an observed reader problem; continue new-post freeze this week. Next priority is72h/7d response comparison and verified source evidence, not additional promotional volume. No paid API, payment, ad, contract or SNS upload executed. Actual revenue amount, related costs and net profit remain unverified.
