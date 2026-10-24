@@ -77,3 +77,10 @@ Latest aggregate during this review: reviewing2, received1, cancelled1 (total4);
 - Next useful checkpoint Oct27: compare the same calendar-window measures and non-test inquiry evidence. If exposure remains tiny, prioritize verifying search-console ownership/indexing and an approved distribution route, rather than another copy rewrite. No search registration or SNS connection was performed in this review; no indexing or upload claim.
 - Existing privacy-consent/redesign/renaming requests in other work remain outside this traffic check. No legal consent field removed, no domain renamed, and no paid API invoked.
 - Actual sales amount, related costs and net profit are unverified; no paid spend/contract/customer contact performed.
+
+
+## 2026-10-24 evening review
+- Oct20–Oct24 cumulative WordPress site-wide views/visitors unchanged: nexuslabs8 10/4; AI Portal1/1. These counters do not measure the separate chatgpt.site deployment or article attribution. Both story posts have0 approved/held comments.
+- Raw application rows5 (reviewing3, received1, cancelled1), up1; conservative test-marker exclusion returns0 non-test candidates in every state. No acquired-customer claim. Non-test support total/unanswered0/0. Read-only aggregation; no customer identities read, no rows changed.
+- User context reports SOLQ brand transition and existing chatgpt.site deployment in separate work. Do not overwrite that work or imply WordPress totals are SOLQ deployment traffic. No automatic link/domain replacement without verifying deployed intake compatibility. Keep existing assets and weekly new-post freeze.
+- No new article, SNS upload, paid API, spending, contract or customer contact. Sales amount, costs and net profit remain unverified. Next material comparison remains Oct27. No new engagement result to notify.
