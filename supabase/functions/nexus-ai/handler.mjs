@@ -1,6 +1,7 @@
 // No SDK retries, no OpenAI dependency, no secret/customer data logging.
 export const MODEL = 'claude-haiku-5-5';
 const ORIGIN = 'https://holykjh1425-stack.github.io';
+const ALLOWED_ORIGINS = new Set([ORIGIN, 'https://nexus-labs.lemonyglade2048.chatgpt.site', 'https://solqtech.com', 'https://www.solqtech.com']);
 const TEST_KEY = 'claude-connection-v1';
 const MAX_BODY_BYTES = 2048;
 
@@ -28,13 +29,12 @@ async function readBody(req) {
 }
 
 export function createHandler({ url, serviceKey, fetchFn = fetch }) {
-  const headers = {
+  const baseHeaders = {
     'Content-Type': 'application/json', 'Cache-Control': 'no-store',
     'Access-Control-Allow-Origin': ORIGIN, 'Vary': 'Origin',
     'Access-Control-Allow-Headers': 'authorization, apikey, content-type, x-client-info',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
   };
-  const reply = (body, status = 200) => new Response(JSON.stringify(body), { status, headers });
   async function db(path, method = 'GET', body) {
     const res = await fetchFn(`${url}/rest/v1/${path}`, {
       method, headers: { apikey: serviceKey, Authorization: `Bearer ${serviceKey}`,
@@ -52,9 +52,12 @@ export function createHandler({ url, serviceKey, fetchFn = fetch }) {
     return key;
   }
   return async req => {
+    const requestOrigin = req.headers.get('origin');
+    const headers = { ...baseHeaders, 'Access-Control-Allow-Origin': ALLOWED_ORIGINS.has(requestOrigin) ? requestOrigin : ORIGIN };
+    const reply = (body, status = 200) => new Response(JSON.stringify(body), { status, headers });
     try {
       const origin = req.headers.get('origin');
-      if (origin && origin !== ORIGIN) return reply({ error: 'origin_denied' }, 403);
+      if (origin && !ALLOWED_ORIGINS.has(origin)) return reply({ error: 'origin_denied' }, 403);
       if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers });
       if (req.method !== 'POST') return reply({ error: 'method_not_allowed' }, 405);
       if (!url || !serviceKey) throw new Failure(503, 'server_not_configured');
@@ -82,6 +85,8 @@ export function createHandler({ url, serviceKey, fetchFn = fetch }) {
         if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(body.application_id ?? '')) {
           throw new Failure(400, 'invalid_application_id');
         }
+        const existing = await db(`ai_work_plans?select=*&application_id=eq.${body.application_id}&order=created_at.asc&limit=1`);
+        if (existing.length) return reply({plan:existing[0],paid_calls:0,execution_started:false,existing:true});
         const applications = await db(`applications?select=id,receipt_number,status,service_type&id=eq.${body.application_id}`);
         if (applications.length !== 1) throw new Failure(404, 'application_not_found');
         const application = applications[0];
