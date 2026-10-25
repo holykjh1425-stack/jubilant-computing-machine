@@ -1,10 +1,12 @@
 import {CAPABILITIES,validateInstruction,tick} from './engine.mjs';
 const ORIGIN='https://holykjh1425-stack.github.io';
+const SOLQ_ORIGIN='https://nexus-labs.lemonyglade2048.chatgpt.site';
+const ALLOWED_ORIGINS=new Set([ORIGIN,SOLQ_ORIGIN,'https://solqtech.com','https://www.solqtech.com']);
 const uuid=s=>typeof s==='string'&&/^[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}$/i.test(s);
 export function createHandler({url,serviceKey,fetchFn=fetch}) {
- const headers={'Content-Type':'application/json','Cache-Control':'no-store','Access-Control-Allow-Origin':ORIGIN,
+ const headers={'Content-Type':'application/json','Cache-Control':'no-store','Access-Control-Allow-Origin':SOLQ_ORIGIN,
   'Vary':'Origin','Access-Control-Allow-Headers':'authorization,apikey,content-type,x-client-info','Access-Control-Allow-Methods':'POST,OPTIONS'};
- const reply=(body,status=200)=>new Response(JSON.stringify(body),{status,headers});
+
  async function request(path,method='GET',body,authorization=`Bearer ${serviceKey}`) {
   const r=await fetchFn(url+path,{method,headers:{apikey:serviceKey,Authorization:authorization,'Content-Type':'application/json'},
    body:body===undefined?undefined:JSON.stringify(body),signal:AbortSignal.timeout(8000),redirect:'error'});
@@ -12,9 +14,12 @@ export function createHandler({url,serviceKey,fetchFn=fetch}) {
  }
  const rpc=(p_action,p_data)=>request('/rest/v1/rpc/nexus_orchestrator_command','POST',{p_action,p_data});
  return async req=>{
+  const requestOrigin=req.headers.get('origin');
+  const responseHeaders={...headers,'Access-Control-Allow-Origin':ALLOWED_ORIGINS.has(requestOrigin)?requestOrigin:SOLQ_ORIGIN};
+  const reply=(body,status=200)=>new Response(JSON.stringify(body),{status,headers:responseHeaders});
   try {
-   if(req.headers.get('origin')&&req.headers.get('origin')!==ORIGIN)return reply({error:'origin_denied'},403);
-   if(req.method==='OPTIONS')return new Response(null,{status:204,headers});
+   if(req.headers.get('origin')&&!ALLOWED_ORIGINS.has(req.headers.get('origin')))return reply({error:'origin_denied'},403);
+   if(req.method==='OPTIONS')return new Response(null,{status:204,headers:responseHeaders});
    if(req.method!=='POST')return reply({error:'method_not_allowed'},405);
    if(!url||!serviceKey)return reply({error:'server_not_configured'},503);
    const auth=req.headers.get('authorization')||'';
