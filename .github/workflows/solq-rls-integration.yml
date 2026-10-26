@@ -1,0 +1,33 @@
+name: SOLQ isolated RLS validation
+on:
+  push:
+    branches: [dev/solq-automation-preservation-20261026]
+    paths:
+      - tests/rls-integration/**
+      - .github/workflows/solq-rls-integration.yml
+permissions:
+  contents: read
+concurrency:
+  group: solq-rls-integration
+  cancel-in-progress: false
+jobs:
+  rls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      SOLQ_TEST_CONTAINER: solq-rls-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Create isolated empty PostgreSQL
+        run: |
+          docker run --detach --name "$SOLQ_TEST_CONTAINER" --network none --tmpfs /var/lib/postgresql/data -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=solq_rls postgres:17.11
+          for attempt in $(seq 1 30); do
+            if docker exec "$SOLQ_TEST_CONTAINER" pg_isready -U postgres -d solq_rls; then exit 0; fi
+            sleep 1
+          done
+          exit 1
+      - run: python3 tests/rls-integration/run.py
+      - if: always()
+        run: docker rm --force "$SOLQ_TEST_CONTAINER"
