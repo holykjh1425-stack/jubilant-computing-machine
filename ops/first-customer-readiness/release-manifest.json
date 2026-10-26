@@ -36,9 +36,9 @@
     {
       "group": "admin",
       "path": "admin-review.css",
-      "bytes": 769,
-      "sha256": "d2557af06de47beae9db83c938140c80de889388ec8c62eca680a7f23f58222b",
-      "verification": "current local bytes"
+      "bytes": 768,
+      "sha256": "3f5b32d37d1e7489e80a9b180defa8f2ace166308f9be32a52d91bd1594932e2",
+      "verification": "authoritative unchanged GitHub content at 8d95964"
     },
     {
       "group": "admin",
@@ -57,16 +57,16 @@
     {
       "group": "admin",
       "path": "free-workflow.js",
-      "bytes": 1176,
-      "sha256": "c726c63879f2fd31aec56866f0b4f088d916f58874039f4328bb4b5e97297c37",
-      "verification": "current local bytes"
+      "bytes": 1175,
+      "sha256": "d9a60250ee54607244bca74d032545da19dd11418c33e566a9a21ef6a314d3cc",
+      "verification": "authoritative unchanged GitHub content at 8d95964"
     },
     {
       "group": "admin",
       "path": "plan-view.js",
-      "bytes": 2208,
-      "sha256": "1323478d5f4cf06ce63054b2af4dcd68ff4f56a1fbf9f3ff049e1580de367b8c",
-      "verification": "current local bytes"
+      "bytes": 2207,
+      "sha256": "e0c8ede1d22f6877ecba30fd94b3c2c0357f198028f19a03e2217f0a17c2c7f8",
+      "verification": "authoritative unchanged GitHub content at 8d95964"
     },
     {
       "group": "admin",
@@ -78,30 +78,30 @@
     {
       "group": "api",
       "path": "supabase/functions/nexus-orchestrator/index.ts",
-      "bytes": 170,
-      "sha256": "6349eb47400d98746bfeffe973e1c27fd5d83a90eee12b1133c5e0c9b5be52b0",
-      "verification": "current local bytes"
+      "bytes": 169,
+      "sha256": "1baee21ba71eb50d7c572aff6b3944449439cf53422b58916ad140a19e0b0aff",
+      "verification": "authoritative unchanged GitHub content at 8d95964"
     },
     {
       "group": "api",
       "path": "supabase/functions/nexus-orchestrator/handler.mjs",
-      "bytes": 5173,
-      "sha256": "bc8cc690e157ee71b820f027c6ba33637255a523f2fee6489dba73fa60045ebb",
-      "verification": "current local bytes"
+      "bytes": 5172,
+      "sha256": "c67c3df52312320dfd945968bfb2df29bcc95140600720a81b3f5cdee6f03865",
+      "verification": "authoritative unchanged GitHub content at 8d95964"
     },
     {
       "group": "api",
       "path": "supabase/functions/nexus-orchestrator/engine.mjs",
-      "bytes": 5135,
-      "sha256": "f34db81bc6e728fa237c50646add52d1ff86a39c4ff70144b10344909bf73a07",
-      "verification": "current local bytes"
+      "bytes": 5134,
+      "sha256": "6f14f3a14b2e207474efbfce08d6621947086f4f1280c8fc44663bfc294b4df4",
+      "verification": "authoritative unchanged GitHub content at 8d95964"
     },
     {
       "group": "guard",
       "path": "ops/admin-integration-candidate/link-guard.sql",
-      "bytes": 2945,
-      "sha256": "c525bf30e839b53851c7ff0c597889a942c8f76a03f97ca53c0bb6ca4392854e",
-      "verification": "current local bytes"
+      "bytes": 2944,
+      "sha256": "f10cb3efd3e9b0ffe30a587be2f4df21d05d72cc05f4326b63adfc1318ed5769",
+      "verification": "authoritative unchanged GitHub content at 8d95964"
     },
     {
       "group": "admin",
@@ -120,30 +120,30 @@
     {
       "group": "api",
       "path": "supabase/functions/solq-quote-evidence/index.ts",
-      "bytes": 176,
-      "sha256": "6929b530f7ed4573c9bd0497c9ef8a9053f00a1397ddff090382929f51b23ba3",
-      "verification": "current local bytes"
+      "bytes": 175,
+      "sha256": "49522523c89001f463d67b7edcd39efc2f708e73fbe45816c137e01049a04225",
+      "verification": "authoritative unchanged GitHub content at 8d95964"
     },
     {
       "group": "api",
       "path": "supabase/functions/solq-quote-evidence/handler.mjs",
-      "bytes": 3604,
-      "sha256": "f1d3bc86c67e167372ddc177e9e7367d7e8cf375a28014737cec06e7058614dd",
-      "verification": "current local bytes"
+      "bytes": 3603,
+      "sha256": "8ee90d3699093c63cd83098df77e7291bad61453fedd7c24bb3dd11a0cdad4b3",
+      "verification": "authoritative unchanged GitHub content at 8d95964"
     },
     {
       "group": "guard",
       "path": "ops/free-plan-automation/quote-evidence.sql",
-      "bytes": 3042,
-      "sha256": "7afdaaa9fa02419d4cff9391cdb9df75bae234ea4e321bc63334e91b461451d9",
-      "verification": "current local bytes"
+      "bytes": 3041,
+      "sha256": "2909dc800f17783d3cd0748f4db51e0cb33813eef0324d4586fbdc4953ef140c",
+      "verification": "authoritative unchanged GitHub content at 8d95964"
     },
     {
       "group": "guard",
       "path": "ops/admin-integration-candidate/quote-deposit-guard.sql",
-      "bytes": 10813,
-      "sha256": "53b18ad7c6cd52bac5c18d046f4a2c454bc92ea993d1ede98c002a73b48866a2",
-      "verification": "current local bytes"
+      "bytes": 10812,
+      "sha256": "f443260916296acefee2a437bfc98cc86845ab1812753b0c68e550a702cf9551",
+      "verification": "authoritative unchanged GitHub content at 8d95964"
     }
   ]
 }
