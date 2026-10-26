@@ -12,7 +12,7 @@
   const supportRows=$('#support-admin-list'),supportMsg=$('#support-admin-message'),supportRefresh=$('#support-admin-refresh');
   const pageSize=25;
   function say(el,text,error=false){el.textContent=text;el.dataset.kind=error?'error':'info';}
-  function clearDashboard(){freeViews.clear();generation++;loadGeneration++;supportGeneration++;supportItems=[];user=null;rows.replaceChildren();supportRows.replaceChildren();say(supportMsg,'');panel.hidden=true;login.hidden=false;$('#session-label').textContent='';$('#result-count').textContent='';say(dataMsg,'');}
+  function clearDashboard(){document.dispatchEvent(new Event("nexus-admin-session"));freeViews.clear();generation++;loadGeneration++;supportGeneration++;supportItems=[];user=null;rows.replaceChildren();supportRows.replaceChildren();say(supportMsg,'');panel.hidden=true;login.hidden=false;$('#session-label').textContent='';$('#result-count').textContent='';say(dataMsg,'');}
   async function verifyAdmin(){
     const {data,error}=await db.auth.getUser();
     if(error || !data.user)throw Object.assign(new Error('AUTH'),{code:'AUTH'});
@@ -22,7 +22,7 @@
   }
   async function enterDashboard(){
     const current=++generation;
-    try{const verified=await verifyAdmin();if(current!==generation)return;user=verified;login.hidden=true;panel.hidden=false;$('#session-label').textContent='관리자 · '+(verified.email || '로그인됨');form.elements.password.value='';page=0;await Promise.all([load(),loadSupport()]);}
+    try{const verified=await verifyAdmin();if(current!==generation)return;user=verified;document.dispatchEvent(new Event("nexus-admin-session"));login.hidden=true;panel.hidden=false;$('#session-label').textContent='관리자 · '+(verified.email || '로그인됨');form.elements.password.value='';page=0;await Promise.all([load(),loadSupport()]);}
     catch(error){if(current!==generation)return;clearDashboard();await db.auth.signOut({scope:'local'});say(msg,error.code==='NOT_ADMIN'?'로그인한 계정에 관리자 권한이 없습니다. 기존 관리자 등록을 확인해 주세요.':'로그인 세션을 확인할 수 없습니다. 다시 로그인해 주세요.',true);}
   }
   function element(tag,text,cls){const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(cls)node.className=cls;return node;}
@@ -132,3 +132,4 @@
   document.addEventListener('visibilitychange',()=>{if(document.hidden){rows.replaceChildren();supportRows.replaceChildren();supportItems=[];loadGeneration++;supportGeneration++;}else if(user){enterDashboard();}});
   restore();
 })();
+

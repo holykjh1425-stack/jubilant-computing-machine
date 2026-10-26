@@ -1,0 +1,149 @@
+{
+  "baseline_commit": "d6457ddc41a5c8bc4d3333cc9d0b038fe11ccc16",
+  "purpose": "prepared only; no production approval",
+  "admin": 11,
+  "api": 5,
+  "guard": 3,
+  "total": 19,
+  "excluded": [
+    "whole repository",
+    "old quote-evidence-admin.js",
+    "customer page replacement",
+    "actual production execution"
+  ],
+  "files": [
+    {
+      "group": "admin",
+      "path": "admin.html",
+      "bytes": 5441,
+      "sha256": "c2fd257030b4726bd0a21b48cea858b35f2babd6aeadfb0b66cb3ce3cf623bae",
+      "verification": "current local bytes"
+    },
+    {
+      "group": "admin",
+      "path": "icons/nexus-192.png",
+      "bytes": 1246,
+      "sha256": "4b50ec4fe67319c136bb8da1ccefcccdf7c366fc99ee27b8c1e217178118d12d",
+      "verification": "unchanged dependency hash reused from d6457dd manifest; compare production before applying"
+    },
+    {
+      "group": "admin",
+      "path": "admin-base.css",
+      "bytes": 26645,
+      "sha256": "2c8df3d67a6b52200abd624bdc0443aff3ad1223f5372936cf4f6ae6d55c9164",
+      "verification": "unchanged dependency hash reused from d6457dd manifest; compare production before applying"
+    },
+    {
+      "group": "admin",
+      "path": "admin-review.css",
+      "bytes": 769,
+      "sha256": "d2557af06de47beae9db83c938140c80de889388ec8c62eca680a7f23f58222b",
+      "verification": "current local bytes"
+    },
+    {
+      "group": "admin",
+      "path": "vendor/supabase-2.118.0.js",
+      "bytes": 218252,
+      "sha256": "ee3be8de192b97cb1d73d1e95d6b82bb1f6b658c0f97c4ef757fc331996ed3d3",
+      "verification": "unchanged dependency hash reused from d6457dd manifest; compare production before applying"
+    },
+    {
+      "group": "admin",
+      "path": "config.js",
+      "bytes": 260,
+      "sha256": "0a0051ed2c9ff8f426d90d916efb96bd4db82ed48981faa9cef4cf60c4a8b218",
+      "verification": "unchanged dependency hash reused from d6457dd manifest; compare production before applying"
+    },
+    {
+      "group": "admin",
+      "path": "free-workflow.js",
+      "bytes": 1176,
+      "sha256": "c726c63879f2fd31aec56866f0b4f088d916f58874039f4328bb4b5e97297c37",
+      "verification": "current local bytes"
+    },
+    {
+      "group": "admin",
+      "path": "plan-view.js",
+      "bytes": 2208,
+      "sha256": "1323478d5f4cf06ce63054b2af4dcd68ff4f56a1fbf9f3ff049e1580de367b8c",
+      "verification": "current local bytes"
+    },
+    {
+      "group": "admin",
+      "path": "admin.js",
+      "bytes": 18292,
+      "sha256": "2ebd57d8500f7bb02be57a51189fc977bcd3524eafe58743d87270f0e515df5e",
+      "verification": "current local bytes"
+    },
+    {
+      "group": "api",
+      "path": "supabase/functions/nexus-orchestrator/index.ts",
+      "bytes": 170,
+      "sha256": "6349eb47400d98746bfeffe973e1c27fd5d83a90eee12b1133c5e0c9b5be52b0",
+      "verification": "current local bytes"
+    },
+    {
+      "group": "api",
+      "path": "supabase/functions/nexus-orchestrator/handler.mjs",
+      "bytes": 5173,
+      "sha256": "bc8cc690e157ee71b820f027c6ba33637255a523f2fee6489dba73fa60045ebb",
+      "verification": "current local bytes"
+    },
+    {
+      "group": "api",
+      "path": "supabase/functions/nexus-orchestrator/engine.mjs",
+      "bytes": 5135,
+      "sha256": "f34db81bc6e728fa237c50646add52d1ff86a39c4ff70144b10344909bf73a07",
+      "verification": "current local bytes"
+    },
+    {
+      "group": "guard",
+      "path": "ops/admin-integration-candidate/link-guard.sql",
+      "bytes": 2945,
+      "sha256": "c525bf30e839b53851c7ff0c597889a942c8f76a03f97ca53c0bb6ca4392854e",
+      "verification": "current local bytes"
+    },
+    {
+      "group": "admin",
+      "path": "quote-flow.js",
+      "bytes": 4230,
+      "sha256": "ba75120ec0577fb427a78e7aadbaec448f9688b2713e70498eea80704649e30c",
+      "verification": "current local bytes"
+    },
+    {
+      "group": "admin",
+      "path": "quote-panel.js",
+      "bytes": 5468,
+      "sha256": "a32fefa7c86255dbc9f01efc195bde02948da8cb795a1395b11971e9a4332689",
+      "verification": "current local bytes"
+    },
+    {
+      "group": "api",
+      "path": "supabase/functions/solq-quote-evidence/index.ts",
+      "bytes": 176,
+      "sha256": "6929b530f7ed4573c9bd0497c9ef8a9053f00a1397ddff090382929f51b23ba3",
+      "verification": "current local bytes"
+    },
+    {
+      "group": "api",
+      "path": "supabase/functions/solq-quote-evidence/handler.mjs",
+      "bytes": 3604,
+      "sha256": "f1d3bc86c67e167372ddc177e9e7367d7e8cf375a28014737cec06e7058614dd",
+      "verification": "current local bytes"
+    },
+    {
+      "group": "guard",
+      "path": "ops/free-plan-automation/quote-evidence.sql",
+      "bytes": 3042,
+      "sha256": "7afdaaa9fa02419d4cff9391cdb9df75bae234ea4e321bc63334e91b461451d9",
+      "verification": "current local bytes"
+    },
+    {
+      "group": "guard",
+      "path": "ops/admin-integration-candidate/quote-deposit-guard.sql",
+      "bytes": 10813,
+      "sha256": "53b18ad7c6cd52bac5c18d046f4a2c454bc92ea993d1ede98c002a73b48866a2",
+      "verification": "current local bytes"
+    }
+  ]
+}
