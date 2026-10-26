@@ -6,6 +6,7 @@
   const services={website:'웹사이트 제작',ai_automation:'AI 업무 자동화',custom_system:'맞춤형 시스템',consulting:'기타 상담'};
   if(!window.supabase || !/^https:\/\/[a-z0-9]+\.supabase\.co$/.test(cfg.SUPABASE_URL || '') || !/^sb_publishable_[\w-]+$/.test(cfg.SUPABASE_ANON_KEY || '')){msg.textContent='관리자 연결 설정을 확인해 주세요.';form.querySelector('[type=submit]').disabled=true;return;}
   const db=window.supabase.createClient(cfg.SUPABASE_URL,cfg.SUPABASE_ANON_KEY,{auth:{storage:window.sessionStorage,storageKey:'nexus-intake-admin',persistSession:true,autoRefreshToken:true,detectSessionInUrl:false}});
+  window.NEXUS_ADMIN_DB=db;
   form.querySelector('[type=submit]').disabled=false;
   let generation=0,loadGeneration=0,supportGeneration=0,supportSaving=0,supportItems=[],user=null,page=0,total=0,busy=false,restoring=false;
   const supportRows=$('#support-admin-list'),supportMsg=$('#support-admin-message'),supportRefresh=$('#support-admin-refresh');

@@ -1,0 +1,12 @@
+/* Additive candidate styles; preserve the current hosted styles.css. */
+.skip-link{position:fixed;top:8px;left:8px;transform:translateY(-200%);z-index:1000}
+.skip-link:focus{transform:none}
+.admin-heading>div{min-width:0}
+.admin-heading .page-title{word-break:keep-all}
+#rows ol{padding-left:22px}
+#rows ol li{font-size:16px;line-height:1.8;color:#40374e}
+#rows ol li h4{font-size:17px}
+#rows ol li p{margin:8px 0}
+.login-card form{min-width:0}
+@media(max-width:600px){.admin-heading{align-items:flex-start;gap:12px}.admin-heading .page-title{font-size:26px}.private-badge{flex-shrink:0}#rows ol li{font-size:15px}.login-card h2{font-size:23px;word-break:keep-all}}
+.skip-link:not(:focus){clip-path:inset(50%);height:1px;width:1px;overflow:hidden;white-space:nowrap}

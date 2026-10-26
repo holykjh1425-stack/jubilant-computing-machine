@@ -24,13 +24,24 @@ export function createQuoteHandler({url,publishableKey,fetchFn=fetch}) {
    const user=await backend('/auth/v1/user');if(!UUID.test(user?.id||''))return reply({error:'invalid_session'},401);
    const admins=await backend('/rest/v1/admin_users?select=user_id&user_id=eq.'+user.id);
    if(admins.length!==1)return reply({error:'admin_required'},403);
+   if(['issue_quote','record_deposit','confirm_deposit'].includes(body.action)){
+    const {action,...input}=body;
+    return reply(await backend('/rest/v1/rpc/solq_quote_ledger','POST',{p_action:action,p_data:input}));
+   }
    if(body.action==='record'){
     const {action,...input}=body;
     const row=await backend('/rest/v1/rpc/solq_record_quote_evidence','POST',{p_data:input});return reply(row);
    }
    if(body.action!=='list')return reply({error:'unsupported_action'},400);
    const evidence=await backend('/rest/v1/solq_quote_acceptances?application_id=eq.'+body.application_id+'&order=recorded_at.desc');
-   return reply({application_id:body.application_id,accepted:evidence.length>0,evidence});
+   const [quotes,deposits,confirmations]=await Promise.all([
+    backend('/rest/v1/solq_issued_quotes?application_id=eq.'+body.application_id+'&order=version.desc'),
+    backend('/rest/v1/solq_deposit_evidence?application_id=eq.'+body.application_id),
+    backend('/rest/v1/solq_deposit_confirmations?select=*,solq_deposit_evidence!inner(application_id)&solq_deposit_evidence.application_id=eq.'+body.application_id)
+   ]);
+   const latest=quotes[0];
+   const accepted=!!latest&&new Date(latest.expires_at)>new Date()&&evidence.some(a=>a.quote_reference===latest.quote_reference&&a.quote_version===String(latest.version)&&String(a.amount_krw)===String(latest.amount_krw));
+   return reply({application_id:body.application_id,accepted,evidence,quotes,deposits,confirmations});
   }catch{return reply({error:'request_rejected'},400);}
  };
 }
