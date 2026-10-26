@@ -4,7 +4,7 @@ Status: branch only; no merge, deployment, live SQL write or customer communicat
 
 ## Preserved implementation
 
-Existing automated rule-based free planning, production gates, isolated PostgreSQL tests and data-preserving emergency rollback are included. Added files contain schema and synthetic test fixtures only, not database row exports or credentials. The historical baseline fixture's live project URL was replaced before publication. This branch is a single commit based directly on the current main; unpublished intermediate history is excluded.
+Existing automated rule-based free planning, production gates, isolated PostgreSQL tests and data-preserving emergency rollback are included. Added files contain schema and synthetic test fixtures only, not database row exports or credentials. The historical baseline fixture's live project URL was replaced before publication. This branch starts directly from the recorded main and excludes unpublished intermediate history; a follow-up documentation commit records authenticated UI findings.
 
 ## Prepared evidence connection
 
@@ -18,10 +18,12 @@ This workflow records an administrator's verification of externally retained evi
 
 Read-only live checks: applications 8; free plans 5; evidence 0; production attempts 0. The designated synthetic application retains one plan with six details, one awaiting_approval job, six tasks, and awaiting_deposit production. Cross-customer free-plan/job links and duplicate plan groups: 0. The one synthetic application is separately identifiable. Existing cron was not manually invoked.
 
-Live administrator page opens at the login form; no reusable session was present. Authenticated live display is unverified. No authentication or RLS changes were made. Live UI and API connection remain unverified because deployment is prohibited. The repository admin shell predates the live design: reconcile the additive panel with current hosted source before future deployment.
+The administrator signed in through the secure browser flow. The designated synthetic receipt was filtered to one application; the screen showed its stored plan ID, job ID and administrator approval waiting status. The current live UI shows only four summary task items, not all six detailed stored plan steps. Full six-step display is therefore unverified/incomplete. No authentication or RLS changes were made. Live UI and API connection remain unverified because deployment is prohibited. The repository admin shell predates the live design: reconcile the additive panel with current hosted source before future deployment.
 
 ## Rollback and next work
 
 Leave main and hosting untouched. This branch has no operational effect, so abandoning it needs no DB rollback. For a later authorized deployment, follow README.md deployment and reversal order. Preserve evidence, immutable protections and all three production prerequisites. The separate emergency rollback.sql may stop free automation and must not be executed during this task.
 
-Next: obtain an authenticated administrator browser session, verify live plan display, review the prepared code and current live shell, and separately authorize any production deployment. No actual quote sending, deposit confirmation, production approval, new infrastructure, paid API or payment occurred.
+After login, orchestrator job count increased from 4 to 5. The new job is awaiting_approval with NULL application_id/free_plan_id; the page advertises background free-job linking, so that is the suspected source, not a fully verified attribution. Application and plan counts stayed 8 and 5; evidence and production attempts stayed 0. No create/assign/status-save button was pressed. The administrator tab was closed to stop further page-driven work. This observed change is separate from this branch, which was not deployed.
+
+Next: reconcile the six-detail display and automatic browser job linking with the existing server worker, review the prepared code and current live shell, and separately authorize any production deployment. No actual quote sending, deposit confirmation, production approval, new infrastructure, paid API or payment occurred.
