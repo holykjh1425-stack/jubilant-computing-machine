@@ -1,0 +1,87 @@
+{
+  "scope": "Live authentication rejection and zero-row permission checks only",
+  "real_admin_session_tested": false,
+  "business_write_actions_sent": 0,
+  "results": [
+    {
+      "name": "auth_missing_token",
+      "status": 401,
+      "error_code": 401,
+      "pass": true,
+      "allow_origin": null,
+      "cache_control": null
+    },
+    {
+      "name": "auth_invalid_token",
+      "status": 403,
+      "error_code": 403,
+      "pass": true,
+      "allow_origin": null,
+      "cache_control": null
+    },
+    {
+      "name": "anon_applications_zero_rows",
+      "status": 401,
+      "error_code": "42501",
+      "pass": true,
+      "allow_origin": null,
+      "cache_control": null
+    },
+    {
+      "name": "anon_plans_zero_rows",
+      "status": 401,
+      "error_code": "42501",
+      "pass": true,
+      "allow_origin": null,
+      "cache_control": null
+    },
+    {
+      "name": "anon_admins_zero_rows",
+      "status": 401,
+      "error_code": "42501",
+      "pass": true,
+      "allow_origin": null,
+      "cache_control": null
+    },
+    {
+      "name": "orchestrator_missing_token",
+      "status": 401,
+      "error_code": "login_required",
+      "pass": true,
+      "allow_origin": "https://solqtech.com",
+      "cache_control": "no-store"
+    },
+    {
+      "name": "orchestrator_invalid_token",
+      "status": 401,
+      "error_code": "UNAUTHORIZED_INVALID_JWT_FORMAT",
+      "pass": true,
+      "allow_origin": "*",
+      "cache_control": null
+    },
+    {
+      "name": "orchestrator_preflight",
+      "status": 204,
+      "error_code": null,
+      "pass": true,
+      "allow_origin": "https://solqtech.com",
+      "cache_control": "no-store"
+    },
+    {
+      "name": "machine_worker_browser_denied",
+      "status": 403,
+      "error_code": "machine_only",
+      "pass": true,
+      "allow_origin": null,
+      "cache_control": "no-store"
+    },
+    {
+      "name": "production_snapshot_missing_token",
+      "status": 401,
+      "error_code": "invalid_session",
+      "pass": true,
+      "allow_origin": "https://holykjh1425-stack.github.io",
+      "cache_control": "no-store"
+    }
+  ]
+}

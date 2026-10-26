@@ -1,0 +1,15 @@
+{
+  "run_id": 40321542432,
+  "job_id": 121567436104,
+  "commit": "c7d825ea3ed16d35f541a48ab6119e28eb266139",
+  "conclusion": "success",
+  "observed_unwanted_grants_before": 6,
+  "candidate_unwanted_grants_after": 0,
+  "admin_lookup_kept": true,
+  "nonadmin_visible_rows": 0,
+  "anon_truncate_denied": true,
+  "row_content_preserved": true,
+  "repeat_installation": true,
+  "inherited_privilege_failure_atomic": true,
+  "production_changes": 0
+}
