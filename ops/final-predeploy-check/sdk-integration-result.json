@@ -1,0 +1,44 @@
+{
+  "run_id": 40318837397,
+  "job_id": 121558217459,
+  "commit": "56359e637a22bc18641d500b7f202bfc69ccdce2",
+  "conclusion": "success",
+  "results": [
+    {
+      "width": 390,
+      "real_sdk": true,
+      "real_auth_server": false,
+      "original_csp_preserved": true,
+      "inline_script_blocked": true,
+      "real_timer_wait_ms": 31500,
+      "business_writes_during_login_reads_timer": 0,
+      "explicit_synthetic_status_updates": 1,
+      "unapproved_production_requests": 0,
+      "steps": 6,
+      "errors": 0,
+      "overflow": false,
+      "local_cache_policy": "no-store",
+      "production_cache_verified": false
+    },
+    {
+      "width": 1440,
+      "real_sdk": true,
+      "real_auth_server": false,
+      "original_csp_preserved": true,
+      "inline_script_blocked": true,
+      "real_timer_wait_ms": 31500,
+      "business_writes_during_login_reads_timer": 0,
+      "explicit_synthetic_status_updates": 1,
+      "unapproved_production_requests": 0,
+      "steps": 6,
+      "errors": 0,
+      "overflow": false,
+      "local_cache_policy": "no-store",
+      "production_cache_verified": false
+    },
+    {
+      "non_admin_rejected": true,
+      "real_auth_server": false
+    }
+  ]
+}
