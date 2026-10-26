@@ -1,0 +1,72 @@
+{
+  "base_commit": "f44e5b179e37d86dcae2e76706216c28bb700876",
+  "node_tests": {
+    "pass": 3,
+    "fail": 0
+  },
+  "api": {
+    "parallel_requests_per_key_type": 100,
+    "key_types": [
+      "application",
+      "plan"
+    ],
+    "all_status": 409,
+    "registration_rpc_calls": 0,
+    "auth": "synthetic"
+  },
+  "postgres": {
+    "runtime": "PGlite 0.5.11",
+    "single_connection": true,
+    "overlapping_worker_requests": 100,
+    "new_plans": 1,
+    "new_jobs": 1,
+    "tasks": 6,
+    "overlapping_insert_requests": 100,
+    "successful_inserts": 1,
+    "legacy_rows_unchanged": 5,
+    "native_multi_session_tested": false
+  },
+  "browser": [
+    {
+      "width": 1440,
+      "login_submissions": 100,
+      "list_refreshes": 100,
+      "controlled_timer_callbacks": 100,
+      "plan_reads": 100,
+      "write_calls": 0,
+      "page_errors": 0,
+      "horizontal_overflow": false,
+      "sdk": "synthetic adapter"
+    },
+    {
+      "width": 390,
+      "login_submissions": 100,
+      "list_refreshes": 100,
+      "controlled_timer_callbacks": 100,
+      "plan_reads": 100,
+      "write_calls": 0,
+      "page_errors": 0,
+      "horizontal_overflow": false,
+      "sdk": "synthetic adapter"
+    }
+  ],
+  "production": {
+    "deployed": false,
+    "db_writes": 0,
+    "start_counts": {
+      "applications": 8,
+      "plans": 5,
+      "jobs": 5,
+      "unlinked": 4,
+      "production_attempts": 0
+    },
+    "end_counts": {
+      "applications": 8,
+      "plans": 5,
+      "jobs": 5,
+      "unlinked": 4,
+      "production_attempts": 0,
+      "logical_duplicate_groups": 1
+    }
+  }
+}

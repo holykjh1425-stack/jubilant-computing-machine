@@ -45,6 +45,11 @@ export function createHandler({url,serviceKey,fetchFn=fetch}) {
    if(body.action==='capabilities')return reply({agents:CAPABILITIES,paid_calls:0,external_execution_enabled:false});
    if(body.action==='submit'){
     if(!uuid(body.key)||!Object.hasOwn(CAPABILITIES,body.agent))return reply({error:'invalid_submission'},400);
+    // Old browser clients used plan IDs; the server worker owns all customer registration.
+    const [plans,applications]=await Promise.all([
+     request(`/rest/v1/ai_work_plans?select=id&id=eq.${body.key}`),
+     request(`/rest/v1/applications?select=id&id=eq.${body.key}`)]);
+    if(plans.length||applications.length)return reply({error:'customer_registration_server_only'},409);
     let instruction;try{instruction=validateInstruction(body.instruction);}catch{return reply({error:'invalid_instruction_or_credentials'},400);}
     return reply({job:await rpc('submit',{actor:user.id,key:body.key,instruction,agent:body.agent}),paid_calls:0});
    }
