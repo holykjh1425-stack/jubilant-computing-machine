@@ -1,0 +1,36 @@
+name: SOLQ isolated PostgreSQL validation
+on:
+  push:
+    branches: [dev/solq-automation-preservation-20261026]
+    paths:
+      - tests/native-postgres/**
+      - .github/workflows/solq-isolated-validation.yml
+permissions:
+  contents: read
+concurrency:
+  group: solq-isolated-native-validation
+  cancel-in-progress: false
+jobs:
+  native-postgres:
+    if: github.repository == 'holykjh1425-stack/jubilant-computing-machine'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      SOLQ_TEST_CONTAINER: solq-isolated-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Create disposable database without network, ports or host mounts
+        run: |
+          docker run --detach --name "$SOLQ_TEST_CONTAINER" --network none --label solq.test-only=true --tmpfs /var/lib/postgresql/data -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=solq_isolated postgres:17.11 -c max_connections=150
+          for attempt in $(seq 1 30); do
+            if docker exec "$SOLQ_TEST_CONTAINER" pg_isready -U postgres -d solq_isolated; then exit 0; fi
+            sleep 1
+          done
+          exit 1
+      - name: Run only missing independent-connection and synthetic recovery checks
+        run: python3 tests/native-postgres/run.py
+      - name: Remove this run's disposable database
+        if: always()
+        run: docker rm --force "$SOLQ_TEST_CONTAINER"
