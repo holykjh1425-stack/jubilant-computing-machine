@@ -1,0 +1,92 @@
+{
+  "source_commit": "6b591012a83650a5d1e3da61f4ecfb1584b26b21",
+  "purpose": "Dependency and content manifest only; not deployment approval",
+  "admin_document_and_dependencies": 9,
+  "api_files": 3,
+  "guard_files": 1,
+  "excluded": [
+    "quote API",
+    "quote-panel.js",
+    "entire candidate folder"
+  ],
+  "files": [
+    {
+      "group": "admin",
+      "path": "admin.html",
+      "bytes": 5353,
+      "sha256": "b1c3a4720135c6cae55c1f8388786150387da6ef68c9cf188fb245e64e0e7eeb"
+    },
+    {
+      "group": "admin",
+      "path": "icons/nexus-192.png",
+      "bytes": 1246,
+      "sha256": "4b50ec4fe67319c136bb8da1ccefcccdf7c366fc99ee27b8c1e217178118d12d"
+    },
+    {
+      "group": "admin",
+      "path": "admin-base.css",
+      "bytes": 26645,
+      "sha256": "2c8df3d67a6b52200abd624bdc0443aff3ad1223f5372936cf4f6ae6d55c9164"
+    },
+    {
+      "group": "admin",
+      "path": "admin-review.css",
+      "bytes": 768,
+      "sha256": "3f5b32d37d1e7489e80a9b180defa8f2ace166308f9be32a52d91bd1594932e2"
+    },
+    {
+      "group": "admin",
+      "path": "vendor/supabase-2.118.0.js",
+      "bytes": 218252,
+      "sha256": "ee3be8de192b97cb1d73d1e95d6b82bb1f6b658c0f97c4ef757fc331996ed3d3"
+    },
+    {
+      "group": "admin",
+      "path": "config.js",
+      "bytes": 260,
+      "sha256": "0a0051ed2c9ff8f426d90d916efb96bd4db82ed48981faa9cef4cf60c4a8b218"
+    },
+    {
+      "group": "admin",
+      "path": "free-workflow.js",
+      "bytes": 1175,
+      "sha256": "d9a60250ee54607244bca74d032545da19dd11418c33e566a9a21ef6a314d3cc"
+    },
+    {
+      "group": "admin",
+      "path": "plan-view.js",
+      "bytes": 2207,
+      "sha256": "e0c8ede1d22f6877ecba30fd94b3c2c0357f198028f19a03e2217f0a17c2c7f8"
+    },
+    {
+      "group": "admin",
+      "path": "admin.js",
+      "bytes": 18177,
+      "sha256": "ce80205f0436dd8d2836bb6dc56b2415ec844ba170fa462148bf18a551944218"
+    },
+    {
+      "group": "api",
+      "path": "supabase/functions/nexus-orchestrator/index.ts",
+      "bytes": 169,
+      "sha256": "1baee21ba71eb50d7c572aff6b3944449439cf53422b58916ad140a19e0b0aff"
+    },
+    {
+      "group": "api",
+      "path": "supabase/functions/nexus-orchestrator/handler.mjs",
+      "bytes": 5172,
+      "sha256": "c67c3df52312320dfd945968bfb2df29bcc95140600720a81b3f5cdee6f03865"
+    },
+    {
+      "group": "api",
+      "path": "supabase/functions/nexus-orchestrator/engine.mjs",
+      "bytes": 5134,
+      "sha256": "6f14f3a14b2e207474efbfce08d6621947086f4f1280c8fc44663bfc294b4df4"
+    },
+    {
+      "group": "guard",
+      "path": "ops/admin-integration-candidate/link-guard.sql",
+      "bytes": 2944,
+      "sha256": "f10cb3efd3e9b0ffe30a587be2f4df21d05d72cc05f4326b63adfc1318ed5769"
+    }
+  ]
+}
