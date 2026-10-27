@@ -14,13 +14,13 @@ public static class SolqEncryptedStream {
     }
     public static ProcessStartInfo StartInfo(string exe, string args) {
         return new ProcessStartInfo(exe, args) { UseShellExecute=false,
-          CreateNoWindow=true, RedirectStandardInput=true,
+          CreateNoWindow=true, RedirectStandardInput=true, StandardInputEncoding=new System.Text.UTF8Encoding(false),
           RedirectStandardOutput=true, RedirectStandardError=true };
     }
     public static string PublicMetadata(string exe, string args) {
         using (var p = new Process { StartInfo = StartInfo(exe,args) }) {
             try {
-                p.Start(); p.StandardInput.Close();
+                p.Start(); p.StandardInput.BaseStream.Close();
                 var stdout=p.StandardOutput.ReadToEndAsync();
                 var stderr=Drain(p.StandardError.BaseStream);
                 if (!Task.WhenAll(stdout,stderr).Wait(60000) || !p.WaitForExit(5000) || p.ExitCode!=0)
@@ -39,12 +39,12 @@ public static class SolqEncryptedStream {
                 a=new Process { StartInfo=source }; b=new Process { StartInfo=cipher };
                 b.Start(); var be=Drain(b.StandardError.BaseStream);
                 var encrypted=b.StandardOutput.BaseStream.CopyToAsync(output);
-                a.Start(); a.StandardInput.Close(); var ae=Drain(a.StandardError.BaseStream);
+                a.Start(); a.StandardInput.BaseStream.Close(); var ae=Drain(a.StandardError.BaseStream);
                 // Remove password from managed startup configuration immediately after child creation.
                 a.StartInfo.EnvironmentVariables.Remove("PGPASSWORD");
                 var transfer=a.StandardOutput.BaseStream.CopyToAsync(b.StandardInput.BaseStream);
                 var closeInput=transfer.ContinueWith(t => {
-                    try { b.StandardInput.Close(); } catch {}
+                    try { b.StandardInput.BaseStream.Close(); } catch {}
                     if(t.IsFaulted) throw new IOException("TRANSFER_FAILED");
                 });
                 var all=Task.WhenAll(closeInput,encrypted,ae,be);

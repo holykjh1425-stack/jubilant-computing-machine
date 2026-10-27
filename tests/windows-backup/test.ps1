@@ -67,7 +67,7 @@ try {
     $dec.StandardOutput.BaseStream.CopyTo($mem); $dec.WaitForExit()
     if($dec.ExitCode -ne 0) { throw 'ROUNDTRIP_EXIT_FAILED' }
     $bytes=$mem.ToArray()
-    if($bytes.Length -ne 1048593) { throw 'ROUNDTRIP_LENGTH_FAILED' }
+    if($bytes.Length -ne 1048593) { throw ('ROUNDTRIP_LENGTH_FAILED_SYNTHETIC_BYTES_'+$bytes.Length) }
     for($i=0;$i -lt $bytes.Length;$i++) { if($bytes[$i] -ne [byte]($i % 256)) { throw 'BINARY_CHANGED' } }
     [Array]::Clear($bytes,0,$bytes.Length); $mem.Dispose(); $dec.Dispose()
     $results.Add('binary roundtrip all byte values')
