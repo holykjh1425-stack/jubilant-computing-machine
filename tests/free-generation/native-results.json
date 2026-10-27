@@ -1,0 +1,32 @@
+{
+  "approve_wave": {
+    "independent_backend_pids": 32,
+    "simultaneous_waiters": 32
+  },
+  "commit": "9701c330e9cfac882f4df2aab8ad47ff43bf0b44",
+  "execution_started": false,
+  "generate_wave": {
+    "independent_backend_pids": 32,
+    "simultaneous_waiters": 32
+  },
+  "historic_rows_preserved": true,
+  "human_review": "awaiting_approval",
+  "isolation": {
+    "host_bind_mounts": 0,
+    "network": "none",
+    "ports": 0,
+    "synthetic_only": true
+  },
+  "new_job_count": 1,
+  "new_plan_count": 1,
+  "paid_calls": 0,
+  "partial_failure_rows": 0,
+  "postgres": "17.11 (Debian 17.11-1.pgdg13+2)",
+  "preapproval_rejected": true,
+  "production_backup_verified": false,
+  "real_supabase_auth": false,
+  "run_id": "40448980532",
+  "stage_count": 6,
+  "time_utc": "2026-10-27T04:18:25Z",
+  "verdict": "PASS"
+}
