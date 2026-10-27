@@ -21,12 +21,14 @@ function GpgPath([string]$nativePath) {
     return $nativePath
 }
 $gpriv=GpgPath $priv; $gpub=GpgPath $pub
+$producerExe=Join-Path $base 'producer.exe'
+Add-Type -Path (Join-Path $PSScriptRoot 'Producer.cs') -OutputAssembly $producerExe -OutputType ConsoleApplication
 $results=New-Object Collections.Generic.List[string]
 function Cipher([string]$recipient=$script:fpr) {
     return [SolqEncryptedStream]::StartInfo($gpg,('--no-options --homedir "{0}" --batch --no-tty --trust-model always --recipient {1} --cipher-algo AES256 --compress-algo none --encrypt --output -' -f $gpub,$recipient))
 }
 function Source([string]$mode='ok') {
-    return [SolqEncryptedStream]::StartInfo((Join-Path $PSHOME 'powershell.exe'),('-NoProfile -NonInteractive -File "{0}" -Mode {1}' -f (Join-Path $PSScriptRoot 'producer.ps1'),$mode))
+    return [SolqEncryptedStream]::StartInfo($producerExe,$mode)
 }
 function Reject([string]$label,$source,$cipher,[string]$target,[int]$timeout=20000) {
     $rejected=$false

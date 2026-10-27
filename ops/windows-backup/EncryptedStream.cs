@@ -7,6 +7,17 @@ using System.Security.Cryptography;
 
 // Raw binary transport only; never returns child stderr or plaintext.
 public static class SolqEncryptedStream {
+    static readonly object EncodingGate = new object();
+    static void StartRaw(Process p) {
+        // .NET Framework constructs redirected stdin with Console.InputEncoding
+        // and AutoFlush, which can emit an unwanted UTF8 BOM at process start.
+        // No password or plaintext travels through Console; restore immediately.
+        lock (EncodingGate) {
+            var previous=Console.InputEncoding;
+            try { Console.InputEncoding=new System.Text.UTF8Encoding(false); p.Start(); }
+            finally { Console.InputEncoding=previous; }
+        }
+    }
     static async Task Drain(Stream stream) {
         byte[] buffer = new byte[8192];
         try { while (await stream.ReadAsync(buffer, 0, buffer.Length) != 0) {} }
@@ -20,7 +31,7 @@ public static class SolqEncryptedStream {
     public static string PublicMetadata(string exe, string args) {
         using (var p = new Process { StartInfo = StartInfo(exe,args) }) {
             try {
-                p.Start(); p.StandardInput.BaseStream.Close();
+                StartRaw(p); p.StandardInput.BaseStream.Close();
                 var stdout=p.StandardOutput.ReadToEndAsync();
                 var stderr=Drain(p.StandardError.BaseStream);
                 if (!Task.WhenAll(stdout,stderr).Wait(60000) || !p.WaitForExit(5000) || p.ExitCode!=0)
@@ -37,9 +48,9 @@ public static class SolqEncryptedStream {
         try {
             using (FileStream output = new FileStream(partial,FileMode.CreateNew,FileAccess.Write,FileShare.None)) {
                 a=new Process { StartInfo=source }; b=new Process { StartInfo=cipher };
-                b.Start(); var be=Drain(b.StandardError.BaseStream);
+                StartRaw(b); var be=Drain(b.StandardError.BaseStream);
                 var encrypted=b.StandardOutput.BaseStream.CopyToAsync(output);
-                a.Start(); a.StandardInput.BaseStream.Close(); var ae=Drain(a.StandardError.BaseStream);
+                StartRaw(a); a.StandardInput.BaseStream.Close(); var ae=Drain(a.StandardError.BaseStream);
                 // Remove password from managed startup configuration immediately after child creation.
                 a.StartInfo.EnvironmentVariables.Remove("PGPASSWORD");
                 var transfer=a.StandardOutput.BaseStream.CopyToAsync(b.StandardInput.BaseStream);
