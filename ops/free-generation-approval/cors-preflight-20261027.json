@@ -1,0 +1,19 @@
+{
+  "method": "OPTIONS only, no authenticated call",
+  "results": [
+    {
+      "origin": "null",
+      "status": 403,
+      "allow_origin": "https://nexus-labs.lemonyglade2048.chatgpt.site",
+      "allow_methods": "POST,OPTIONS",
+      "allow_headers": "authorization,apikey,content-type,x-client-info"
+    },
+    {
+      "origin": "https://solqtech.com",
+      "status": 204,
+      "allow_origin": "https://solqtech.com",
+      "allow_methods": "POST,OPTIONS",
+      "allow_headers": "authorization,apikey,content-type,x-client-info"
+    }
+  ]
+}
