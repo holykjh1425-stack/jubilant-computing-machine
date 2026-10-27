@@ -28,7 +28,17 @@ function Reject([string]$label,$source,$cipher,[string]$target,[int]$timeout=200
     $results.Add($label)
 }
 try {
-    [void][SolqEncryptedStream]::PublicMetadata($gpg,('--homedir "{0}" --batch --pinentry-mode loopback --passphrase "" --quick-generate-key "SOLQ SYNTHETIC ONLY <synthetic@example.invalid>" rsa2048 encr 1d' -f $priv))
+    $keygen=New-Object Diagnostics.Process
+    $keygen.StartInfo=[SolqEncryptedStream]::StartInfo($gpg,('--homedir "{0}" --batch --pinentry-mode loopback --passphrase "" --quick-generate-key "SOLQ SYNTHETIC ONLY <synthetic@example.invalid>" rsa2048 encr 1d' -f $priv))
+    [void]$keygen.Start(); $keygen.StandardInput.Close()
+    $keygenOut=$keygen.StandardOutput.ReadToEndAsync(); $keygenErr=$keygen.StandardError.ReadToEndAsync()
+    if(-not $keygen.WaitForExit(60000)) { $keygen.Kill(); throw 'SYNTHETIC_KEY_TIMEOUT' }
+    if($keygen.ExitCode -ne 0) {
+        # Disposable CI-key diagnostics ONLY; never used by production script.
+        Write-Output ('Synthetic-only key generator diagnostic: '+$keygenErr.Result)
+        throw 'SYNTHETIC_KEY_FAILED'
+    }
+    $keygen.Dispose()
     $lines=[SolqEncryptedStream]::PublicMetadata($gpg,('--homedir "{0}" --batch --with-colons --list-keys' -f $priv)) -split "`n"
     $script:fpr=($lines | Where-Object { $_ -match '^fpr:' } | Select-Object -First 1).Split(':')[9]
     # Only disposable PUBLIC key bytes are written; never exports a secret key.
