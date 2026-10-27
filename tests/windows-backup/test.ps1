@@ -1,0 +1,85 @@
+﻿$ErrorActionPreference='Stop'
+Set-StrictMode -Version Latest
+$root=(Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
+Add-Type -Path (Join-Path $root 'ops/windows-backup/EncryptedStream.cs')
+foreach($name in @('Backup-Encrypted.ps1','Check-BackupTools.ps1')) {
+    $tok=$null; $err=$null
+    [Management.Automation.Language.Parser]::ParseFile((Join-Path $root ('ops/windows-backup/'+$name)),[ref]$tok,[ref]$err) | Out-Null
+    if($err.Count) { throw 'PARSE_FAILED' }
+}
+$command=Get-Command gpg.exe -ErrorAction SilentlyContinue
+$gpg=if($command) { $command.Source } else { 'C:\Program Files\Git\usr\bin\gpg.exe' }
+if(-not (Test-Path $gpg)) { throw 'RUNNER_GPG_UNAVAILABLE' }
+$gpgconf=Join-Path (Split-Path $gpg) 'gpgconf.exe'
+$base=Join-Path $env:TEMP ('solq-synthetic-'+[Guid]::NewGuid().ToString('N'))
+$priv=Join-Path $base 'synthetic-private'; $pub=Join-Path $base 'synthetic-public'
+New-Item -ItemType Directory -Path $priv,$pub | Out-Null
+$results=New-Object Collections.Generic.List[string]
+function Cipher([string]$recipient=$script:fpr) {
+    return [SolqEncryptedStream]::StartInfo($gpg,('--homedir "{0}" --batch --no-tty --trust-model always --recipient {1} --cipher-algo AES256 --compress-algo none --encrypt --output -' -f $pub,$recipient))
+}
+function Source([string]$mode='ok') {
+    return [SolqEncryptedStream]::StartInfo((Join-Path $PSHOME 'powershell.exe'),('-NoProfile -NonInteractive -File "{0}" -Mode {1}' -f (Join-Path $PSScriptRoot 'producer.ps1'),$mode))
+}
+function Reject([string]$label,$source,$cipher,[string]$target,[int]$timeout=20000) {
+    $rejected=$false
+    try { [void][SolqEncryptedStream]::Run($source,$cipher,$target,$timeout) } catch { $rejected=$true }
+    if(-not $rejected -or (Test-Path $target)) { throw ('FAILED_'+$label) }
+    $results.Add($label)
+}
+try {
+    & $gpg --homedir $priv --batch --pinentry-mode loopback '--passphrase=' --quick-generate-key 'SOLQ SYNTHETIC ONLY <synthetic@example.invalid>' rsa2048 encr 1d 2>$null
+    if($LASTEXITCODE -ne 0) { throw 'SYNTHETIC_KEY_FAILED' }
+    $lines=& $gpg --homedir $priv --batch --with-colons --list-keys 2>$null
+    $script:fpr=($lines | Where-Object { $_ -match '^fpr:' } | Select-Object -First 1).Split(':')[9]
+    # Only disposable PUBLIC key bytes are written; never exports a secret key.
+    $publicFile=Join-Path $base 'synthetic-public.asc'
+    & $gpg --homedir $priv --batch --armor --output $publicFile --export $fpr
+    if($LASTEXITCODE -ne 0) { throw 'PUBLIC_EXPORT_FAILED' }
+    & $gpg --homedir $pub --batch --import $publicFile 2>$null
+    if($LASTEXITCODE -ne 0) { throw 'PUBLIC_IMPORT_FAILED' }
+    $sec=& $gpg --homedir $pub --batch --with-colons --list-secret-keys 2>$null
+    if($sec -match '^sec:') { throw 'PUBLIC_ONLY_FAILED' }; $results.Add('public-only recipient')
+    $good=Join-Path $base 'binary.gpg'
+    $actual=[SolqEncryptedStream]::Run((Source),(Cipher),$good,30000)
+    if($actual -ne (Get-FileHash $good -Algorithm SHA256).Hash.ToLowerInvariant()) { throw 'CIPHER_HASH_FAILED' }
+    $results.Add('ciphertext SHA256')
+    # Decrypt synthetic bytes to memory only; no plaintext file.
+    $dec=New-Object Diagnostics.Process
+    $dec.StartInfo=[SolqEncryptedStream]::StartInfo($gpg,('--homedir "{0}" --batch --decrypt "{1}"' -f $priv,$good))
+    [void]$dec.Start(); $dec.StandardInput.Close()
+    $stderr=$dec.StandardError.ReadToEndAsync()
+    $mem=New-Object IO.MemoryStream
+    $dec.StandardOutput.BaseStream.CopyTo($mem); $dec.WaitForExit()
+    if($dec.ExitCode -ne 0) { throw 'ROUNDTRIP_EXIT_FAILED' }
+    $bytes=$mem.ToArray()
+    if($bytes.Length -ne 1048593) { throw 'ROUNDTRIP_LENGTH_FAILED' }
+    for($i=0;$i -lt $bytes.Length;$i++) { if($bytes[$i] -ne [byte]($i % 256)) { throw 'BINARY_CHANGED' } }
+    [Array]::Clear($bytes,0,$bytes.Length); $mem.Dispose(); $dec.Dispose()
+    $results.Add('binary roundtrip all byte values')
+    Reject 'producer exit17 never promoted' (Source 'fail') (Cipher) (Join-Path $base 'failed-source.gpg')
+    Reject 'invalid recipient rejected' (Source) (Cipher '0000000000000000000000000000000000000000') (Join-Path $base 'bad-recipient.gpg')
+    Reject 'timeout never promoted' (Source 'timeout') (Cipher) (Join-Path $base 'timed-out.gpg') 1000
+    Reject 'missing executable rejected' ([SolqEncryptedStream]::StartInfo('Z:\not-present\solq.exe','')) (Cipher) (Join-Path $base 'missing.gpg')
+    $before=(Get-FileHash $good).Hash; $blocked=$false
+    try { [void][SolqEncryptedStream]::Run((Source),(Cipher),$good,1000) } catch { $blocked=$true }
+    if(-not $blocked -or (Get-FileHash $good).Hash -ne $before) { throw 'OVERWRITE_FAILED' }
+    $results.Add('existing ciphertext protected')
+    $damaged=[IO.File]::ReadAllBytes($good); $damaged[[int]($damaged.Length/2)]=$damaged[[int]($damaged.Length/2)] -bxor 1
+    $bad=Join-Path $base 'damaged.gpg'; [IO.File]::WriteAllBytes($bad,$damaged)
+    $p=New-Object Diagnostics.Process
+    $p.StartInfo=[SolqEncryptedStream]::StartInfo($gpg,('--homedir "{0}" --batch --decrypt "{1}"' -f $priv,$bad))
+    [void]$p.Start(); $p.StandardInput.Close(); $e=$p.StandardError.ReadToEndAsync()
+    $p.StandardOutput.BaseStream.CopyTo([IO.Stream]::Null); $p.WaitForExit()
+    if($p.ExitCode -eq 0) { throw 'CORRUPTION_UNDETECTED' }; $p.Dispose()
+    $results.Add('corruption integrity rejection')
+    $default=& (Join-Path $root 'ops/windows-backup/Backup-Encrypted.ps1')
+    if($default -notmatch '^PREPARATION_ONLY:') { throw 'DEFAULT_GATE_FAILED' }
+    $results.Add('default production gate no DB contact')
+    $report=[ordered]@{ utc=[DateTime]::UtcNow.ToString('o'); environment='GitHub existing repository disposable Windows runner, not user PC'; powershell=$PSVersionTable.PSVersion.ToString(); cases=$results.ToArray(); pass=$results.Count; production_db_contact=$false; user_key_access=$false; plaintext_customer_data=$false; operating_backup_executed=$false }
+    $report | ConvertTo-Json -Depth 4 | Set-Content -Encoding UTF8 (Join-Path $PSScriptRoot 'results.json')
+    $report | ConvertTo-Json -Depth 4
+} finally {
+    foreach($home in @($priv,$pub)) { & $gpgconf --homedir $home --kill all 2>$null }
+    if(Test-Path $base) { Remove-Item -LiteralPath $base -Recurse -Force }
+}
