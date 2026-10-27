@@ -14,9 +14,16 @@ $gpgconf=Join-Path (Split-Path $gpg) 'gpgconf.exe'
 $base=Join-Path $env:TEMP ('solq-synthetic-'+[Guid]::NewGuid().ToString('N'))
 $priv=Join-Path $base 'synthetic-private'; $pub=Join-Path $base 'synthetic-public'
 New-Item -ItemType Directory -Path $priv,$pub | Out-Null
+function GpgPath([string]$nativePath) {
+    if($gpg -match '\\Git\\usr\\bin\\') {
+        return ('/'+$nativePath.Substring(0,1).ToLowerInvariant()+$nativePath.Substring(2).Replace('\','/'))
+    }
+    return $nativePath
+}
+$gpriv=GpgPath $priv; $gpub=GpgPath $pub
 $results=New-Object Collections.Generic.List[string]
 function Cipher([string]$recipient=$script:fpr) {
-    return [SolqEncryptedStream]::StartInfo($gpg,('--homedir "{0}" --batch --no-tty --trust-model always --recipient {1} --cipher-algo AES256 --compress-algo none --encrypt --output -' -f $pub,$recipient))
+    return [SolqEncryptedStream]::StartInfo($gpg,('--no-options --homedir "{0}" --batch --no-tty --trust-model always --recipient {1} --cipher-algo AES256 --compress-algo none --encrypt --output -' -f $gpub,$recipient))
 }
 function Source([string]$mode='ok') {
     return [SolqEncryptedStream]::StartInfo((Join-Path $PSHOME 'powershell.exe'),('-NoProfile -NonInteractive -File "{0}" -Mode {1}' -f (Join-Path $PSScriptRoot 'producer.ps1'),$mode))
@@ -29,7 +36,7 @@ function Reject([string]$label,$source,$cipher,[string]$target,[int]$timeout=200
 }
 try {
     $keygen=New-Object Diagnostics.Process
-    $keygen.StartInfo=[SolqEncryptedStream]::StartInfo($gpg,('--homedir "{0}" --batch --pinentry-mode loopback --passphrase "" --quick-generate-key "SOLQ SYNTHETIC ONLY <synthetic@example.invalid>" rsa2048 encr 1d' -f $priv))
+    $keygen.StartInfo=[SolqEncryptedStream]::StartInfo($gpg,('--no-options --homedir "{0}" --batch --pinentry-mode loopback --passphrase "" --quick-generate-key "SOLQ SYNTHETIC ONLY <synthetic@example.invalid>" rsa2048 encr 1d' -f $gpriv))
     [void]$keygen.Start(); $keygen.StandardInput.Close()
     $keygenOut=$keygen.StandardOutput.ReadToEndAsync(); $keygenErr=$keygen.StandardError.ReadToEndAsync()
     if(-not $keygen.WaitForExit(60000)) { $keygen.Kill(); throw 'SYNTHETIC_KEY_TIMEOUT' }
@@ -39,13 +46,13 @@ try {
         throw 'SYNTHETIC_KEY_FAILED'
     }
     $keygen.Dispose()
-    $lines=[SolqEncryptedStream]::PublicMetadata($gpg,('--homedir "{0}" --batch --with-colons --list-keys' -f $priv)) -split "`n"
+    $lines=[SolqEncryptedStream]::PublicMetadata($gpg,('--no-options --homedir "{0}" --batch --with-colons --list-keys' -f $gpriv)) -split "`n"
     $script:fpr=($lines | Where-Object { $_ -match '^fpr:' } | Select-Object -First 1).Split(':')[9]
     # Only disposable PUBLIC key bytes are written; never exports a secret key.
     $publicFile=Join-Path $base 'synthetic-public.asc'
-    [void][SolqEncryptedStream]::PublicMetadata($gpg,('--homedir "{0}" --batch --armor --output "{1}" --export {2}' -f $priv,$publicFile,$fpr))
-    [void][SolqEncryptedStream]::PublicMetadata($gpg,('--homedir "{0}" --batch --import "{1}"' -f $pub,$publicFile))
-    $sec=[SolqEncryptedStream]::PublicMetadata($gpg,('--homedir "{0}" --batch --with-colons --list-secret-keys' -f $pub)) -split "`n"
+    [void][SolqEncryptedStream]::PublicMetadata($gpg,('--no-options --homedir "{0}" --batch --armor --output "{1}" --export {2}' -f $gpriv,(GpgPath $publicFile),$fpr))
+    [void][SolqEncryptedStream]::PublicMetadata($gpg,('--no-options --homedir "{0}" --batch --import "{1}"' -f $gpub,(GpgPath $publicFile)))
+    $sec=[SolqEncryptedStream]::PublicMetadata($gpg,('--no-options --homedir "{0}" --batch --with-colons --list-secret-keys' -f $gpub)) -split "`n"
     if($sec -match '^sec:') { throw 'PUBLIC_ONLY_FAILED' }; $results.Add('public-only recipient')
     $good=Join-Path $base 'binary.gpg'
     $actual=[SolqEncryptedStream]::Run((Source),(Cipher),$good,30000)
@@ -53,7 +60,7 @@ try {
     $results.Add('ciphertext SHA256')
     # Decrypt synthetic bytes to memory only; no plaintext file.
     $dec=New-Object Diagnostics.Process
-    $dec.StartInfo=[SolqEncryptedStream]::StartInfo($gpg,('--homedir "{0}" --batch --decrypt "{1}"' -f $priv,$good))
+    $dec.StartInfo=[SolqEncryptedStream]::StartInfo($gpg,('--no-options --homedir "{0}" --batch --decrypt "{1}"' -f $gpriv,(GpgPath $good)))
     [void]$dec.Start(); $dec.StandardInput.Close()
     $stderr=$dec.StandardError.ReadToEndAsync()
     $mem=New-Object IO.MemoryStream
@@ -75,7 +82,7 @@ try {
     $damaged=[IO.File]::ReadAllBytes($good); $damaged[[int]($damaged.Length/2)]=$damaged[[int]($damaged.Length/2)] -bxor 1
     $bad=Join-Path $base 'damaged.gpg'; [IO.File]::WriteAllBytes($bad,$damaged)
     $p=New-Object Diagnostics.Process
-    $p.StartInfo=[SolqEncryptedStream]::StartInfo($gpg,('--homedir "{0}" --batch --decrypt "{1}"' -f $priv,$bad))
+    $p.StartInfo=[SolqEncryptedStream]::StartInfo($gpg,('--no-options --homedir "{0}" --batch --decrypt "{1}"' -f $gpriv,(GpgPath $bad)))
     [void]$p.Start(); $p.StandardInput.Close(); $e=$p.StandardError.ReadToEndAsync()
     $p.StandardOutput.BaseStream.CopyTo([IO.Stream]::Null); $p.WaitForExit()
     if($p.ExitCode -eq 0) { throw 'CORRUPTION_UNDETECTED' }; $p.Dispose()
@@ -87,6 +94,6 @@ try {
     $report | ConvertTo-Json -Depth 4 | Set-Content -Encoding UTF8 (Join-Path $PSScriptRoot 'results.json')
     $report | ConvertTo-Json -Depth 4
 } finally {
-    foreach($syntheticKeyHome in @($priv,$pub)) { try { [void][SolqEncryptedStream]::PublicMetadata($gpgconf,('--homedir "{0}" --kill all' -f $syntheticKeyHome)) } catch {} }
+    foreach($syntheticKeyHome in @($priv,$pub)) { try { [void][SolqEncryptedStream]::PublicMetadata($gpgconf,('--homedir "{0}" --kill all' -f (GpgPath $syntheticKeyHome))) } catch {} }
     if(Test-Path $base) { Remove-Item -LiteralPath $base -Recurse -Force }
 }
