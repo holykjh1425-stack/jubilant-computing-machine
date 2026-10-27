@@ -1,0 +1,25 @@
+name: SOLQ synthetic public-key encryption only
+on:
+  push:
+    branches: [dev/solq-automation-preservation-20261026]
+    paths:
+      - tests/backup-crypto/synthetic.py
+      - .github/workflows/solq-synthetic-crypto.yml
+permissions:
+  contents: read
+concurrency:
+  group: solq-synthetic-crypto
+  cancel-in-progress: false
+jobs:
+  synthetic-crypto:
+    if: github.repository == 'holykjh1425-stack/jubilant-computing-machine'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Run synthetic-only encryption/decryption; never accesses a database or user key
+        run: python3 tests/backup-crypto/synthetic.py
+      - name: Print non-secret synthetic result only
+        run: cat tests/backup-crypto/results.json
