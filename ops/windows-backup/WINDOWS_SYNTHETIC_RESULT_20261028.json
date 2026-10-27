@@ -1,0 +1,29 @@
+{
+  "utc": "2026-10-27T23:36:06.3920545Z",
+  "environment": "GitHub existing repository disposable Windows runner, not user PC",
+  "powershell": "5.1.20348.5756",
+  "cases": [
+    "public-only recipient",
+    "ciphertext SHA256",
+    "binary roundtrip all byte values",
+    "empty producer never promoted",
+    "producer exit17 never promoted",
+    "invalid recipient rejected",
+    "timeout never promoted",
+    "missing executable rejected",
+    "existing ciphertext protected",
+    "corruption integrity rejection",
+    "default production gate no DB contact"
+  ],
+  "pass": 11,
+  "production_db_contact": false,
+  "user_key_access": false,
+  "plaintext_customer_data": false,
+  "operating_backup_executed": false,
+  "tested_commit": "fa8332ab2ecb803eef3c36fd548399bec4d0540f",
+  "workflow_run_id": 40603167026,
+  "workflow_job_id": 122536058310,
+  "user_pc_tls_verified": false,
+  "user_pc_gpg4win_verified": false,
+  "restore_verified": false
+}
