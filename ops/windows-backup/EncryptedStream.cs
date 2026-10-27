@@ -14,7 +14,7 @@ public static class SolqEncryptedStream {
     }
     public static ProcessStartInfo StartInfo(string exe, string args) {
         return new ProcessStartInfo(exe, args) { UseShellExecute=false,
-          CreateNoWindow=true, RedirectStandardInput=true, StandardInputEncoding=new System.Text.UTF8Encoding(false),
+          CreateNoWindow=true, RedirectStandardInput=true,
           RedirectStandardOutput=true, RedirectStandardError=true };
     }
     public static string PublicMetadata(string exe, string args) {
