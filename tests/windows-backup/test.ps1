@@ -73,6 +73,7 @@ try {
     for($i=0;$i -lt $bytes.Length;$i++) { if($bytes[$i] -ne [byte]($i % 256)) { throw 'BINARY_CHANGED' } }
     [Array]::Clear($bytes,0,$bytes.Length); $mem.Dispose(); $dec.Dispose()
     $results.Add('binary roundtrip all byte values')
+    Reject 'empty producer never promoted' (Source 'empty') (Cipher) (Join-Path $base 'empty-source.gpg')
     Reject 'producer exit17 never promoted' (Source 'fail') (Cipher) (Join-Path $base 'failed-source.gpg')
     Reject 'invalid recipient rejected' (Source) (Cipher '0000000000000000000000000000000000000000') (Join-Path $base 'bad-recipient.gpg')
     Reject 'timeout never promoted' (Source 'timeout') (Cipher) (Join-Path $base 'timed-out.gpg') 1000

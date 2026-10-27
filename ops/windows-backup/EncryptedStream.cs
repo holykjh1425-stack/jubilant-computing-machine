@@ -18,10 +18,20 @@ public static class SolqEncryptedStream {
             finally { Console.InputEncoding=previous; }
         }
     }
-    static async Task Drain(Stream stream) {
-        byte[] buffer = new byte[8192];
-        try { while (await stream.ReadAsync(buffer, 0, buffer.Length) != 0) {} }
-        finally { Array.Clear(buffer, 0, buffer.Length); }
+    static async Task<long> Drain(Stream stream) {
+        byte[] buffer = new byte[8192]; long count=0;
+        try { int n; while ((n=await stream.ReadAsync(buffer,0,buffer.Length))!=0) count+=n; return count; }
+        finally { Array.Clear(buffer,0,buffer.Length); }
+    }
+    static async Task<long> CopyRaw(Stream source, Stream target) {
+        byte[] buffer = new byte[65536]; long count=0;
+        try {
+            int n;
+            while((n=await source.ReadAsync(buffer,0,buffer.Length))!=0) {
+                await target.WriteAsync(buffer,0,n); count+=n;
+            }
+            return count;
+        } finally { Array.Clear(buffer,0,buffer.Length); }
     }
     public static ProcessStartInfo StartInfo(string exe, string args) {
         return new ProcessStartInfo(exe, args) { UseShellExecute=false,
@@ -53,7 +63,7 @@ public static class SolqEncryptedStream {
                 StartRaw(a); a.StandardInput.BaseStream.Close(); var ae=Drain(a.StandardError.BaseStream);
                 // Remove password from managed startup configuration immediately after child creation.
                 a.StartInfo.EnvironmentVariables.Remove("PGPASSWORD");
-                var transfer=a.StandardOutput.BaseStream.CopyToAsync(b.StandardInput.BaseStream);
+                var transfer=CopyRaw(a.StandardOutput.BaseStream,b.StandardInput.BaseStream);
                 var closeInput=transfer.ContinueWith(t => {
                     try { b.StandardInput.BaseStream.Close(); } catch {}
                     if(t.IsFaulted) throw new IOException("TRANSFER_FAILED");
@@ -61,7 +71,7 @@ public static class SolqEncryptedStream {
                 var all=Task.WhenAll(closeInput,encrypted,ae,be);
                 if (!all.Wait(timeoutMs)) throw new IOException("STREAM_TIMEOUT");
                 if (!a.WaitForExit(5000) || !b.WaitForExit(5000)) throw new IOException("EXIT_TIMEOUT");
-                if (a.ExitCode!=0 || b.ExitCode!=0) throw new IOException("CHILD_FAILED");
+                if (a.ExitCode!=0 || b.ExitCode!=0 || transfer.Result==0 || ae.Result!=0) throw new IOException("CHILD_FAILED");
                 output.Flush(true);
                 if (output.Length==0) throw new IOException("EMPTY_CIPHERTEXT");
             }
