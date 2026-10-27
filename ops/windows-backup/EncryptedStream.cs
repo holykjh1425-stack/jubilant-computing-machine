@@ -17,6 +17,18 @@ public static class SolqEncryptedStream {
           CreateNoWindow=true, RedirectStandardInput=true,
           RedirectStandardOutput=true, RedirectStandardError=true };
     }
+    public static string PublicMetadata(string exe, string args) {
+        using (var p = new Process { StartInfo = StartInfo(exe,args) }) {
+            try {
+                p.Start(); p.StandardInput.Close();
+                var stdout=p.StandardOutput.ReadToEndAsync();
+                var stderr=Drain(p.StandardError.BaseStream);
+                if (!Task.WhenAll(stdout,stderr).Wait(60000) || !p.WaitForExit(5000) || p.ExitCode!=0)
+                    throw new IOException("PUBLIC_METADATA_FAILED");
+                return stdout.Result;
+            } finally { Stop(p); }
+        }
+    }
     static void Stop(Process p) { try { if (p != null && !p.HasExited) { p.Kill(); p.WaitForExit(5000); } } catch {} }
     public static string Run(ProcessStartInfo source, ProcessStartInfo cipher, string target, int timeoutMs) {
         string partial = target + ".partial.gpg";

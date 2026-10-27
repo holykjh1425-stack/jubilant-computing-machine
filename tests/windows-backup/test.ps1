@@ -28,17 +28,14 @@ function Reject([string]$label,$source,$cipher,[string]$target,[int]$timeout=200
     $results.Add($label)
 }
 try {
-    & $gpg --homedir $priv --batch --pinentry-mode loopback '--passphrase=' --quick-generate-key 'SOLQ SYNTHETIC ONLY <synthetic@example.invalid>' rsa2048 encr 1d 2>$null
-    if($LASTEXITCODE -ne 0) { throw 'SYNTHETIC_KEY_FAILED' }
-    $lines=& $gpg --homedir $priv --batch --with-colons --list-keys 2>$null
+    [void][SolqEncryptedStream]::PublicMetadata($gpg,('--homedir "{0}" --batch --pinentry-mode loopback --passphrase "" --quick-generate-key "SOLQ SYNTHETIC ONLY <synthetic@example.invalid>" rsa2048 encr 1d' -f $priv))
+    $lines=[SolqEncryptedStream]::PublicMetadata($gpg,('--homedir "{0}" --batch --with-colons --list-keys' -f $priv)) -split "`n"
     $script:fpr=($lines | Where-Object { $_ -match '^fpr:' } | Select-Object -First 1).Split(':')[9]
     # Only disposable PUBLIC key bytes are written; never exports a secret key.
     $publicFile=Join-Path $base 'synthetic-public.asc'
-    & $gpg --homedir $priv --batch --armor --output $publicFile --export $fpr
-    if($LASTEXITCODE -ne 0) { throw 'PUBLIC_EXPORT_FAILED' }
-    & $gpg --homedir $pub --batch --import $publicFile 2>$null
-    if($LASTEXITCODE -ne 0) { throw 'PUBLIC_IMPORT_FAILED' }
-    $sec=& $gpg --homedir $pub --batch --with-colons --list-secret-keys 2>$null
+    [void][SolqEncryptedStream]::PublicMetadata($gpg,('--homedir "{0}" --batch --armor --output "{1}" --export {2}' -f $priv,$publicFile,$fpr))
+    [void][SolqEncryptedStream]::PublicMetadata($gpg,('--homedir "{0}" --batch --import "{1}"' -f $pub,$publicFile))
+    $sec=[SolqEncryptedStream]::PublicMetadata($gpg,('--homedir "{0}" --batch --with-colons --list-secret-keys' -f $pub)) -split "`n"
     if($sec -match '^sec:') { throw 'PUBLIC_ONLY_FAILED' }; $results.Add('public-only recipient')
     $good=Join-Path $base 'binary.gpg'
     $actual=[SolqEncryptedStream]::Run((Source),(Cipher),$good,30000)
@@ -80,6 +77,6 @@ try {
     $report | ConvertTo-Json -Depth 4 | Set-Content -Encoding UTF8 (Join-Path $PSScriptRoot 'results.json')
     $report | ConvertTo-Json -Depth 4
 } finally {
-    foreach($home in @($priv,$pub)) { & $gpgconf --homedir $home --kill all 2>$null }
+    foreach($syntheticKeyHome in @($priv,$pub)) { try { [void][SolqEncryptedStream]::PublicMetadata($gpgconf,('--homedir "{0}" --kill all' -f $syntheticKeyHome)) } catch {} }
     if(Test-Path $base) { Remove-Item -LiteralPath $base -Recurse -Force }
 }

@@ -39,13 +39,13 @@ try {
         $v=& $exe --version 2>$null
         if($LASTEXITCODE -ne 0 -or "$v" -notmatch '\b17\.11\b') { throw 'PG_VERSION_REQUIRED' }
     }
+    Add-Type -Path (Join-Path $PSScriptRoot 'EncryptedStream.cs')
     $fingerprint='609E0AE7A674BDBE2AE580B27C7867DEDBD04E11'
     # Dedicated public-only home, never the default PC key home or USB.
-    $public=& $GpgExe --homedir $PublicKeyHome --batch --with-colons --list-keys $fingerprint 2>$null
-    if($LASTEXITCODE -ne 0 -or -not ($public -match ('^fpr:::::::::'+ $fingerprint +':'))) { throw 'PUBLIC_RECIPIENT_MISSING' }
-    $secret=& $GpgExe --homedir $PublicKeyHome --batch --with-colons --list-secret-keys 2>$null
-    if($LASTEXITCODE -ne 0 -or ($secret -match '^sec:')) { throw 'PUBLIC_ONLY_HOME_REQUIRED' }
-    Add-Type -Path (Join-Path $PSScriptRoot 'EncryptedStream.cs')
+    $public=[SolqEncryptedStream]::PublicMetadata($GpgExe,('--homedir "{0}" --batch --with-colons --list-keys {1}' -f $PublicKeyHome,$fingerprint)) -split "`n"
+    if(-not ($public -match ('^fpr:::::::::'+ $fingerprint +':'))) { throw 'PUBLIC_RECIPIENT_MISSING' }
+    $secret=[SolqEncryptedStream]::PublicMetadata($GpgExe,('--homedir "{0}" --batch --with-colons --list-secret-keys' -f $PublicKeyHome)) -split "`n"
+    if($secret -match '^sec:') { throw 'PUBLIC_ONLY_HOME_REQUIRED' }
     $secure=Read-Host 'Enter existing database password locally (never paste into chat)' -AsSecureString
     $credential=New-Object System.Net.NetworkCredential('', $secure)
     $stamp=[DateTime]::UtcNow.ToString('yyyyMMddTHHmmssZ')+'-'+[Guid]::NewGuid().ToString('N').Substring(0,8)
