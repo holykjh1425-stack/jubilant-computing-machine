@@ -1,0 +1,53 @@
+{
+  "tested_at_utc": "2026-10-27T21:51:28Z",
+  "gpg_version": "gpg (GnuPG) 2.4.4",
+  "data": "synthetic binary only",
+  "plaintext_bytes": 2097184,
+  "customer_data": false,
+  "user_keys_accessed": false,
+  "usb_accessed": false,
+  "secret_key_exported": false,
+  "test_key": "ephemeral synthetic RSA2048 in tmpfs; no persistent/user key generation",
+  "isolation": {
+    "key_files": "temporary tmpfs 0700",
+    "plaintext_data_files": 0,
+    "visible_swap_entries": 0,
+    "hypervisor_paging_verified": false
+  },
+  "public_key_only_encryption": true,
+  "synthetic_decrypt_verified": true,
+  "windows_or_user_key_verified": false,
+  "failed_producer_exit": 17,
+  "partial_encryptor_exit": 0,
+  "ciphertext_sha256": "23349f1f8d001de662605b7cce24b6c8022f41177afdc103e4692386039ed572",
+  "tests": [
+    {
+      "name": "encryption home contains public key only",
+      "passed": true
+    },
+    {
+      "name": "synthetic bytes encrypted through stdin with no plaintext data file",
+      "passed": true
+    },
+    {
+      "name": "synthetic private-key home decrypts original bytes with matching SHA256",
+      "passed": true
+    },
+    {
+      "name": "corrupt ciphertext rejected by decryption exit status",
+      "passed": true
+    },
+    {
+      "name": "missing recipient fails closed",
+      "passed": true
+    },
+    {
+      "name": "producer failure forbids promotion even when encryption itself succeeds",
+      "passed": true
+    }
+  ],
+  "synthetic_key_cleanup": true,
+  "source_commit": "e96924a45b8fcfb9054a276cc6fc67a7ff22a099",
+  "github_run_id": 40590192936,
+  "github_job_id": 122492119412
+}
