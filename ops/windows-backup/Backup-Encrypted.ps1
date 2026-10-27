@@ -23,6 +23,7 @@ try {
         if([string]::IsNullOrWhiteSpace($value) -or $value.Contains('"') -or $value.Contains("`r") -or $value.Contains("`n")) { throw 'CONFIG_INVALID' }
     }
     if($Destination -cne 'C:\SOLQ_보안백업') { throw 'DESTINATION_NOT_APPROVED' }
+    if($GpgExe -match '\\Git\\usr\\bin\\') { throw 'NATIVE_GPG4WIN_REQUIRED' }
     if($PublicKeyHome -cne 'C:\SOLQ_public_key') { throw 'DEDICATED_LOCAL_PUBLIC_HOME_REQUIRED' }
     foreach($folder in @($Destination,$PublicKeyHome)) {
         $item=Get-Item -LiteralPath $folder

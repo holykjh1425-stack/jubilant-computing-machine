@@ -11,8 +11,8 @@ $command=Get-Command gpg.exe -ErrorAction SilentlyContinue
 $gpg=if($command) { $command.Source } else { 'C:\Program Files\Git\usr\bin\gpg.exe' }
 if(-not (Test-Path $gpg)) { throw 'RUNNER_GPG_UNAVAILABLE' }
 $gpgconf=Join-Path (Split-Path $gpg) 'gpgconf.exe'
-$base=Join-Path $env:TEMP ('solq-synthetic-'+[Guid]::NewGuid().ToString('N'))
-$priv=Join-Path $base 'synthetic-private'; $pub=Join-Path $base 'synthetic-public'
+$base=Join-Path $env:TEMP ('sq-'+[Guid]::NewGuid().ToString('N').Substring(0,8))
+$priv=Join-Path $base 'k'; $pub=Join-Path $base 'p'
 New-Item -ItemType Directory -Path $priv,$pub | Out-Null
 function GpgPath([string]$nativePath) {
     if($gpg -match '\\Git\\usr\\bin\\') {
