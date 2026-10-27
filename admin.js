@@ -9,10 +9,13 @@
   window.NEXUS_ADMIN_DB=db;
   form.querySelector('[type=submit]').disabled=false;
   let generation=0,loadGeneration=0,supportGeneration=0,supportSaving=0,supportItems=[],user=null,page=0,total=0,busy=false,restoring=false;
+  let noticeCount=null,notificationBusy=false;
+  const notice=document.createElement('p');notice.id='new-intake-notice';notice.setAttribute('role','status');
+  notice.textContent='신규 접수를 읽기 전용으로 확인합니다.';panel.prepend(notice);
   const supportRows=$('#support-admin-list'),supportMsg=$('#support-admin-message'),supportRefresh=$('#support-admin-refresh');
   const pageSize=25;
   function say(el,text,error=false){el.textContent=text;el.dataset.kind=error?'error':'info';}
-  function clearDashboard(){document.dispatchEvent(new Event("nexus-admin-session"));freeViews.clear();generation++;loadGeneration++;supportGeneration++;supportItems=[];user=null;rows.replaceChildren();supportRows.replaceChildren();say(supportMsg,'');panel.hidden=true;login.hidden=false;$('#session-label').textContent='';$('#result-count').textContent='';say(dataMsg,'');}
+  function clearDashboard(){document.dispatchEvent(new Event("nexus-admin-session"));freeViews.clear();generation++;loadGeneration++;supportGeneration++;supportItems=[];user=null;noticeCount=null;notice.textContent='';rows.replaceChildren();supportRows.replaceChildren();say(supportMsg,'');panel.hidden=true;login.hidden=false;$('#session-label').textContent='';$('#result-count').textContent='';say(dataMsg,'');}
   async function verifyAdmin(){
     const {data,error}=await db.auth.getUser();
     if(error || !data.user)throw Object.assign(new Error('AUTH'),{code:'AUTH'});
@@ -60,18 +63,52 @@
     finally{if(current===supportGeneration){supportRefresh.disabled=supportSaving>0;supportRows.removeAttribute('aria-busy');}}
   }
   const free=createFreeWorkflow({db,verifyAdmin});
+  const generationApi=createFreeGeneration({db,verifyAdmin});
   const freeViews=new Map();
-  setInterval(async()=>{if(user&&!document.hidden)await Promise.all([...freeViews.values()].map(update=>update()));},30000);
+  async function checkNewApplications(){
+    if(!user||document.hidden||notificationBusy)return;
+    notificationBusy=true;const epoch=generation;
+    try{
+      await verifyAdmin();
+      const {error,count}=await db.from('applications').select('id',{count:'exact',head:true});
+      if(epoch!==generation||!user)return;if(error)throw error;
+      if(noticeCount!==null&&count>noticeCount){
+        notice.textContent='신규 접수 '+(count-noticeCount)+'건이 추가됐습니다. 목록을 새로고침해 검토하세요. 자동 생성은 하지 않습니다.';
+      }else if(noticeCount===null){notice.textContent='신청 '+count+'건 · 무료 계획은 검토 후 승인·생성 버튼으로 진행합니다.';}
+      noticeCount=count;
+    }catch(_){if(epoch===generation&&user)notice.textContent='신규 접수 확인에 실패했습니다. 새로고침으로 확인해 주세요.';}
+    finally{notificationBusy=false;}
+  }
+  // Polling is read-only. No plan/assign/tick calls on login or timer.
+  setInterval(()=>{if(user&&!document.hidden)checkNewApplications();},30000);
   function planControls(application,article){
-    const current=generation,box=element('section',undefined,'request-details'),message=element('p','','card-message'),list=element('ol'),refresh=element('button','계획·작업 조회','button secondary');
-    refresh.type='button';message.setAttribute('role','status');
-    box.append(element('h3','무료 계획 6단계'),element('p','서버 자동 처리 결과를 조회합니다.'),refresh,message,list);article.append(box);
-    async function update(){if(current!==generation||!user)return;refresh.disabled=true;try{
-      const v=await free.snapshot(application);if(current!==generation||!user)return;
-      message.textContent='접수번호: '+application.receipt_number+(v.plan?' · 계획 ID: '+v.plan.id:' · 계획 대기')+(v.job?' · 작업 ID: '+v.job.id:' · 연결 작업 없음');
-      window.SOLQ_PLAN_VIEW.render(list,v);
-    }catch(e){if(current===generation&&user){list.replaceChildren();message.textContent='조회 오류: '+e.message;}}finally{refresh.disabled=false;}}
-    refresh.addEventListener('click',update);freeViews.set(application.id,update);update();
+    const current=generation,box=element('section',undefined,'request-details'),message=element('p','','card-message'),list=element('ol');
+    const refresh=element('button','계획·작업 조회','button secondary'),approve=element('button','무료 계획 생성 승인','button secondary'),generate=element('button','승인된 무료 계획·작업 생성','button primary');
+    [refresh,approve,generate].forEach(b=>b.type='button');approve.disabled=generate.disabled=true;
+    message.setAttribute('role','status');let view=null,mutating=false;
+    const alive=()=>current===generation&&!!user&&article.isConnected;
+    box.append(element('h3','무료 계획 6단계'),element('p','신청 검토 → 생성 승인 → 별도 생성. 실제 유료 제작 승인은 별도입니다.'),refresh,approve,generate,message,list);article.append(box);
+    async function update(){if(!alive()||mutating)return;refresh.disabled=true;approve.disabled=generate.disabled=true;
+      try{
+        const state=await generationApi.inspect(application,alive);const v=await free.snapshot(application);if(!alive())return;view=state;
+        message.textContent='접수번호: '+application.receipt_number+(v.plan?' · 기존 계획 재사용':' · 계획 미생성')+(v.job?' · 기존 작업 재사용':' · 연결 작업 없음');
+        if(state.review_required)message.textContent+=' · 기존 작업 연결/중복 검토 필요. 추가 생성하지 않습니다.';
+        else if(state.approved&&!state.plan_id)message.textContent+=' · 생성 승인됨. 생성 버튼을 별도로 눌러 주세요.';
+        window.SOLQ_PLAN_VIEW.render(list,v);
+        const existing=!!state.plan_id&&!!state.job_id;
+        approve.disabled=state.review_required||state.cancelled||existing||state.approved;
+        generate.disabled=state.review_required||state.cancelled||existing||!state.approved;
+      }catch(_){if(alive()){view=null;list.replaceChildren();message.textContent='계획 조회 실패. 관리자 권한·연결과 새 승인 API 적용 상태를 확인하세요.';}}
+      finally{if(alive())refresh.disabled=false;}
+    }
+    async function act(kind){if(!alive()||mutating||!view)return;mutating=true;refresh.disabled=approve.disabled=generate.disabled=true;
+      try{await generationApi[kind](application,view,alive);}
+      catch(_){if(alive())message.textContent='처리 결과를 확인하지 못했습니다. 자동 재시도하지 않습니다. 조회로 저장 상태를 확인하세요.';return;}
+      finally{mutating=false;if(alive())refresh.disabled=false;}
+      if(alive())await update();
+    }
+    approve.addEventListener('click',()=>act('approve'));generate.addEventListener('click',()=>act('generate'));
+    refresh.addEventListener('click',update);freeViews.set(application.id,update);queueMicrotask(update);
   }
   function render(application){
     const article=element('article',undefined,'application-card');
@@ -117,7 +154,7 @@
       const {data,error,count}=await query;if(current!==loadGeneration || authGeneration!==generation)return;if(error)throw error;
       total=count || 0;if(page>0 && !data.length){page--;await load();return;}
       freeViews.clear();rows.replaceChildren();if(!data.length){const empty=element('div',undefined,'empty-state');empty.append(element('h3','표시할 신청 내역이 없습니다.'),element('p','검색 조건을 바꾸거나 새로고침해 주세요.'));rows.append(empty);}else data.forEach(a=>rows.append(render(a)));
-      $('#result-count').textContent='신청 '+total.toLocaleString('ko-KR')+'건';$('#page-label').textContent=(page+1)+' / '+Math.max(1,Math.ceil(total/pageSize));$('#previous-page').disabled=page===0;$('#next-page').disabled=(page+1)*pageSize>=total;say(dataMsg,'');
+      $('#result-count').textContent='신청 '+total.toLocaleString('ko-KR')+'건';$('#page-label').textContent=(page+1)+' / '+Math.max(1,Math.ceil(total/pageSize));$('#previous-page').disabled=page===0;$('#next-page').disabled=(page+1)*pageSize>=total;say(dataMsg,'');await checkNewApplications();
     }catch(error){if(current!==loadGeneration || authGeneration!==generation)return;rows.replaceChildren();$('#result-count').textContent='';$('#previous-page').disabled=true;$('#next-page').disabled=true;say(dataMsg,'목록을 불러오지 못했습니다. 로그인 세션과 관리자 권한을 확인해 주세요.',true);if(error.status===401 || error.code==='PGRST301'){clearDashboard();await db.auth.signOut({scope:'local'});say(msg,'로그인이 만료됐습니다. 다시 로그인해 주세요.',true);}}
     finally{if(current===loadGeneration){busy=false;$('#refresh').disabled=false;rows.removeAttribute('aria-busy');}}
   }
