@@ -1,5 +1,5 @@
 """Synthetic-only public-key stream validation; never connects to a DB or user's keys."""
-import hashlib,json,os,shutil,subprocess,tempfile,time
+import hashlib,json,os,shutil,subprocess,tempfile,time,sys
 from pathlib import Path
 assert shutil.which('gpg') and shutil.which('gpgconf')
 ram=Path('/dev/shm');assert ram.is_dir()
@@ -35,15 +35,21 @@ with tempfile.TemporaryDirectory(prefix='solq-crypto-',dir=ram) as tmp:
   assert bad.returncode!=0;bad=None
   results.append({'name':'missing recipient fails closed','passed':True})
   # Encryption can succeed on a failed/empty producer; a coordinator MUST check both exits.
-  empty=g(public,'--trust-model','always','--recipient',fpr,'--encrypt','--output','-',blob=b'')
-  producer_exit=17;promote=producer_exit==0 and empty.returncode==0
+  producer=subprocess.Popen([sys.executable,'-c',"import sys;sys.stdout.buffer.write(b'SYNTHETIC_PARTIAL_OUTPUT');sys.exit(17)"],stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+  encryptor=subprocess.Popen(['gpg','--no-options','--homedir',str(public),'--batch','--no-tty','--trust-model','always','--recipient',fpr,'--encrypt','--output','-'],stdin=producer.stdout,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+  producer.stdout.close()
+  partial_cipher,encrypt_error=encryptor.communicate(timeout=45)
+  producer_exit=producer.wait(timeout=45)
+  assert producer_exit==17 and encryptor.returncode==0 and len(partial_cipher)>0
+  promote=producer_exit==0 and encryptor.returncode==0
   assert not promote
+  partial_cipher=encrypt_error=None
   results.append({'name':'producer failure forbids promotion even when encryption itself succeeds','passed':True})
   artifact={'tested_at_utc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'gpg_version':run(['gpg','--version']).stdout.decode().splitlines()[0],
    'data':'synthetic binary only','plaintext_bytes':len(payload),'customer_data':False,'user_keys_accessed':False,'usb_accessed':False,'secret_key_exported':False,
    'test_key':'ephemeral synthetic RSA2048 in tmpfs; no persistent/user key generation',
    'isolation':{'key_files':'temporary tmpfs 0700','plaintext_data_files':0,'visible_swap_entries':0,'hypervisor_paging_verified':False},
-   'public_key_only_encryption':True,'synthetic_decrypt_verified':True,'windows_or_user_key_verified':False,
+   'public_key_only_encryption':True,'synthetic_decrypt_verified':True,'windows_or_user_key_verified':False,'failed_producer_exit':producer_exit,'partial_encryptor_exit':encryptor.returncode,
    'ciphertext_sha256':hashlib.sha256(encrypted).hexdigest(),'tests':results}
   payload=encrypted=None
  finally:
