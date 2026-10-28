@@ -1,0 +1,39 @@
+name: SOLQ Windows one-shot adapter offline validation
+on:
+  push:
+    branches: [dev/solq-cost-control-20261028]
+    paths:
+      - candidates/cost-control/windows-test/OneShot.cs
+      - candidates/cost-control/windows-test/SOLQ-Test-Once.ps1
+      - tests/claude-one-shot/Fixtures.cs
+      - tests/claude-one-shot/windows.ps1
+      - tests/claude-one-shot/policy-contract.mjs
+      - .github/workflows/solq-claude-one-shot.yml
+permissions:
+  contents: read
+concurrency:
+  group: solq-claude-one-shot-offline
+  cancel-in-progress: false
+jobs:
+  offline-windows:
+    runs-on: windows-2022
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Reuse cost policy; inspect new one-shot contract only
+        run: node tests/claude-one-shot/policy-contract.mjs
+      - name: Compile and execute fake HTTP and fake key-source cases only
+        shell: powershell
+        run: ./tests/claude-one-shot/windows.ps1
+      - name: Parse and run default preparation branch without credential or network access
+        shell: powershell
+        run: |
+          $tokens=$null
+          $errors=$null
+          [Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD 'candidates/cost-control/windows-test/SOLQ-Test-Once.ps1'),[ref]$tokens,[ref]$errors) | Out-Null
+          if($errors.Count){throw 'WRAPPER_PARSE_FAILED'}
+          $result=& ./candidates/cost-control/windows-test/SOLQ-Test-Once.ps1
+          if($result -notmatch '^PREPARATION_ONLY:'){throw 'DEFAULT_GATE_FAILED'}
+          Write-Output 'Default no-credential/no-network gate PASS'
