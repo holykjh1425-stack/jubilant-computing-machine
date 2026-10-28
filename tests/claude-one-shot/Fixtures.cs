@@ -50,7 +50,7 @@ public static class OneShotFixtures {
     Check(fake.Calls==1&&secret.Reads==1,mode+"_single");
     string data=new JavaScriptSerializer().Serialize(result);
     Check(!data.Contains("SYNTHETIC-NOT-A-REAL-CREDENTIAL")&&!data.Contains("PRIVATE")&&!data.Contains("MUST_NOT_LEAK"),mode+"_sanitized");
-    if(mode=="ok"){Check((string)result["state"]=="connected","success");Check((long)result["estimatedUsageNano"]==3000,"cost");}
+    if(mode=="ok"){Check((string)result["state"]=="connected","success_stage_"+result["stage"]+"_"+(result.ContainsKey("failureCode")?result["failureCode"]:"none"));Check((long)result["estimatedUsageNano"]==3000,"cost");}
     else Check((string)result["state"]!="connected",mode+"_blocked");
     var receipt=PrivateLedger.ReadReceipt(Path.Combine(dir(mode),"result.dpapi"));Check((string)receipt["state"]==(string)result["state"],mode+"_dpapi");
     byte[] ciphertext=File.ReadAllBytes(Path.Combine(dir(mode),"result.dpapi"));Check(!Encoding.UTF8.GetString(ciphertext).Contains("requestId"),mode+"_not_plaintext");

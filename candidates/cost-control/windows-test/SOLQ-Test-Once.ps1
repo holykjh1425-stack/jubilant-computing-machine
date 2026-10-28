@@ -169,8 +169,8 @@ namespace SolqTest {
        foreach(var name in new[]{"cache_creation_input_tokens","cache_read_input_tokens"})if(usage.ContainsKey(name)&&Token(usage,name)!=0)throw new InvalidOperationException("UNEXPECTED_CACHE_USAGE");
        long amount=input*Policy.InputRateNano+output*Policy.OutputRateNano;
        if(amount>Policy.ReserveNano)throw new InvalidOperationException("USAGE_COST_BOUND_EXCEEDED");
-       if(!parsed.TryGetValue("content",out contentObject)||!(contentObject is object[]))throw new InvalidOperationException("CONTENT_UNVERIFIED");
-       var text=new StringBuilder();foreach(var block in (object[])contentObject){var part=block as Dictionary<string,object>;if(part==null||!part.ContainsKey("type")||(string)part["type"]!="text"||!part.ContainsKey("text"))throw new InvalidOperationException("CONTENT_UNVERIFIED");text.Append((string)part["text"]);}
+       if(!parsed.TryGetValue("content",out contentObject)||(!(contentObject is System.Collections.IEnumerable)||contentObject is string))throw new InvalidOperationException("CONTENT_UNVERIFIED");
+       var text=new StringBuilder();foreach(var block in (System.Collections.IEnumerable)contentObject){var part=block as Dictionary<string,object>;if(part==null||!part.ContainsKey("type")||(string)part["type"]!="text"||!part.ContainsKey("text"))throw new InvalidOperationException("CONTENT_UNVERIFIED");text.Append((string)part["text"]);}
        bool ok=text.ToString().Trim()=="OK";text.Clear();
        result["replyMatchesOK"]=ok;result["inputTokens"]=input;result["outputTokens"]=output;
        result["estimatedUsageNano"]=amount;result["estimatedUsageUsd"]=amount/1e9;
