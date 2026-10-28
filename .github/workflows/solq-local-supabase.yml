@@ -11,6 +11,7 @@ jobs:
     timeout-minutes: 15
     env:
       DO_NOT_TRACK: '1'
+      SUPABASE_INTERNAL_IMAGE_REGISTRY: ghcr.io
       SOLQ_CLI: /tmp/solq-cli/supabase
       SOLQ_STACK_DIR: /tmp/solq-isolated-stack
       SOLQ_STACK_NETWORK: solq-local-${{ github.run_id }}-${{ github.run_attempt }}

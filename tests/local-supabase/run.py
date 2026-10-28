@@ -2,7 +2,7 @@ import subprocess,os,json,pathlib,urllib.request,urllib.error,secrets,time,uuid
 cli=os.environ['SOLQ_CLI'];work=os.environ['SOLQ_STACK_DIR'];net=os.environ['SOLQ_STACK_NETWORK']
 def cmd(args,input=None):return subprocess.run(args,input=input,text=True,capture_output=True,check=True).stdout.strip()
 # status contains local disposable keys; capture in memory and never print/write it.
-status=json.loads(cmd([cli,'--network-id',net,'status','-o','json']) if False else subprocess.run([cli,'--network-id',net,'status','-o','json'],cwd=work,text=True,capture_output=True,check=True).stdout)
+status=json.loads(subprocess.run([cli,'--network-id',net,'status','-o','json'],cwd=work,text=True,capture_output=True,check=True).stdout)
 base=status['API_URL'];assert base in ['http://127.0.0.1:54321','http://localhost:54321'];anon=status['ANON_KEY']
 network=json.loads(cmd(['docker','network','inspect',net]))[0];assert network['Internal'] is True
 containers=json.loads(cmd(['docker','inspect',*cmd(['docker','ps','-q','--filter','network='+net]).splitlines()]))
@@ -18,7 +18,8 @@ def http(path,method='GET',body=None,token=None):
  if token:headers['authorization']='Bearer '+token
  req=urllib.request.Request(base+path,headers=headers,method=method,data=None if body is None else json.dumps(body).encode())
  try:
-  with urllib.request.urlopen(req,timeout=20)as r:return r.status,json.load(r)
+  with urllib.request.urlopen(req,timeout=20)as r:
+   payload=r.read();return r.status,json.loads(payload)if payload else {}
  except urllib.error.HTTPError as e:
   # Never record auth bodies, passwords or tokens, even on failure.
   try:d=json.load(e)
