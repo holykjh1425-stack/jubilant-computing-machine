@@ -1,0 +1,24 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-2pUgixSF6+38oZbTP5qMn/+TxJR3RGwGw1baY+WYDJE='; style-src 'sha256-Jquhj7zqVWsN2Ku3HS97wN16EcNXKekKLR02vTxX82Y='; connect-src 'none'; img-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"><title>SOLQ 비용 통제 · 합성 검증 후보</title><style>*{box-sizing:border-box}body{margin:0;background:#101a2d;color:#f3f7ff;font:17px/1.6 system-ui,sans-serif}main{max-width:1100px;padding:28px;margin:auto}h1{font-size:32px;line-height:1.3}section{border:1px solid #496284;background:#19273e;border-radius:12px;margin:20px 0;padding:20px}.notice{border-left:5px solid #65d6ff}.badge{color:#80e3ff;font-weight:700}button{padding:12px 18px;margin:6px;border:1px solid #89dfff;border-radius:8px;background:#153b58;color:#fff;font-size:17px}button:focus-visible{outline:3px solid #fff}button:disabled{background:#39465a;color:#dde6f4;border-color:#697b93}.table{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:760px}td,th{padding:12px;text-align:left;border-bottom:1px solid #496284}p{max-width:86ch}small{color:#d5e1f5}footer{padding:12px 0}@media(max-width:600px){main{padding:16px}h1{font-size:27px}section{padding:14px}}</style></head><body><main>
+<p class="badge">SOLQ · 비운영 관리자 화면 후보</p><h1>무료 워커 우선 · 유료 실행은 승인 대기</h1>
+<section class="notice"><strong>합성 자료 전용 · 실제 API 호출 0회 · 실제 비용 $0</strong><p>로그인·DB 연결·실행·승인 기능이 없는 화면 후보입니다. 기존 관리자 화면을 불러오지 않습니다. 키 유효성은 미확인입니다.</p></section>
+<section><h2>계획상 예산</h2><p>월 $5 · 일 $0.50 · 작업 $0.02 · 기본 호출 1회 · 예외 승인 최대 2회</p><p>결제 승인이 아닙니다. 내부 제한과 제공자 제한은 별개이며 실제 외부 청구 상한을 보장하지 않습니다. 사용량 불명확 시 예약액 유지·실행 중단.</p></section>
+<section><h2>작업 담당과 예상 비용</h2><button id="all" type="button">전체 보기</button><button id="ai" type="button">Claude 후보만</button><button type="button" disabled>승인·실행: 운영 미연결</button><p id="count" aria-live="polite"></p><div class="table"><table><thead><tr><th>합성 번호</th><th>담당</th><th>상태</th><th>모델</th><th>입력 추정 상한</th><th>출력 제한</th><th>예상 최대 비용</th></tr></thead><tbody id="rows"></tbody></table></div><small>토큰 수는 로컬 계획 추정치이며 공식 토크나이저 검증 전입니다. 가격 기준 2026-10-28, 캐시·배치 할인 미반영.</small></section>
+<section><h2>협업 원칙</h2><p>Work: 설계·개발·검증·검토. 무료 워커: 규칙 분류·기존 결과 재사용·승인/예산 검사. Claude: 승인된 추론 후보만 처리하도록 설계하며 현재는 모의 응답만 허용합니다.</p><p>같은 요청·테넌트·리비전·모델의 검증된 결과만 재사용합니다. 승인 범위·모델·예산 변경은 새 검토가 필요합니다.</p></section>
+<footer>화면·모의 응답으로 실제 Claude 속도·품질 또는 Work 사용량 절감을 입증하지 않습니다. 공개 배포하지 않았습니다.</footer>
+</main><script>const rows=[{"id": "SYN-001", "engine": "무료 워커", "status": "무료 완료", "model": "규칙 기반", "input": 0, "output": 0, "cost": 0, "ai": false}, {"id": "SYN-002", "engine": "기존 결과", "status": "재사용", "model": "동일 범위·리비전", "input": 0, "output": 0, "cost": 0, "ai": false}, {"id": "SYN-003", "engine": "Claude 후보", "status": "승인 대기 · 실행 불가", "model": "claude-haiku-5-5", "input": 643, "output": 512, "cost": 0.0003203, "ai": true}, {"id": "SYN-004", "engine": "Claude 후보", "status": "승인 대기 · 실행 불가", "model": "claude-sonnet-5-5", "input": 636, "output": 1024, "cost": 0.011512, "ai": true}];
+const body=document.getElementById('rows');
+function render(onlyAI){
+ body.replaceChildren();
+ for(const row of rows.filter(x=>!onlyAI||x.ai)){
+  const tr=document.createElement('tr');
+  for(const value of [row.id,row.engine,row.status,row.model,row.input,row.output,'$'+row.cost.toFixed(7)]){
+   const cell=document.createElement('td');cell.textContent=String(value);tr.append(cell);
+  }
+  body.append(tr);
+ }
+ document.getElementById('count').textContent=String(body.children.length)+'개 합성 항목';
+}
+document.getElementById('all').addEventListener('click',()=>render(false));
+document.getElementById('ai').addEventListener('click',()=>render(true));
+render(false);
+</script></body></html>

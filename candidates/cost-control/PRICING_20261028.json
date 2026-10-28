@@ -1,0 +1,21 @@
+{
+  "retrievedDateKST": "2026-10-28",
+  "priceVersion": "2026-10-28",
+  "currency": "USD",
+  "unit": "per 1000000 tokens",
+  "scope": "first-party standard text API only, supported planning caps <=8192 input tokens",
+  "models": {
+    "claude-haiku-5-5": {"input": 0.10, "output": 0.50, "inputThreshold": 100000},
+    "claude-sonnet-5-5": {"input": 2.0, "output": 10.0}
+  },
+  "promptCaching": {"enabled": false, "minimumTokensSelectedModels": 512, "write5mMultiplier": 1.25, "write1hMultiplier": 2.0, "haikuReadMultiplier": 0.1, "sonnetReadMultiplier": 0.05, "measuredSavings": null},
+  "batch": {"enabled": false, "documentedStandardTokenDiscountPercent": 50, "possibleProcessingHours": 24, "retentionDays": 29, "measuredSavings": null},
+  "toolsThinkingMultimodalFastModeAndRegionalModifiers": "not implemented; must not enable without new pricing review",
+  "sources": [
+    "https://platform.claude.com/docs/en/about-claude/pricing",
+    "https://platform.claude.com/docs/en/build-with-claude/prompt-caching",
+    "https://platform.claude.com/docs/en/build-with-claude/batch-processing"
+  ],
+  "accountModelAvailabilityVerified": false,
+  "realProviderCalls": 0
+}
