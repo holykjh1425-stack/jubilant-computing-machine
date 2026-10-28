@@ -73,3 +73,7 @@ Latest aggregate during this review: reviewing2, received1, cancelled1 (total4);
 
 ## 2026-10-27 seven-day checkpoint
 WordPress Oct20–Oct27 cumulative remains AI Portal2 views/2 visitors; nexuslabs8 10/4. Approved/held story comments0. No article-level or SOLQ domain attribution. Applications9 (reviewing3,received5,cancelled1), conservative test-excluded candidates0; support total/unanswered0/0. Raw row increase not acquired customers. Improved only post42 practice paragraph with copyable scope/price-owner/schedule-owner/follow-up memo; no new post or SNS transmission. No paid calls/spend/customer production. Sales amount/costs/net profit unverified. Current request explicitly authorizes recording growth work; no product code/DB/deployment changes.
+
+
+## 2026-10-28 follow-up
+Read-only check: Oct20–Oct28 WordPress cumulative unchanged (AI Portal2 views/2 visitors; nexuslabs8 10/4). Both stories published with existing inquiry-workflow links and memo content retained; approved/held comments0. Applications9 unchanged (reviewing3,received5,cancelled1); conservative test-excluded candidates0. Non-test support total/unanswered0/0. No customer identities retrieved or records changed. No new reader evidence warrants another wording experiment immediately after Oct27's worksheet improvement. Preserve new-post freeze and launch assets. No new post, SNS upload, paid API, spend or customer production. Sales amount/costs/net profit unverified. These WordPress metrics do not measure solqtech.com or YouTube. Product/DB/deployment untouched.
