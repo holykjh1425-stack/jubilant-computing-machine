@@ -1,0 +1,34 @@
+name: SOLQ new plan persistence boundary only
+on:
+  push:
+    branches: [dev/solq-cost-control-20261028]
+    paths: [candidates/plan-postgres/**, tests/plan-postgres/run.mjs, .github/workflows/solq-plan-postgres.yml]
+permissions:
+  contents: read
+jobs:
+  persistence:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    env:
+      SOLQ_PLAN_CONTAINER: solq-plan-${{ github.run_id }}-${{ github.run_attempt }}
+      SOLQ_PLAN_VOLUME: solq-plan-volume-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Create disposable network-isolated synthetic PostgreSQL
+        run: |
+          docker volume create "$SOLQ_PLAN_VOLUME"
+          docker run --detach --name "$SOLQ_PLAN_CONTAINER" --network none --label solq.test-only=true -v "$SOLQ_PLAN_VOLUME:/var/lib/postgresql/data" -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=solq_plan_synthetic postgres:17.11
+          for attempt in $(seq 1 30); do
+            if docker exec "$SOLQ_PLAN_CONTAINER" pg_isready -U postgres -d solq_plan_synthetic; then exit 0; fi
+            sleep 1
+          done
+          exit 1
+      - name: New actual persistence and handler integration checks only
+        run: node tests/plan-postgres/run.mjs
+      - name: Remove disposable synthetic database and storage
+        if: always()
+        run: |
+          docker rm --force "$SOLQ_PLAN_CONTAINER" || true
+          docker volume rm "$SOLQ_PLAN_VOLUME" || true
