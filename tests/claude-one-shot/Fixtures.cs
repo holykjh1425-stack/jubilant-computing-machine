@@ -24,6 +24,7 @@ public sealed class FakeTransport:HttpMessageHandler {
   if(Mode=="delay")await Task.Delay(200);
   int status=Mode=="http401"?401:Mode=="http302"?302:200;
   string payload="{\"model\":\"claude-haiku-5-5\",\"content\":[{\"type\":\"text\",\"text\":\"OK\"}],\"usage\":{\"input_tokens\":20,\"output_tokens\":2}}";
+  if(Mode=="wrong_model")payload=payload.Replace("claude-haiku-5-5","claude-sonnet-5-5");
   if(Mode=="bad_json")payload="SYNTHETIC_PRIVATE_BODY_DO_NOT_LOG";
   if(Mode=="missing_usage")payload="{\"model\":\"claude-haiku-5-5\",\"content\":[]}";
   if(Mode=="token_overrun")payload=payload.Replace("\"output_tokens\":2","\"output_tokens\":33");
@@ -31,7 +32,7 @@ public sealed class FakeTransport:HttpMessageHandler {
   if(Mode=="reply")payload=payload.Replace("\"text\":\"OK\"","\"text\":\"NOT EXPECTED PRIVATE RESPONSE\"");
   if(Mode=="huge")payload=new string('x',70000);
   var response=new HttpResponseMessage((HttpStatusCode)status){Content=new StringContent(payload)};
-  response.Headers.Add("request-id","req_synthetic");response.Headers.Add("anthropic-workspace-id",Mode=="scope"?"wrkspc_wrong_fixture":"wrkspc_synthetic_fixture");
+  response.Headers.Add("request-id",Mode=="header_secret"?"SYNTHETIC-NOT-A-REAL-CREDENTIAL":"req_synthetic");response.Headers.Add("anthropic-workspace-id",Mode=="scope"?"wrkspc_wrong_fixture":"wrkspc_synthetic_fixture");
   response.Headers.Add("anthropic-organization-id","org_synthetic");return response;
  }
 }
@@ -43,15 +44,16 @@ public static class OneShotFixtures {
   var checks=new List<string>();int actual=0;
   Func<string,string> dir=name=>Path.Combine(root,name);
   // Fake credentials and a fake HttpMessageHandler only; no CredRead/CredWrite, TLS or provider request.
-  foreach(string mode in new[]{"ok","timeout","network","http401","http302","bad_json","missing_usage","token_overrun","cache","reply","scope","huge"}){
+  foreach(string mode in new[]{"ok","timeout","network","http401","http302","bad_json","missing_usage","token_overrun","cache","reply","scope","huge","wrong_model","header_secret"}){
    var fake=new FakeTransport{Mode=mode};var secret=new SyntheticSecret();
    using(var client=new HttpClient(fake)){
     var runner=new OneShot(client,secret,()=>Now);var result=runner.Run(Scope(),dir(mode)).GetAwaiter().GetResult();
     Check(fake.Calls==1&&secret.Reads==1,mode+"_single");
     string data=new JavaScriptSerializer().Serialize(result);
     Check(!data.Contains("SYNTHETIC-NOT-A-REAL-CREDENTIAL")&&!data.Contains("PRIVATE")&&!data.Contains("MUST_NOT_LEAK"),mode+"_sanitized");
-    if(mode=="ok"){Check((string)result["state"]=="connected","success_stage_"+result["stage"]+"_"+(result.ContainsKey("failureCode")?result["failureCode"]:"none"));Check((long)result["estimatedUsageNano"]==3000,"cost");}
+    if(mode=="ok"||mode=="header_secret"){Check((string)result["state"]=="connected","success_stage_"+result["stage"]+"_"+(result.ContainsKey("failureCode")?result["failureCode"]:"none"));Check((long)result["estimatedUsageNano"]==3000,"cost");}
     else Check((string)result["state"]!="connected",mode+"_blocked");
+    if(mode=="header_secret")Check(result["requestId"]==null,"untrusted_header_not_logged");
     var receipt=PrivateLedger.ReadReceipt(Path.Combine(dir(mode),"result.dpapi"));Check((string)receipt["state"]==(string)result["state"],mode+"_dpapi");
     byte[] ciphertext=File.ReadAllBytes(Path.Combine(dir(mode),"result.dpapi"));Check(!Encoding.UTF8.GetString(ciphertext).Contains("requestId"),mode+"_not_plaintext");
     bool rejected=false;try{runner.Run(Scope(),dir(mode)).GetAwaiter().GetResult();}catch{rejected=true;}

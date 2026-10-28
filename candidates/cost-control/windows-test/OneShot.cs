@@ -103,7 +103,12 @@ namespace SolqTest {
   readonly HttpClient client;readonly ICredentialSource credentials;readonly Func<DateTime> clock;
   public OneShot(HttpClient client,ICredentialSource credentials,Func<DateTime> clock){this.client=client;this.credentials=credentials;this.clock=clock;}
   public static string DefaultLedgerPath(){return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"SOLQ","OneShot20261028");}
-  static string Header(HttpResponseMessage response,string name){IEnumerable<string> values;if(!response.Headers.TryGetValues(name,out values))return null;foreach(var value in values)if(Regex.IsMatch(value,@"\A[A-Za-z0-9_-]{1,160}\z"))return value;return null;}
+  static string Header(HttpResponseMessage response,string name){
+   IEnumerable<string> values;if(!response.Headers.TryGetValues(name,out values))return null;
+   string prefix=name=="request-id"?"req_":name=="anthropic-workspace-id"?"wrkspc_":"org_";
+   foreach(var value in values)if(value.StartsWith(prefix,StringComparison.Ordinal)&&Regex.IsMatch(value,@"\A[A-Za-z0-9_-]{1,160}\z"))return value;
+   return null;
+  }
   static int Token(Dictionary<string,object> usage,string name){object value;if(!usage.TryGetValue(name,out value)||!(value is int)||(int)value<0)throw new InvalidOperationException("USAGE_UNVERIFIED");return (int)value;}
   public async Task<Dictionary<string,object>> Run(Scope scope,string ledgerDirectory){
    Policy.Validate(scope,clock()); // Before credential access, filesystem writes or HTTP.
@@ -143,7 +148,7 @@ namespace SolqTest {
        }finally{Array.Clear(bytes,0,bytes.Length);}
        var parsed=new JavaScriptSerializer().Deserialize<Dictionary<string,object>>(body);body=null;
        object model,usageObject,contentObject;
-       if(!parsed.TryGetValue("model",out model)||!((model as string)??"").StartsWith(Policy.Model,StringComparison.Ordinal))throw new InvalidOperationException("MODEL_RESPONSE_MISMATCH");
+       if(!parsed.TryGetValue("model",out model)||!Regex.IsMatch((model as string)??"",@"\Aclaude-haiku-5-5(?:-[0-9]{8})?\z"))throw new InvalidOperationException("MODEL_RESPONSE_MISMATCH");
        if(!parsed.TryGetValue("usage",out usageObject)||!(usageObject is Dictionary<string,object>))throw new InvalidOperationException("USAGE_UNVERIFIED");
        result["stage"]="usage_validation";
        var usage=(Dictionary<string,object>)usageObject;int input=Token(usage,"input_tokens"),output=Token(usage,"output_tokens");
