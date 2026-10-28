@@ -10,7 +10,7 @@ const quote=x=>"'"+JSON.stringify(x).replaceAll("'","''")+"'::jsonb";
 const steps=['requirements','scope','implementation','validation','human_review','delivery'];
 const query=(id,{fail=false,input=15,output=4}={})=>`select solq_plan_fixture.generate('${id}',${quote(steps)},${quote({summary:'synthetic-only',requiresReview:true})},${input},${output},${fail});`;
 const checks=[];const test=async(name,fn)=>{await fn();checks.push({name,status:'PASS'});};
-const inspect=JSON.parse(execFileSync('docker',['inspect',C],{encoding:'utf8'}))[0];assert.equal(inspect.HostConfig.NetworkMode,'none');assert.ok(!inspect.HostConfig.PortBindings);assert.equal(inspect.Config.Labels['solq.test-only'],'true');assert.ok(inspect.Mounts.some(x=>x.Type==='volume'));
+const inspect=JSON.parse(execFileSync('docker',['inspect',C],{encoding:'utf8'}))[0];assert.equal(inspect.HostConfig.NetworkMode,'none');assert.equal(Object.keys(inspect.HostConfig.PortBindings??{}).length,0);assert.equal(inspect.Config.Labels['solq.test-only'],'true');assert.ok(inspect.Mounts.some(x=>x.Type==='volume'));
 assert.equal(sql('select current_database()'),'solq_plan_synthetic');const version=sql('show server_version');
 sql(readFileSync(new URL('../../candidates/plan-postgres/fixture.sql',import.meta.url),'utf8'));
 sql("insert into solq_plan_fixture.applications select 'SYNTH-'||n,true from generate_series(1,20)n;insert into solq_plan_fixture.applications values('SYNTH-99',false);");
