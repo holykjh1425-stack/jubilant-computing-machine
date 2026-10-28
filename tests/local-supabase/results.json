@@ -1,0 +1,52 @@
+{
+  "timestampUtc": "2026-10-28T05:15:26.347Z",
+  "status": "environment_not_secured",
+  "baselineCommit": "6b95c1da1c44e83218693c2d5337d05707777e28",
+  "testedSource": "372b9b2a0923bb3224da2603baf3141649f738ee",
+  "workflowRun": 40636709444,
+  "workflowJob": 122645240105,
+  "environmentPreparation": {
+    "officialCli": "2.122.0",
+    "releaseSha256Verified": true,
+    "localConfigurationCreated": true,
+    "unlinked": true,
+    "internalDockerNetworkCreated": true,
+    "stackStarted": false,
+    "runtimeIsolationAssertionsExecuted": false,
+    "cleanupSucceeded": true
+  },
+  "results": {
+    "environmentProvisioning": "FAIL",
+    "actualSupabaseAuth": "UNVERIFIED",
+    "actualDenoEdge": "UNVERIFIED",
+    "actualPostgrestRls": "UNVERIFIED",
+    "actualDbIntegration": "UNVERIFIED",
+    "previousPostgres9": "REUSED_PASS_NOT_RERUN"
+  },
+  "blockers": [
+    {
+      "stage": "first_start",
+      "code": "REGISTRY_RATE_EXCEEDED",
+      "evidence": "toomanyrequests: Rate exceeded",
+      "alternative": "Official Supabase setup-cli GHCR registry configuration"
+    },
+    {
+      "stage": "ghcr_start",
+      "code": "LOCAL_DATABASE_CONNECTION_REFUSED",
+      "evidence": "ECONNREFUSED 127.0.0.1:54322",
+      "underlyingCause": "Not proven; not classified as Auth/password/RLS error"
+    }
+  ],
+  "realAuthAttempts": 0,
+  "actualNewIntegrationChecks": 0,
+  "additionalMockTests": 0,
+  "previousTestsRerun": false,
+  "providerCalls": 0,
+  "actualApiUsd": 0,
+  "productionDatabaseAccessed": false,
+  "productionKeysRead": false,
+  "productionWrites": 0,
+  "hostedProjectsCreated": 0,
+  "mainChanged": false,
+  "publicDeployment": false
+}
