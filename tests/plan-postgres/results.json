@@ -1,0 +1,56 @@
+{
+  "timestampUtc": "2026-10-28T05:03:19.137Z",
+  "postgresVersion": "17.11 (Debian 17.11-1.pgdg13+2)",
+  "checks": [
+    {
+      "name": "unapproved synthetic application creates no rows",
+      "status": "PASS"
+    },
+    {
+      "name": "PostgreSQL atomic persistence separates rule steps and mock annotation",
+      "status": "PASS"
+    },
+    {
+      "name": "fresh PostgreSQL session reuses same stored plan/job and no double debit",
+      "status": "PASS"
+    },
+    {
+      "name": "injected partial-write failure rolls back plan job annotation and charge",
+      "status": "PASS"
+    },
+    {
+      "name": "8 independent DB requests at new persistence boundary retain one linked pair",
+      "status": "PASS"
+    },
+    {
+      "name": "invalid tokens and cap breach rollback before persistence",
+      "status": "PASS"
+    },
+    {
+      "name": "Edge-compatible handler calls actual fixture PostgreSQL and returns saved IDs",
+      "status": "PASS"
+    },
+    {
+      "name": "handler unauthenticated nonadmin and out-of-scope requests blocked",
+      "status": "PASS"
+    },
+    {
+      "name": "database restart retains committed rows annotations identities and budget",
+      "status": "PASS"
+    }
+  ],
+  "pass": 9,
+  "fail": 0,
+  "preservationRestartFingerprint": "7863f158c203aa9989dc7df2aca9c7b7",
+  "actualPostgres": true,
+  "actualSupabaseAuth": false,
+  "actualDenoEdgeRuntime": false,
+  "handlerRuntime": "Node Web Request/Response with PostgreSQL via docker exec; fixture identity",
+  "productionAccess": false,
+  "providerCalls": 0,
+  "actualUsd": 0,
+  "previousTestsRerun": false,
+  "testedCommit": "5a86969fe17d414c8c66632ab231a7185f72e81c",
+  "workflowRun": 40635720658,
+  "workflowJob": 122642096302
+}
