@@ -1,0 +1,41 @@
+name: SOLQ isolated zero-API cost-control validation
+on:
+  push:
+    branches: [dev/solq-cost-control-20261028]
+    paths:
+      - candidates/cost-control/engine.mjs
+      - candidates/cost-control/budget-candidate.sql
+      - candidates/cost-control/edge-boundary.mjs
+      - tests/cost-control/test.mjs
+      - tests/cost-control/native.py
+      - .github/workflows/solq-cost-control.yml
+permissions:
+  contents: read
+concurrency:
+  group: solq-new-cost-control
+  cancel-in-progress: false
+jobs:
+  new-budget-only:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    env:
+      SOLQ_COST_CONTAINER: solq-cost-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: New isolated JS rules, approval and budget tests only
+        run: node --test tests/cost-control/test.mjs
+      - name: Disposable synthetic database without network or host mounts
+        run: |
+          docker run --detach --name "$SOLQ_COST_CONTAINER" --network none --label solq.test-only=true --tmpfs /var/lib/postgresql/data -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=solq_cost_synthetic postgres:17.11 -c max_connections=80
+          for attempt in $(seq 1 30); do
+            if docker exec "$SOLQ_COST_CONTAINER" pg_isready -U postgres -d solq_cost_synthetic; then exit 0; fi
+            sleep 1
+          done
+          exit 1
+      - name: New native PostgreSQL budget and idempotency contention only
+        run: python3 tests/cost-control/native.py
+      - name: Remove synthetic fixture database
+        if: always()
+        run: docker rm --force "$SOLQ_COST_CONTAINER"
