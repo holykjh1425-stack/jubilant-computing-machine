@@ -11,8 +11,8 @@ jobs:
     timeout-minutes: 15
     env:
       DO_NOT_TRACK: '1'
-      SOLQ_CLI: ${{ runner.temp }}/solq-cli/supabase
-      SOLQ_STACK_DIR: ${{ runner.temp }}/solq-isolated-stack
+      SOLQ_CLI: /tmp/solq-cli/supabase
+      SOLQ_STACK_DIR: /tmp/solq-isolated-stack
       SOLQ_STACK_NETWORK: solq-local-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
@@ -20,10 +20,10 @@ jobs:
           persist-credentials: false
       - name: Install pinned official CLI with release SHA256
         run: |
-          mkdir -p "$RUNNER_TEMP/solq-cli" "$SOLQ_STACK_DIR"
-          curl --fail --silent --show-error --location https://github.com/supabase/cli/releases/download/v2.122.0/supabase_2.122.0_linux_amd64.tar.gz --output "$RUNNER_TEMP/solq-cli/cli.tar.gz"
-          echo '59ed066847b98d7461c60e9109d40cab6b9756177ce06ebb05b51338519f5136  '"$RUNNER_TEMP/solq-cli/cli.tar.gz" | sha256sum --check
-          tar -xzf "$RUNNER_TEMP/solq-cli/cli.tar.gz" -C "$RUNNER_TEMP/solq-cli" supabase
+          mkdir -p "/tmp/solq-cli" "$SOLQ_STACK_DIR"
+          curl --fail --silent --show-error --location https://github.com/supabase/cli/releases/download/v2.122.0/supabase_2.122.0_linux_amd64.tar.gz --output "/tmp/solq-cli/cli.tar.gz"
+          echo '59ed066847b98d7461c60e9109d40cab6b9756177ce06ebb05b51338519f5136  '"/tmp/solq-cli/cli.tar.gz" | sha256sum --check
+          tar -xzf "/tmp/solq-cli/cli.tar.gz" -C "/tmp/solq-cli" supabase
           "$SOLQ_CLI" --version
       - name: Prepare local unlinked stack and loopback-only internal network
         run: |
