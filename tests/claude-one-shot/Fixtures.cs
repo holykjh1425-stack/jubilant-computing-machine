@@ -67,8 +67,8 @@ public static class OneShotFixtures {
   foreach(string reason in new[]{"approval","scope","expiry"}){
    var scope=Scope();if(reason=="approval")scope.Approved=false;if(reason=="scope")scope.WorkspaceId="Default";
    var fake=new FakeTransport();var secret=new SyntheticSecret();using(var client=new HttpClient(fake)){
-    bool rejected=false;try{new OneShot(client,secret,()=>reason=="expiry"?Policy.StopAtUtc:Now).Run(scope,dir(reason)).GetAwaiter().GetResult();}catch{rejected=true;}
-    Check(rejected&&fake.Calls==0&&secret.Reads==0&&!Directory.Exists(dir(reason)),reason+"_before_secret_io");
+    bool rejected=false;try{new OneShot(client,secret,()=>reason=="expiry"?Policy.StopAtUtc:Now).Run(scope,dir("precondition-"+reason)).GetAwaiter().GetResult();}catch{rejected=true;}
+    Check(rejected&&fake.Calls==0&&secret.Reads==0&&!Directory.Exists(dir("precondition-"+reason)),reason+"_before_secret_io");
    }checks.Add(reason+": denied before secrets, ledger and send");
   }
   var simultaneous=new FakeTransport{Mode="delay"};var simultaneousSecret=new SyntheticSecret();
