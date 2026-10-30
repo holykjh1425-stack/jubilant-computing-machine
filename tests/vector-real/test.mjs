@@ -39,6 +39,8 @@ try{
  await fresh();await test('response cap circuit freezes excessive metadata',async()=>{mode='oversize';assert.equal((await req('/containers/'+id+'/json')).status,502);mode='normal';assert.equal((await req('/_ping')).status,503);});
  await fresh();await test('invalid Vector-required metadata stops rather than faking Image',async()=>{mode='bad_image';assert.equal((await req('/containers/'+id+'/json')).status,502);});
  await fresh([id],{maxRequests:1});await test('session request ceiling prevents extra daemon work',async()=>{assert.equal((await req('/_ping')).status,200);const n=calls.length;assert.equal((await req('/_ping')).status,503);assert.equal(calls.length,n);});
+ await test('Bollard default size=false list query supported',()=>{assert.ok(route('GET','/v1.52/containers/json?all=false&size=false&filters=%7B%7D',[id],1));});
+ await test('expensive size=true list query denied',()=>{assert.equal(route('GET','/v1.52/containers/json?all=false&size=true',[id],1),null);});
  await test('fresh event scope and exact Vector API contract',()=>{const d=route('GET','/v1.52/events?since=0',[id],2000000000);assert.equal(new URL('http://fake'+d.path).searchParams.get('since'),'2000000000');assert.equal(route('GET','/v1.53/events',[id],1),null);});
  await test('daemon range without API1.52 rejects before serving',async()=>{mode='unsupported';await assert.rejects(createReadProxy({tls,upstream:unixUpstream(socket),allowedIds:[]}));mode='normal';});
  await test('daemon preflight timeout bounded without a listening proxy',async()=>{mode='preflight_timeout';const t=Date.now();await assert.rejects(createReadProxy({tls,upstream:unixUpstream(socket),allowedIds:[],timeoutMs:100}));assert.ok(Date.now()-t<1000);mode='normal';});

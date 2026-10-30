@@ -22,7 +22,9 @@ export function route(method,target,ids,sessionSince){
   const out=new URLSearchParams({follow:'true',stdout:'true',stderr:'true',timestamps:'true',since:String(Math.max(Number(q.get('since')??sessionSince),sessionSince)),tail:q.get('tail')??'all'});
   return{path:'/v'+VECTOR_API+p+'?'+out,kind:'logs',id:m[1]};
  }
- const d=authorizeDockerRead(method,target,ids);if(!d.allowed)return null;
+ let policyTarget=target;
+ if(p==='/containers/json'&&q.has('size')){if(!['false','0'].includes(q.get('size')))return null;q.delete('size');policyTarget=(version?'/v'+version[1]:'')+p+(q.size?'?'+q:'');}
+ const d=authorizeDockerRead(method,policyTarget,ids);if(!d.allowed)return null;
  if(d.projection==='events'){const u=new URL('http://fixed'+d.path);u.searchParams.set('since',String(Math.max(Number(u.searchParams.get('since')??sessionSince),sessionSince)));return{path:'/v'+VECTOR_API+u.pathname+'?'+u.searchParams,kind:'events'};}
  return{path:'/v'+VECTOR_API+d.path,kind:d.projection,id:/\/containers\/([a-f0-9]{64})\/json$/.exec(d.path)?.[1]};
 }
