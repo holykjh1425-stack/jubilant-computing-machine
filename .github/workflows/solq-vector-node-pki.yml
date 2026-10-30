@@ -1,0 +1,31 @@
+name: SOLQ no-executable-OpenSSL certificate validation
+on:
+  push:
+    branches: [dev/solq-vector-node-pki-20261030]
+    paths: [candidates/vector-node-pki/**, tests/vector-node-pki/**, .github/workflows/solq-vector-node-pki.yml]
+permissions:
+  contents: read
+jobs:
+  windows-no-docker:
+    runs-on: windows-2022
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Node-only PKI and actual mTLS against fake upstream
+        shell: powershell
+        run: |
+          node --experimental-strip-types --test tests/vector-node-pki/test.mjs
+          if($LASTEXITCODE -ne 0){throw 'NODE_PKI_TEST_FAILED'}
+      - name: PowerShell parse and changed entry point default gate
+        shell: powershell
+        run: |
+          foreach($file in Get-ChildItem candidates/vector-node-pki/*.ps1){
+            $tokens=$null;$errors=$null
+            [Management.Automation.Language.Parser]::ParseFile($file.FullName,[ref]$tokens,[ref]$errors)|Out-Null
+            if($errors.Count){throw 'POWERSHELL_PARSE_FAILED'}
+          }
+          $result=& ./candidates/vector-node-pki/Invoke-SolqReadProxy.ps1
+          if($result -notmatch '^PREPARATION_ONLY:'){throw 'DEFAULT_GATE_FAILED'}
+          Write-Output 'WINDOWS_PARSE_AND_DEFAULT_GATE_PASS; no Docker access.'
