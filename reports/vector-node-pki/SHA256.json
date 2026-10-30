@@ -1,0 +1,10 @@
+{
+  "Clear-SolqReadProxyRun.ps1": "063b1d7c4d07beee44732a05f3d99086eaa6dd14804f714fa3e4638ab8c02fb3",
+  "Invoke-SolqReadProxy.ps1": "c0caa91311ae7b9616f853e9d30c317cf9d7bdbb876c291d1993e36a5dcfde35",
+  "README_20261030.md": "344a36a01a9e35bc51a63ae573e3fe5253aee5f5b74450f2b628e4276e9bfb61",
+  "Read-SolqReadProxyResult.ps1": "afc3d48b64d948e42e24379effe4a4e0b4c2093c009579fd3d30d3cef8aef16c",
+  "certificates.mjs": "d9fbab2e3066ed9baeea7d913354a226c2451fecc02c3634335e949577a2ed5c",
+  "legacy-policy.ts": "4a24d80a494f90979a7288d1bb48e44a0e41c70bc2ff504c924a22f113f3bde4",
+  "proxy.mjs": "b79080ae96d2285622622f2310b90c688e2323a3922ec958bd1e6d768a561b16",
+  "windows-probe.mjs": "5f128cd6cab5b617302ab734bf6fac40e33511ef3a66e54735df4a90d79fcd36"
+}
