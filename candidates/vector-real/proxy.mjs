@@ -23,6 +23,7 @@ export function route(method,target,ids,sessionSince){
   return{path:'/v'+VECTOR_API+p+'?'+out,kind:'logs',id:m[1]};
  }
  const d=authorizeDockerRead(method,target,ids);if(!d.allowed)return null;
+ if(d.projection==='events'){const u=new URL('http://fixed'+d.path);u.searchParams.set('since',String(Math.max(Number(u.searchParams.get('since')??sessionSince),sessionSince)));return{path:'/v'+VECTOR_API+u.pathname+'?'+u.searchParams,kind:'events'};}
  return{path:'/v'+VECTOR_API+d.path,kind:d.projection,id:/\/containers\/([a-f0-9]{64})\/json$/.exec(d.path)?.[1]};
 }
 export function projectInspect(raw,id){

@@ -2,7 +2,7 @@ name: SOLQ new mTLS Vector058 compatibility only
 on:
   push:
     branches: [dev/solq-cost-control-20261028]
-    paths: [candidates/vector-real/*.mjs, candidates/vector-real/*.ts, candidates/vector-real/*.ps1, tests/vector-real/test.mjs, .github/workflows/solq-vector-real.yml]
+    paths: [candidates/vector-real/*.mjs, candidates/vector-real/*.ts, candidates/vector-real/*.ps1, tests/vector-real/*.mjs, .github/workflows/solq-vector-real.yml]
 permissions:
   contents: read
 jobs:
@@ -35,3 +35,21 @@ jobs:
           $result=& ./candidates/vector-real/Clear-SolqReadProxyRun.ps1 -RunDirectory 'C:\never-read'
           if($result -notmatch '^PREPARATION_ONLY:'){throw 'CLEANUP_APPROVAL_GATE_FAILED'}
           Write-Output 'PowerShell parse and two default gates PASS. No Docker or PKI accessed.'
+
+  real-vector-binary:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Pinned official Vector058 binary only; no Docker
+        run: |
+          mkdir -p "$RUNNER_TEMP/solq-vector058"
+          curl --fail --silent --show-error --location https://github.com/vectordotdev/vector/releases/download/v0.58.0/vector-0.58.0-x86_64-unknown-linux-musl.tar.gz --output "$RUNNER_TEMP/solq-vector058/vector.tar.gz"
+          echo 'ad013ddc164b80e425cc403d2174e26b811673846d1125c80bc7b5024826ce39  '"$RUNNER_TEMP/solq-vector058/vector.tar.gz" | sha256sum --check
+          tar -xzf "$RUNNER_TEMP/solq-vector058/vector.tar.gz" -C "$RUNNER_TEMP/solq-vector058"
+          SOLQ_VECTOR_BINARY=$(find "$RUNNER_TEMP/solq-vector058" -type f -path '*/bin/vector' -print -quit)
+          test -n "$SOLQ_VECTOR_BINARY"
+          export SOLQ_VECTOR_BINARY
+          node --experimental-strip-types tests/vector-real/vector-binary.mjs

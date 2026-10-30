@@ -23,7 +23,7 @@ export async function approvedProbe({directory,nodeApproved=false,docker,openssl
   // Fixed existing local pipe only. Never exposes the pipe or daemon TCP listener.
   const upstream=unixUpstream('\\\\.\\pipe\\dockerDesktopLinuxEngine');
   proxy=await createReadProxy({tls,upstream,allowedIds:[]});
-  await new Promise((yes,no)=>{proxy.server.once('error',no);proxy.server.listen(0,'127.0.0.1',yes);});
+  await new Promise((yes,no)=>{proxy.server.once('error',no);proxy.server.listen(19443,'127.0.0.1',yes);});
   const port=proxy.server.address().port;if(port===2375)throw Error('FORBIDDEN_PORT');
   const get=path=>new Promise((yes,no)=>{const req=https.request({hostname:'127.0.0.1',port,servername:'localhost',path,method:'GET',ca:tls.ca,cert:tls.clientCert,key:tls.clientKey,agent:false,rejectUnauthorized:true},res=>{let body='';res.on('data',x=>body+=x);res.on('end',()=>yes({status:res.statusCode,body}));});req.on('error',no);req.setTimeout(3000,()=>req.destroy());req.end();});
   const ping=await get('/_ping'),version=await get('/v1.52/version');if(ping.status!==200||ping.body!=='OK'||version.status!==200)throw Error('MTLS_READ_PROBE_FAILED');
@@ -39,5 +39,5 @@ export async function approvedProbe({directory,nodeApproved=false,docker,openssl
 }
 if(process.argv[1]&&import.meta.url===pathToFileURL(resolve(process.argv[1])).href){
  if(!process.argv.includes('--approved-local-read-proxy'))console.log('PREPARATION_ONLY: no Docker, certificate or listening socket access.');
- else{const i=process.argv.indexOf('--approved-local-read-proxy');try{console.log(JSON.stringify(await approvedProbe({directory:process.argv[i+1],docker:process.argv[i+2],openssl:process.argv[i+3],nodeApproved:true})));}catch{console.log('STOPPED: approval/platform/private-folder prerequisite failed; no retry.');process.exitCode=1;}}
+ else{const i=process.argv.indexOf('--approved-local-read-proxy');try{const result=await approvedProbe({directory:process.argv[i+1],docker:process.argv[i+2],openssl:process.argv[i+3],nodeApproved:true});console.log(JSON.stringify(result));if(result.status!=='READ_PROXY_PASS')process.exitCode=1;}catch{console.log('STOPPED: approval/platform/private-folder prerequisite failed; no retry.');process.exitCode=1;}}
 }
