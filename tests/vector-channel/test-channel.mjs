@@ -1,0 +1,42 @@
+import http from 'node:http';
+import {mkdtempSync,writeFileSync,chmodSync,rmSync,statSync} from 'node:fs';
+import {tmpdir} from 'node:os';import{join}from'node:path';import{once}from'node:events';import assert from'node:assert/strict';
+import{startFixtureProxy}from'../../candidates/vector-channel/fixture-proxy.mjs';
+const dir=mkdtempSync(join(tmpdir(),'solq-proxy-fixture-'));chmodSync(dir,0o700);writeFileSync(join(dir,'fixture.marker'),'SOLQ_SYNTHETIC_DAEMON_ONLY',{mode:0o600});
+const id='a'.repeat(64),other='b'.repeat(64),socket=join(dir,'synthetic-api.sock');let mode='normal',calls=[];let fixture,proxy;
+const checks=[];async function test(name,fn){await fn();checks.push({name,result:'PASS'});}
+function json(res,data){res.writeHead(200,{'content-type':'application/json','x-upstream-secret':'SYNTHETIC_FORBIDDEN'});res.end(JSON.stringify(data));}
+const frame=Buffer.alloc(8);frame[0]=1;const canary=Buffer.from('SOLQ_SYNTHETIC_CANARY\n');frame.writeUInt32BE(canary.length,4);const framed=Buffer.concat([frame,canary]);
+const info=x=>({Id:x,Name:'/synthetic',Names:['/synthetic'],Created:123,State:'running',Config:{Tty:false,Env:['SYNTHETIC_SECRET=forbidden'],Labels:{secret:'SYNTHETIC_FORBIDDEN'}},Mounts:[{Source:'/synthetic'}],HostConfig:{},NetworkSettings:{}});
+function request(path,method='GET',headers={}){return new Promise((resolve,reject)=>{const r=http.request({socketPath:proxy.socket,path,method,headers,agent:false},res=>{const parts=[];res.on('data',x=>parts.push(x));res.on('end',()=>resolve({status:res.statusCode,headers:res.headers,body:Buffer.concat(parts)}));res.on('error',reject);});r.on('error',reject);r.end();});}
+try{
+ fixture=http.createServer((req,res)=>{calls.push({method:req.method,path:req.url,headers:req.headers});
+  if(mode==='timeout')return;
+  if(mode==='error'){res.writeHead(503);return res.end('SYNTHETIC_SECRET');}
+  if(mode==='redirect'){res.writeHead(302,{location:'http://outside.invalid/'});return res.end();}
+  if(mode==='oversize')return json(res,{ApiVersion:'1.44',padding:'x'.repeat(40000)});
+  if(mode==='malformed'){res.writeHead(200,{'content-type':'application/json'});return res.end('SYNTHETIC_SECRET');}
+  if(req.url==='/_ping'){res.writeHead(200);return res.end('OK');}
+  if(req.url==='/version')return json(res,{ApiVersion:'1.44',MinAPIVersion:'1.24',RegistryConfig:'SYNTHETIC_SECRET'});
+  if(req.url.startsWith('/containers/json'))return json(res,[info(id),info(other)]);
+  if(req.url==='/containers/'+id+'/json')return json(res,info(mode==='wrong_id'?other:id));
+  if(req.url.startsWith('/events')){res.writeHead(200,{'content-type':'application/x-ndjson'});const data=[{Type:'container',Action:'start',Actor:{ID:other,Attributes:{secret:'SYNTHETIC_SECRET'}}},{Type:'container',Action:'start',Actor:{ID:id,Attributes:{secret:'SYNTHETIC_SECRET'}},time:123}].map(x=>JSON.stringify(x)+'\n').join('');res.write(data.slice(0,17));return setTimeout(()=>res.end(data.slice(17)),5);}
+  if(req.url.startsWith('/containers/'+id+'/logs')){res.writeHead(200,{'content-type':'application/vnd.docker.raw-stream'});res.write(framed.subarray(0,5));return setTimeout(()=>res.end(framed.subarray(5)),5);}
+  res.writeHead(404);res.end();
+ });await new Promise((resolve,reject)=>{fixture.once('error',reject);fixture.listen(socket,resolve);});chmodSync(socket,0o600);
+ proxy=await startFixtureProxy({directory:dir,upstreamSocket:socket,allowedIds:[id],timeoutMs:150,maxBytes:8192,maxConcurrent:2});
+ await test('private Unix fixture endpoints only; no TCP listener',async()=>{assert.equal(statSync(proxy.socket).mode&0o777,0o600);assert.equal(statSync(dir).mode&0o777,0o700);assert.equal(typeof fixture.address(),'string');});
+ await test('actual HTTP ping through proxy to synthetic daemon',async()=>{const r=await request('/_ping');assert.equal(r.status,200);assert.equal(r.body.toString(),'OK');});
+ await test('API version response projected; upstream headers suppressed',async()=>{const r=await request('/v1.44/version');assert.equal(r.status,200);assert.equal(JSON.parse(r.body).ApiVersion,'1.44');assert.ok(!r.body.includes('SYNTHETIC_SECRET'));assert.equal(r.headers['x-upstream-secret'],undefined);});
+ await test('container list forced ID scope and response double filtered',async()=>{const r=await request('/containers/json?filters=%7B%22id%22%3A%5B%22evil%22%5D%7D');const rows=JSON.parse(r.body);assert.equal(rows.length,1);assert.equal(rows[0].Id,id);assert.ok(!r.body.includes('SYNTHETIC_SECRET'));const sent=new URL('http://fixture'+calls.at(-1).path);assert.deepEqual(JSON.parse(sent.searchParams.get('filters')),{id:[id]});});
+ await test('inspect drops Env Mounts HostConfig NetworkSettings and arbitrary labels',async()=>{const r=await request('/containers/'+id+'/json');assert.equal(r.status,200);assert.ok(!/SYNTHETIC_SECRET|SYNTHETIC_FORBIDDEN|Env|Mounts|HostConfig|NetworkSettings/.test(r.body.toString()));});
+ await test('Docker multiplexed log bytes retained across arbitrary chunk boundaries',async()=>{const r=await request('/containers/'+id+'/logs?tail=10');assert.equal(r.status,200);assert.deepEqual(r.body,framed);});
+ await test('event lines reassembled filtered and projected',async()=>{const r=await request('/events');assert.equal(r.status,200);const rows=r.body.toString().trim().split('\n').map(JSON.parse);assert.equal(rows.length,1);assert.equal(rows[0].Actor.ID,id);assert.ok(!r.body.includes('SYNTHETIC_SECRET'));});
+ for(const [method,path]of[['POST','/containers/create'],['POST','/containers/'+id+'/exec'],['POST','/containers/'+id+'/start'],['DELETE','/containers/'+id],['PUT','/containers/'+id+'/archive'],['GET','/containers/'+other+'/logs'],['GET','/containers/'+id+'/export'],['GET','/containers/'+id+'/archive'],['GET','/containers/%61/json'],['GET','http://outside.invalid/']])await test('denied before upstream '+method+' '+path,async()=>{const before=calls.length;const r=await request(path,method);assert.equal(r.status,403);assert.equal(calls.length,before);});
+ for(const headers of [{'x-http-method-override':'POST'},{authorization:'Bearer SYNTHETIC_SECRET'},{cookie:'SYNTHETIC_SECRET'},{'x-forwarded-host':'outside.invalid'},{'content-length':'1'}])await test('host or credential/body header rejected before upstream '+Object.keys(headers)[0],async()=>{const before=calls.length;const r=await request('/_ping','GET',headers);assert.equal(r.status,403);assert.equal(calls.length,before);});
+ for(const m of ['error','redirect','malformed','oversize','wrong_id','timeout'])await test('upstream '+m+' fails closed once without raw diagnostics',async()=>{mode=m;const before=calls.length;const r=await request(m==='wrong_id'?'/containers/'+id+'/json':'/version');assert.ok([502,504].includes(r.status));assert.ok(!r.body.includes('SYNTHETIC_SECRET'));assert.equal(calls.length,before+1);assert.equal(proxy.stats().lastRequestSucceeded,false);mode='normal';});
+ await test('concurrency ceiling prevents third upstream request',async()=>{mode='timeout';const before=calls.length;const first=request('/version'),second=request('/version');await new Promise(r=>setTimeout(r,20));const third=await request('/version');assert.equal(third.status,429);await Promise.all([first,second]);assert.equal(calls.length,before+2);mode='normal';});
+ await test('real Docker and arbitrary socket paths rejected by harness',async()=>{await assert.rejects(startFixtureProxy({directory:dir,upstreamSocket:'/var/run/docker.sock',allowedIds:[id]}));await assert.rejects(startFixtureProxy({directory:dir,upstreamSocket:join(dir,'docker.sock'),allowedIds:[id]}));});
+ const report={timestampUtc:new Date().toISOString(),runtime:process.version,pass:checks.length,fail:0,checks,transport:'real Node HTTP over two private synthetic Unix sockets; no TCP listener',stats:proxy.stats(),syntheticUpstreamRequests:calls.length,upstreamWriteRequests:calls.filter(x=>!['GET','HEAD'].includes(x.method)).length,actualDockerSocketAccesses:0,existingContainerChanges:0,newDockerContainers:0,hostTcp2375Opened:false,actualVectorTested:false,windowsSocketVerified:false,old83TestsRerun:false,providerCalls:0,actualApiUsd:0};
+ writeFileSync(new URL('./results.json',import.meta.url),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({pass:report.pass,fail:0,upstreamWriteRequests:report.upstreamWriteRequests,actualDockerSocketAccesses:0,newDockerContainers:0}));
+}finally{if(proxy)await proxy.close();if(fixture){fixture.closeAllConnections();await new Promise(r=>fixture.close(r));}rmSync(dir,{recursive:true,force:true});}

@@ -1,0 +1,17 @@
+name: SOLQ synthetic Docker API channel only
+on:
+  push:
+    branches: [dev/solq-cost-control-20261028]
+    paths: [candidates/vector-channel/fixture-proxy.mjs, candidates/vector-channel/docker-read-policy.ts, tests/vector-channel/test-channel.mjs, .github/workflows/solq-vector-channel.yml]
+permissions:
+  contents: read
+jobs:
+  unix-fixture:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: New real HTTP transport over synthetic Unix sockets only
+        run: node --experimental-strip-types tests/vector-channel/test-channel.mjs
