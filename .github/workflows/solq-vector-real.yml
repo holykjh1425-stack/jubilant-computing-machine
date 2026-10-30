@@ -7,6 +7,7 @@ permissions:
   contents: read
 jobs:
   new-protocol:
+    if: ${{ !contains(github.event.head_commit.message, '[binary-only]') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 4
     steps:
@@ -16,6 +17,7 @@ jobs:
       - name: New mTLS and Vector058 request response contracts with fake daemon only
         run: node --experimental-strip-types tests/vector-real/test.mjs
   windows-scripts:
+    if: ${{ !contains(github.event.head_commit.message, '[binary-only]') }}
     runs-on: windows-2022
     timeout-minutes: 3
     steps:
