@@ -1,0 +1,130 @@
+{
+  "timestampUtc": "2026-10-30T08:44:14.734Z",
+  "pass": 27,
+  "fail": 0,
+  "checks": [
+    {
+      "name": "mTLS authenticated HTTP over synthetic Unix transport",
+      "result": "PASS"
+    },
+    {
+      "name": "client certificate required before daemon read",
+      "result": "PASS"
+    },
+    {
+      "name": "wrong same-CA client fingerprint blocked",
+      "result": "PASS"
+    },
+    {
+      "name": "server hostname verification enforced",
+      "result": "PASS"
+    },
+    {
+      "name": "Vector default API1.52 and exact image metadata retained",
+      "result": "PASS"
+    },
+    {
+      "name": "list provides required Id Names and no other container",
+      "result": "PASS"
+    },
+    {
+      "name": "source-compatible logs keep timestamps follow and bounded since",
+      "result": "PASS"
+    },
+    {
+      "name": "Vector events Actor Action Attributes exist without secret labels",
+      "result": "PASS"
+    },
+    {
+      "name": "client reconnect after stream attempted is halted before daemon",
+      "result": "PASS"
+    },
+    {
+      "name": "metadata-only scope denies list inspect logs events",
+      "result": "PASS"
+    },
+    {
+      "name": "unsupported API prefix blocked without version rewrite",
+      "result": "PASS"
+    },
+    {
+      "name": "real candidate denies POST /containers/create",
+      "result": "PASS"
+    },
+    {
+      "name": "real candidate denies DELETE /containers/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "result": "PASS"
+    },
+    {
+      "name": "real candidate denies POST /containers/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/start",
+      "result": "PASS"
+    },
+    {
+      "name": "real candidate denies POST /containers/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/stop",
+      "result": "PASS"
+    },
+    {
+      "name": "real candidate denies POST /containers/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/exec",
+      "result": "PASS"
+    },
+    {
+      "name": "real candidate denies GET /containers/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/archive",
+      "result": "PASS"
+    },
+    {
+      "name": "metadata timeout circuit freezes future reads without retry",
+      "result": "PASS"
+    },
+    {
+      "name": "redirect circuit prevents external fallback",
+      "result": "PASS"
+    },
+    {
+      "name": "response cap circuit freezes excessive metadata",
+      "result": "PASS"
+    },
+    {
+      "name": "invalid Vector-required metadata stops rather than faking Image",
+      "result": "PASS"
+    },
+    {
+      "name": "session request ceiling prevents extra daemon work",
+      "result": "PASS"
+    },
+    {
+      "name": "Bollard default size=false list query supported",
+      "result": "PASS"
+    },
+    {
+      "name": "expensive size=true list query denied",
+      "result": "PASS"
+    },
+    {
+      "name": "fresh event scope and exact Vector API contract",
+      "result": "PASS"
+    },
+    {
+      "name": "daemon range without API1.52 rejects before serving",
+      "result": "PASS"
+    },
+    {
+      "name": "daemon preflight timeout bounded without a listening proxy",
+      "result": "PASS"
+    }
+  ],
+  "realTls": true,
+  "clientCertificates": "ephemeral synthetic PKI only; not saved in artifacts",
+  "transport": "private Unix HTTP/TLS sockets on existing CI runner; no actual Docker",
+  "apiProfile": "Vector0.58.0 Bollard0.20.2 API1.52 source-contract",
+  "actualDockerSocketAccesses": 0,
+  "newDockerObjects": 0,
+  "windowsRealExecution": false,
+  "actualVectorBinaryExecuted": false,
+  "old83And30Rerun": false,
+  "upstreamWriteRequests": 0,
+  "actualApiUsd": 0,
+  "providerCalls": 0,
+  "testedSource": "09ddee3a5ba616902882b9ed163d582ae981dea7",
+  "workflowRun": 41028443643,
+  "workflowJob": 123972105010
+}
