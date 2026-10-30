@@ -1,0 +1,37 @@
+name: SOLQ new mTLS Vector058 compatibility only
+on:
+  push:
+    branches: [dev/solq-cost-control-20261028]
+    paths: [candidates/vector-real/*.mjs, candidates/vector-real/*.ts, candidates/vector-real/*.ps1, tests/vector-real/test.mjs, .github/workflows/solq-vector-real.yml]
+permissions:
+  contents: read
+jobs:
+  new-protocol:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: New mTLS and Vector058 request response contracts with fake daemon only
+        run: node --experimental-strip-types tests/vector-real/test.mjs
+  windows-scripts:
+    runs-on: windows-2022
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Parse scripts and default no-approval path only
+        shell: powershell
+        run: |
+          foreach($file in Get-ChildItem candidates/vector-real/*.ps1){
+            $tokens=$null;$errors=$null
+            [Management.Automation.Language.Parser]::ParseFile($file.FullName,[ref]$tokens,[ref]$errors)|Out-Null
+            if($errors.Count){throw 'POWERSHELL_PARSE_FAILED'}
+          }
+          $result=& ./candidates/vector-real/Invoke-SolqReadProxy.ps1
+          if($result -notmatch '^PREPARATION_ONLY:'){throw 'DEFAULT_APPROVAL_GATE_FAILED'}
+          $result=& ./candidates/vector-real/Clear-SolqReadProxyRun.ps1 -RunDirectory 'C:\never-read'
+          if($result -notmatch '^PREPARATION_ONLY:'){throw 'CLEANUP_APPROVAL_GATE_FAILED'}
+          Write-Output 'PowerShell parse and two default gates PASS. No Docker or PKI accessed.'
