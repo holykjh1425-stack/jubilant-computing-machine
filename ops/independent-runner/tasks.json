@@ -108,6 +108,66 @@
       "executor": "authorized_deployer",
       "blocked_reason": "No separate production deployment approval",
       "evidence": null
+    },
+    {
+      "id": "SOLQ-011",
+      "title": "Compare new R&D corporation setup, industry registration and KOITA lab recognition requirements",
+      "owner": "RND_LEGAL",
+      "status": "ready",
+      "depends_on": [],
+      "executor": "planning_read_only",
+      "evidence": null,
+      "notes": "Planning only; no entity registration, funding, tax claim or donation receipt issuance authorized"
+    },
+    {
+      "id": "SOLQ-012",
+      "title": "Create confidential invention register, R&D project plans and evidence rules",
+      "owner": "RND_TECH",
+      "status": "ready",
+      "depends_on": [],
+      "executor": "planning_read_only",
+      "evidence": null,
+      "notes": "Planning only; no entity registration, funding, tax claim or donation receipt issuance authorized"
+    },
+    {
+      "id": "SOLQ-013",
+      "title": "Model new R&D company startup costs, payroll, tax eligibility and funding scenarios",
+      "owner": "FINANCE",
+      "status": "ready",
+      "depends_on": [],
+      "executor": "planning_read_only",
+      "evidence": null,
+      "notes": "Planning only; no entity registration, funding, tax claim or donation receipt issuance authorized"
+    },
+    {
+      "id": "SOLQ-014",
+      "title": "Verify existing church donation receipt eligibility, current supporting documents and separate accounting",
+      "owner": "NONPROFIT_COMPLIANCE",
+      "status": "ready",
+      "depends_on": [],
+      "executor": "planning_read_only",
+      "evidence": null,
+      "notes": "Planning only; no entity registration, funding, tax claim or donation receipt issuance authorized"
+    },
+    {
+      "id": "SOLQ-015",
+      "title": "Design church restricted donation ledger, receipt reconciliation and conflict-of-interest checks",
+      "owner": "FINANCE",
+      "status": "ready",
+      "depends_on": [],
+      "executor": "planning_read_only",
+      "evidence": null,
+      "notes": "Planning only; no entity registration, funding, tax claim or donation receipt issuance authorized"
+    },
+    {
+      "id": "SOLQ-016",
+      "title": "Define cross-worker owners, handoffs and atomic task claim implementation",
+      "owner": "COORDINATION",
+      "status": "ready",
+      "depends_on": [],
+      "executor": "planning_read_only",
+      "evidence": null,
+      "notes": "Planning only; no entity registration, funding, tax claim or donation receipt issuance authorized"
     }
   ]
 }
