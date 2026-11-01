@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-02",
+  "mode": "candidate_not_activated",
+  "tasks": [
+    {
+      "id": "SOLQ-001",
+      "title": "Preserve baseline 33 isolated PASS",
+      "status": "done",
+      "depends_on": [],
+      "evidence": "commit dc7a7ee",
+      "executor": "historical",
+      "no_rerun": true
+    },
+    {
+      "id": "SOLQ-002",
+      "title": "Preserve additional 30 isolated PASS",
+      "status": "done",
+      "depends_on": [
+        "SOLQ-001"
+      ],
+      "evidence": "commit 275753b",
+      "executor": "historical",
+      "no_rerun": true
+    },
+    {
+      "id": "SOLQ-003",
+      "title": "Verify independent runner smoke in GitHub Actions",
+      "status": "ready",
+      "depends_on": [],
+      "executor": "github_actions_manual_dispatch",
+      "evidence": null,
+      "requires_approval": false
+    },
+    {
+      "id": "SOLQ-004",
+      "title": "Verify official Supabase Pro backup coverage and isolated restore path",
+      "status": "blocked",
+      "depends_on": [],
+      "executor": "support_monitor",
+      "blocked_reason": "Await substantive Supabase support response to SU-533612",
+      "evidence": null
+    },
+    {
+      "id": "SOLQ-005",
+      "title": "Confirm real total Pro subscription and isolated test costs",
+      "status": "blocked",
+      "depends_on": [
+        "SOLQ-004"
+      ],
+      "executor": "billing_authorized",
+      "blocked_reason": "Need official pricing and access to account billing view",
+      "evidence": null
+    },
+    {
+      "id": "SOLQ-006",
+      "title": "Create full encrypted production backup with approved secure access",
+      "status": "blocked",
+      "depends_on": [
+        "SOLQ-004",
+        "SOLQ-005"
+      ],
+      "executor": "authorized_secure_worker",
+      "blocked_reason": "Safe full backup access and verified cost not established",
+      "evidence": null
+    },
+    {
+      "id": "SOLQ-007",
+      "title": "Restore actual backup in independent isolated environment and validate integrity",
+      "status": "blocked",
+      "depends_on": [
+        "SOLQ-006"
+      ],
+      "executor": "authorized_secure_worker",
+      "blocked_reason": "Full encrypted backup not yet available",
+      "evidence": null
+    },
+    {
+      "id": "SOLQ-008",
+      "title": "Validate real administrator login and final browser integration",
+      "status": "blocked",
+      "depends_on": [
+        "SOLQ-007"
+      ],
+      "executor": "authorized_secure_worker",
+      "blocked_reason": "Real admin session and isolated restored environment required",
+      "evidence": null
+    },
+    {
+      "id": "SOLQ-009",
+      "title": "Prepare final deployment approval request",
+      "status": "blocked",
+      "depends_on": [
+        "SOLQ-007",
+        "SOLQ-008"
+      ],
+      "executor": "work_review",
+      "blocked_reason": "Mandatory production-equivalent checks not PASS",
+      "evidence": null
+    },
+    {
+      "id": "SOLQ-010",
+      "title": "Deploy only after separate explicit authorization",
+      "status": "blocked",
+      "depends_on": [
+        "SOLQ-009"
+      ],
+      "executor": "authorized_deployer",
+      "blocked_reason": "No separate production deployment approval",
+      "evidence": null
+    }
+  ]
+}
