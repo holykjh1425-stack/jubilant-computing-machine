@@ -1,0 +1,18 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {restrictedFetch,checkReads} from './phase2-auth.mjs';
+const sdkPath=process.argv[2];if(!sdkPath)throw Error('PINNED_SDK_PATH_REQUIRED');
+const {createClient}=new Function(fs.readFileSync(sdkPath,'utf8')+';return supabase;')();
+const uid='22222222-2222-4222-8222-222222222222';const audit=[];
+const token=[{alg:'HS256',typ:'JWT'},{sub:uid,exp:Math.floor(Date.now()/1000)+300},{}].map(v=>Buffer.from(JSON.stringify(v)).toString('base64url')).join('.');
+const f=restrictedFetch(async(input,o)=>{const u=new URL(input);audit.push(o.method+' '+u.pathname);
+ if(u.pathname==='/auth/v1/token')return Response.json({access_token:token,token_type:'bearer',expires_in:300,refresh_token:'synthetic-not-secret',user:{id:uid,aud:'authenticated'}});
+ if(u.pathname==='/auth/v1/user')return Response.json({id:uid,aud:'authenticated'});
+ if(u.pathname==='/rest/v1/admin_users')return Response.json({user_id:uid});
+ if(o.method==='HEAD')return new Response(null,{status:200,headers:{'Content-Range':'*/9'}});
+ if(u.pathname==='/functions/v1/nexus-orchestrator')return Response.json({paid_calls:0,external_execution_enabled:false});
+ if(u.pathname==='/auth/v1/logout')return new Response(null,{status:204});throw Error('UNEXPECTED');
+});
+const db=createClient('https://elfacqmvygnwjlklqhiz.supabase.co','sb_publishable_synthetic',{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false},global:{fetch:f}});
+const r=await db.auth.signInWithPassword({email:'synthetic@example.invalid',password:'SYNTHETIC'});assert.ifError(r.error);
+assert.equal((await checkReads(db)).edge_capabilities,true);assert.ifError((await db.auth.signOut({scope:'local'})).error);
+fs.writeFileSync(new URL('phase2-sdk-results.json',import.meta.url),JSON.stringify({pinned_sdk:'2.118.0',environment:'real pinned SDK against synthetic fetch transport only',passed:true,requests:audit,actual_auth:false,actual_api_calls:0,session_end_mock_passed:true},null,2));
+console.log('PASS pinned SDK with synthetic transport only');
