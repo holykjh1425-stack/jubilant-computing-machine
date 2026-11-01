@@ -12,3 +12,8 @@ alter table public.applications enable row level security;
 revoke all on public.applications from public,anon,authenticated;
 grant select on public.applications to authenticated;
 create policy admin_read on public.applications for select to authenticated using(exists(select 1 from public.admin_users where user_id=(select auth.uid())));
+-- Same admin-membership UPDATE predicate observed in the existing operating policy.
+grant update(status) on public.applications to authenticated;
+create policy admin_update on public.applications for update to authenticated
+ using(exists(select 1 from public.admin_users where user_id=(select auth.uid())))
+ with check(exists(select 1 from public.admin_users where user_id=(select auth.uid())));

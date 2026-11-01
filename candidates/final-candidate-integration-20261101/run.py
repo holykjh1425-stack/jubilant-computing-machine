@@ -50,13 +50,13 @@ sql('alter table public.production_jobs add column production_approved_at timest
 # Exact existing candidate SQL bytes; no function stub is used for record/ledger/guard/approve.
 for path in ['ops/free-plan-automation/quote-evidence.sql','ops/admin-integration-candidate/quote-deposit-guard.sql','ops/free-plan-automation/production-gates.sql']:
  sql(pathlib.Path(path).read_text())
-sql("grant execute on function nexus_production_private.approve(uuid) to authenticated;create function public.solq_test_approve(p_application uuid) returns jsonb language sql security invoker set search_path='' as $$select nexus_production_private.approve(p_application)$$;revoke all on function public.solq_test_approve(uuid) from public,anon,service_role;grant execute on function public.solq_test_approve(uuid) to authenticated;")
+sql("grant execute on function nexus_production_private.approve(uuid) to authenticated;create function public.solq_approve_production(p_application uuid) returns jsonb language sql security invoker set search_path='' as $$select nexus_production_private.approve(p_application)$$;revoke all on function public.solq_approve_production(uuid) from public,anon,service_role;grant execute on function public.solq_approve_production(uuid) to authenticated;")
 app='aaaaaaaa-1111-4111-8111-000000000001';app2='aaaaaaaa-1111-4111-8111-000000000002'
 sql("insert into admin_users values('"+actor+"');insert into applications(id,receipt_number,service_type,description) values('"+app+"','NX-20261101-A0000001','ai_automation','synthetic quote flow'),('"+app2+"','NX-20261101-A0000002','ai_automation','synthetic rollback');insert into production_jobs(application_id,receipt_number,service_type,provider,plan) select id,receipt_number,service_type,'codex','{}'::jsonb from applications;notify pgrst,'reload schema';")
 time.sleep(2)
 edge='/functions/v1/solq-local-plan'
 def call(action,extra=None,t=token,application=app):return http(edge,body={'action':action,'application_id':application,**(extra or {})},token=t)
-def approve(application=app,t=token):return http('/rest/v1/rpc/solq_test_approve',body={'p_application':application},token=t)
+def approve(application=app,t=token):return http('/rest/v1/rpc/solq_approve_production',body={'p_application':application},token=t)
 def idle(application=app):return sql("select status||':'||(production_approved_at is null)::text||':'||attempt_count::text from production_jobs where application_id='"+application+"';")=='awaiting_deposit:true:0'
 check('candidate Edge rejects authenticated nonadmin list',call('list',t=other)[0]==403)
 check('candidate Edge rejects missing session',call('list',t=None)[0]==401)
@@ -87,9 +87,12 @@ check('manual confirmation requires explicit bank review',call('confirm_deposit'
 code,confirm=call('confirm_deposit',{'quote_id':qid,'deposit_id':dep['id'],'bank_verified':True})
 check('manual confirmation persists separately and still does not approve',code==200 and idle())
 check('candidate exposes manual-confirmed versus application-status prerequisite',approve()[0]>=400 and idle())
-# Existing application manual status operation is a separate fixture prerequisite.
-# The current confirmation candidate does not set applications.status itself.
-sql("update applications set status='deposit_confirmed' where id='"+app+"';")
+# Same authenticated PostgREST compare-and-set operation as the existing admin candidate.
+# The existing manual bank-status step remains separate from evidence confirmation.
+code,_=http('/rest/v1/applications?id=eq.'+app+'&status=eq.received',method='PATCH',body={'status':'deposit_confirmed'},token=other)
+check('real PostgREST RLS prevents nonadmin bank-status update',sql("select status from applications where id='"+app+"';")=='received')
+code,_=http('/rest/v1/applications?id=eq.'+app+'&status=eq.received',method='PATCH',body={'status':'deposit_confirmed'},token=token)
+check('real admin JWT PostgREST manual bank-status update persists',code in (200,204) and sql("select status from applications where id='"+app+"';")=='deposit_confirmed' and idle())
 code,approved=approve()
 check('separate approval after all evidence and manual status succeeds',code==200 and approved.get('approved')is True and approved.get('duplicate')is False)
 code,again=approve()
