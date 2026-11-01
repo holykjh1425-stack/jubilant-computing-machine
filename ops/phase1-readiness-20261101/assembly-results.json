@@ -1,0 +1,9 @@
+{
+  "offline_only": true,
+  "protected_files_equal": true,
+  "protected_file_count": 30,
+  "dependencies_complete": true,
+  "server_worker_modified": false,
+  "database_modified": false,
+  "production_deployed": false
+}
