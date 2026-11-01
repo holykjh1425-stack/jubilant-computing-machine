@@ -1,0 +1,147 @@
+{
+  "sourceCommit": "77c1356ae906d5970373c541903317b951ca465c",
+  "timestampUtc": "2026-11-01T11:53:47Z",
+  "pass": 30,
+  "fail": 0,
+  "checks": [
+    {
+      "name": "candidate Edge rejects authenticated nonadmin list",
+      "status": "PASS"
+    },
+    {
+      "name": "candidate Edge rejects missing session",
+      "status": "PASS"
+    },
+    {
+      "name": "candidate Edge rejects unapproved origin",
+      "status": "PASS"
+    },
+    {
+      "name": "candidate quote list is read only before records",
+      "status": "PASS"
+    },
+    {
+      "name": "separate approval denies missing quote and deposit",
+      "status": "PASS"
+    },
+    {
+      "name": "actual candidate Edge Auth RPC persists issued quote",
+      "status": "PASS"
+    },
+    {
+      "name": "candidate rejects mismatched quotation evidence",
+      "status": "PASS"
+    },
+    {
+      "name": "candidate record failure rolls back evidence and job linkage",
+      "status": "PASS"
+    },
+    {
+      "name": "four real candidate Edge evidence requests persist one acceptance",
+      "status": "PASS"
+    },
+    {
+      "name": "accepted evidence is linked to correct production job",
+      "status": "PASS"
+    },
+    {
+      "name": "acceptance alone cannot approve production",
+      "status": "PASS"
+    },
+    {
+      "name": "deposit notice persists independently without approval",
+      "status": "PASS"
+    },
+    {
+      "name": "deposit notice does not count as bank confirmation",
+      "status": "PASS"
+    },
+    {
+      "name": "manual confirmation requires explicit bank review",
+      "status": "PASS"
+    },
+    {
+      "name": "manual confirmation persists separately and still does not approve",
+      "status": "PASS"
+    },
+    {
+      "name": "candidate exposes manual-confirmed versus application-status prerequisite",
+      "status": "PASS"
+    },
+    {
+      "name": "real PostgREST RLS prevents nonadmin bank-status update",
+      "status": "PASS"
+    },
+    {
+      "name": "real admin JWT PostgREST manual bank-status update persists",
+      "status": "PASS"
+    },
+    {
+      "name": "separate approval after all evidence and manual status succeeds",
+      "status": "PASS"
+    },
+    {
+      "name": "repeat separate approval reuses same queued job",
+      "status": "PASS"
+    },
+    {
+      "name": "approval queues without starting provider or consuming attempts",
+      "status": "PASS"
+    },
+    {
+      "name": "quote replacement denied after approval",
+      "status": "PASS"
+    },
+    {
+      "name": "candidate combined evidence list matches persisted records",
+      "status": "PASS"
+    },
+    {
+      "name": "actual candidate RLS hides solq_quote_acceptances from nonadmin",
+      "status": "PASS"
+    },
+    {
+      "name": "actual candidate RLS hides solq_issued_quotes from nonadmin",
+      "status": "PASS"
+    },
+    {
+      "name": "actual candidate RLS hides solq_deposit_evidence from nonadmin",
+      "status": "PASS"
+    },
+    {
+      "name": "actual candidate RLS hides solq_deposit_confirmations from nonadmin",
+      "status": "PASS"
+    },
+    {
+      "name": "actual candidate RLS hides production_jobs from nonadmin",
+      "status": "PASS"
+    },
+    {
+      "name": "candidate direct authenticated ledger write is denied",
+      "status": "PASS"
+    },
+    {
+      "name": "unrelated synthetic application remains unapproved",
+      "status": "PASS"
+    }
+  ],
+  "environment": "real local Supabase Auth Deno Edge PostgREST PostgreSQL; synthetic base dependency fixture",
+  "reusedPrior33": true,
+  "operatingBackupRestored": false,
+  "operatingIdentityUsed": false,
+  "providerCalls": 0,
+  "actualApiUsd": 0,
+  "productionWrites": 0,
+  "candidateSqlHashes": {
+    "ops/free-plan-automation/quote-evidence.sql": "2909dc800f17783d3cd0748f4db51e0cb33813eef0324d4586fbdc4953ef140c",
+    "ops/admin-integration-candidate/quote-deposit-guard.sql": "f443260916296acefee2a437bfc98cc86845ab1812753b0c68e550a702cf9551",
+    "ops/free-plan-automation/production-gates.sql": "75ae7d01cda08251f4e5a5b2185369a7e1b3a81324fb27b1a93dc7f6e88aed15",
+    "supabase/functions/solq-quote-evidence/handler.mjs": "8ee90d3699093c63cd83098df77e7291bad61453fedd7c24bb3dd11a0cdad4b3"
+  },
+  "remaining": [
+    "full encrypted operating backup and isolated restore",
+    "coordinator durable production adapter",
+    "full current operating schema compatibility",
+    "manual bank confirmation must be followed by existing application deposit_confirmed status operation; current candidate confirmation alone does not set it"
+  ]
+}

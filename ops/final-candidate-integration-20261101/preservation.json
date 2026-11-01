@@ -1,0 +1,25 @@
+{
+  "before": {
+    "observed_at": "2026-11-01 11:46:39.27311+00",
+    "applications": 9,
+    "plans": 6,
+    "jobs": 7,
+    "app_fingerprint": "5eb1b2a76b05aea93f6ec8465bf9c176",
+    "plan_fingerprint": "266dbe595afcdefde7de8cd9d1729f74",
+    "job_fingerprint": "450b7d67f0be40d970566d2b7f639b31",
+    "rls_fingerprint": "3d2b63bb2792bcf0beb649f13a713437"
+  },
+  "after": {
+    "observed_at": "2026-11-01 11:54:53.744454+00",
+    "applications": 9,
+    "plans": 6,
+    "jobs": 7,
+    "app_fingerprint": "5eb1b2a76b05aea93f6ec8465bf9c176",
+    "plan_fingerprint": "266dbe595afcdefde7de8cd9d1729f74",
+    "job_fingerprint": "450b7d67f0be40d970566d2b7f639b31",
+    "rls_fingerprint": "3d2b63bb2792bcf0beb649f13a713437"
+  },
+  "match": true,
+  "operatingDml": 0,
+  "operatingDdl": 0
+}
