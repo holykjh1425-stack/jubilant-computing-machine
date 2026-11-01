@@ -31,7 +31,7 @@ def http(path,method='GET',body=None,token=None,admin=False):
 checks=[]
 def check(name,condition):
  if not condition:raise RuntimeError('CHECK_FAILED: '+name)
- checks.append({'name':name,'status':'PASS'})
+ checks.append({'name':name,'status':'PASS'});print('CHECK_PASS '+name,flush=True)
 users=[]
 for n in range(2):
  email=f'solq-synthetic-{uuid.uuid4().hex}@example.invalid'
@@ -80,7 +80,8 @@ from concurrent.futures import ThreadPoolExecutor
 with ThreadPoolExecutor(max_workers=8) as pool:
  responses=list(pool.map(lambda _:http('/functions/v1/solq-local-plan','POST',{'applicationId':pending},token),range(8)))
 check('8 authenticated concurrent Edge requests create one linked pair after rollback',all(c==200 for c,_ in responses) and len({(d['planId'],d['jobId']) for _,d in responses})==1 and sum(not d['reused'] for _,d in responses)==1)
-check('PostgreSQL final two applications have two unique linked pairs',sql('select (select count(*) from solq_local_plans)::text||','||(select count(*) from solq_local_jobs)::text;')=='2,2')
-for _,t in users:http('/auth/v1/logout','POST',{},t)
-report={'timestampUtc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'environment':'ephemeral GitHub runner local Supabase CLI 2.122.0; internal Docker network; loopback published ports only','pass':len(checks),'fail':0,'checks':checks,'realLocalSupabaseAuth':True,'realLocalDenoEdge':True,'realPostgrestRls':True,'realPostgresStorage':True,'syntheticAuthUsers':2,'productionIdentityUsed':False,'newPasswordsCreatedByTest':0,'newApiKeysCreatedByTest':0,'authenticationMethod':'official local passwordless magiclink; not operating admin login','operatingProjectAccessed':False,'providerCalls':0,'actualApiUsd':0,'priorTestsRerun':False,'hostedDeployment':False}
+check('PostgreSQL final two applications have two unique linked pairs',sql("select (select count(*) from solq_local_plans)::text||','||(select count(*) from solq_local_jobs)::text;")=='2,2')
+for n,(_,t) in enumerate(users):
+ code,_=http('/auth/v1/logout','POST',{},t);check('local Auth session logout request '+str(n+1),code in (200,204))
+report={'sourceCommit':os.environ.get('GITHUB_SHA'),'timestampUtc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'environment':'ephemeral GitHub runner local Supabase CLI 2.122.0; internal Docker network; direct internal service routes; no published ports','pass':len(checks),'fail':0,'checks':checks,'realLocalSupabaseAuth':True,'realLocalDenoEdge':True,'realPostgrestRls':True,'realPostgresStorage':True,'syntheticAuthUsers':2,'productionIdentityUsed':False,'newPasswordsCreatedByTest':0,'newApiKeysCreatedByTest':0,'authenticationMethod':'official local passwordless magiclink; not operating admin login','operatingProjectAccessed':False,'providerCalls':0,'actualApiUsd':0,'priorTestsRerun':False,'hostedDeployment':False}
 pathlib.Path('tests/local-supabase/results.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))

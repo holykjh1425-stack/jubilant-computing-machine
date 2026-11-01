@@ -2,7 +2,7 @@ name: SOLQ actual isolated passwordless Auth RLS Edge integration
 on:
   push:
     branches: [dev/solq-environment-recovery-20261101]
-    paths: [.github/workflows/solq-protected-recovery.yml, candidates/environment-recovery-20261101/start.py]
+    paths: [.github/workflows/solq-protected-recovery.yml, candidates/environment-recovery-20261101/start.py, candidates/environment-recovery-20261101/run-passwordless.py, candidates/environment-recovery-20261101/index-passwordless.ts]
 permissions:
   contents: read
 concurrency:
