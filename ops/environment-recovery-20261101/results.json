@@ -1,0 +1,86 @@
+{
+  "sourceCommit": "7d1ab9201fc7953deacac73449fc665889c9f689",
+  "runId": 41294048029,
+  "jobId": 124811055029,
+  "runUrl": "https://github.com/holykjh1425-stack/jubilant-computing-machine/actions/runs/41294048029",
+  "steps": [
+    {
+      "name": "Set up job",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Install existing pinned official CLI",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Prepare isolated local synthetic stack",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Start once and record sanitized bootstrap diagnostics",
+      "status": "completed",
+      "conclusion": "failure"
+    },
+    {
+      "name": "Actual Auth RLS Edge persistence rollback and recovery",
+      "status": "completed",
+      "conclusion": "skipped"
+    },
+    {
+      "name": "Destroy only this run local stack",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Post Run actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "Complete job",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "sanitizedEvidence": [
+    "2026-11-01T09:39:59.4189920Z SANITIZED_STARTUP_DIAGNOSTIC [\"failed to connect to postgres: failed to connect to `host=127.0.0.1 user=postgres database=postgres`: dial error (connect ECONNREFUSED 127.0.0.1:54322)\", \"Try rerunning the command with --debug to troubleshoot the error.\"]",
+    "2026-11-01T09:39:59.4191710Z LOCAL_CONTAINER_STATES ",
+    "2026-11-01T09:39:59.4899020Z ##[error]Process completed with exit code 1.",
+    "2026-11-01T09:40:00.0168373Z LOCAL_STACK_CLEANED; no credentials or raw auth responses exported"
+  ],
+  "preservation": {
+    "beforeKst": "2026-11-01 18:39:15",
+    "afterUtc": "2026-11-01 09:41:11.403907+00",
+    "beforeCounts": [
+      9,
+      6,
+      7
+    ],
+    "afterCounts": [
+      9,
+      6,
+      7
+    ],
+    "allFingerprintsMatch": true
+  },
+  "actualAuth": "UNVERIFIED_SKIPPED",
+  "actualRls": "UNVERIFIED_SKIPPED",
+  "actualEdge": "UNVERIFIED_SKIPPED",
+  "actualPostgresAtomicity": "UNVERIFIED_SKIPPED",
+  "fullEncryptedBackup": "NOT_EXECUTED_CREDENTIAL_PATH_AND_SUPPORT_GUIDANCE_UNRESOLVED",
+  "fullIsolatedRestore": "NOT_EXECUTED_NO_COMPLETE_BACKUP",
+  "providerCalls": 0,
+  "productionChanges": 0,
+  "workflowReruns": 0,
+  "localTemporaryCleanup": "PASS",
+  "supportTicket": "SU-533612",
+  "supportSubstantiveReply": false
+}
