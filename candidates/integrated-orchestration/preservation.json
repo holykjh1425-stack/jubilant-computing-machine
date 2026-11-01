@@ -1,0 +1,33 @@
+{
+  "beforeUtc": "2026-11-01 05:59:23.013309+00",
+  "afterUtc": "2026-11-01 06:01:42.664788+00",
+  "before": {
+    "applications": 9,
+    "plans": 6,
+    "jobs": 7
+  },
+  "after": {
+    "applications": 9,
+    "plans": 6,
+    "jobs": 7
+  },
+  "contentFingerprintsMatch": true,
+  "scheduleFingerprintsMatch": true,
+  "jobStates": [
+    {
+      "n": 7,
+      "status": "awaiting_approval"
+    }
+  ],
+  "metadataOnly": true,
+  "productionDml": 0,
+  "productionDdl": 0,
+  "paidCalls": 0,
+  "linkedShapes": {
+    "explicitNullBoth": 5,
+    "legacyPlanKeyResolvable": 4,
+    "unresolved": 1,
+    "multipleJobsApplicationGroups": 2
+  },
+  "interpretation": "Different explicit/legacy-link definitions; historical discrepancy unresolved, not proof of changes during this task."
+}

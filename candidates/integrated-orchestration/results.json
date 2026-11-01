@@ -1,0 +1,93 @@
+{
+  "timestampUtc": "2026-11-01T06:00:52.938Z",
+  "sourceHash": "c6f7742b5ad23c4ac5692eaa303d76a22b399cf489b2208e1f1b9dfc31795192",
+  "scope": "new coordinator only; synthetic transaction and identity adapters",
+  "checks": [
+    {
+      "name": "free first; complex candidate only; unknown manual",
+      "status": "PASS"
+    },
+    {
+      "name": "32 concurrent dispatches one linked pair one audit",
+      "status": "PASS"
+    },
+    {
+      "name": "repeat dispatch reuses stored pair",
+      "status": "PASS"
+    },
+    {
+      "name": "unauthorized identity creates nothing",
+      "status": "PASS"
+    },
+    {
+      "name": "tenant mismatch denied by server adapter",
+      "status": "PASS"
+    },
+    {
+      "name": "receipt collision rejected across applications",
+      "status": "PASS"
+    },
+    {
+      "name": "plan has six rule steps; creation and delivery not executed",
+      "status": "PASS"
+    },
+    {
+      "name": "partial pair storage failure rolls back",
+      "status": "PASS"
+    },
+    {
+      "name": "audit failure rolls back pair",
+      "status": "PASS"
+    },
+    {
+      "name": "commit uncertainty stops without automatic retry; later reconciliation",
+      "status": "PASS"
+    },
+    {
+      "name": "lost commit acknowledgement reuses durable pair after explicit reconciliation",
+      "status": "PASS"
+    },
+    {
+      "name": "known compute failure capped at two explicit dispatches",
+      "status": "PASS"
+    },
+    {
+      "name": "timeout halts free attempt without paid fallback",
+      "status": "PASS"
+    },
+    {
+      "name": "malformed six-step result never stored as completion",
+      "status": "PASS"
+    },
+    {
+      "name": "existing broken linkage preserved for manual review",
+      "status": "PASS"
+    },
+    {
+      "name": "Claude unapproved scope expired and even approved live transport blocked",
+      "status": "PASS"
+    },
+    {
+      "name": "three independent production conditions bound to quote and application",
+      "status": "PASS"
+    },
+    {
+      "name": "no real transport entry point even with valid evidence",
+      "status": "PASS"
+    },
+    {
+      "name": "audit excludes brief and credentials; rejected credential-like input",
+      "status": "PASS"
+    }
+  ],
+  "pass": 19,
+  "fail": 0,
+  "actualSupabaseAuth": false,
+  "actualRls": false,
+  "actualPostgres": false,
+  "actualEdgeRuntime": false,
+  "providerCalls": 0,
+  "actualUsd": 0,
+  "productionWrites": 0,
+  "previousTestsRepeated": false
+}
