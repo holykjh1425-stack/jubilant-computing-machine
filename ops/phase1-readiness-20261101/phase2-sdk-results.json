@@ -1,0 +1,18 @@
+{
+  "pinned_sdk": "2.118.0",
+  "environment": "real pinned SDK against synthetic fetch transport only",
+  "passed": true,
+  "requests": [
+    "POST /auth/v1/token",
+    "GET /auth/v1/user",
+    "GET /rest/v1/admin_users",
+    "HEAD /rest/v1/applications",
+    "HEAD /rest/v1/ai_work_plans",
+    "HEAD /rest/v1/orchestrator_jobs",
+    "POST /functions/v1/nexus-orchestrator",
+    "POST /auth/v1/logout"
+  ],
+  "actual_auth": false,
+  "actual_api_calls": 0,
+  "session_end_mock_passed": true
+}
