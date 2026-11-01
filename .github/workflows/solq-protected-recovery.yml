@@ -1,4 +1,4 @@
-name: SOLQ internal DB route repair only
+name: SOLQ actual isolated passwordless Auth RLS Edge integration
 on:
   push:
     branches: [dev/solq-environment-recovery-20261101]
@@ -33,8 +33,11 @@ jobs:
         run: |
           docker network create --internal --opt com.docker.network.bridge.host_binding_ipv4=127.0.0.1 "$SOLQ_STACK_NETWORK"
           python3 tests/local-supabase/setup.py
+          cp candidates/environment-recovery-20261101/index-passwordless.ts "$SOLQ_STACK_DIR/supabase/functions/solq-local-plan/index.ts"
       - name: Observe database bootstrap once before CLI rollback
         run: python3 candidates/environment-recovery-20261101/start.py
+      - name: Actual isolated passwordless Auth JWT admin_users RLS Edge atomic storage
+        run: python3 candidates/environment-recovery-20261101/run-passwordless.py
       - name: Destroy only this run local stack
         if: always()
         run: |
