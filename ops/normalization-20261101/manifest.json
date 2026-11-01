@@ -1,0 +1,44 @@
+{
+  "baseline_commit": "ab4d34c830669e69b57f0689588eb6a24b41f91e",
+  "source_commit": "b55ade9735854b946059080b905801e3f58890d3",
+  "overlay_files": [
+    "admin.html",
+    "admin.js",
+    "admin-base.css",
+    "admin-review.css",
+    "free-workflow.js",
+    "plan-view.js",
+    "quote-flow.js",
+    "quote-panel.js",
+    "icons/nexus-192.png"
+  ],
+  "new_overrides": [
+    "admin.html",
+    "admin.js"
+  ],
+  "protected_file_count": 30,
+  "protected_files_equal": true,
+  "server_free_cycle_changed": false,
+  "sql_excluded": [
+    "ops/free-generation-approval/approval-gate.sql"
+  ],
+  "sql_candidate_order": [
+    "ops/admin-integration-candidate/link-guard.sql",
+    "ops/free-plan-automation/quote-evidence.sql",
+    "ops/admin-integration-candidate/quote-deposit-guard.sql"
+  ],
+  "real_auth_edge_verified": false,
+  "full_backup_restore_verified": false,
+  "production_rollout_allowed": false,
+  "candidate_input_sha256": {
+    "admin.html": "d0e96b2f7ae6a6bfa879a240c9d9df99eeecc15e6b46748ba447323a25950c14",
+    "admin.js": "2ba1d36d0ee60d224d073df205e347636d89c07766ad2728d1e7fe84a04f82e3",
+    "admin-base.css": "2c8df3d67a6b52200abd624bdc0443aff3ad1223f5372936cf4f6ae6d55c9164",
+    "admin-review.css": "3f5b32d37d1e7489e80a9b180defa8f2ace166308f9be32a52d91bd1594932e2",
+    "free-workflow.js": "d9a60250ee54607244bca74d032545da19dd11418c33e566a9a21ef6a314d3cc",
+    "plan-view.js": "e0c8ede1d22f6877ecba30fd94b3c2c0357f198028f19a03e2217f0a17c2c7f8",
+    "quote-flow.js": "ba75120ec0577fb427a78e7aadbaec448f9688b2713e70498eea80704649e30c",
+    "quote-panel.js": "a32fefa7c86255dbc9f01efc195bde02948da8cb795a1395b11971e9a4332689",
+    "icons/nexus-192.png": "4b50ec4fe67319c136bb8da1ccefcccdf7c366fc99ee27b8c1e217178118d12d"
+  }
+}
