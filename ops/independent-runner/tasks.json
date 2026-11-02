@@ -10,7 +10,8 @@
       "depends_on": [],
       "evidence": "commit dc7a7ee",
       "executor": "historical",
-      "no_rerun": true
+      "no_rerun": true,
+      "owner": "GUARD"
     },
     {
       "id": "SOLQ-002",
@@ -21,7 +22,8 @@
       ],
       "evidence": "commit 275753b",
       "executor": "historical",
-      "no_rerun": true
+      "no_rerun": true,
+      "owner": "GUARD"
     },
     {
       "id": "SOLQ-003",
@@ -30,7 +32,8 @@
       "depends_on": [],
       "executor": "github_actions_manual_dispatch",
       "evidence": null,
-      "requires_approval": false
+      "requires_approval": false,
+      "owner": "ATLAS"
     },
     {
       "id": "SOLQ-004",
@@ -39,7 +42,8 @@
       "depends_on": [],
       "executor": "support_monitor",
       "blocked_reason": "Await substantive Supabase support response to SU-533612",
-      "evidence": null
+      "evidence": null,
+      "owner": "GUARD"
     },
     {
       "id": "SOLQ-005",
@@ -50,7 +54,8 @@
       ],
       "executor": "billing_authorized",
       "blocked_reason": "Need official pricing and access to account billing view",
-      "evidence": null
+      "evidence": null,
+      "owner": "FIN"
     },
     {
       "id": "SOLQ-006",
@@ -62,7 +67,8 @@
       ],
       "executor": "authorized_secure_worker",
       "blocked_reason": "Safe full backup access and verified cost not established",
-      "evidence": null
+      "evidence": null,
+      "owner": "GUARD"
     },
     {
       "id": "SOLQ-007",
@@ -73,7 +79,8 @@
       ],
       "executor": "authorized_secure_worker",
       "blocked_reason": "Full encrypted backup not yet available",
-      "evidence": null
+      "evidence": null,
+      "owner": "GUARD"
     },
     {
       "id": "SOLQ-008",
@@ -84,7 +91,8 @@
       ],
       "executor": "authorized_secure_worker",
       "blocked_reason": "Real admin session and isolated restored environment required",
-      "evidence": null
+      "evidence": null,
+      "owner": "GUARD"
     },
     {
       "id": "SOLQ-009",
@@ -96,7 +104,8 @@
       ],
       "executor": "work_review",
       "blocked_reason": "Mandatory production-equivalent checks not PASS",
-      "evidence": null
+      "evidence": null,
+      "owner": "ATLAS"
     },
     {
       "id": "SOLQ-010",
@@ -107,22 +116,24 @@
       ],
       "executor": "authorized_deployer",
       "blocked_reason": "No separate production deployment approval",
-      "evidence": null
+      "evidence": null,
+      "owner": "CORE"
     },
     {
       "id": "SOLQ-011",
       "title": "Compare new R&D corporation setup, industry registration and KOITA lab recognition requirements",
-      "owner": "RND_LEGAL",
+      "owner": "INNO",
       "status": "ready",
       "depends_on": [],
       "executor": "planning_read_only",
       "evidence": null,
-      "notes": "Planning only; no entity registration, funding, tax claim or donation receipt issuance authorized"
+      "notes": "Planning only; no entity registration, funding, tax claim or donation receipt issuance authorized",
+      "reviewer": "FIN"
     },
     {
       "id": "SOLQ-012",
       "title": "Create confidential invention register, R&D project plans and evidence rules",
-      "owner": "RND_TECH",
+      "owner": "INNO",
       "status": "ready",
       "depends_on": [],
       "executor": "planning_read_only",
@@ -132,7 +143,7 @@
     {
       "id": "SOLQ-013",
       "title": "Model new R&D company startup costs, payroll, tax eligibility and funding scenarios",
-      "owner": "FINANCE",
+      "owner": "FIN",
       "status": "ready",
       "depends_on": [],
       "executor": "planning_read_only",
@@ -142,7 +153,7 @@
     {
       "id": "SOLQ-014",
       "title": "Verify existing church donation receipt eligibility, current supporting documents and separate accounting",
-      "owner": "NONPROFIT_COMPLIANCE",
+      "owner": "CARE",
       "status": "ready",
       "depends_on": [],
       "executor": "planning_read_only",
@@ -152,22 +163,25 @@
     {
       "id": "SOLQ-015",
       "title": "Design church restricted donation ledger, receipt reconciliation and conflict-of-interest checks",
-      "owner": "FINANCE",
+      "owner": "FIN",
       "status": "ready",
       "depends_on": [],
       "executor": "planning_read_only",
       "evidence": null,
-      "notes": "Planning only; no entity registration, funding, tax claim or donation receipt issuance authorized"
+      "notes": "Planning only; no entity registration, funding, tax claim or donation receipt issuance authorized",
+      "reviewer": "CARE"
     },
     {
       "id": "SOLQ-016",
       "title": "Define cross-worker owners, handoffs and atomic task claim implementation",
-      "owner": "COORDINATION",
+      "owner": "ATLAS",
       "status": "ready",
       "depends_on": [],
       "executor": "planning_read_only",
       "evidence": null,
       "notes": "Planning only; no entity registration, funding, tax claim or donation receipt issuance authorized"
     }
-  ]
+  ],
+  "coordinator": "ATLAS",
+  "worker_charter": "ops/independent-runner/SOLQ_COMMAND.md"
 }
