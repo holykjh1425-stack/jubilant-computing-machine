@@ -23,5 +23,7 @@ jobs:
         run: python3 -m unittest discover -s ops/independent-runner -p 'test_claim.py' -v
       - name: Mocked remote GitHub CAS client tests
         run: python3 -m unittest discover -s ops/independent-runner -p 'test_github_claim.py' -v
+      - name: Lease recovery and next-task tests
+        run: python3 -m unittest discover -s ops/independent-runner -p 'test_recovery.py' -v
       - name: Competing real processes in isolated runner
         run: python3 ops/independent-runner/test_process_race.py
