@@ -1,0 +1,8 @@
+.env
+.env.*
+!.env.example
+*.sqlite*
+*.log
+__pycache__/
+.runtime/
+secrets/
