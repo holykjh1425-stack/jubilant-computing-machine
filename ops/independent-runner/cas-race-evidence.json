@@ -1,5 +1,6 @@
 {
   "purpose": "disposable GitHub blob-SHA CAS test",
-  "status": "ready",
+  "status": "claimed",
+  "owner": "ATLAS-A",
   "production": false
 }
