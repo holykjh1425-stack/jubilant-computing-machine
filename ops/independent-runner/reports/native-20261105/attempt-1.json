@@ -1,0 +1,33 @@
+{
+  "sourceCommit": "949499db81b82709d9694778732019f92dfb8321",
+  "startedUtc": "2026-11-05T03:32:51Z",
+  "checks": [
+    {
+      "name": "docker network has no external routing",
+      "status": "PASS"
+    },
+    {
+      "name": "native PostgreSQL major version 17",
+      "status": "PASS"
+    }
+  ],
+  "migrations": [],
+  "productionAccess": false,
+  "productionWrites": 0,
+  "paidApiCalls": 0,
+  "operatingBackupCreated": false,
+  "operatingBackupRestored": false,
+  "previous100ChecksRerun": false,
+  "testAdaptersUsed": false,
+  "realPlatform": {
+    "postgresVersion": "17.11"
+  },
+  "remaining": [],
+  "fail": 1,
+  "pass": 2,
+  "failedStage": "preflight",
+  "failureType": "RuntimeError",
+  "failureReason": "local_command_failed_docker",
+  "finishedUtc": "2026-11-05T03:32:52Z",
+  "workflowRunUrl": "https://github.com/holykjh1425-stack/jubilant-computing-machine/actions/runs/41962089130"
+}

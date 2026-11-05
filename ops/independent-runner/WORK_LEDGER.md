@@ -34,3 +34,10 @@ This ledger is a **candidate**, not a live autonomous Work scheduler. GitHub is 
 
 ## How a new worker continues
 Read `ops/independent-runner/WORK_LEDGER.md` and `ops/independent-runner/tasks.json`. Inspect evidence and the last recorded run; choose the first eligible `ready` task. Respect `blocked` tasks and do not repeat completed checks. Report a concise summary and persist evidence before exit.
+
+## 2026-11-05 native checkpoint
+- Tested commit `6c92b6f90f56e9a48a0725b0cc7b6b0f1e37e6b8`: real local Supabase Postgres 17.11 / Auth / JWT / PostgREST / Deno Edge, genuine extensions and eleven unmodified historical SQL files. Final run 51 PASS, 0 FAIL. Prior 37/63 checks not invoked or added to this count.
+- Run: https://github.com/holykjh1425-stack/jubilant-computing-machine/actions/runs/41964719969 . Eight independent overlapping database connections, real signed-JWT rejection/expiry and synthetic approval workflow verified. Disposable stack cleanup succeeded.
+- Restricted RPC owner could not use the managed Auth schema; the native-tested candidate now uses verified PostgREST role claims without widening Auth-schema access. Non-superuser ownership-transfer prerequisites corrected. No operational changes made.
+- Counts 9/6/7 and content fingerprints unchanged; operating Advisor WARN 7 remains. Whole encrypted operating backup, protected actual restore, default-ACL/provider review, native rollback and final PC/mobile gates are not complete. Overall NO-GO.
+- Details and all seven attempt records: `ops/independent-runner/reports/ATLAS-20261105-native-platform.md`, `ops/independent-runner/reports/native-20261105/`. The public CI environment is synthetic-only and must not receive actual customer backups.
