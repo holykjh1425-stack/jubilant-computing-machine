@@ -9,8 +9,7 @@ create schema solq_rpc_private;
 revoke all on schema solq_rpc_private from public;
 grant usage on schema solq_rpc_private to anon,authenticated,solq_public_rpc_owner;
 grant create on schema solq_rpc_private to solq_public_rpc_owner;
-grant usage on schema public,auth to solq_public_rpc_owner;
-grant execute on function auth.uid(),auth.role(),auth.jwt() to solq_public_rpc_owner;
+grant usage on schema public to solq_public_rpc_owner;
 grant insert(customer_name,contact,service_type,description,privacy_consent,status,internal_note),select(receipt_number) on public.applications to solq_public_rpc_owner;
 create policy solq_rpc_owner_insert_application on public.applications for insert to solq_public_rpc_owner with check(privacy_consent=true and status='received' and internal_note is null);
 create policy solq_rpc_owner_receipt on public.applications for select to solq_public_rpc_owner using(true);
@@ -25,7 +24,8 @@ CREATE OR REPLACE FUNCTION solq_rpc_private.submit_application(p_customer_name t
 AS $function$
 declare v_receipt text;
 begin
- if coalesce(auth.role(),'') not in ('anon','authenticated') then raise exception 'Unauthorized' using errcode='42501'; end if;
+ -- PostgREST supplies these verified request claims; no privilege on managed Auth schemas is required.
+ if coalesce(nullif(current_setting('request.jwt.claim.role',true),''),nullif(current_setting('request.jwt.claims',true),'')::jsonb->>'role','') not in ('anon','authenticated') then raise exception 'Unauthorized' using errcode='42501'; end if;
  if p_privacy_consent is distinct from true
  or char_length(btrim(coalesce(p_customer_name,''))) not between 1 and 100
  or char_length(btrim(coalesce(p_contact,''))) not between 3 and 200

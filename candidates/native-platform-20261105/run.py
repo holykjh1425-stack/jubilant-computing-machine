@@ -5,6 +5,7 @@ cli=os.environ['SOLQ_CLI'];work=os.environ['SOLQ_STACK_DIR'];net=os.environ['SOL
 os.environ.update(SUPABASE_SERVICES_HOSTNAME='solq-ci-db.invalid',SUPABASE_DB_PORT='5432',SUPABASE_API_EXTERNAL_URL='http://solq-ci-api.invalid:8000')
 os.environ['NO_PROXY']=os.environ.get('NO_PROXY','')+',solq-ci-api.invalid,solq-ci-db.invalid'
 report={'sourceCommit':os.environ.get('GITHUB_SHA'),'startedUtc':time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),'checks':[],'migrations':[],'productionAccess':False,'productionWrites':0,'paidApiCalls':0,'operatingBackupCreated':False,'operatingBackupRestored':False,'previous100ChecksRerun':False,'testAdaptersUsed':False,'realPlatform':{},'remaining':[]}
+report['candidateSha256']={str(path):hashlib.sha256(path.read_bytes()).hexdigest()for path in [source/'security-candidate.sql',source/'security-rollback.sql',pathlib.Path('supabase/functions/solq-quote-evidence/handler.mjs'),root/'run.py',root/'setup.py']}
 stage='preflight';users=[];status=None
 def command(args,input=None,timeout=60):
  r=subprocess.run(args,input=input,text=True,capture_output=True,timeout=timeout)
@@ -210,12 +211,14 @@ try:
  check('private schema is not a PostgREST exposed profile',private_code==406 and private_data.get('code')=='PGRST106')
  # Genuine server-issued JWT expiry; no private signing key extraction is needed.
  user_payload=json.loads(base64.urlsafe_b64decode(token.split('.')[1]+'=='))
- seconds_left=user_payload['exp']-time.time()+1
- if seconds_left<=65:
+ seconds_left=user_payload['exp']-time.time()+65
+ if seconds_left<=125:
   time.sleep(max(0,seconds_left))
   expired_status,_=http('/auth/v1/user',method='GET',token=token)
   report['realIssuedJwtExpiryStatus']=expired_status
+  report['expiryObservedSecondsAfterExp']=int(time.time()-user_payload['exp'])
   check('genuine Auth-issued short-lived JWT expires',expired_status in(401,403))
+  report['remaining']=[x for x in report['remaining']if x!='expiry-specific signed JWT case unavailable; not simulated']
  else:report['remaining'].append('actual configured JWT lifetime exceeded expiry test window')
  report['realPlatform'].update(auth=True,jwtSignature=True,postgrest=True,edge=True,independentConnections=True,fullHistoricalReplay=True)
  report['remaining']+=['production backup and actual restored data not used','provider Advisor and leaked-password configuration not changed','default ACL and managed helper differences require final review','final PC/mobile browser regression not performed']

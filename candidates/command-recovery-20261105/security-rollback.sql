@@ -61,8 +61,7 @@ drop policy solq_rpc_owner_receipt on public.applications;
 drop policy solq_rpc_owner_insert_support on public.support_inquiries;
 drop policy solq_rpc_owner_read_support on public.support_inquiries;
 revoke all on public.applications,public.support_inquiries from solq_public_rpc_owner;
-revoke all on schema public,auth,solq_rpc_private from solq_public_rpc_owner;
-revoke all on function auth.uid(),auth.role(),auth.jwt() from solq_public_rpc_owner;
+revoke all on schema public,solq_rpc_private from solq_public_rpc_owner;
 drop schema solq_rpc_private;
 drop role solq_public_rpc_owner;
 -- Restores the exact confirmed ancillary rights; reviewed rollback only, not recommended final security state.
