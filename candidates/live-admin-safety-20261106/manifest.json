@@ -1,0 +1,13 @@
+{
+  "baselineSitesCommit": "ab4d34c830669e69b57f0689588eb6a24b41f91e",
+  "baseAdminSha256": "3cb27136c367752fb6c516967bab71355ffa58d72fb593da16678ff3cfd270ee",
+  "files": {
+    "icon.svg": "caf62ce1fadd1eb62bfe8e0fda450e66ec1024da7067dd4212d048dc0f286aaf",
+    "styles.css": "2c8df3d67a6b52200abd624bdc0443aff3ad1223f5372936cf4f6ae6d55c9164",
+    "admin.html": "a8967e5303ecb7593af81d885991ef30899d4f8e4bfe71ebe1d486279fd14af9",
+    "plan-view.js": "e0c8ede1d22f6877ecba30fd94b3c2c0357f198028f19a03e2217f0a17c2c7f8",
+    "admin.js": "5fdae518b830d451210da66d342bed0741f3a4353743949d70eb3ea01f1d1cd4",
+    "free-workflow.js": "d9a60250ee54607244bca74d032545da19dd11418c33e566a9a21ef6a314d3cc"
+  },
+  "productionChanged": false
+}
