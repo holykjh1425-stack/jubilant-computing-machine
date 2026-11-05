@@ -10,9 +10,11 @@ def command(args,input=None,timeout=60):
  r=subprocess.run(args,input=input,text=True,capture_output=True,timeout=timeout)
  if r.returncode:
   # Commands may contain local credentials in captured responses. Never print them.
-  raise RuntimeError('local_command_failed_'+pathlib.Path(args[0]).name)
+  match=re.search(r'(?:ERROR|FATAL):\s+([A-Z0-9]{5})\b',r.stderr)
+  raise RuntimeError('local_command_failed_'+pathlib.Path(args[0]).name+('_SQLSTATE_'+match.group(1)if match else''))
  return r.stdout.strip()
 def sql(q):return command(['docker','exec','-i','supabase_db_solq-local-ci','psql','-X','-qAt','-v','ON_ERROR_STOP=1','-v','VERBOSITY=sqlstate','-U','postgres','-d','postgres'],q)
+def adminsql(q):return command(['docker','exec','-i','supabase_db_solq-local-ci','psql','-X','-qAt','-v','ON_ERROR_STOP=1','-v','VERBOSITY=sqlstate','-U','supabase_admin','-d','postgres'],q)
 def check(name,ok):
  if not ok:raise RuntimeError('check_failed_'+name)
  report['checks'].append({'name':name,'status':'PASS'});print('PASS '+name,flush=True)
@@ -54,7 +56,11 @@ try:
  version=sql('show server_version;');check('native PostgreSQL major version 17',int(sql('show server_version_num;'))//10000==17)
  report['realPlatform']['postgresVersion']=version
  # Genuine pg_cron remains installed but never launches customer/provider jobs in CI.
- sql("alter system set cron.launch_active_jobs='off';select pg_reload_conf();")
+ report['localDatabaseRole']=sql("select current_user||':'||rolsuper::text from pg_roles where rolname=current_user;")
+ check('local Supabase administrative role exists',sql("select count(*) from pg_roles where rolname='supabase_admin' and rolsuper;")=='1')
+ adminsql("alter system set cron.launch_active_jobs='off';")
+ adminsql('select pg_reload_conf();')
+ time.sleep(.3)
  check('scheduler launch disabled before historical SQL replay',sql('show cron.launch_active_jobs;')=='off')
  stage='schema_replay'
  manifest=json.loads(source.joinpath('source-manifest.json').read_text())
@@ -62,9 +68,11 @@ try:
   check('history integrity '+item['file'],hashlib.sha256(source.joinpath('history',item['file']).read_bytes()).hexdigest()==item['sha256'])
  sql(source.joinpath('00-initial-schema.sql').read_text())
  for file in sorted(source.joinpath('history').glob('*.sql')):
+  stage='schema_'+file.name
   if file.name.startswith('20261026'):sql(source.joinpath('10-untracked-approval-prerequisites.sql').read_text())
   sql('begin;'+file.read_text()+'commit;');report['migrations'].append({'file':file.name,'status':'PASS','adapted':False})
  check('eleven unmodified historical SQL files applied using genuine extensions',len(report['migrations'])==11)
+ stage='schema_compare'
  catalog=json.loads(source.joinpath('production-catalog.json').read_text())
  access=json.loads(source.joinpath('access-metadata.json').read_text())
  # Reproduce captured live table/column/function ACLs only inside this empty native target.
