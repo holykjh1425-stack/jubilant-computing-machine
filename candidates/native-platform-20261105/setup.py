@@ -6,6 +6,7 @@ assert not existing,'do not reuse another stack'
 runpy.run_path('tests/local-supabase/setup.py',run_name='__main__')
 work=pathlib.Path(os.environ['SOLQ_STACK_DIR']);config=work/'supabase/config.toml'
 text=config.read_text();text=re.sub(r'(?m)^major_version\s*=.*$','major_version = 17',text)
+text=re.sub(r'(?m)^jwt_expiry\s*=.*$','jwt_expiry = 60',text)
 config.write_text(text);assert tomllib.loads(text)['db']['major_version']==17
 function=work/'supabase/functions/solq-local-plan'
 function.joinpath('index.ts').write_text(pathlib.Path('supabase/functions/solq-quote-evidence/index.ts').read_text())

@@ -119,8 +119,6 @@ try:
  for file in ['ops/free-plan-automation/quote-evidence.sql','ops/admin-integration-candidate/quote-deposit-guard.sql']:
   stage='candidate_'+pathlib.Path(file).stem
   sql('begin;'+pathlib.Path(file).read_text()+'commit;')
- stage='candidate_security'
- sql('begin;'+source.joinpath('security-candidate.sql').read_text()+'commit;')
  sql("notify pgrst,'reload schema';")
  time.sleep(2)
  stage='real_auth'
@@ -150,6 +148,11 @@ try:
  check('forged user metadata does not grant admin access',http('/rest/v1/admin_users?select=user_id',method='GET',token=nonadmin)==(200,[]))
  stage='intake_and_free_plan'
  code,data=http('/rest/v1/rpc/submit_application',body={'p_customer_name':'Synthetic native','p_contact':'000-test','p_service_type':'ai_automation','p_description':'문의 문구를 규칙으로 분류하고 표로 정리하는 합성 검증 요청입니다.','p_privacy_consent':True})
+ report['intakeHttpStatus']=code
+ if isinstance(data,dict):
+  report['intakeProviderCode']=data.get('code')
+  message=data.get('message','')
+  if re.fullmatch(r'(?:permission denied for (?:table|schema|function) [a-zA-Z_ ."]+|Unauthorized)',message):report['intakeSafeError']=message
  check('public RPC returns real receipt after DB insert',code==200 and bool(re.fullmatch(r'NX-\d{8}-[A-F0-9]{8}',data or'')))
  receipt=data
  code,items=http('/rest/v1/applications?select=id,receipt_number&receipt_number=eq.'+receipt,method='GET',token=token);check('real admin JWT reads matching receipt',code==200 and len(items)==1)
@@ -187,6 +190,12 @@ try:
  code,approved=approve();check('separate approval succeeds after all prerequisites',code==200 and approved.get('approved')is True)
  code,reused=approve();check('repeat approval reuses same job without execution',code==200 and reused.get('duplicate')is True and reused['job_id']==approved['job_id'] and sql('select count(*) from production_attempts;')=='0')
  stage='security'
+ sql('begin;'+source.joinpath('security-candidate.sql').read_text()+'commit;')
+ sql("notify pgrst,'reload schema';");time.sleep(1)
+ code,security_receipt=http('/rest/v1/rpc/submit_application',body={'p_customer_name':'Synthetic security','p_contact':'000-test','p_service_type':'consulting','p_description':'synthetic security intake','p_privacy_consent':True})
+ report['securityIntakeHttpStatus']=code
+ if isinstance(security_receipt,dict):report['securityIntakeProviderCode']=security_receipt.get('code')
+ check('native security candidate preserves public intake',code==200 and isinstance(security_receipt,str))
  check('public RPCs no longer use SECURITY DEFINER',sql("select count(*) from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname in ('submit_application','submit_support_inquiry','read_support_inquiry') and p.prosecdef;")=='0')
  check('management rights removed without intake regression',sql("select not has_table_privilege('anon','public.admin_users','TRUNCATE');")=='t')
  test_access='a'*64
@@ -195,6 +204,15 @@ try:
  code,answer=http('/rest/v1/rpc/read_support_inquiry',body={'p_id':inquiry,'p_access_token':test_access});check('native support returns only token-matched synthetic inquiry',code==200 and len(answer)==1)
  private_code,private_data=http('/rest/v1/',method='GET',token=token,profile='solq_rpc_private')
  check('private schema is not a PostgREST exposed profile',private_code==406 and private_data.get('code')=='PGRST106')
+ # Genuine server-issued JWT expiry; no private signing key extraction is needed.
+ user_payload=json.loads(base64.urlsafe_b64decode(token.split('.')[1]+'=='))
+ seconds_left=user_payload['exp']-time.time()+1
+ if seconds_left<=65:
+  time.sleep(max(0,seconds_left))
+  expired_status,_=http('/auth/v1/user',method='GET',token=token)
+  report['realIssuedJwtExpiryStatus']=expired_status
+  check('genuine Auth-issued short-lived JWT expires',expired_status in(401,403))
+ else:report['remaining'].append('actual configured JWT lifetime exceeded expiry test window')
  report['realPlatform'].update(auth=True,jwtSignature=True,postgrest=True,edge=True,independentConnections=True,fullHistoricalReplay=True)
  report['remaining']+=['production backup and actual restored data not used','provider Advisor and leaked-password configuration not changed','default ACL and managed helper differences require final review','final PC/mobile browser regression not performed']
  report['pass']=len(report['checks']);report['fail']=0
