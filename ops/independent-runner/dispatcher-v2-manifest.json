@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "mode": "candidate_not_activated",
+  "updated_at": "2026-11-05",
+  "directive_glob": "ops/independent-runner/directives/*.md",
+  "sources": [
+    "ops/independent-runner/orchestration-queue.json",
+    "ops/independent-runner/tasks.json"
+  ],
+  "transport": {
+    "type": "none",
+    "status": "NOT_CONFIGURED",
+    "reason": "No verified adapter to wake or dispatch separate ChatGPT worker conversations"
+  },
+  "ack_timeout_minutes_after_verified_delivery": 30,
+  "heartbeat_interval_minutes": 60,
+  "heartbeat_stale_minutes": 120,
+  "escalation": {
+    "method": "ATLAS report",
+    "automatic_monitor_enabled": false
+  },
+  "read_only": true,
+  "autodeploy": false,
+  "ready_for_approval": false,
+  "worker_dispatches": [],
+  "evidence": []
+}
