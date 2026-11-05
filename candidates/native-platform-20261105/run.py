@@ -1,4 +1,4 @@
-import os,json,pathlib,subprocess,urllib.request,urllib.error,time,uuid,hashlib,re,base64,hmac,traceback
+import os,json,pathlib,subprocess,urllib.request,urllib.error,time,uuid,hashlib,re,base64,hmac,threading
 from concurrent.futures import ThreadPoolExecutor
 root=pathlib.Path('candidates/native-platform-20261105');source=pathlib.Path('candidates/command-recovery-20261105')
 cli=os.environ['SOLQ_CLI'];work=os.environ['SOLQ_STACK_DIR'];net=os.environ['SOLQ_STACK_NETWORK']
@@ -133,14 +133,18 @@ try:
  actor,token=users[0];other,nonadmin=users[1]
  sql("insert into public.admin_users(user_id) values('"+actor+"');")
  check('actual Auth server verifies admin identity',http('/auth/v1/user',method='GET',token=token)[0]==200)
- check('tampered JWT signature rejected',http('/auth/v1/user',method='GET',token=token[:-5]+'aaaaa')[0]==401)
+ parts=token.split('.');parts[2]=('A'if parts[2][0]!='A'else'B')+parts[2][1:]
+ invalid_status,invalid_body=http('/auth/v1/user',method='GET',token='.'.join(parts))
+ report['tamperedJwtResult']={'httpStatus':invalid_status,'providerCode':invalid_body.get('code')if isinstance(invalid_body,dict)else None}
+ check('tampered JWT signature rejected',invalid_status in(401,403))
  header=json.loads(base64.urlsafe_b64decode(token.split('.')[0]+'=='))
  if header.get('alg')=='HS256' and status.get('JWT_SECRET'):
   payload=json.loads(base64.urlsafe_b64decode(token.split('.')[1]+'=='));payload['exp']=int(time.time())-120
   encode=lambda b:base64.urlsafe_b64encode(b).decode().rstrip('=')
   unsigned=token.split('.')[0]+'.'+encode(json.dumps(payload,separators=(',',':')).encode())
   expired=unsigned+'.'+encode(hmac.new(status['JWT_SECRET'].encode(),unsigned.encode(),hashlib.sha256).digest())
-  check('correctly signed expired local JWT rejected',http('/auth/v1/user',method='GET',token=expired)[0]==401)
+  expired_status,_=http('/auth/v1/user',method='GET',token=expired);report['expiredJwtHttpStatus']=expired_status
+  check('correctly signed expired local JWT rejected',expired_status in(401,403))
  else:report['remaining'].append('expiry-specific signed JWT case unavailable; not simulated')
  status=None
  check('forged user metadata does not grant admin access',http('/rest/v1/admin_users?select=user_id',method='GET',token=nonadmin)==(200,[]))
@@ -151,9 +155,13 @@ try:
  code,items=http('/rest/v1/applications?select=id,receipt_number&receipt_number=eq.'+receipt,method='GET',token=token);check('real admin JWT reads matching receipt',code==200 and len(items)==1)
  app=items[0]['id']
  check('ordinary user cannot read customer row',http('/rest/v1/applications?select=id',method='GET',token=nonadmin)==(200,[]))
- with ThreadPoolExecutor(max_workers=8)as pool:
-  pids=list(pool.map(lambda _:sql('select pg_backend_pid();'),range(8)))
- check('concurrency uses independent PostgreSQL connections',len(set(pids))==8)
+ barrier=threading.Barrier(8)
+ def simultaneous_connection(_):
+  barrier.wait(timeout=10)
+  return scalar_json("set application_name='solq_native_concurrency';select json_build_object('pid',pg_backend_pid(),'overlap',(select count(*) from pg_stat_activity where application_name='solq_native_concurrency' and state='active' and pid<>pg_backend_pid())) from pg_sleep(.3);")
+ with ThreadPoolExecutor(max_workers=8)as pool:pids=list(pool.map(simultaneous_connection,range(8)))
+ report['concurrentConnections']={'distinctBackends':len({p['pid']for p in pids}),'maxOtherActive':max(p['overlap']for p in pids)}
+ check('concurrency uses independent overlapping PostgreSQL connections',len({p['pid']for p in pids})==8 and max(p['overlap']for p in pids)>0)
  with ThreadPoolExecutor(max_workers=8)as pool:list(pool.map(lambda _:sql('select nexus_production_private.free_cycle();'),range(8)))
  check('parallel free cycles create one plan and one job',sql('select (select count(*) from ai_work_plans)::text||\',\'||(select count(*) from orchestrator_jobs)::text;')=='1,1')
  check('six real persisted stages retain approval wait',sql("select jsonb_array_length(plan->'steps') from ai_work_plans;")=='6' and sql('select status from orchestrator_jobs;')=='awaiting_approval')
