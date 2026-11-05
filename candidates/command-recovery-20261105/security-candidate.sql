@@ -3,9 +3,12 @@
 revoke truncate,references,trigger,maintain on public.admin_users from anon,authenticated;
 revoke maintain on public.applications from anon,authenticated;
 create role solq_public_rpc_owner nologin nosuperuser nocreatedb nocreaterole noinherit nobypassrls;
+-- The database operator must be able to transfer function ownership without SUPERUSER.
+grant solq_public_rpc_owner to postgres with set true;
 create schema solq_rpc_private;
 revoke all on schema solq_rpc_private from public;
 grant usage on schema solq_rpc_private to anon,authenticated,solq_public_rpc_owner;
+grant create on schema solq_rpc_private to solq_public_rpc_owner;
 grant usage on schema public,auth to solq_public_rpc_owner;
 grant execute on function auth.uid(),auth.role(),auth.jwt() to solq_public_rpc_owner;
 grant insert(customer_name,contact,service_type,description,privacy_consent,status,internal_note),select(receipt_number) on public.applications to solq_public_rpc_owner;
@@ -80,4 +83,5 @@ grant execute on function solq_rpc_private.read_support_inquiry(p_id uuid, p_acc
 create or replace function public.submit_application(p_customer_name text,p_contact text,p_service_type text,p_description text,p_privacy_consent boolean) returns text language sql security invoker set search_path='' as $$select solq_rpc_private.submit_application(p_customer_name,p_contact,p_service_type,p_description,p_privacy_consent)$$;
 create or replace function public.submit_support_inquiry(p_question text,p_language text,p_access_token text,p_consent boolean,p_transfer_consent boolean) returns uuid language sql security invoker set search_path='' as $$select solq_rpc_private.submit_support_inquiry(p_question,p_language,p_access_token,p_consent,p_transfer_consent)$$;
 create or replace function public.read_support_inquiry(p_id uuid,p_access_token text) returns table(question text,language text,answer text,created_at timestamptz,answered_at timestamptz) language sql stable security invoker set search_path='' as $$select * from solq_rpc_private.read_support_inquiry(p_id,p_access_token)$$;
+revoke create on schema solq_rpc_private from solq_public_rpc_owner;
 

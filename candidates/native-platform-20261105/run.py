@@ -20,6 +20,9 @@ def check(name,ok):
  report['checks'].append({'name':name,'status':'PASS'});print('PASS '+name,flush=True)
 def qi(s):return '"'+s.replace('"','""')+'"'
 def scalar_json(q):return json.loads(sql(q))
+class NoRedirect(urllib.request.HTTPRedirectHandler):
+ def redirect_request(self,req,fp,code,msg,headers,newurl):raise RuntimeError('redirect_forbidden')
+opener=urllib.request.build_opener(NoRedirect())
 def http(path,method='POST',body=None,token=None,admin=False,origin='https://solqtech.com',profile=None):
  assert path.startswith(('/auth/v1/','/rest/v1/','/functions/v1/'))
  headers={'apikey':anon,'content-type':'application/json','origin':origin}
@@ -29,7 +32,7 @@ def http(path,method='POST',body=None,token=None,admin=False,origin='https://sol
  if admin:headers.update(apikey=local_admin,authorization='Bearer '+local_admin)
  req=urllib.request.Request(base+path,headers=headers,method=method,data=None if body is None else json.dumps(body).encode())
  try:
-  with urllib.request.urlopen(req,timeout=20)as response:return response.status,json.loads(response.read()or b'{}')
+  with opener.open(req,timeout=20)as response:return response.status,json.loads(response.read()or b'{}')
  except urllib.error.HTTPError as error:
   try:data=json.load(error)
   except Exception:data={}
@@ -92,8 +95,31 @@ try:
  expected={normalize(x)for x in catalog['columns']};actual={normalize(x)for x in actual_columns}
  report['columnDiff']={'missing':len(expected-actual),'extra':len(actual-expected)}
  check('native columns match production application catalog',expected==actual)
+ schemas="('public','nexus_ai_private','nexus_orchestrator_private','nexus_production_private')"
+ queries={
+  'constraints':"select json_agg(json_build_object('schema',n.nspname,'table',c.relname,'name',con.conname,'type',con.contype,'definition',pg_get_constraintdef(con.oid))) from pg_constraint con join pg_class c on c.oid=con.conrelid join pg_namespace n on n.oid=c.relnamespace where n.nspname in "+schemas,
+  'indexes':"select json_agg(to_jsonb(i)) from pg_indexes i where schemaname in "+schemas,
+  'policies':"select json_agg(to_jsonb(p)) from pg_policies p where schemaname in "+schemas,
+  'triggers':"select json_agg(json_build_object('schema',n.nspname,'table',c.relname,'name',t.tgname,'definition',pg_get_triggerdef(t.oid),'enabled',t.tgenabled)) from pg_trigger t join pg_class c on c.oid=t.tgrelid join pg_namespace n on n.oid=c.relnamespace where not t.tgisinternal and n.nspname in "+schemas,
+  'tables':"select json_agg(json_build_object('schema',n.nspname,'table',c.relname,'rls',c.relrowsecurity,'force_rls',c.relforcerowsecurity,'owner',pg_get_userbyid(c.relowner),'acl',c.relacl)) from pg_class c join pg_namespace n on n.oid=c.relnamespace where c.relkind='r' and n.nspname in "+schemas,
+  'functions':"select json_agg(json_build_object('schema',n.nspname,'name',p.proname,'args',pg_get_function_identity_arguments(p.oid),'definition',pg_get_functiondef(p.oid),'owner',pg_get_userbyid(p.proowner),'acl',p.proacl)) from pg_proc p join pg_namespace n on n.oid=p.pronamespace where p.prokind='f' and n.nspname in "+schemas+" and p.proname<>'rls_auto_enable'"}
+ keys={'constraints':['schema','table','name','type','definition'],'indexes':['schemaname','tablename','indexname','indexdef'],'policies':['schemaname','tablename','policyname','roles','permissive','cmd','qual','with_check'],'triggers':['schema','table','name','definition','enabled'],'tables':['schema','table','rls','force_rls','owner','acl'],'functions':['schema','name','args','definition','owner','acl']}
+ report['structureDiff']={}
+ def normalized(item,names):
+  item={k:item.get(k)for k in names}
+  if item.get('acl')is not None:item['acl']=sorted(item['acl'])
+  return json.dumps(item,sort_keys=True,separators=(',',':'))
+ for kind,query in queries.items():
+  wanted=[x for x in catalog[kind]if x.get('name')!='rls_auto_enable']
+  found=scalar_json(query)or[]
+  want={normalized(x,keys[kind])for x in wanted};got={normalized(x,keys[kind])for x in found}
+  report['structureDiff'][kind]={'missing':len(want-got),'extra':len(got-want)}
+  # Keep exact differences visible; continue to functional checks rather than hiding platform drift.
+  print('STRUCTURE_COMPARE '+kind+' '+json.dumps(report['structureDiff'][kind]),flush=True)
  for file in ['ops/free-plan-automation/quote-evidence.sql','ops/admin-integration-candidate/quote-deposit-guard.sql']:
+  stage='candidate_'+pathlib.Path(file).stem
   sql('begin;'+pathlib.Path(file).read_text()+'commit;')
+ stage='candidate_security'
  sql('begin;'+source.joinpath('security-candidate.sql').read_text()+'commit;')
  sql("notify pgrst,'reload schema';")
  time.sleep(2)
@@ -155,6 +181,10 @@ try:
  stage='security'
  check('public RPCs no longer use SECURITY DEFINER',sql("select count(*) from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname in ('submit_application','submit_support_inquiry','read_support_inquiry') and p.prosecdef;")=='0')
  check('management rights removed without intake regression',sql("select not has_table_privilege('anon','public.admin_users','TRUNCATE');")=='t')
+ test_access='a'*64
+ code,inquiry=http('/rest/v1/rpc/submit_support_inquiry',body={'p_question':'synthetic native question','p_language':'ko','p_access_token':test_access,'p_consent':True,'p_transfer_consent':True});check('native public support submission remains available',code==200 and isinstance(inquiry,str))
+ code,answer=http('/rest/v1/rpc/read_support_inquiry',body={'p_id':inquiry,'p_access_token':'b'*64});check('native support rejects mismatched access token',code==200 and answer==[])
+ code,answer=http('/rest/v1/rpc/read_support_inquiry',body={'p_id':inquiry,'p_access_token':test_access});check('native support returns only token-matched synthetic inquiry',code==200 and len(answer)==1)
  private_code,private_data=http('/rest/v1/',method='GET',token=token,profile='solq_rpc_private')
  check('private schema is not a PostgREST exposed profile',private_code==406 and private_data.get('code')=='PGRST106')
  report['realPlatform'].update(auth=True,jwtSignature=True,postgrest=True,edge=True,independentConnections=True,fullHistoricalReplay=True)
