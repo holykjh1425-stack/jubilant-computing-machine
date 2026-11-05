@@ -1,0 +1,38 @@
+{
+  "comparisonCompletedUtc": "2026-11-05T03:09:17.856Z",
+  "before": {
+    "jobs": {
+      "count": 7,
+      "fingerprint": "cdf5a01b412ee35d7e718389c9c1d25e"
+    },
+    "plans": {
+      "count": 6,
+      "fingerprint": "e7642d2d1b7fd3667bede1a79f78568e"
+    },
+    "applications": {
+      "count": 9,
+      "fingerprint": "e881cecf41e029c88c7c4a644cdc357f"
+    },
+    "unlinked_jobs": 5,
+    "duplicate_plan_groups": 0
+  },
+  "after": {
+    "jobs": {
+      "count": 7,
+      "fingerprint": "cdf5a01b412ee35d7e718389c9c1d25e"
+    },
+    "plans": {
+      "count": 6,
+      "fingerprint": "e7642d2d1b7fd3667bede1a79f78568e"
+    },
+    "applications": {
+      "count": 9,
+      "fingerprint": "e881cecf41e029c88c7c4a644cdc357f"
+    },
+    "unlinked_jobs": 5,
+    "duplicate_plan_groups": 0
+  },
+  "unchanged": true,
+  "productionWritesByThisRun": 0,
+  "definitionCaveat": "unlinked_jobs means both direct FKs are NULL; this does not equal the historical logical-unlinked definition. No automatic relinking, deletion or cleanup was performed. Legacy idempotency-based link inference is not certified."
+}

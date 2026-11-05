@@ -25,5 +25,12 @@ This ledger is a **candidate**, not a live autonomous Work scheduler. GitHub is 
 - This ledger does not create a connection from scheduled ChatGPT automations to an existing Work session.
 - The first independent runner only does a credential-free smoke test.
 
+## 2026-11-05 recovery checkpoint
+- Base `045802e`; recovered eleven historical SQL bodies and missing initial/untracked approval prerequisites under `candidates/command-recovery-20261105/`.
+- New scope: 37 isolated PostgreSQL WASM checks PASS, including metadata comparison and synthetic quote/deposit/approval compatibility. The previous 33+30 checks were not run. This is not native PostgreSQL 17 or genuine Supabase Auth/Edge/concurrency PASS.
+- Operational counts and content fingerprints remained 9 applications / 6 plans / 7 jobs during the comparison. No production SQL writes, settings changes, deployment or main merge.
+- Real backup, protected restore, native platform integration and operational security application remain blocked. SU-536243 is the linked follow-up to SU-533612/SU-526318; the read thread only confirms specialized-team transfer.
+- Full report: `ops/independent-runner/reports/ATLAS-20261105-recovery-validation.md`. Overall NO-GO remains in effect. No existing task was falsely marked done and no extra paid runtime was created.
+
 ## How a new worker continues
 Read `ops/independent-runner/WORK_LEDGER.md` and `ops/independent-runner/tasks.json`. Inspect evidence and the last recorded run; choose the first eligible `ready` task. Respect `blocked` tasks and do not repeat completed checks. Report a concise summary and persist evidence before exit.

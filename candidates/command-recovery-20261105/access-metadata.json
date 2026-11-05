@@ -1,0 +1,189 @@
+{
+  "sequences": [
+    {
+      "schema": "public",
+      "name": "inquiry_events_id_seq",
+      "type": "bigint",
+      "start": "1",
+      "increment": "1",
+      "min": "1",
+      "max": "9223372036854775807",
+      "cache": "1",
+      "cycle": false
+    },
+    {
+      "schema": "public",
+      "name": "orchestrator_events_id_seq",
+      "type": "bigint",
+      "start": "1",
+      "increment": "1",
+      "min": "1",
+      "max": "9223372036854775807",
+      "cache": "1",
+      "cycle": false
+    },
+    {
+      "schema": "public",
+      "name": "production_events_id_seq",
+      "type": "bigint",
+      "start": "1",
+      "increment": "1",
+      "min": "1",
+      "max": "9223372036854775807",
+      "cache": "1",
+      "cycle": false
+    }
+  ],
+  "schema_acl": [
+    {
+      "acl": [
+        "postgres=UC/postgres",
+        "service_role=U/postgres"
+      ],
+      "name": "nexus_ai_private",
+      "owner": "postgres"
+    },
+    {
+      "acl": [
+        "postgres=UC/postgres",
+        "service_role=U/postgres"
+      ],
+      "name": "nexus_orchestrator_private",
+      "owner": "postgres"
+    },
+    {
+      "acl": [
+        "postgres=UC/postgres"
+      ],
+      "name": "nexus_private",
+      "owner": "postgres"
+    },
+    {
+      "acl": [
+        "postgres=UC/postgres",
+        "service_role=U/postgres",
+        "authenticated=U/postgres"
+      ],
+      "name": "nexus_production_private",
+      "owner": "postgres"
+    },
+    {
+      "acl": [
+        "pg_database_owner=UC/pg_database_owner",
+        "=U/pg_database_owner",
+        "postgres=U/pg_database_owner",
+        "anon=U/pg_database_owner",
+        "authenticated=U/pg_database_owner",
+        "service_role=U/pg_database_owner"
+      ],
+      "name": "public",
+      "owner": "pg_database_owner"
+    }
+  ],
+  "default_acl": [
+    {
+      "acl": [
+        "postgres=rwU/postgres"
+      ],
+      "type": "S",
+      "owner": "postgres",
+      "schema": "public"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres"
+      ],
+      "type": "f",
+      "owner": "postgres",
+      "schema": "public"
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "anon=Dxtm/postgres",
+        "authenticated=Dxtm/postgres",
+        "service_role=Dxtm/postgres"
+      ],
+      "type": "r",
+      "owner": "postgres",
+      "schema": "public"
+    },
+    {
+      "acl": [
+        "postgres=rwU/supabase_admin",
+        "anon=rwU/supabase_admin",
+        "authenticated=rwU/supabase_admin",
+        "service_role=rwU/supabase_admin"
+      ],
+      "type": "S",
+      "owner": "supabase_admin",
+      "schema": "public"
+    },
+    {
+      "acl": [
+        "postgres=X/supabase_admin",
+        "anon=X/supabase_admin",
+        "authenticated=X/supabase_admin",
+        "service_role=X/supabase_admin"
+      ],
+      "type": "f",
+      "owner": "supabase_admin",
+      "schema": "public"
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/supabase_admin",
+        "anon=arwdDxtm/supabase_admin",
+        "authenticated=arwdDxtm/supabase_admin",
+        "service_role=arwdDxtm/supabase_admin"
+      ],
+      "type": "r",
+      "owner": "supabase_admin",
+      "schema": "public"
+    }
+  ],
+  "column_grants": [
+    {
+      "acl": [
+        "authenticated=rw/postgres"
+      ],
+      "table": "support_inquiries",
+      "column": "answer"
+    },
+    {
+      "acl": [
+        "authenticated=rw/postgres"
+      ],
+      "table": "support_inquiries",
+      "column": "answered_at"
+    },
+    {
+      "acl": [
+        "authenticated=r/postgres"
+      ],
+      "table": "support_inquiries",
+      "column": "created_at"
+    },
+    {
+      "acl": [
+        "authenticated=r/postgres"
+      ],
+      "table": "support_inquiries",
+      "column": "id"
+    },
+    {
+      "acl": [
+        "authenticated=r/postgres"
+      ],
+      "table": "support_inquiries",
+      "column": "language"
+    },
+    {
+      "acl": [
+        "authenticated=r/postgres"
+      ],
+      "table": "support_inquiries",
+      "column": "question"
+    }
+  ]
+}
