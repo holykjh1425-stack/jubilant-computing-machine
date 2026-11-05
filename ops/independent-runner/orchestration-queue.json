@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-05",
+  "mode": "candidate_not_activated",
+  "directive_ref": "ops/independent-runner/directives/ATLAS-20261105-O1-O2-unblock-plan-order.md",
+  "protocol_ref": "ops/independent-runner/ORCHESTRATION_PROTOCOL.md",
+  "dispatch_status": "NOT_DISPATCHED",
+  "ack_sla_minutes_after_verified_delivery": 30,
+  "workers": [
+    {
+      "worker": "GUARD",
+      "state": "PENDING",
+      "delivery_status": "NOT_DISPATCHED",
+      "ack": null,
+      "accepted": null,
+      "run_id": null,
+      "lease_expires_at": null,
+      "evidence": [],
+      "reason": "No verified automatic worker delivery mechanism"
+    },
+    {
+      "worker": "CORE",
+      "state": "PENDING",
+      "delivery_status": "NOT_DISPATCHED",
+      "ack": null,
+      "accepted": null,
+      "run_id": null,
+      "lease_expires_at": null,
+      "evidence": [],
+      "reason": "No verified automatic worker delivery mechanism"
+    },
+    {
+      "worker": "AUTO",
+      "state": "PENDING",
+      "delivery_status": "NOT_DISPATCHED",
+      "ack": null,
+      "accepted": null,
+      "run_id": null,
+      "lease_expires_at": null,
+      "evidence": [],
+      "reason": "No verified automatic worker delivery mechanism"
+    },
+    {
+      "worker": "SENTINEL",
+      "state": "PENDING",
+      "delivery_status": "NOT_DISPATCHED",
+      "ack": null,
+      "accepted": null,
+      "run_id": null,
+      "lease_expires_at": null,
+      "evidence": [],
+      "reason": "No verified automatic worker delivery mechanism"
+    },
+    {
+      "worker": "FIN",
+      "state": "PENDING",
+      "delivery_status": "NOT_DISPATCHED",
+      "ack": null,
+      "accepted": null,
+      "run_id": null,
+      "lease_expires_at": null,
+      "evidence": [],
+      "reason": "No verified automatic worker delivery mechanism"
+    }
+  ],
+  "gates": [
+    {
+      "id": "Gate-1",
+      "status": "WAITING_OWNER",
+      "owner": "GUARD",
+      "reason": "Owner Backups screen and protected execution path unavailable"
+    },
+    {
+      "id": "Gate-2",
+      "status": "BLOCKED",
+      "owner": "GUARD",
+      "reason": "No full encrypted backup"
+    },
+    {
+      "id": "Gate-3",
+      "status": "BLOCKED",
+      "owner": "CORE",
+      "reason": "No verified isolated restore target"
+    },
+    {
+      "id": "Gate-4",
+      "status": "BLOCKED",
+      "owner": "GUARD",
+      "reason": "No real restore measurement"
+    },
+    {
+      "id": "Gate-5",
+      "status": "BLOCKED",
+      "owner": "SENTINEL",
+      "reason": "Security closure pending"
+    },
+    {
+      "id": "Gate-6",
+      "status": "BLOCKED",
+      "owner": "CORE",
+      "reason": "Actual device regression and rollback pending"
+    },
+    {
+      "id": "Gate-7",
+      "status": "BLOCKED",
+      "owner": "ATLAS",
+      "reason": "All required gates and separate Owner O3 approval pending"
+    }
+  ]
+}
