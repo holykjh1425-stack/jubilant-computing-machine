@@ -191,10 +191,14 @@ try:
  code,reused=approve();check('repeat approval reuses same job without execution',code==200 and reused.get('duplicate')is True and reused['job_id']==approved['job_id'] and sql('select count(*) from production_attempts;')=='0')
  stage='security'
  sql('begin;'+source.joinpath('security-candidate.sql').read_text()+'commit;')
+ report['restrictedOwnerPrivileges']=scalar_json("select json_build_object('authSchema',has_schema_privilege('solq_public_rpc_owner','auth','USAGE'),'authRoleExecute',has_function_privilege('solq_public_rpc_owner','auth.role()','EXECUTE'),'applicationInsertName',has_column_privilege('solq_public_rpc_owner','public.applications','customer_name','INSERT'),'applicationReceiptRead',has_column_privilege('solq_public_rpc_owner','public.applications','receipt_number','SELECT'),'privateSchemaCreate',has_schema_privilege('solq_public_rpc_owner','solq_rpc_private','CREATE'));")
  sql("notify pgrst,'reload schema';");time.sleep(1)
  code,security_receipt=http('/rest/v1/rpc/submit_application',body={'p_customer_name':'Synthetic security','p_contact':'000-test','p_service_type':'consulting','p_description':'synthetic security intake','p_privacy_consent':True})
  report['securityIntakeHttpStatus']=code
- if isinstance(security_receipt,dict):report['securityIntakeProviderCode']=security_receipt.get('code')
+ if isinstance(security_receipt,dict):
+  report['securityIntakeProviderCode']=security_receipt.get('code')
+  message=security_receipt.get('message','')
+  if re.fullmatch(r'(?:permission denied for (?:table|schema|function|sequence) [a-zA-Z_ ."]+|Unauthorized|new row violates row-level security policy for table "[a-zA-Z_]+")',message):report['securityIntakeSafeError']=message
  check('native security candidate preserves public intake',code==200 and isinstance(security_receipt,str))
  check('public RPCs no longer use SECURITY DEFINER',sql("select count(*) from pg_proc p join pg_namespace n on n.oid=p.pronamespace where n.nspname='public' and p.proname in ('submit_application','submit_support_inquiry','read_support_inquiry') and p.prosecdef;")=='0')
  check('management rights removed without intake regression',sql("select not has_table_privilege('anon','public.admin_users','TRUNCATE');")=='t')
