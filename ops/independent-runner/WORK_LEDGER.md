@@ -151,3 +151,61 @@ Owner's **single next step**: read the existing project's Database→Backups lis
 ### Completion and preservation
 This audit directly completed allowed reads and evidence reconciliation; separate workers remain NOT_DISPATCHED. Existing tasks/queue and unrelated business workers/automations untouched. No51/9 tests rerun, no new synthetic application, actual backup/restore0, operating data/schema/Auth/RLS/SSL/Vault/Edge/provider settings0 changes, main merge/deployment/rollback0, paid API0, new paid resources0, customer messages/support duplicate inquiries0. Additional payments incurred by this execution0; account invoices/overall usage not accessed, so total organization billing is NOT_VERIFIED.
 **Final platform-wide deployment decision: NO-GO. Existing v29 service stays active; separately CLOSED admin fix is not reopened.**
+
+## 2026-11-06 backup recovery unblock checkpoint — executor ATLAS
+
+**Scope:** Actual access and tool-path diagnostics, support response reconciliation, existing script static review, and evidence/status updates. Existing admin fix CLOSED/e4616c4 and operating v29 unchanged; global deployment NO-GO. Existing51PASS not run. Workers remain PENDING/NOT_DISPATCHED: this is direct ATLAS work.
+
+### What actually changed in the blocker evidence
+1. **Owner access diagnosed, not guessed:** existing browser inventory had0tabs. One authorized direct visit to official /dashboard/project/elfacqmvygnwjlklqhiz/database/backups/scheduled redirected to /dashboard/sign-in with returnTo pointing back to that page. Existing authenticated Owner session unavailable. This is an authentication-session blocker, not evidence of insufficient project permissions, disabled backups or a missing Pro entitlement. No login submission or password reset.
+2. **Substantive official answer found:** SU-536243 security-team reply timestamp **2026-11-05 16:16:25 UTC / 2026-11-06 01:16:25 KST**. Earlier SU-533612/SU-526318 were merged. Mail thread was read; a fresh scoped related-ticket search found this technical reply. No duplicate message sent. Prior “await substantive reply” reason is now superseded, not repeated.
+3. **Actual current execution prerequisites checked:** Linux Work PATH has GPG and Node; pg_dump/pg_dumpall/pg_restore/psql/Docker/SupabaseCLI absent from PATH, /usr/lib/postgresql absent, /var/run/docker.sock absent. This does not prove every disk location lacks a binary. It proves no presently usable standard tool chain/socket was identified. No installation or new server/project.
+4. **User PC distinction:** previous Windows PG17.11/Gpg4win/public-key PASS evidence reused. Current Linux runtime cannot access C:\SOLQ_보안백업 or the user's Windows Docker/key store. This is NOT a claim those PC folders/tools were deleted or missing. No USB or private-key access.
+5. **Existing code recovered and reviewed:** ops/windows-backup/Backup-Encrypted.ps1 local Git blob equals remote blob d95cfe456ec2ac2b8d263526b6d8f8a182ec9ab6 on this development branch. Static review of it and EncryptedStream.cs confirms default preparation-only stop, explicit operating/security switches, Windows-only execution, PG17.11 requirement, Direct/Session-specific host/user checks, TLSverify-full with CA, readonlyPGOPTIONS, dedicated public-only key home, raw binary pipe to GPG, ciphertext-only hash, non-overwrite/partial-output failure stop. No executable ran against Windows or operating DB.
+   - Backup-Encrypted.ps1 SHA256 7b2e818935fae83fe95a08f29c6b47fdb0a840a95fa0638651197b6c37f534ce.
+   - Check-BackupTools.ps1 local artifact SHA256 672e34db3a3b8e812379ead0e27cef652c3cec7d2198643a4a2092ae76b04d96.
+   - EncryptedStream.cs local artifact SHA256 922f72c3793a254ff931ba91e7cac7f64a7a85c824697af50f2cef803b15c1f1.
+   - These existing files were not rewritten. Previous11WindowsPASS was not rerun. ACL/synchronization/recipient/source-CA provenance rely on an operator checklist; switches alone are not proof. Database and role dumps are separate snapshots; completeness/role-change consistency still require verification. Script output expressly says DB_AND_ROLES_ONLY, not full recovery PASS.
+6. **New source metadata only:** SQL SELECT observed **11:57:53.237571KST**: PostgreSQL17.11, DB physical size21,051,059bytes,15non-system schemas, Storage buckets0/objects0, cron extension available. Physical size is not compressed dump size or an RTO estimate. No customer rows/Auth hashes/Vault plaintext/cron command bodies queried.
+
+### Official answer and safe-path decision
+Support confirms:
+- Existing Pro daily backups retain7days, DB only. Storage files and custom-role passwords are excluded.
+- Restore to a New Project does not require the existing DB password; it copies DB schema/data/roles/permissions, Auth users and Vault encryption key. This verifies an official passwordless *provider restore* path, not a downloaded encrypted backup artifact.
+- Storage files/settings, Edge Functions, Auth settings/API keys, Realtime/extension settings and read replicas need separate configuration.
+- New restore project adds billing based on mirrored resources. **pg_cron and pg_net begin running as soon as restore completes, with no supported pre-pause.** Post-restore disabling is too late to prove zero external actions. Cost approval alone would not cure this isolation blocker.
+- CLI logical backup needs the existing DB password. Support suggests reset if it is unavailable; resetting remains prohibited. Owner dashboard login and connector SQL authority are not interchangeable with a pg_dump password.
+- Pro leaked-password protection is available; security grants can affect public functions and must be tested before changes. No setting/grant was changed.
+
+No Pro conversion is required by a manually operated logical dump; Free-tier-compatible pg_dump/CLI export still needs valid DB credentials and appropriate permissions. Already-Pro subscription is not changed. No supported passwordless, no-cost, pre-egress-blocked full recovery route is established under the current combined constraints.
+
+Official references reused:
+https://supabase.com/docs/guides/platform/backups
+https://supabase.com/docs/guides/platform/clone-project
+https://supabase.com/docs/guides/platform/migrating-within-supabase/backup-restore
+The human reply provides the stronger project-support statement about Vault-key copying and no pre-pause. No raw email headers, addresses or support signature are copied into this public repository.
+
+### O1–O4 status / scope and missing conditions
+|Task/status|Real evidence and blocker|Approval authority / exact action|Cost / free alternative|Unblock condition / ETA / next Gate|
+|---|---|---|---|---|
+|O1 WAITING_OWNER|Authentication redirect verified; backup list/time/type/status/retention/download not actually viewed|Existing Supabase Owner: login using normal existing method; NEXUS LABS→project→Database→Backups; inspect list only|Read access in existingPro, no new charge. Alternative: sanitized Owner relay or existing support route|Actual latest recovery metadata and destination access identified; Owner view5–10min planned, unmeasured; nextGate1→2|
+|O2 BLOCKED|No operating artifact. Current pg_dump chain, approved Windows destination access and valid dump credential absent|Owner/backup custodian confirms existing credential through protected local input, CA, recipient, destination ACL/space/non-sync and retention|Existing PC tools/free logical dump preferred. Egress/volume limits unverified; no new spend authorized|All protected local prerequisites plus scope/snapshot verification; duration unknown until actual connection/throughput; nextGate2|
+|O3 BLOCKED|No currently accessible existing isolated PG17/Supabase-compatible target. New provider clone violates no-new-cost/no-pre-egress-run conditions|Owner + target custodian confirms existing target's distinct addresses/accounts/volumes and outbound/cron/SMTP/webhook blocks before sensitive restore|Existing local target first. No clone/PITR purchased; exact additional hosted cost not quoted because no resource approval|Target access/isolation/auth/storage and protected key handling verified; ETAunknown without environment access; nextGate3|
+|O4 BLOCKED|O2/O3 incomplete; no encrypted backup or real restore to validate|Owner confirms specific protected backup/restore scope; GUARD independently verifies actual evidence|No cost in this run; no unapproved server/restore|Only after actualartifact/isolation/approval; RPO/RTO then measured, not estimated; nextGate3→4|
+
+### Backup coverage and restoration acceptance
+- DBdata/schema/functions/triggers/indexes/sequences/RLS/owners/grants/defaultACL: target full logical recovery scope; currently only structure/candidate evidence, no full artifact. Managed internal schemas/extension object handling and permission errors cannot be silently skipped.
+- Auth rows: must be within protected DB recovery scope and verified against compatible Auth version, never exported to public CI. Auth settings and custom-role password recovery separate.
+- Storage metadata: DB scope; actual files separate encrypted copy. Current0object observation is not an all-time guarantee or proof future backups include files.
+- Edge deployed code/config and application version: separate protected matching-source package. Secrets/API keys/OAuth/SMTP and Vault recovery require approved protected recovery mechanism; ciphertext alone is not a Vault restoration proof.
+- Before actual export: approve exact destination/ACL/recipient/custodian/retention and local secure input, verifyTLSfullhost, use bounded readonlydump + raw binary encryption, stop on any failure/warning or unknown cost, label partial files incomplete. Record ciphertext hash/bytes/times/exit codes, not secrets.
+- Before restore: distinct operating/restore address+account+storage, external egress denied, cron/net/SMTP/webhooks/provider execution disabled by isolated target configuration **before** import. Copying production into public GitHub Actions is not allowed.
+- Acceptance: decrypt via custodian-managed private key without key extraction, restore data/schema/roles/ACL/RLS/sequences/Auth, compare full-row fingerprints and dependencies, synthetic feature smoke only after isolation. Measure RPO from backup consistent point to assumed disruption time; RTO from restore start to required-service validation complete. Current RPO/RTO NOT_MEASURED.
+- No generated backup file, SHA256-of-backup, successful restore or complete recovery PASS is claimed.
+
+### Gates and closeout
+Gate1 WAITING_OWNER; Gate2/3/4 BLOCKED on actualartifact/target/timing; Gate5 BLOCKED on unresolved security/explicit risk decisions; Gate6 BLOCKED on complete actual-device/live-rollback validation; Gate7 BLOCKED on prerequisites and separate platform-wide Owner GO. Admin4-file fix stays independently CLOSED andv29 active.
+The technical reply and actual authentication/tool blockers are now verified; operational backup access, secure output and restore capability are NOT unblocked.
+Owner's single next action: **open the existing Owner project's Database→Backups list and provide only latest timestamp/timezone, backup type/status, and download availability.** No Restore/Clone/Reset/Upgrade or credentials in chat.
+Actual backup0/restore0, private-key access0, DBpassword/SSL/Auth/RLS/rolechange0, customer changes0, new synthetic requests0, paidAPI0, new paid infrastructure0, main/deployment0. Independent workers remain NOT_DISPATCHED. Additional charges initiated0; organization-wide invoice totals not inspected.
+This commit updates only WORK_LEDGER.md, orchestration-queue.json and tasks.json on the development branch. Operational state is untouched. Final **NO-GO**.

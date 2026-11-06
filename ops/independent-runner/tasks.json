@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-02",
+  "updated_at": "2026-11-06",
   "mode": "candidate_not_activated",
   "tasks": [
     {
@@ -41,9 +41,10 @@
       "status": "blocked",
       "depends_on": [],
       "executor": "support_monitor",
-      "blocked_reason": "Await substantive Supabase support response to SU-533612",
-      "evidence": null,
-      "owner": "GUARD"
+      "blocked_reason": "Technical reply received 2026-11-06 01:16:25 KST and verified by ATLAS. Waiting for actual Owner Backups access and a no-egress, approved-cost recovery path, not merely a support acknowledgement.",
+      "evidence": "WORK_LEDGER.md — 2026-11-06 backup recovery unblock checkpoint; SU-536243 substantive reply",
+      "owner": "GUARD",
+      "actual_executor": "ATLAS"
     },
     {
       "id": "SOLQ-005",
@@ -53,8 +54,8 @@
         "SOLQ-004"
       ],
       "executor": "billing_authorized",
-      "blocked_reason": "Need official pricing and access to account billing view",
-      "evidence": null,
+      "blocked_reason": "Provider confirms restore-to-new-project is additionally billed; exact mirrored-resource quote and safe pre-execution egress control unavailable. No paid resource approved.",
+      "evidence": "WORK_LEDGER.md — backup recovery unblock checkpoint",
       "owner": "FIN"
     },
     {
@@ -66,8 +67,8 @@
         "SOLQ-005"
       ],
       "executor": "authorized_secure_worker",
-      "blocked_reason": "Safe full backup access and verified cost not established",
-      "evidence": null,
+      "blocked_reason": "Existing DB password unavailable to approved dump execution; approved Windows encrypted destination inaccessible from current Work; Owner recovery-point/download details unobserved.",
+      "evidence": "WORK_LEDGER.md — backup recovery unblock checkpoint",
       "owner": "GUARD"
     },
     {
@@ -78,8 +79,8 @@
         "SOLQ-006"
       ],
       "executor": "authorized_secure_worker",
-      "blocked_reason": "Full encrypted backup not yet available",
-      "evidence": null,
+      "blocked_reason": "No actual full encrypted backup or accessible protected existing target. Provider clone cannot pause cron/net before execution, per support.",
+      "evidence": "WORK_LEDGER.md — backup recovery unblock checkpoint",
       "owner": "GUARD"
     },
     {
@@ -183,5 +184,40 @@
     }
   ],
   "coordinator": "ATLAS",
-  "worker_charter": "ops/independent-runner/SOLQ_COMMAND.md"
+  "worker_charter": "ops/independent-runner/SOLQ_COMMAND.md",
+  "backup_recovery_checkpoint": {
+    "date": "2026-11-06",
+    "executor": "ATLAS",
+    "scope": "read-only backup/restore unblock investigation; no operational export or restore",
+    "support_ticket": "SU-536243",
+    "support_reply_received_at": "2026-11-05T16:16:25Z",
+    "diagnostics": {
+      "owner_backups_route": "DONE: explicit sign-in redirect observed; backup list inaccessible",
+      "technical_support_reply": "DONE: substantive security-team response verified",
+      "local_tool_inventory": "DONE: current Linux executor only",
+      "existing_backup_script_review": "DONE: static review; not Windows execution"
+    },
+    "operational_access": {
+      "O1": "WAITING_OWNER",
+      "O2": "BLOCKED",
+      "O3": "BLOCKED",
+      "O4": "BLOCKED"
+    },
+    "reasons": {
+      "O1": "No authenticated Owner browser session; actual recovery-point metadata not observed",
+      "O2": "No current approved destination access or pg_dump credential; current executor lacks PostgreSQL clients; Windows resources previously reported are not accessible here",
+      "O3": "No accessible existing protected restore target; provider clone is additionally billed and starts pg_cron/pg_net before they can be disabled",
+      "O4": "Depends on O2/O3 and separate restore approval; no actual backup or restore"
+    },
+    "paid_resources_created": 0,
+    "paid_api_calls": 0,
+    "operating_changes": 0,
+    "actual_backup_count": 0,
+    "actual_restore_count": 0,
+    "rpo": "NOT_MEASURED",
+    "rto": "NOT_MEASURED",
+    "owner_next_action": "Using the existing Supabase Owner account, inspect Database > Backups only and relay latest recovery-point timestamp/timezone, type, status and download availability; never Restore/Clone/Reset/Upgrade or send credentials",
+    "next_gate": "Gate-1",
+    "decision": "NO-GO"
+  }
 }

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-05",
+  "updated_at": "2026-11-06",
   "mode": "candidate_not_activated",
   "directive_ref": "ops/independent-runner/directives/ATLAS-20261105-O1-O2-unblock-plan-order.md",
   "protocol_ref": "ops/independent-runner/ORCHESTRATION_PROTOCOL.md",
@@ -68,19 +68,19 @@
       "id": "Gate-1",
       "status": "WAITING_OWNER",
       "owner": "GUARD",
-      "reason": "Owner Backups screen and protected execution path unavailable"
+      "reason": "Actual Backups URL redirected to official sign-in: no reusable authenticated Owner browser session; actual recovery points unobserved."
     },
     {
       "id": "Gate-2",
       "status": "BLOCKED",
       "owner": "GUARD",
-      "reason": "No full encrypted backup"
+      "reason": "Full encrypted artifact not created: protected destination and dump credentials unavailable; current Linux executor lacks pg_dump."
     },
     {
       "id": "Gate-3",
       "status": "BLOCKED",
       "owner": "CORE",
-      "reason": "No verified isolated restore target"
+      "reason": "No accessible approved isolated target. Support confirms clone costs extra and cron/net start immediately with no pre-pause."
     },
     {
       "id": "Gate-4",
@@ -106,5 +106,40 @@
       "owner": "ATLAS",
       "reason": "All required gates and separate Owner O3 approval pending"
     }
-  ]
+  ],
+  "backup_recovery_checkpoint": {
+    "date": "2026-11-06",
+    "executor": "ATLAS",
+    "scope": "read-only backup/restore unblock investigation; no operational export or restore",
+    "support_ticket": "SU-536243",
+    "support_reply_received_at": "2026-11-05T16:16:25Z",
+    "diagnostics": {
+      "owner_backups_route": "DONE: explicit sign-in redirect observed; backup list inaccessible",
+      "technical_support_reply": "DONE: substantive security-team response verified",
+      "local_tool_inventory": "DONE: current Linux executor only",
+      "existing_backup_script_review": "DONE: static review; not Windows execution"
+    },
+    "operational_access": {
+      "O1": "WAITING_OWNER",
+      "O2": "BLOCKED",
+      "O3": "BLOCKED",
+      "O4": "BLOCKED"
+    },
+    "reasons": {
+      "O1": "No authenticated Owner browser session; actual recovery-point metadata not observed",
+      "O2": "No current approved destination access or pg_dump credential; current executor lacks PostgreSQL clients; Windows resources previously reported are not accessible here",
+      "O3": "No accessible existing protected restore target; provider clone is additionally billed and starts pg_cron/pg_net before they can be disabled",
+      "O4": "Depends on O2/O3 and separate restore approval; no actual backup or restore"
+    },
+    "paid_resources_created": 0,
+    "paid_api_calls": 0,
+    "operating_changes": 0,
+    "actual_backup_count": 0,
+    "actual_restore_count": 0,
+    "rpo": "NOT_MEASURED",
+    "rto": "NOT_MEASURED",
+    "owner_next_action": "Using the existing Supabase Owner account, inspect Database > Backups only and relay latest recovery-point timestamp/timezone, type, status and download availability; never Restore/Clone/Reset/Upgrade or send credentials",
+    "next_gate": "Gate-1",
+    "decision": "NO-GO"
+  }
 }
