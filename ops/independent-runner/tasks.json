@@ -41,8 +41,8 @@
       "status": "blocked",
       "depends_on": [],
       "executor": "support_monitor",
-      "blocked_reason": "Technical reply received 2026-11-06 01:16:25 KST and verified by ATLAS. Waiting for actual Owner Backups access and a no-egress, approved-cost recovery path, not merely a support acknowledgement.",
-      "evidence": "WORK_LEDGER.md — 2026-11-06 backup recovery unblock checkpoint; SU-536243 substantive reply",
+      "blocked_reason": "Owner Backups listing Gate-1 now PASS; official reply verified. Safe pre-start isolated physical restore still blocked by immediate cron/net execution.",
+      "evidence": "WORK_LEDGER.md — 2026-11-06 12:21 KST physical restore checkpoint",
       "owner": "GUARD",
       "actual_executor": "ATLAS"
     },
@@ -54,9 +54,10 @@
         "SOLQ-004"
       ],
       "executor": "billing_authorized",
-      "blocked_reason": "Provider confirms restore-to-new-project is additionally billed; exact mirrored-resource quote and safe pre-execution egress control unavailable. No paid resource approved.",
-      "evidence": "WORK_LEDGER.md — backup recovery unblock checkpoint",
-      "owner": "FIN"
+      "blocked_reason": "Read-only cost tool returned monthly amount 10; official Micro USD0.01344/hour is a reference, not exact mirrored-resource restore quote. No paid target approved; spend cap does not cap compute.",
+      "evidence": "WORK_LEDGER.md — 2026-11-06 12:21 KST physical restore checkpoint",
+      "owner": "FIN",
+      "actual_executor": "ATLAS"
     },
     {
       "id": "SOLQ-006",
@@ -67,9 +68,10 @@
         "SOLQ-005"
       ],
       "executor": "authorized_secure_worker",
-      "blocked_reason": "Existing DB password unavailable to approved dump execution; approved Windows encrypted destination inaccessible from current Work; Owner recovery-point/download details unobserved.",
-      "evidence": "WORK_LEDGER.md — backup recovery unblock checkpoint",
-      "owner": "GUARD"
+      "blocked_reason": "Owner physical backup list confirmed, download not confirmed. Logical export still requires valid protected local credentials/destination; Work cannot access existing Windows resources.",
+      "evidence": "WORK_LEDGER.md — 2026-11-06 12:21 KST physical restore checkpoint",
+      "owner": "GUARD",
+      "actual_executor": "ATLAS"
     },
     {
       "id": "SOLQ-007",
@@ -79,9 +81,10 @@
         "SOLQ-006"
       ],
       "executor": "authorized_secure_worker",
-      "blocked_reason": "No actual full encrypted backup or accessible protected existing target. Provider clone cannot pause cron/net before execution, per support.",
-      "evidence": "WORK_LEDGER.md — backup recovery unblock checkpoint",
-      "owner": "GUARD"
+      "blocked_reason": "No accessible approved target/artifact. Provider clone cannot pre-pause cron/net; no proven pre-restore egress block. Existing project Restore forbidden.",
+      "evidence": "WORK_LEDGER.md — 2026-11-06 12:21 KST physical restore checkpoint",
+      "owner": "GUARD",
+      "actual_executor": "ATLAS"
     },
     {
       "id": "SOLQ-008",
@@ -187,28 +190,48 @@
   "worker_charter": "ops/independent-runner/SOLQ_COMMAND.md",
   "backup_recovery_checkpoint": {
     "date": "2026-11-06",
+    "observed_at_kst": "2026-11-06T12:21:00+09:00",
     "executor": "ATLAS",
-    "scope": "read-only backup/restore unblock investigation; no operational export or restore",
+    "scope": "physical-backup restore decision; read-only API/browser/docs; no backup export or restore",
     "support_ticket": "SU-536243",
     "support_reply_received_at": "2026-11-05T16:16:25Z",
+    "owner_backup_evidence": {
+      "source": "Owner report in current directive; not independently re-viewed by Work",
+      "gate_1": "PASS",
+      "type": "PHYSICAL",
+      "latest_at_owner_observation_utc": "2026-11-05T18:13:51Z",
+      "latest_at_owner_observation_kst": "2026-11-06T03:13:51+09:00",
+      "restore_button_visible": true,
+      "download": "NOT_CONFIRMED",
+      "storage_files_included": false,
+      "backup_job_status": "NOT_INDEPENDENTLY_VERIFIED"
+    },
     "diagnostics": {
-      "owner_backups_route": "DONE: explicit sign-in redirect observed; backup list inaccessible",
-      "technical_support_reply": "DONE: substantive security-team response verified",
-      "local_tool_inventory": "DONE: current Linux executor only",
-      "existing_backup_script_review": "DONE: static review; not Windows execution"
+      "work_restore_preview": "BLOCKED: single read-only route inspection redirected to official sign-in; no new login attempted",
+      "official_reply": "DONE: reused substantive technical reply",
+      "project": "DONE: active, PostgreSQL 17.11.0.003, ap-southeast-2",
+      "cost_reference": "DONE: get_cost returned monthly amount 10; not restore-specific quote; currency/config absent from tool response",
+      "official_compute_reference": "USD 0.01344/hour Micro, hourly billing rounded up; shared organization credits; compute not covered by spend cap"
     },
     "operational_access": {
-      "O1": "WAITING_OWNER",
+      "O1": "DONE",
       "O2": "BLOCKED",
       "O3": "BLOCKED",
       "O4": "BLOCKED"
     },
     "reasons": {
-      "O1": "No authenticated Owner browser session; actual recovery-point metadata not observed",
-      "O2": "No current approved destination access or pg_dump credential; current executor lacks PostgreSQL clients; Windows resources previously reported are not accessible here",
-      "O3": "No accessible existing protected restore target; provider clone is additionally billed and starts pg_cron/pg_net before they can be disabled",
-      "O4": "Depends on O2/O3 and separate restore approval; no actual backup or restore"
+      "O1": "Owner backup-list access accepted PASS; Work preview auth unavailable is distinct",
+      "O2": "Exact mirrored-resource quote, secure artifact/export path and approved protected destination/credentials not available",
+      "O3": "Provider physical clone starts pg_cron/pg_net immediately with no supported pre-pause; pre-egress isolation not proven; existing Windows protected target inaccessible from Work",
+      "O4": "No explicitly approved ready target or complete safe execution prerequisites; no actual restore"
     },
+    "selected_route": "Conditional alternative only: existing protected Windows/local PG17 logical restore after protected credentials/destination/egress prerequisites. Does not reuse physical artifact and is not a full Vault recovery proof.",
+    "physical_restore_decision": "BLOCKED: no currently proven safe physical restore under pre-start automation/egress requirement; cost approval alone insufficient",
+    "owner_next_action": "Connect an existing protected Windows PC execution session to inspect existing local backup tools/destination/restore target without exposing credentials or running a backup yet. This does not itself resolve missing DB credentials.",
+    "approval_authority": "Owner and protected-target/backup custodian",
+    "additional_cost_initiated": 0,
+    "exact_restore_cost": "NOT_VERIFIED",
+    "eta": "Cannot estimate without target access, credential availability and pre-start isolation; no measured restore throughput",
     "paid_resources_created": 0,
     "paid_api_calls": 0,
     "operating_changes": 0,
@@ -216,8 +239,7 @@
     "actual_restore_count": 0,
     "rpo": "NOT_MEASURED",
     "rto": "NOT_MEASURED",
-    "owner_next_action": "Using the existing Supabase Owner account, inspect Database > Backups only and relay latest recovery-point timestamp/timezone, type, status and download availability; never Restore/Clone/Reset/Upgrade or send credentials",
-    "next_gate": "Gate-1",
+    "next_gate": "Gate-2/Gate-3",
     "decision": "NO-GO"
   }
 }

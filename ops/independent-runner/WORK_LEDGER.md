@@ -209,3 +209,44 @@ The technical reply and actual authentication/tool blockers are now verified; op
 Owner's single next action: **open the existing Owner project's Database→Backups list and provide only latest timestamp/timezone, backup type/status, and download availability.** No Restore/Clone/Reset/Upgrade or credentials in chat.
 Actual backup0/restore0, private-key access0, DBpassword/SSL/Auth/RLS/rolechange0, customer changes0, new synthetic requests0, paidAPI0, new paid infrastructure0, main/deployment0. Independent workers remain NOT_DISPATCHED. Additional charges initiated0; organization-wide invoice totals not inspected.
 This commit updates only WORK_LEDGER.md, orchestration-queue.json and tasks.json on the development branch. Operational state is untouched. Final **NO-GO**.
+
+
+## 2026-11-06 12:21 KST — physical-backup restore checkpoint (executor: ATLAS)
+
+Supersedes the prior Gate-1 WAITING_OWNER conclusion only. Existing v29/admin CLOSED and 51 PASS are preserved; no test rerun. Independent workers remain NOT_DISPATCHED.
+
+### New Owner evidence and read-only execution
+- Owner's current directive directly confirms Database > Backups list access, several PHYSICAL points and Restore buttons. Latest at that observation: 2026-11-05 18:13:51 UTC = 2026-11-06 03:13:51 KST. Download not confirmed; UI says Storage files excluded. **Gate-1 PASS (list access only)**. Not proof of backup job status, downloadable encrypted artifact, integrity or restored operation.
+- Work performed one read-only restore-to-new-project route inspection. Final observed URL was the official sign-in with the intended route in returnTo; title Sign in | Supabase Dashboard. No credential entry, additional login, Restore, Clone or upgrade. Work auth limit does not invalidate Owner evidence.
+- Read-only project API: active/healthy; PostgreSQL17.11.0.003, ap-southeast-2. API does not establish current mirrored compute/disk quote.
+- Organization cost tool returned type project, recurrence monthly, amount10. Currency/configuration and restore-specific mirroring absent. This is **not an exact restore quote or cost approval**.
+- Official compute docs reconfirm Micro USD0.01344/hour (~USD10/month), running-hour billing rounded up, shared organization compute credits, compute excluded from Spend Cap. Source compute/disk, remaining credits and applicable storage/egress not verified. No project/cost confirmation created.
+  Reference: https://supabase.com/docs/guides/platform/manage-your-usage/compute
+
+### Official support answer reused, not re-requested
+SU-536243 substantive reply received 2026-11-06 01:16:25 KST: provider new-project physical restore needs no existing DB password and copies DB/Auth rows/roles/permissions and Vault encryption key. Separate project leaves source production unchanged. Storage files/settings, Edge, Auth configuration/API keys and other external settings are separate recovery work. **pg_cron/pg_net start immediately after restoration and cannot be paused beforehand through the supported path.** Post-start disabling is insufficient for this directive's prerequisite. No duplicate support message sent.
+References: https://supabase.com/docs/guides/platform/clone-project ; https://supabase.com/docs/guides/platform/backups
+
+|Method|Authentication/cost|Decision and exact blocker|
+|---|---|---|
+|Existing project Restore|Owner authority; overwrites operating state|FORBIDDEN; not clicked|
+|New project physical restore|No DB password; additionally billed mirrored resources, exact quote unavailable|BLOCKED: automatic cron/net execution has no supported pre-pause; no proven pre-start egress block. Paying alone cannot cure this|
+|Logical dump to existing protected local target|Existing DB credential, PG client, verified TLS, protected encrypted destination and target approval|Conditional preferred alternative; no new server purchase needed in principle. Current Work lacks target access/DB credential. Does not consume the existing physical artifact and does not alone recover Vault key/external settings|
+|Existing protected environment reuse|Existing target custodian and local secure input|BLOCKED: no accessible approved customer-data restore target; prior disposable CI is not approved for customer data|
+
+No safe executable physical-restore route is established under all current constraints. Do not infer outbound isolation from inbound network restrictions. No operating DB reset/password/SSL/Auth/RLS change is authorized or performed.
+
+### Coverage and safety acceptance
+DB data/schema/functions/triggers/indexes/sequences/RLS/grants/defaultACL/Auth rows are provider DB scope, but no export or restoration was executed. Custom-role passwords and external configuration require separate protected recovery. Storage actual files are excluded (prior bucket/object0 observation reused, not re-counted here). Edge source/deploy settings, Vault/Secrets and OAuth/SMTP are separate; logical ciphertext export is not proof of decryptable Vault recovery.
+Existing encrypted Windows script/source review and checksum evidence from previous checkpoint reused; not rewritten/run. Need verified non-public destination ACL/non-sync/space, recipient and recovery-key custodian, independent target network/accounts/volumes and **pre-import** cron/net/SMTP/webhook/external API block. No customer data may enter public CI.
+RPO/RTO NOT_MEASURED. No restore logs, backup ciphertext/hash/size or content-integrity comparison exists for this execution. Owner backup timestamp alone is not an RPO measurement.
+
+### Blocker record and next action
+- Authority: Owner plus protected Windows target/backup custodian.
+- One next Owner action: connect the existing protected Windows PC execution session so existing backup tools, private destination and local restore target can be inspected without running backup/restore or sharing credentials. This advances access verification only; missing DB credentials remain a separate prerequisite, and password reset remains prohibited.
+- If credentials cannot be securely supplied through an existing approved local mechanism, logical export remains blocked. If no pre-start isolated provider path is available, physical clone remains blocked even after cost approval.
+- Exact additional hosted quote NOT_VERIFIED; new charge initiated0. Existing subscription total/invoice not audited.
+- ETA cannot be grounded without target access, credentials, isolation and measured throughput. Next Gate2/3; no automatic retry.
+
+Gate1 PASS (Owner listing); Gate2 BLOCKED (actual full encrypted recovery artifact); Gate3 BLOCKED (actual approved safe restore); Gate4 BLOCKED (RPO/RTO); Gate5 BLOCKED (security closure); Gate6 BLOCKED (actual-device and service rollback completion); Gate7 BLOCKED (mandatory gates and separate final approval).
+Actual backup/export0; restore0; customer writes0; secret extraction0; paid AI0; new projects0; operating changes0; main merge/deployment0. Only these three development-branch records updated atomically. Final **NO-GO**.
