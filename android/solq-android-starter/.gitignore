@@ -1,4 +1,5 @@
 .gradle/
+.kotlin/
 .idea/
 **/build/
 local.properties
@@ -8,3 +9,5 @@ local.properties
 keystore.properties
 .env
 .env.*
+*.aab
+*.apk
