@@ -78,3 +78,14 @@ No Supabase read or write, customer-data mutation/deletion, operational setting 
 No GitHub main change. This report is on a dedicated evidence branch.
 Additional purchased resources / paid calls: 0.
 Next one Owner action: open https://solqtech.com/data-deletion.html in a normal PC/phone browser and confirm it loads the SOLQ deletion notice and its request link. If blocked there too, preserve the error and obtain hosting support guidance before any security-setting change. Do not submit Play as verified until public access is confirmed.
+
+
+## Follow-up — mobile CTA visibility, Sites 31
+Owner reported that the deletion-request link was not visible on mobile. The prior request link was a text link below the long instructions and had no button styling in legal.css.
+Only dist/data-deletion.html was changed: add a prominent cyan request button directly below the H1, minimum height 56px, with the existing private-inquiry URL; style the lower request link as the same button. No application, support, administrator, DB or setting changes.
+Preview QA: 360/390/412px CSS frames showed the top button at y=274.52px, height=58.09px, widths=309/339/361px. Text/background contrast visibly clear. A click in the 390px frame navigated to the existing #new-inquiry form. No form submitted. This is responsive browser QA, not physical-device testing.
+Pushed Sites source: 379d488dd977c738904fe60c3a0f3d22884ded79.
+Saved version: 31; appgprj_6ad984f12870819181d960c1bd9ed20a~appgver_bdd883e2470081919502e412dd4e06bc.
+Deployment: appgdep_6aef043b11248191b029cecc47feec25; succeeded; 2026-11-07T10:58:13.789804+00:00.
+Saved archive SHA-256: 283fb38dd989ac7054813e2694d3d2f5ac4f5155df464fe8a83411866209a1c8.
+Existing version 30 remains saved for recovery. Overall live HTTP 200 / production mobile verification is still not claimed; the previous execution-environment access limitation remains unverified in this follow-up. Owner can refresh the existing public deletion page to check version 31. No new paid resources/calls or customer writes.
