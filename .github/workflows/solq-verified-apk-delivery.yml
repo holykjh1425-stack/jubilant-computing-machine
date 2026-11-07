@@ -1,0 +1,67 @@
+name: SOLQ verified APK release delivery
+
+on:
+  push:
+    branches:
+      - dev/solq-android-import-20261107
+    paths:
+      - 'android/test-builds/api36-5a82d36/app-debug.apk'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: solq-api36-existing-apk-delivery
+  cancel-in-progress: false
+
+jobs:
+  publish-verified-apk:
+    if: github.repository == 'holykjh1425-stack/jubilant-computing-machine' && github.ref == 'refs/heads/dev/solq-android-import-20261107'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout existing verified APK without persisting credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Verify existing artifact (no build)
+        working-directory: android/test-builds/api36-5a82d36
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum --check --strict SHA256SUMS.txt
+          test "$(wc -c < app-debug.apk)" -eq 2241006
+          python3 - <<'PY'
+          import zipfile, re
+          with zipfile.ZipFile('app-debug.apk') as z:
+              assert z.testzip() is None, 'ZIP CRC failed'
+              for n in z.namelist():
+                  assert not n.lower().endswith(('.jks','.keystore','.pem','.key','.env')), 'Forbidden private file'
+                  if n.endswith('/'):
+                      continue
+                  b = z.read(n)
+                  for pattern in [rb'-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----',rb'sk-ant-[A-Za-z0-9_-]{20,}',rb'sk-(?:proj-|svcacct-)[A-Za-z0-9_-]{20,}',rb'(?:ghp_|github_pat_)[A-Za-z0-9_]{25,}',rb'postgres(?:ql)?://[^\\s\\x00/]+:[^\\s\\x00@]+@']:
+                      assert not re.search(pattern,b), 'Credential pattern detected'
+          print('Existing APK integrity and public-delivery checks passed')
+          PY
+      - name: Publish test prerelease assets only
+        working-directory: android/test-builds/api36-5a82d36
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: android-api36-test-20261107-5a82d36
+        shell: bash
+        run: |
+          set -euo pipefail
+          if gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release already exists; no overwrite or duplicate publication performed."
+            exit 1
+          fi
+          gh release create "$RELEASE_TAG" app-debug.apk SHA256SUMS.txt \
+            --repo "$GITHUB_REPOSITORY" \
+            --target 5a82d3613ff8a56eda2bf3f35b802566ef2c6e18 \
+            --title "SOLQ Android API 36 — verified debug test APK" \
+            --notes-file RELEASE-NOTES.md \
+            --prerelease --latest=false
+          gh release view "$RELEASE_TAG" --repo "$GITHUB_REPOSITORY" --json url,assets
