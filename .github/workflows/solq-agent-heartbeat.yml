@@ -1,0 +1,35 @@
+name: SOLQ safe scheduled heartbeat
+# Independent, non-production synthetic probe. No checkout, secrets, network calls or site changes.
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '7,37 * * * *'
+permissions:
+  contents: read
+concurrency:
+  group: solq-safe-heartbeat
+  cancel-in-progress: false
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Generate timestamped evidence
+        shell: bash
+        env:
+          RUN_ID: ${{ github.run_id }}
+          ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          python3 - <<'PY'
+          import datetime,json,os,pathlib
+          pathlib.Path('artifacts').mkdir(exist_ok=True)
+          payload={'task':'synthetic_heartbeat','status':'PASS','timestamp_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'run_id':os.environ['RUN_ID'],'attempt':os.environ['ATTEMPT'],'production_changes':0,'paid_api_calls':0}
+          pathlib.Path('artifacts/heartbeat.json').write_text(json.dumps(payload,indent=2),encoding='utf-8')
+          print(json.dumps(payload))
+          PY
+      - name: Store evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: solq-heartbeat-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/heartbeat.json
+          retention-days: 7
