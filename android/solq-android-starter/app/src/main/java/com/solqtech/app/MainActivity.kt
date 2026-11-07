@@ -1,6 +1,5 @@
 package com.solqtech.app
 
-import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Color
@@ -10,9 +9,10 @@ import android.os.Bundle
 import android.view.View
 import android.webkit.*
 import android.widget.*
-import android.window.OnBackInvokedDispatcher
+import androidx.activity.ComponentActivity
+import androidx.activity.OnBackPressedCallback
 
-class MainActivity : Activity() {
+class MainActivity : ComponentActivity() {
     private lateinit var webView: WebView
     private lateinit var progress: ProgressBar
     private lateinit var errorPanel: LinearLayout
@@ -137,9 +137,9 @@ class MainActivity : Activity() {
                 return true
             }
         }
-        if (Build.VERSION.SDK_INT >= 33) {
-            onBackInvokedDispatcher.registerOnBackInvokedCallback(OnBackInvokedDispatcher.PRIORITY_DEFAULT) { navigateBack() }
-        }
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() = navigateBack()
+        })
         if (savedInstanceState == null || webView.restoreState(savedInstanceState) == null) webView.loadUrl(HOME)
     }
     private fun showError() {
@@ -149,8 +149,6 @@ class MainActivity : Activity() {
         errorPanel.visibility = View.VISIBLE
     }
     private fun navigateBack() { if (webView.canGoBack()) webView.goBack() else finish() }
-    @Deprecated("Compatibility for Android 12 and earlier")
-    override fun onBackPressed() = navigateBack()
     @Deprecated("Platform file picker result; no storage permission requested")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

@@ -1,0 +1,113 @@
+/workspace/scratch/0568fc29a1bd/solq-android-build-20261107/android/solq-android-starter/app/src/main/AndroidManifest.xml:7: Warning: Attribute enableOnBackInvokedCallback is only used in API level 33 and higher (current min is 26) [UnusedAttribute]
+        android:enableOnBackInvokedCallback="true">
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UnusedAttribute":
+   This check finds attributes set in XML files that were introduced in a
+   version newer than the oldest version targeted by your application (with
+   the minSdkVersion attribute).
+
+   This is not an error; the application will simply ignore the attribute.
+   However, if the attribute is important to the appearance or functionality
+   of your application, you should consider finding an alternative way to
+   achieve the same result with only available attributes, and then you can
+   optionally create a copy of the layout in a layout-vNN folder which will be
+   used on API NN or higher where you can take advantage of the newer
+   attribute.
+
+   Note: This check does not only apply to attributes. For example, some tags
+   can be unused too, such as the new <tag> element in layouts introduced in
+   API 21.
+
+/workspace/scratch/0568fc29a1bd/solq-android-build-20261107/android/solq-android-starter/app/src/main/java/com/solqtech/app/MainActivity.kt:74: Warning: Using setJavaScriptEnabled can introduce XSS vulnerabilities into your application, review carefully [SetJavaScriptEnabled]
+            javaScriptEnabled = true
+            ~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "SetJavaScriptEnabled":
+   Your code should not invoke setJavaScriptEnabled if you are not sure that
+   your app really requires JavaScript support.
+
+   https://goo.gle/SetJavaScriptEnabled
+   https://developer.android.com/training/articles/security-tips
+
+/workspace/scratch/0568fc29a1bd/solq-android-build-20261107/android/solq-android-starter/app/src/main/res/mipmap-anydpi-v26: Warning: This folder configuration (v26) is unnecessary; minSdkVersion is 26. Merge all the resources in this folder into mipmap-anydpi. [ObsoleteSdkInt]
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+/workspace/scratch/0568fc29a1bd/solq-android-build-20261107/android/solq-android-starter/app/src/main/java/com/solqtech/app/MainActivity.kt:101: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
+                retryUrl = url.takeIf { isInternal(Uri.parse(it)) } ?: HOME
+                                                   ~~~~~~~~~~~~~
+/workspace/scratch/0568fc29a1bd/solq-android-build-20261107/android/solq-android-starter/app/src/main/java/com/solqtech/app/MainActivity.kt:101: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
+                retryUrl = url.takeIf { isInternal(Uri.parse(it)) } ?: HOME
+                                                   ~~~~~~~~~~~~~
+/workspace/scratch/0568fc29a1bd/solq-android-build-20261107/android/solq-android-starter/app/src/main/java/com/solqtech/app/MainActivity.kt:119: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
+                if (!isInternal(Uri.parse(view.url ?: ""))) return false
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/0568fc29a1bd/solq-android-build-20261107/android/solq-android-starter/app/src/main/java/com/solqtech/app/MainActivity.kt:119: Warning: Use the KTX extension function String.toUri instead? [UseKtx]
+                if (!isInternal(Uri.parse(view.url ?: ""))) return false
+                                ~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "UseKtx":
+   The Android KTX libraries decorates the Android platform SDK as well as
+   various libraries with more convenient extension functions available from
+   Kotlin, allowing you to use default parameters, named parameters, and
+   more.
+
+   Available options:
+
+   **remove-defaults** (default is true):
+   Whether to skip arguments that match the defaults provided by the extension.
+
+   Extensions often provide default values for some of the parameters. For example:
+   ```kotlin
+   fun Path.readLines(charset: Charset = Charsets.UTF_8): List<String> { return Files.readAllLines(this, charset) }
+   ```
+   This lint check will by default automatically omit parameters that match the default, so if your code was calling
+
+   ```kotlin
+   Files.readAllLines(file, Charset.UTF_8)
+   ```
+   lint would replace this with
+   ```kotlin
+   file.readLines()
+   ```
+   rather than
+
+   ```kotlin
+   file.readLines(Charset.UTF_8
+   ```
+   You can turn this behavior off using this option.
+
+   To configure this option, use a `lint.xml` file with an <option> like this:
+
+   ```xml
+   <lint>
+       <issue id="UseKtx">
+           <option name="remove-defaults" value="true" />
+       </issue>
+   </lint>
+   ```
+
+   **require-present** (default is true):
+   Whether to only offer extensions already available.
+
+   This option lets you only have lint suggest extension replacements if those extensions are already available on the class path (in other words, you're already depending on the library containing the extension method.)
+
+   To configure this option, use a `lint.xml` file with an <option> like this:
+
+   ```xml
+   <lint>
+       <issue id="UseKtx">
+           <option name="require-present" value="true" />
+       </issue>
+   </lint>
+   ```
+
+0 errors, 7 warnings

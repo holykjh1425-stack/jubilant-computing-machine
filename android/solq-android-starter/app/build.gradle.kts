@@ -5,13 +5,13 @@ plugins {
 
 android {
     namespace = "com.solqtech.app"
-    compileSdk = 35
+    compileSdk = 36
     buildFeatures { buildConfig = true }
 
     defaultConfig {
         applicationId = "com.solqtech.app"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "0.1.0"
     }
@@ -45,4 +45,8 @@ if (uploadStore != null) {
         keyPassword = providers.environmentVariable("SOLQ_UPLOAD_KEY_PASSWORD").get()
     }
     android.buildTypes.getByName("release").signingConfig = android.signingConfigs.getByName("upload")
+}
+
+dependencies {
+    implementation("androidx.activity:activity:1.10.1")
 }

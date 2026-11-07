@@ -1,0 +1,21 @@
+{
+  "observed_at": "2026-11-07T14:31:27.214332+09:00",
+  "os": "Linux Work executor, not Windows PC",
+  "jdk": "Eclipse Temurin 17.0.21+9",
+  "jdk_sha256": "8b9b611d917e3dfd8419d3566b5949226f69b052fed7e109c1368add1dfe8711",
+  "gradle": "8.13",
+  "agp": "8.11.1",
+  "kotlin_gradle_plugin": "2.2.21",
+  "androidx_activity": "1.10.1",
+  "compile_sdk": 36,
+  "target_sdk": 36,
+  "min_sdk": 26,
+  "build_tools": "35.0.0",
+  "bundletool": "1.18.3",
+  "connected_adb_devices": 0,
+  "kvm_available": false,
+  "ide_gui_sync": "NOT_TESTED",
+  "upload_key_present_in_build_environment": false,
+  "new_upload_key_created": false,
+  "runtime_tests": "BLOCKED"
+}

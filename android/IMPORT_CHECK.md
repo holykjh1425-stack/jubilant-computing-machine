@@ -1,3 +1,5 @@
+> 최신 상태: 초기 ZIP 인수 기록입니다. 현재 API 36 빌드 결과와 Wrapper 정보는 [RELEASE-READINESS.md](solq-android-starter/RELEASE-READINESS.md)를 우선 확인하세요.
+
 # SOLQ Android source import — 2026-11-07
 
 Source: existing solq-android-starter.zip, version 5. Six original source files imported byte-for-byte; no application behavior modified.
@@ -25,3 +27,4 @@ The actual extracted folder name depends on the download/extraction tool; no PC 
 - Prototype review follow-ups: external URL intent schemes are not explicitly allowlisted; permissions/redirects, file selection and lifecycle/back handling need device/security testing before release. No runtime safety or Play approval claimed.
 
 Only android/ was added on a separate development branch. No main merge, website deployment, Supabase access, operating customer data changes, paid API calls, signing, publishing or new project/service provisioning performed.
+

@@ -1,0 +1,65 @@
+{
+  "baseline": "5396c62894e51c4c1f2cdb6eb967898a0a960d25",
+  "inputs": [
+    {
+      "path": "app/build.gradle.kts",
+      "sha256": "125c68a32ec73daa410d8d501d5c4a12cad953fad2118df2501d35ca7fa3ffd4"
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "sha256": "13b1fec2564c6546e83f7888c63084d43a879dfc0d584b8435aae20f20020208"
+    },
+    {
+      "path": "app/src/main/java/com/solqtech/app/MainActivity.kt",
+      "sha256": "2d0f2a94b1b0018c107a657458e2fa75c8e2958f93fa08170f80d6e562e7be53"
+    },
+    {
+      "path": "app/src/main/java/com/solqtech/app/NavigationPolicy.kt",
+      "sha256": "218492152fa0c41273b24c4d61c3ac7dcf71f6b4ac458bdca0077dbc289b51ff"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_solq.xml",
+      "sha256": "df0ab21b1a4905340cd4fb8f46755e3768691ee20575e3478af24f1a4a6a57dd"
+    },
+    {
+      "path": "app/src/main/res/drawable/ic_solq_monochrome.xml",
+      "sha256": "8564f81a5225c5fe7fc78295950e6e429cf867bdcdaf940eb281e59e2a337c52"
+    },
+    {
+      "path": "app/src/main/res/drawable/launch_background.xml",
+      "sha256": "a0ea529c180708ee53a9029c1eea88d212737d5776bf05d96f09422ecc59cdaa"
+    },
+    {
+      "path": "app/src/main/res/mipmap-anydpi/ic_launcher.xml",
+      "sha256": "b0019c84412728638f7dd7b493b423f445f4314c547b76655cd1056d33620a78"
+    },
+    {
+      "path": "app/src/main/res/values/strings.xml",
+      "sha256": "ea93edb99784c8c6f20e8f32f6ca2eec7778ba90451f29cbc4debc0df36192a1"
+    },
+    {
+      "path": "app/src/main/res/values/styles.xml",
+      "sha256": "14ef132d64bc12bee36fb32829c7d355bf0fe55810f05cb8a7a2b97bd124e0ec"
+    },
+    {
+      "path": "app/src/main/res/values-v31/styles.xml",
+      "sha256": "e917f4987fddfc298346a95bc5452eef9442d0252512a9cea19c806e7d617d38"
+    },
+    {
+      "path": "app/src/main/res/xml/data_extraction_rules.xml",
+      "sha256": "3336e7ffc9a2fbd23db76c340bf51a03a59ce6ef3997a866dc274578a2c7e2ec"
+    },
+    {
+      "path": "build.gradle.kts",
+      "sha256": "0b399906658fc504c6732a2b336c20b32c40ea00a1cd96c9ed847c82ea1302c5"
+    },
+    {
+      "path": "gradle.properties",
+      "sha256": "3a050083fdfa46471f74d1ee147c17d8cb6f26ff2c7c5ebf8c22e6bddc00ca90"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "sha256": "53b237a3fc2ef008380c6aa40bb055ada63092470bbe705903ed2c27b3e6f192"
+    }
+  ]
+}

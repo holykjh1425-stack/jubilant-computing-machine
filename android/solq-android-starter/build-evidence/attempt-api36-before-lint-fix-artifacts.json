@@ -1,0 +1,73 @@
+{
+  "observed_at": "2026-11-07T14:26:13.921236+09:00",
+  "artifacts": [
+    {
+      "file": "app-debug.apk",
+      "bytes": 867169,
+      "sha256": "15e1aab28da8ffd21b96ae325a9e016b200af5e44cedcc3c5e75540a903c49b5",
+      "zip_crc": "PASS"
+    },
+    {
+      "file": "app-release.aab",
+      "bytes": 659320,
+      "sha256": "8df7226343a99dffe3f365aea5139189df01ac07fc6cbd5764a96a177dce3f1d",
+      "zip_crc": "PASS"
+    }
+  ],
+  "apk_signature": {
+    "exit_code": 0,
+    "log": "apk-signature.txt"
+  },
+  "apk_badging": {
+    "exit_code": 0,
+    "log": "apk-badging.txt"
+  },
+  "aab_structure": {
+    "exit_code": 0,
+    "log": "bundletool-validate.txt"
+  },
+  "aab_manifest": {
+    "exit_code": 0,
+    "log": "bundletool-manifest.txt"
+  },
+  "release_signature": {
+    "exit_code": 0,
+    "log": "aab-signature.txt"
+  },
+  "lint": {
+    "errors": 1,
+    "warnings": 5,
+    "issues": [
+      {
+        "id": "GestureBackNavigation",
+        "severity": "Error",
+        "message": "`onBackPressed` is no longer called for back gestures; migrate to AndroidX's backward compatible `OnBackPressedDispatcher`"
+      },
+      {
+        "id": "UnusedAttribute",
+        "severity": "Warning",
+        "message": "Attribute `enableOnBackInvokedCallback` is only used in API level 33 and higher (current min is 26)"
+      },
+      {
+        "id": "SetJavaScriptEnabled",
+        "severity": "Warning",
+        "message": "Using `setJavaScriptEnabled` can introduce XSS vulnerabilities into your application, review carefully"
+      },
+      {
+        "id": "DataExtractionRules",
+        "severity": "Warning",
+        "message": "The attribute `android:allowBackup` is deprecated from Android 12 and higher and may be removed in future versions. Consider adding the attribute `android:dataExtractionRules` specifying an `@xml` resource which configures cloud backups and device transfers on Android 12 and higher."
+      },
+      {
+        "id": "ObsoleteSdkInt",
+        "severity": "Warning",
+        "message": "This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `mipmap-anydpi`."
+      },
+      {
+        "id": "MonochromeLauncherIcon",
+        "severity": "Warning",
+        "message": "The application adaptive icon is missing a monochrome tag"
+      }
+    ]
+  }
+}

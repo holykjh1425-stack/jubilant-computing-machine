@@ -1,0 +1,78 @@
+{
+  "observed_at": "2026-11-07T14:31:27.214332+09:00",
+  "artifacts": [
+    {
+      "file": "app-debug.apk",
+      "bytes": 2241006,
+      "sha256": "f9b33fc470966734f2853d1438ffbb6e7bd95bccc6140fdb886247ca22d41ac0",
+      "zip_crc": "PASS"
+    },
+    {
+      "file": "app-release.aab",
+      "bytes": 1683208,
+      "sha256": "ae143e4ef8907a0f3d4726a06f129145acb1e40ac576669b098c26b95cee1865",
+      "zip_crc": "PASS"
+    }
+  ],
+  "apk_signature": {
+    "exit_code": 0,
+    "log": "apk-signature.txt"
+  },
+  "apk_badging": {
+    "exit_code": 0,
+    "log": "apk-badging.txt"
+  },
+  "aab_structure": {
+    "exit_code": 0,
+    "log": "bundletool-validate.txt"
+  },
+  "aab_manifest": {
+    "exit_code": 0,
+    "log": "bundletool-manifest.txt"
+  },
+  "release_signature": {
+    "exit_code": 0,
+    "log": "aab-signature.txt"
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 7,
+    "issues": [
+      {
+        "id": "UnusedAttribute",
+        "severity": "Warning",
+        "message": "Attribute `enableOnBackInvokedCallback` is only used in API level 33 and higher (current min is 26)"
+      },
+      {
+        "id": "SetJavaScriptEnabled",
+        "severity": "Warning",
+        "message": "Using `setJavaScriptEnabled` can introduce XSS vulnerabilities into your application, review carefully"
+      },
+      {
+        "id": "ObsoleteSdkInt",
+        "severity": "Warning",
+        "message": "This folder configuration (`v26`) is unnecessary; `minSdkVersion` is 26. Merge all the resources in this folder into `mipmap-anydpi`."
+      },
+      {
+        "id": "UseKtx",
+        "severity": "Warning",
+        "message": "Use the KTX extension function `String.toUri` instead?"
+      },
+      {
+        "id": "UseKtx",
+        "severity": "Warning",
+        "message": "Use the KTX extension function `String.toUri` instead?"
+      },
+      {
+        "id": "UseKtx",
+        "severity": "Warning",
+        "message": "Use the KTX extension function `String.toUri` instead?"
+      },
+      {
+        "id": "UseKtx",
+        "severity": "Warning",
+        "message": "Use the KTX extension function `String.toUri` instead?"
+      }
+    ]
+  }
+}

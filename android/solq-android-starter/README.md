@@ -1,22 +1,34 @@
-# SOLQ Android — development candidate
+# SOLQ Android — API 36 development candidate
 
-A minimal Kotlin Android WebView shell for https://solqtech.com/.
+Open this directory in Android Studio: `android/solq-android-starter` (the folder containing settings.gradle.kts).
 
-## Build
-Open this folder in Android Studio with JDK 17 and Android SDK 35. The existing local project's Gradle 9.6.0 wrapper is now included. AGP 8.7.3 and Kotlin 2.0.21 are retained. The previous project built with this combination; candidate full Gradle build is currently blocked by the execution environment. This is not a claim of officially supported AGP/Gradle compatibility. Source/resource compilation and 15 navigation tests passed. See RELEASE-READINESS.md.
+## Toolchain
 
-Run `gradlew.bat :app:assembleDebug :app:lintDebug :app:bundleRelease`. Expected outputs are app/build/outputs/apk/debug/app-debug.apk and app/build/outputs/bundle/release/app-release.aab. The candidate was not packaged; the previously verified APK predates these source changes.
+- JDK/JVM target 17; Android SDK platform 36, Build Tools 35.0.0.
+- Android Gradle Plugin 8.11.1, Gradle Wrapper 8.13 (distribution SHA-256 pinned), Kotlin Gradle plugin 2.2.21.
+- AndroidX Activity 1.10.1; minimum API 26, target/compile API 36.
+- Use an Android Studio version supporting AGP 8.11, such as Narwhal 2025.1.1 or a compatible newer release.
 
-The release bundle is unsigned unless all SOLQ_UPLOAD_* environment variables in RELEASE-READINESS.md are supplied securely. No debug signing fallback is configured. Configure SDK path locally; local.properties, keys, secrets and build caches are excluded from source delivery.
+Configure the local SDK in Android Studio; do not commit local.properties. On Windows, run from this directory:
 
-Candidate changes: native home/refresh/privacy navigation; loading/error/retry; system-bar insets; exact trusted hosts; restricted user-initiated external links; Android 13+ back dispatch; content-picker multi-select and cancellation; no third-party cookies, cleartext, file URL access, mixed content, backup or release WebView debugging. Proposed vector Q icon and system splash included. No backend or website change.
+```powershell
+.\gradlew.bat :app:assembleDebug :app:bundleRelease :app:lintDebug
+```
 
-API 35 is retained and does NOT meet the current Play API 36 submission requirement. This project is a development candidate, not a store-ready final release.
+Latest Work clean build: PASS, exit 0, 84.33 seconds, observed 2026-11-07 KST. APK signature and AAB structure validation PASS. lintDebug: 0 errors / 7 warnings. See RELEASE-READINESS.md and build-evidence/ for exact limits. Android Studio GUI Sync and Android device runtime tests were not performed.
 
-## Before production / Google Play
-- Confirm ownership and Play Console app ID / signing configuration.
-- Evaluate Trusted Web Activity (TWA) with Digital Asset Links or a richer native app; a simple WebView-only shell may not satisfy Play quality/functionality review.
-- Test login, customer application, receipt-number display, Android back, file uploads, privacy disclosures, accessibility, network loss, and external links.
-- Implement privacy policy, data safety declarations, versioning, icons, splash, and release signing.
-- Do not embed Supabase service-role keys or admin secrets.
-- Do not publish or change live website without explicit authorization.
+Outputs:
+- app/build/outputs/apk/debug/app-debug.apk — development/debug signed; not a Play upload artifact.
+- app/build/outputs/bundle/release/app-release.aab — unsigned unless all SOLQ_UPLOAD_* settings are supplied securely. The delivered bundle is unsigned.
+
+No new upload key was created, no Play upload/publishing was performed. The platform's local debug signing key was used for the debug APK and is not included in delivery. Never use it as an upload key.
+
+## Scope and limitations
+
+This WebView candidate keeps SOLQ home/privacy navigation, loading/error/retry, bounded external links and file selection. Back handling now uses lifecycle-aware AndroidX OnBackPressedDispatcher. Cloud and device-transfer backup exclusions are explicit. Launch/store Q assets are drafts.
+
+Device tests for Android 15/16, large fonts, accessibility, file selection/cancel, offline recovery and actual application/receipt flow remain blocked by lack of an attached device/emulator and an approved isolated submission target. Do not submit a production application just to test the app.
+
+Release: **NO-GO** until runtime/security/privacy review, upload signing and separate Owner submission approval. Preserve operating website v29, DB, security settings and main. Existing navigation 15 PASS evidence from baseline 5396c628 was reused; it is not a device test.
+
+Store text, data-safety candidates, artwork and internal-test checklist: play/PLAY-PREPARATION.md. All drafts require Owner confirmation.

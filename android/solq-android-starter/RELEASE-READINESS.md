@@ -1,3 +1,60 @@
+# SOLQ Android 최신 빌드·출시 준비 — 2026-11-07 KST
+
+실행자: 기존 ChatGPT Work 직접 실행. 별도 워커 실행·독립 검토를 주장하지 않습니다.
+기준: 5396c62894e51c4c1f2cdb6eb967898a0a960d25. 기존 수정 전 APK는 최신 증거로 사용하지 않았습니다.
+
+## 현재 판정
+
+**최신 후보 빌드·구조 검증 PASS / 설치·실행 BLOCKED / Play 제출·공개 NO-GO.**
+
+|검증|결과·증거|
+|---|---|
+|공식 호환성|AGP 8.11.1 / Gradle 8.13 / Kotlin 플러그인 2.2.21 / JDK·Java·Kotlin JVM 17. AGP 8.11은 API 36 지원; KGP 공식 지원 범위의 조합 선택|
+|SDK|SDK 36 r02, Build Tools 35.0.0, Platform Tools 37.0.2 공식 파일 준비 및 공식 체크섬 대조|
+|JDK|Temurin 17.0.21+9 공식 배포 SHA-256 대조. 기존 시스템 Java 변경 없이 Work 작업 폴더에서만 사용|
+|최종 빌드|:app:clean → assembleDebug / bundleRelease / lintDebug 및 wrapper 재생성. 종료 코드 0, 84.33초, BUILD SUCCESSFUL. build-evidence/gradle-build.log, build-result.json|
+|Gradle 구성|실제 CLI 프로젝트 구성·패키징 PASS. Android Studio GUI Sync는 미실행|
+|APK|ZIP CRC·aapt2 패키지/API 확인·apksigner v2 검증 PASS. 실제 설치는 미검증|
+|AAB|bundletool 1.18.3 validate 및 manifest 확인 PASS. target 36, release debuggable=false, 네이티브 .so 0건. jarsigner는 unsigned 확인|
+|lint|0 errors / 7 warnings. 경고를 없애기 위한 전역 suppress/baseline/abortOnError 완화 없음|
+|기기|ADB 실행 성공, 연결 기기 0건. 기존 에뮬레이터/실기기 없음, /dev/kvm 부재. 소프트웨어 에뮬레이터 가능성 자체를 불가능하다고 단정하지 않음; 이번 실행에는 구성/실행하지 않음|
+|개인정보 URL|이번 Work 공개 HTTP 요청 403, 내용 재확인 BLOCKED. 기존 데스크톱 검증과 구분하며 사이트 장애로 단정하지 않음|
+|운영 영향|운영 홈페이지 v29, Supabase, main, 고객 기록 변경 0. 신청 제출 0, 유료 API/Play 업로드/신규 결제 0|
+
+## 최종 산출물
+
+- `app-debug.apk`: 2,241,006 bytes; SHA-256 `f9b33fc470966734f2853d1438ffbb6e7bd95bccc6140fdb886247ca22d41ac0`.
+- `app-release.aab`: 1,683,208 bytes; SHA-256 `ae143e4ef8907a0f3d4726a06f129145acb1e40ac576669b098c26b95cee1865`.
+
+관측 시각: 2026-11-07T14:31:27.214332+09:00. build-evidence/artifact-results.json 및 source-inputs.json에 바이너리·빌드 입력 지문 기록. 원래 15개 탐색 테스트 증거는 유지하며 불필요하게 재실행하지 않았습니다. AndroidX 전환 이후 실제 제스처 동작 PASS를 의미하지 않습니다.
+
+## 해결한 오류와 잔여 경고
+
+- 최초 Java는 실행 환경만 있고 javac가 없어 컴파일 차단. 작업 폴더의 정식 JDK 17로 해소.
+- Java 의존성 연결은 환경에 이미 구성된 무인증 프록시 및 시스템 CA를 사용. TLS 검증을 끄거나 권한 정책을 우회하지 않음. Adoptium API 403은 공식 GitHub 배포본·공식 체크섬으로 대체; 비공식 미러 미사용.
+- API 36 lint GestureBackNavigation 오류: ComponentActivity + 생명주기 OnBackPressedDispatcher로 수정, 레거시 onBackPressed 재정의 제거.
+- 백업 제외 XML과 단색 아이콘 추가. 수정 도중 증분 DEX 중간 산출물에서 R$drawable 중복이 발생했으나, 소스에 중복 선언 없음 확인 후 프로젝트 clean 빌드로 해소. 운영 파일/데이터 정리 없음.
+- 남은 lint: SetJavaScriptEnabled 1건(서비스 JS 필요, 신뢰 호스트/혼합 콘텐츠·file 접근/SSL 기본 검증 유지; 실제 웹 XSS·외부 링크 경계 검토 미완료), UnusedAttribute 1건(API33 back opt-in, 구버전 무시), ObsoleteSdkInt 1건(이동 후 비어 있는 로컬 v26 디렉터리 관련; Git은 빈 폴더를 저장하지 않음), UseKtx 4건(문자열 URI 변환 스타일 권고).
+- Kotlin 컴파일러의 기존 파일 선택 onActivityResult 사용 중단 예정 경고도 남음. 현재 호환 경로를 유지했으며 파일 선택·취소의 실기기 확인 필요. lint 7건과 별도로 구분.
+
+## 서명·실행·제출 차단 사항
+
+- SOLQ_UPLOAD_* 설정은 이 빌드 환경에 없음. 키·비밀번호 내용 검색·출력/새 업로드키 생성 없음. AAB의 signReleaseBundle 작업명이 출력되더라도 jarsigner 결과가 unsigned이므로 서명 완료로 간주하지 않음.
+- 디버그 APK는 개발용 로컬 debug 키로 서명. 비밀 키 파일은 소스/산출물 ZIP/공개 저장소에 포함하지 않음. 다른 PC의 기존 업로드키가 없다고 단정하지 않음.
+- Android 15·16 UI/뒤로 가기/오프라인 복구/큰 글꼴/TalkBack/파일 첨부·취소/개인정보 링크: BLOCKED. 실제 기기 또는 에뮬레이터 실행 증거 필요.
+- 운영 신청·접수번호 생성 테스트: 미실행. 별도 승인된 격리 대상 없이는 제출하지 않음.
+- 스토어 512×512 아이콘·1024×500 그래픽 및 문안·데이터 보안·연령·서명 체크리스트 초안 준비. 실제 스크린샷 미확보. 미확정 신고 답변을 임의 확정하지 않음.
+- versionCode 1의 기존 Play 업로드 이력/패키지 소유권 미확인. 기존 이력이 있으면 더 높은 값 확정 필요.
+- 최소 다음 조치: Android Studio/기기에서 최신 APK의 읽기 중심 기능 실행 확인. 제출·접수 생성은 격리 대상으로 별도 승인 후 실시. 업로드키는 기존 보호 경로로 Owner 확인, 신규 키 필요 시 별도 승인. 내부 테스트 업로드 및 공개는 각각 승인 전 금지.
+
+추가 결제·유료 자원 생성 0. Work 사용량/기존 구독 전체 청구를 0원이라고 검증한 것은 아닙니다.
+
+공식 근거: README.md 도구 버전과 play/PLAY-PREPARATION.md 링크 참조.
+
+---
+
+## 이전 후보의 역사적 기록 — 아래 차단 내용 중 도구/API/패키징은 위 최신 결과로 대체
+
 # SOLQ 출시 준비 상태 — 2026-11-07 KST
 
 상태: 개발 후보본. Google Play 제출 준비 완료가 아닙니다.
