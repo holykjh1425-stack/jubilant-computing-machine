@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a1529"><meta name="robots" content="noindex,nofollow">
+<meta name="description" content="SOLQ 모바일·PC 웹앱 격리 개발 시안">
+<title>SOLQ | 웹앱 개발 시안</title><link rel="manifest" href="./manifest.webmanifest"><link rel="stylesheet" href="./style.css"><script src="./app.js" defer></script></head>
+<body><a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="top"><a class="logo" href="./">SOL<span>Q</span></a><span class="tag">격리 개발 시안 · 운영 미연결</span></header>
+<main id="main"><section class="hero"><p class="eyebrow">AI · AUTOMATION · SOLUTIONS</p><h1>복잡한 업무,<br><em>쏠큐로 더 간단하게.</em></h1><p>고객 신청부터 무료 6단계 계획까지, SOLQ 서비스의 모바일·PC 앱 사용 흐름을 미리 확인합니다.</p><a class="cta" href="#apply">신청 흐름 체험하기</a></section>
+<section class="panel" aria-labelledby="steps-title"><h2 id="steps-title">무료 계획 진행 과정</h2><ol class="steps"><li>문제 접수</li><li>업무 분류</li><li>현재 과정 분석</li><li>자동화 설계</li><li>예상 효과·범위</li><li>개별 견적 안내</li></ol><p class="muted">무료 계획 0원 · AI 자동화 제작 100,000원부터 · 착수금 30,000원 · 입금 확인 및 별도 제작 승인 후 진행</p></section>
+<section class="panel" id="apply" aria-labelledby="apply-title"><h2 id="apply-title">신청 화면 미리보기</h2><p class="warning">현재는 <strong>모의 신청 전용</strong>입니다. 실제 고객 정보는 입력하지 마세요. 서버 전송·고객 접수·결제는 발생하지 않습니다.</p>
+<form id="apply-form" novalidate><label for="category">필요한 서비스</label><select id="category" required><option value="">선택하세요</option><option value="분류 자동화">업무 분류 자동화</option><option value="홈페이지">홈페이지·신청 시스템</option><option value="기타">기타 자동화 상담</option></select>
+<label for="details">업무 내용 (가상 예시만 입력)</label><textarea id="details" minlength="10" maxlength="500" rows="4" required placeholder="예: 문의가 들어오면 유형별로 정리하고 싶습니다."></textarea>
+<label class="check"><input id="consent" type="checkbox" required> <span>모의 화면 체험 안내를 확인했습니다. 실제 개인정보를 입력하지 않으며, 내용은 전송·저장되지 않습니다.</span></label>
+<button class="cta" type="submit">모의 접수번호 확인</button><p id="error" role="alert"></p></form>
+<div id="result" class="result" role="status" aria-live="polite" hidden><h3>모의 신청 완료</h3><p id="receipt"></p><p>이 번호는 실제 SOLQ 접수번호가 아니며 관리자 화면에서 조회되지 않습니다.</p><button id="reset" type="button">다시 체험</button></div></section>
+<section class="panel"><h2>진행 상태 확인</h2><p>실제 고객 접수번호 조회와 관리자 로그인은 운영 인증·권한 검증 이후에만 연결됩니다.</p><p class="muted">현재 상태: 기능 시안 · 서버 미연결 · 운영 데이터 변경 없음</p></section></main>
+<footer>SOLQ · 개발 전용 PWA 시안 · 고객 신청은 공식 사이트에서만 진행하세요. <a href="https://solqtech.com">공식 사이트</a></footer>
+</body></html>

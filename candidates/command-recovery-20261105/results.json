@@ -1,0 +1,293 @@
+{
+  "time": "2026-11-05T03:09:19.752Z",
+  "engine": "PGlite PostgreSQL WASM; single connection; synthetic data",
+  "realSupabaseAuth": false,
+  "realEdge": false,
+  "realIndependentConnections": false,
+  "realBackupRestored": false,
+  "productionWrites": 0,
+  "paidApiCalls": 0,
+  "checks": [
+    {
+      "name": "fresh database without baseline exposes missing applications",
+      "status": "PASS"
+    },
+    {
+      "name": "all eleven historical migrations replay with explicit platform adapters",
+      "status": "PASS"
+    },
+    {
+      "name": "application metadata columns match production snapshot",
+      "status": "PASS"
+    },
+    {
+      "name": "constraints policies indexes triggers and RLS flags match captured application schemas",
+      "status": "PASS"
+    },
+    {
+      "name": "public identity sequence definitions match without reading production sequence values",
+      "status": "PASS"
+    },
+    {
+      "name": "public intake stores one synthetic application with receipt",
+      "status": "PASS"
+    },
+    {
+      "name": "anonymous direct row read denied",
+      "status": "PASS"
+    },
+    {
+      "name": "ordinary authenticated user cannot see applications",
+      "status": "PASS"
+    },
+    {
+      "name": "admin role predicate sees synthetic application",
+      "status": "PASS"
+    },
+    {
+      "name": "admin reads do not create plans or jobs",
+      "status": "PASS"
+    },
+    {
+      "name": "restored rule engine returns six steps and zero paid calls",
+      "status": "PASS"
+    },
+    {
+      "name": "restored automatic path persists plan and one job",
+      "status": "PASS"
+    },
+    {
+      "name": "restored automatic path retry reuses same plan and job",
+      "status": "PASS"
+    },
+    {
+      "name": "restored server tick enrolls production preview without execution",
+      "status": "PASS"
+    },
+    {
+      "name": "existing quote and deposit candidates install on fully reconstructed application schema",
+      "status": "PASS"
+    },
+    {
+      "name": "separate production approval denies missing prerequisites",
+      "status": "PASS"
+    },
+    {
+      "name": "reconstructed schema links verified acceptance to correct application",
+      "status": "PASS"
+    },
+    {
+      "name": "deposit notice does not approve production",
+      "status": "PASS"
+    },
+    {
+      "name": "manual evidence confirmation alone does not start production",
+      "status": "PASS"
+    },
+    {
+      "name": "separate approval queues once after all three prerequisites",
+      "status": "PASS"
+    },
+    {
+      "name": "unauthorized status mutation denied by RLS",
+      "status": "PASS"
+    },
+    {
+      "name": "catalog-confirmed ancillary management privileges removed in candidate",
+      "status": "PASS"
+    },
+    {
+      "name": "security candidate preserves public intake",
+      "status": "PASS"
+    },
+    {
+      "name": "security candidate accepts consented support inquiry",
+      "status": "PASS"
+    },
+    {
+      "name": "support token scope rejects incorrect token",
+      "status": "PASS"
+    },
+    {
+      "name": "support token scope returns matching synthetic inquiry",
+      "status": "PASS"
+    },
+    {
+      "name": "support direct table read denied",
+      "status": "PASS"
+    },
+    {
+      "name": "public RPC wrappers are security invoker",
+      "status": "PASS"
+    },
+    {
+      "name": "dedicated definer owner cannot login or bypass RLS",
+      "status": "PASS"
+    },
+    {
+      "name": "anonymous and authenticated roles have no owner membership",
+      "status": "PASS"
+    },
+    {
+      "name": "missing privacy consent is rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "malformed support token is rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "new intake failure rolls back application and capture event",
+      "status": "PASS"
+    },
+    {
+      "name": "following request recovers after rolled-back intake error",
+      "status": "PASS"
+    },
+    {
+      "name": "no outbound network requests made",
+      "status": "PASS"
+    },
+    {
+      "name": "synthetic application plan job and acceptance survive engine restart",
+      "status": "PASS"
+    },
+    {
+      "name": "security rollback restores public RPC definitions without dropping customer tables",
+      "status": "PASS"
+    }
+  ],
+  "migrationReplay": [
+    {
+      "file": "20261018033557_secure_application_receipt_rpc.sql",
+      "status": "PASS",
+      "adaptedPlatformExtensionStatements": false
+    },
+    {
+      "file": "20261018071846_capture_new_inquiry_events.sql",
+      "status": "PASS",
+      "adaptedPlatformExtensionStatements": false
+    },
+    {
+      "file": "20261020073801_add_private_written_support.sql",
+      "status": "PASS",
+      "adaptedPlatformExtensionStatements": false
+    },
+    {
+      "file": "20261021122602_nexus_ai_server.sql",
+      "status": "PASS",
+      "adaptedPlatformExtensionStatements": false
+    },
+    {
+      "file": "20261021131855_central_orchestrator.sql",
+      "status": "PASS",
+      "adaptedPlatformExtensionStatements": false
+    },
+    {
+      "file": "20261021204847_autonomous_workers.sql",
+      "status": "PASS",
+      "adaptedPlatformExtensionStatements": false
+    },
+    {
+      "file": "20261021204905_autonomous_schedule.sql",
+      "status": "PASS",
+      "adaptedPlatformExtensionStatements": true
+    },
+    {
+      "file": "20261021205922_worker_hardening.sql",
+      "status": "PASS",
+      "adaptedPlatformExtensionStatements": true
+    },
+    {
+      "file": "20261021210407_signed_worker_dispatch.sql",
+      "status": "PASS",
+      "adaptedPlatformExtensionStatements": false
+    },
+    {
+      "file": "20261021215655_production_core.sql",
+      "status": "PASS",
+      "adaptedPlatformExtensionStatements": false
+    },
+    {
+      "file": "20261026045157_solq_automatic_free_plans_and_quote_gate.sql",
+      "status": "PASS",
+      "adaptedPlatformExtensionStatements": false
+    }
+  ],
+  "platformAdapters": [
+    "auth claims are SQL test settings, not signed JWT",
+    "pg_net refuses all requests",
+    "cron only stores inactive schedules",
+    "Vault dummy metadata, no production secrets"
+  ],
+  "remaining": [
+    "Native PostgreSQL server requires a non-root mapped UID and extension-capable runtime",
+    "Supabase Auth/JWT and Edge are not exercised by SQL test adapters",
+    "Actual independent-session concurrency not tested",
+    "Production encrypted backup and actual restore unavailable",
+    "Provider advisory and leaked password setting remain unchanged"
+  ],
+  "inputSha256": {
+    "verify.mjs": "3cd7416664b37df4bafd945ccc1e85280dc06b9c277eef36bf9f3ac67dfa59a7",
+    "package-lock.json": "0cadbb70c9c26ad1bbb95d6910c4741744945d9fcafe8af0506297b8ad251898",
+    "platform-test-adapters.sql": "27da1bd50ad0e5001980062524227a4a58edc69f8d55aad869939dea7b8eed10",
+    "00-initial-schema.sql": "fdb67b29eaf2b21b3d1b2eb16b37ce81b0efb633fb42553719648429d1548af1",
+    "10-untracked-approval-prerequisites.sql": "f1e47b30d1860e366238497d6826832967e7626f25c34be590976f1780ff9c2b",
+    "production-catalog.json": "ec058fdb3f6e83f33b38675dde4810edab07fe896cbec5b0cca5a1fefde356cd",
+    "access-metadata.json": "ef38e3977378c557fdf381369cf70d0178b53470346a59ac46ffcf61f10c268e",
+    "security-candidate.sql": "e80d98364ca04fadac5b770871ff6ef645e71973445406286911bb766b30242e",
+    "security-rollback.sql": "e4a03fe28d63f6cacd8e6d07739a42b1b964c9ea0175960c8011576ed1a5c37a",
+    "history/20261018033557_secure_application_receipt_rpc.sql": "648858c55c6d25aecf6d5c36a7cfb332d1d4d68f7b2c1b637733e4b5a9bb4026",
+    "history/20261018071846_capture_new_inquiry_events.sql": "05f245b43027d959cde951f802d9d3f09a4cebae0b1dc645d0314e508e5f6407",
+    "history/20261020073801_add_private_written_support.sql": "98f0e920bf1641d23f1e0ce253d312c1074182eda6789897634f999e196ae7dc",
+    "history/20261021122602_nexus_ai_server.sql": "158dbcb200b9accfbfc4effe08d35c7ed5b29fdfe0b3c3af2609dc5386ddbcaf",
+    "history/20261021131855_central_orchestrator.sql": "0520e451592d3199f53203b3145b208d519ea153e0523a693c2388b0073f97f8",
+    "history/20261021204847_autonomous_workers.sql": "4c932d5163b5e3043cb199fde36639dd605e3a1f53fb0e2bde8b4d7649ff280f",
+    "history/20261021204905_autonomous_schedule.sql": "674f0d70f3c7b5641c18da45790c7888658aca80ba948a40b2643eb7bbbf1f17",
+    "history/20261021205922_worker_hardening.sql": "b4867ca43762245212116a422c61b7fd7595925ad7f398d917d261c58b2cce04",
+    "history/20261021210407_signed_worker_dispatch.sql": "e9a2b7bffa5ca8438b7acdd0defa6246e16423d643719c75385f299e6df9f0fe",
+    "history/20261021215655_production_core.sql": "fdb5e155a26afe728a49c76da0da05c74f62e913c33d429ce3f541611c0481c5",
+    "history/20261026045157_solq_automatic_free_plans_and_quote_gate.sql": "aa3159bbfdc9f7d456b93cf2e788c2c00e7d0fcb3388c239726b0c24edcb4685"
+  },
+  "columnDifferences": {
+    "missing": [],
+    "extra": []
+  },
+  "engineVersion": "PostgreSQL 18.6 (PGlite 0.5.15) on wasm32-unknown-emscripten, compiled by emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 6.0.13 (e13ee988ce3d87a738dd8f3661d02223308c412a), 32-bit",
+  "notNullCatalogNormalization": "PGlite PG18 exposes NOT NULL in pg_constraint; compared independently using attnotnull for all columns",
+  "structureDifferences": {
+    "constraints": {
+      "missing": [],
+      "extra": []
+    },
+    "policies": {
+      "missing": [],
+      "extra": []
+    },
+    "indexes": {
+      "missing": [],
+      "extra": []
+    },
+    "triggers": {
+      "missing": [],
+      "extra": []
+    },
+    "tables": {
+      "missing": [],
+      "extra": []
+    }
+  },
+  "sequenceDifferences": {
+    "missing": [],
+    "extra": []
+  },
+  "aclScope": "Production table, schema, column and default ACL metadata captured. Local harness uses explicit functional grants, not full Supabase default ACL reproduction. Ancillary live management rights separately tested and candidate-remediated.",
+  "persistenceCounts": {
+    "applications": 3,
+    "plans": 1,
+    "jobs": 1,
+    "acceptances": 1
+  },
+  "pass": 37,
+  "fail": 0
+}

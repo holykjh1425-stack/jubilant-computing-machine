@@ -1,0 +1,23 @@
+{
+  "run_id": 40323550817,
+  "job_id": 121574321703,
+  "commit": "adc2e641757165455266d411f71fc66a21baf0c7",
+  "conclusion": "success",
+  "six_grants_restored_exactly": true,
+  "acl_restored": true,
+  "admin_lookup_and_service_role_kept": true,
+  "rls_policies_unchanged": true,
+  "historical_rows_unchanged": true,
+  "worker_after_apply": {
+    "plans": 1,
+    "jobs": 1,
+    "tasks": 6
+  },
+  "worker_after_recovery": {
+    "plans": 1,
+    "jobs": 1,
+    "tasks": 6
+  },
+  "production_attempts": 0,
+  "production_changes": 0
+}

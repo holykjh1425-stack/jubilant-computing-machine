@@ -1,0 +1,22 @@
+{
+  "dateKst": "2026-11-06",
+  "authEvidence": "User-reported sign-in plus server last_sign_in_at and admin membership; no Work session token accessed",
+  "refreshEvidence": "User report and supplied Android screenshots",
+  "sixStagesVisible": true,
+  "lastStage": "awaiting_approval",
+  "displayedPlanAndJobMatchDatabase": true,
+  "counts": {
+    "applications": 9,
+    "plans": 6,
+    "orchestratorJobs": 7,
+    "productionJobs": 6
+  },
+  "allFourContentFingerprintsMatchPreAuth": true,
+  "newBusinessRecordsObserved": 0,
+  "cronActive": true,
+  "cronFailuresLastHour": 0,
+  "rawScreenshotsPublished": false,
+  "actualProductionJobsUiVerified": false,
+  "timerCallbackInstrumentedOnUserPhone": false,
+  "operatingDeploymentPerformed": false
+}

@@ -1,0 +1,16 @@
+{
+  "scope": "isolated file-tree round trip only; not Sites deployment rollback",
+  "baseSitesVersion": 28,
+  "baseCommit": "ab4d34c830669e69b57f0689588eb6a24b41f91e",
+  "changedPaths": [
+    "admin.html",
+    "admin.js",
+    "free-workflow.js",
+    "plan-view.js"
+  ],
+  "unrelatedFilesChanged": false,
+  "restoredFileCount": 33,
+  "allBytesMatchBaseline": true,
+  "productionTouched": false,
+  "runtimeRollbackTested": false
+}

@@ -1,0 +1,94 @@
+{
+  "dateKst": "2026-11-06",
+  "scope": "new browser/source checks only",
+  "existing51Rerun": false,
+  "realAdminAuthVerified": false,
+  "realAndroidVerified": false,
+  "realiOSVerified": false,
+  "productionWrites": 0,
+  "newApplications": 0,
+  "paidApiCalls": 0,
+  "checks": [
+    {
+      "name": "empty required fields prevent submit",
+      "status": "PASS",
+      "environment": "live public cloud desktop browser"
+    },
+    {
+      "name": "missing both privacy consents prevents submit",
+      "status": "PASS",
+      "environment": "live public cloud desktop browser"
+    },
+    {
+      "name": "missing transfer consent independently prevents submit",
+      "status": "PASS",
+      "environment": "live public cloud desktop browser"
+    },
+    {
+      "name": "six persisted synthetic steps and review state render",
+      "status": "PASS",
+      "environment": "isolated synthetic browser fixture"
+    },
+    {
+      "name": "list refresh and timer read only; writes0 network0",
+      "status": "PASS",
+      "environment": "isolated synthetic browser fixture"
+    },
+    {
+      "name": "duplicate job links stop with error and no generation",
+      "status": "PASS",
+      "environment": "isolated synthetic browser fixture"
+    },
+    {
+      "name": "ordinary synthetic user denied admin list",
+      "status": "PASS",
+      "environment": "isolated synthetic browser fixture"
+    },
+    {
+      "name": "360px frame no horizontal overflow; six steps",
+      "status": "PASS",
+      "environment": "desktop iframe layout; not Android"
+    },
+    {
+      "name": "390px frame no horizontal overflow; six steps",
+      "status": "PASS",
+      "environment": "desktop iframe layout; not iOS"
+    }
+  ],
+  "syntax": "four JS files parsed successfully",
+  "readonlyAudit": {
+    "desktop": {
+      "reads": 20,
+      "writes": 0,
+      "network": 0
+    },
+    "duplicate": {
+      "reads": 6,
+      "writes": 0,
+      "network": 0
+    },
+    "ordinary": {
+      "reads": 1,
+      "writes": 0,
+      "network": 0
+    },
+    "360": {
+      "reads": 7,
+      "writes": 0,
+      "network": 0,
+      "documentWidth": 345
+    },
+    "390": {
+      "reads": 7,
+      "writes": 0,
+      "network": 0,
+      "documentWidth": 375
+    }
+  },
+  "deploymentCandidateSha256": {
+    "admin.html": "a8967e5303ecb7593af81d885991ef30899d4f8e4bfe71ebe1d486279fd14af9",
+    "admin.js": "5fdae518b830d451210da66d342bed0741f3a4353743949d70eb3ea01f1d1cd4",
+    "free-workflow.js": "d9a60250ee54607244bca74d032545da19dd11418c33e566a9a21ef6a314d3cc",
+    "plan-view.js": "e0c8ede1d22f6877ecba30fd94b3c2c0357f198028f19a03e2217f0a17c2c7f8"
+  }
+}

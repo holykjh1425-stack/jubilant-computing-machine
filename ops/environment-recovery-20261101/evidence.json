@@ -1,0 +1,41 @@
+{
+  "checkedAtUtc": "2026-11-01T09:39:44.138874+00:00",
+  "originalWorkSessionStatus": "unverified; no original runtime/session ID or resume capability exposed",
+  "browserInventory": {
+    "apps": 0,
+    "browsers": 1,
+    "tabs": 0
+  },
+  "currentLocalTools": {
+    "docker": false,
+    "podman": false,
+    "psql": false,
+    "pg_dump": false,
+    "pg_restore": false,
+    "supabase": false,
+    "deno": false,
+    "node": true
+  },
+  "dockerSocketPresent": false,
+  "oldRuntimePathsPresent": {
+    "/tmp/solq-native-pg": false,
+    "/tmp/solq-isolated-runtime": false
+  },
+  "support": {
+    "ticket": "SU-533612",
+    "submittedUtc": "2026-11-01T05:51:05Z",
+    "automatedReceiptUtc": "2026-11-01T05:56:09Z",
+    "accountLinked": "user confirmed 2026-11-01; not repeated",
+    "substantiveReplyFound": false,
+    "mailThreadId": "1a195a9543be0579"
+  },
+  "equivalentEnvironmentAttempt": {
+    "runId": 41294048029,
+    "jobId": 124811055029,
+    "sourceCommit": "7d1ab9201fc7953deacac73449fc665889c9f689",
+    "standardPublicRunner": true,
+    "productionSecretsPassed": false
+  },
+  "productionChanges": 0,
+  "paidProviderCalls": 0
+}

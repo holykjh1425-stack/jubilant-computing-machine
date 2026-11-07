@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SOLQ | 무료 계획·견적·동의 연결 시안</title>
+<style>body{font-family:system-ui,sans-serif;background:#f7f8fc;color:#172036;margin:0}main{max-width:760px;margin:auto;padding:30px 18px}h1{font-size:clamp(26px,5vw,38px)}section{background:white;border:1px solid #dbe0e9;border-radius:14px;padding:22px;margin:18px 0}ol{line-height:1.9}button{background:#263b86;color:white;border:0;padding:13px 18px;border-radius:8px;font-weight:700;cursor:pointer}button:disabled{background:#a4a9b8;cursor:not-allowed}input[type=checkbox]{width:18px;height:18px}label{display:block;margin:16px 0}small,.muted{color:#596579}#quote,#consent,#complete{display:none}.tag{font-weight:700;color:#2c448a}.warning{border-left:4px solid #c76d00;padding:12px;background:#fff8eb}</style></head>
+<body><main><p class="tag">SOLQ · 개발 검토 전용</p><h1>무료 6단계 계획 → 개별 견적 → 고객 동의</h1>
+<p class="warning">이 페이지는 <strong>격리 시안</strong>입니다. 실제 신청·견적 발송·동의 저장·결제·제작 승인은 수행하지 않습니다. 고객 개인정보를 입력하지 마세요.</p>
+<section id="plan"><h2>1. 무료 6단계 업무 계획</h2><p>접수번호를 확인한 관리자가 무료 계획을 승인·생성하고 고객에게 전달한 뒤에만 다음 단계로 진행합니다.</p>
+<ol><li>요청 내용 확인</li><li>현재 업무 흐름 분석</li><li>반복 업무 분류</li><li>자동화 범위 제안</li><li>예상 작업 단계·제외 범위 정리</li><li>검토용 계획 안내</li></ol>
+<label><input type="checkbox" id="plan-ready"> 관리자가 승인한 실제 무료 계획을 고객에게 전달했음을 확인 (시안용)</label><button id="to-quote" disabled>개별 견적 확인</button></section>
+<section id="quote"><h2>2. 개별 견적</h2><p>기본형 제작비 <strong>100,000원부터</strong>, 착수금 <strong>30,000원</strong>. 아래는 기본형의 설명용 예시이며 실제 견적이 아닙니다.</p>
+<p>기본형 예시: 규칙 기반 분류 자동화 1개, 입력 1개, 결과 1개, 예시 검증, 사용 안내, 수정 1회.</p>
+<p class="muted">생성형 AI, 외부 연동, 자동 발송, 결제, 추가 관리자, 월 유지관리는 기본형에서 제외됩니다. 최종 총액·일정·범위는 개별 견적에서 확정합니다.</p>
+<label><input type="checkbox" id="quote-issued"> 관리자가 확정한 개별 견적서를 고객에게 제공했음을 확인 (시안용)</label><button id="to-consent" disabled>견적 동의 단계</button></section>
+<section id="consent"><h2>3. 고객 동의</h2><p>고객은 실제 견적서의 총액, 착수금, 잔금, 작업 범위, 납기 및 취소·환불 조건을 확인한 후 동의해야 합니다.</p>
+<label><input type="checkbox" id="scope-ok"> 견적의 금액·작업 범위·제외 사항을 확인했습니다.</label>
+<label><input type="checkbox" id="terms-ok"> 계약·취소·환불 조건을 확인했습니다.</label>
+<button id="consent-button" disabled>동의 흐름 시연</button><p class="muted">실제 고객 동의는 인증된 고객에게 견적 버전·시각·증거를 서버에 안전하게 저장하는 기능이 별도로 필요합니다.</p></section>
+<section id="complete" role="status"><h2>시연 완료</h2><p>화면 흐름만 확인했습니다. <strong>고객 동의가 접수되거나 계약이 성립한 것은 아닙니다.</strong> 실제 운영은 서버의 동의 저장과 관리자 검증을 통과해야 합니다.</p></section>
+<p class="muted">입금 확인과 실제 제작 승인은 별도의 관리자 단계이며, 이 시안에서 실행할 수 없습니다.</p>
+</main><script src="./sales-funnel-demo.js"></script></body></html>

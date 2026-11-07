@@ -1,0 +1,51 @@
+{
+  "diagnosticRun": 41294756827,
+  "diagnosticJob": 124813145088,
+  "diagnosticCommit": "c3466f8ee777035d8d00a86c816f69c8cca764b8",
+  "diagnosis": {
+    "containerRunning": true,
+    "containerHealthy": true,
+    "internalSelect1": true,
+    "internalTcp5432": true,
+    "hostPublishedTcp54322": false,
+    "actualPublishedPortsEmpty": true,
+    "configuredHostPort54322": true,
+    "listenAddresses": "*",
+    "permissionsFailureObserved": false
+  },
+  "repairRun": 41295008631,
+  "repairJob": 124813900403,
+  "repairCommit": "feec2b83f98cca429c7323f30f7e525fbb35fd6d",
+  "repair": {
+    "cliStartExit": 0,
+    "realLocalPostgres": {
+      "select1": true,
+      "version": "17.11"
+    },
+    "cleanup": "PASS",
+    "temporaryAliasCleanup": "PASS",
+    "externalPortsOpened": 0,
+    "productionSettingsChanged": 0
+  },
+  "authRlsEdgeAtomicity": {
+    "status": "PASS_ISOLATED_ONLY",
+    "run": 41295597041,
+    "job": 124815672195,
+    "sourceCommit": "fa6c130a8d2e1710032c1d493d6d6fb9fde67169",
+    "checks": 33,
+    "fail": 0,
+    "operatingIdentityUsed": false,
+    "productionCandidateCoverage": "local integration fixture; not production nexus-orchestrator / quote rollout"
+  },
+  "previousTestsRerun": false,
+  "fullBackup": "NOT_EXECUTED",
+  "isolatedFullRestore": "NOT_EXECUTED",
+  "providerCalls": 0,
+  "paidUsd": 0,
+  "firstIntegrationHarnessFailure": {
+    "run": 41295365514,
+    "job": 124814982834,
+    "error": "TypeError: sql() takes 1 positional argument but 2 were given",
+    "fixedIn": "fa6c130a8d2e1710032c1d493d6d6fb9fde67169"
+  }
+}

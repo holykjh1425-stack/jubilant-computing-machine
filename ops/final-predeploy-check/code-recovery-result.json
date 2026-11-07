@@ -1,0 +1,6 @@
+{
+  "kind": "code-only archive roundtrip, NOT database or deployed-assets recovery",
+  "files": 23,
+  "mismatches": [],
+  "archive_sha256": "a14ae5cb819888e577f603ebaeb3995506abc6c3946abaaa42ee780ef3083ad0"
+}

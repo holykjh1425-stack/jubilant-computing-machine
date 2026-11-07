@@ -1,0 +1,33 @@
+name: SOLQ ATLAS dry-run dispatch
+on:
+  workflow_dispatch:
+  push:
+    branches: [dev/solq-independent-runner-20261102]
+    paths:
+      - 'ops/independent-runner/solq_dispatch.py'
+      - 'ops/independent-runner/test_solq_dispatch.py'
+      - 'ops/independent-runner/tasks.json'
+      - '.github/workflows/solq-atlas-dispatch.yml'
+permissions:
+  contents: read
+concurrency:
+  group: solq-atlas-dryrun-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  dry-run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run tests
+        run: python -m unittest discover -s ops/independent-runner -p 'test_solq_dispatch.py' -v
+      - name: Generate non-executing dispatch proposals
+        run: python ops/independent-runner/solq_dispatch.py --output artifacts/solq-dispatch.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: solq-atlas-dryrun
+          path: artifacts/solq-dispatch.json
+          retention-days: 7

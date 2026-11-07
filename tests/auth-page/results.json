@@ -1,0 +1,53 @@
+{
+  "tested_at_utc": "2026-10-27T05:19:09.539Z",
+  "environment": "linkedom synthetic DOM and injected HTTP transport",
+  "actual_browser_csp_verified": false,
+  "real_auth_or_edge_called": false,
+  "existing_pass_reused": true,
+  "tests": [
+    {
+      "name": "only the new pinned script is loaded; CSP restricts network, forms and child execution",
+      "passed": true
+    },
+    {
+      "name": "no request or credentials enabled before explicit trust and submit",
+      "passed": true
+    },
+    {
+      "name": "file, wrong origin/path, iframe and insecure contexts block before authentication",
+      "passed": true
+    },
+    {
+      "name": "successful flow has exactly five allowlisted requests then current-session logout",
+      "passed": true
+    },
+    {
+      "name": "credentials and tokens do not appear in rendered results, API bodies or storage",
+      "passed": true
+    },
+    {
+      "name": "invalid password and network failure stop with no automatic retry",
+      "passed": true
+    },
+    {
+      "name": "server getUser rejection or malformed identity prevents membership/Edge and logs out",
+      "passed": true
+    },
+    {
+      "name": "non-admin and mismatched membership never invoke Edge and log out",
+      "passed": true
+    },
+    {
+      "name": "401, 403, network/CORS and unsafe capabilities results are distinct and never PASS",
+      "passed": true
+    },
+    {
+      "name": "logout failure is not falsely successful; only explicit logout retry is enabled",
+      "passed": true
+    },
+    {
+      "name": "double submit during pending authentication sends only one login",
+      "passed": true
+    }
+  ]
+}

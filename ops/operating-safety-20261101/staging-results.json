@@ -1,0 +1,18 @@
+{
+  "candidate_commit": "b55ade9735854b946059080b905801e3f58890d3",
+  "sites_baseline_commit": "ab4d34c830669e69b57f0689588eb6a24b41f91e",
+  "offline_staging_only": true,
+  "verified_files": 21,
+  "changed_existing_files": [
+    "admin.html",
+    "admin.js",
+    "free-workflow.js"
+  ],
+  "protected_frontend_equal": true,
+  "admin_dependencies_complete": true,
+  "generation_auto_paths_absent": true,
+  "real_auth": false,
+  "real_edge_integration": false,
+  "operating_backup_restore": false,
+  "production_rollout_allowed": false
+}

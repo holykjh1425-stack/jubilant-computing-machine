@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "mode": "candidate_not_activated",
+  "updated_at": "2026-11-05",
+  "actions": [
+    {
+      "action_id": "OWNER-O1-BACKUPS-20261105",
+      "gate_id": "Gate-1",
+      "required_by": "GUARD",
+      "owner": "Supabase project Owner",
+      "status": "WAITING_OWNER",
+      "urgency": "HIGH",
+      "owner_action": "In existing Supabase project elfacqmvygnwjlklqhiz, open Database → Backups; report latest recovery point time/timezone, backup type, completion status and whether download is offered.",
+      "forbidden_actions": [
+        "Restore",
+        "Clone",
+        "Reset",
+        "Upgrade",
+        "share passwords or API keys"
+      ],
+      "eta_after_action": {
+        "min_minutes": 10,
+        "max_minutes": 20,
+        "type": "unmeasured_planning_estimate",
+        "scope": "O1-A read-only classification only, not backup PASS"
+      },
+      "evidence_needed": [
+        "Non-secret backup recovery point metadata",
+        "Backup type",
+        "Status",
+        "Download option"
+      ],
+      "dedupe_key": "Gate-1:owner-backups-read"
+    }
+  ]
+}

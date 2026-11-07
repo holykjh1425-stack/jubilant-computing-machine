@@ -1,0 +1,20 @@
+name: SOLQ independent runner smoke (candidate)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: solq-independent-smoke
+  cancel-in-progress: false
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Credential-free smoke check
+        run: python3 ops/independent-runner/smoke_check.py

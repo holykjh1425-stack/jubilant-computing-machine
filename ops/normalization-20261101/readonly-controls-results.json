@@ -1,0 +1,35 @@
+{
+  "environment": "isolated synthetic component VM; no real Auth, browser, DB or network",
+  "tests": [
+    {
+      "name": "construction and selection queue only a read",
+      "pass": true
+    },
+    {
+      "name": "refresh displays stored plan and job without creating anything",
+      "pass": true
+    },
+    {
+      "name": "overlapping refreshes collapse to one read",
+      "pass": true
+    },
+    {
+      "name": "connection failure stops without automatic retry",
+      "pass": true
+    },
+    {
+      "name": "explicit refresh recovers from a previous error",
+      "pass": true
+    },
+    {
+      "name": "stale session and detached card suppress requests",
+      "pass": true
+    },
+    {
+      "name": "new controls contain no generation or mutation surface",
+      "pass": true
+    }
+  ],
+  "passed": 7,
+  "actual_api_calls": 0
+}

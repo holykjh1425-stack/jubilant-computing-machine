@@ -1,0 +1,35 @@
+{
+  "timestampUtc": "2026-10-28T01:41:27.480288+00:00",
+  "newChecks": {
+    "js": 18,
+    "nativePostgres": 13,
+    "uiUnitSecurity": 2,
+    "totalPass": 33,
+    "fail": 0
+  },
+  "jsAndNativeTestedCommit": "bd2d5152142e016c4f5e51d3d967c12e970493b6",
+  "workflowRun": 40615864605,
+  "workflowJob": 122578075133,
+  "uiExecution": "local Node VM DOM unit fixture and CSP/source checks; not actual browser",
+  "comparisonExecution": "local Node, 30 synthetic samples per B/C method; A unverified",
+  "existingTestsRerun": false,
+  "liveProviderCalls": 0,
+  "actualApiUsd": 0,
+  "operatingDbWrites": 0,
+  "vaultValuesRead": 0,
+  "productionDeployments": 0,
+  "workSessionsCreated": 0,
+  "operatingAuthTested": false,
+  "actualClaudePerformanceTested": false,
+  "workUsageReductionVerified": false,
+  "sourceSha256": {
+    "candidates/cost-control/engine.mjs": "6967ca8978f0cccbf709c605eff099b0c91678c742af1ecf26bd2f6e58fd586e",
+    "candidates/cost-control/budget-candidate.sql": "044450566272391af27e7ab086041939a60f913bd880f211c39a3708fc2ac678",
+    "candidates/cost-control/edge-boundary.mjs": "64cdf2040673fd54daac94efe9389d306e430b4be7d9356f4fd341243a000460",
+    "candidates/cost-control/admin-preview.html": "5aa36398d26368aecd64a091b1d765be066860767798a484c8351f1eb207c810",
+    "tests/cost-control/test.mjs": "53be0847b20a539fa3d1f5ab6a0d6ca78ab66606576b4f6e6e4855444439c580",
+    "tests/cost-control/ui.test.mjs": "acd623ddb8de973441b1c222b42f77083c64de54f2ff712ec09f15883fdbcd82",
+    "tests/cost-control/benchmark.mjs": "50981aae6bd4995d65527acb6368751645ee8c872e20a51d1fb8a879c3bd23a1",
+    "tests/cost-control/native.py": "1e5f0278591d74ab2139a5361dcc8b8974f36b5e8d54984431cd92d000417366"
+  }
+}

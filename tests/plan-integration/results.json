@@ -1,0 +1,86 @@
+{
+  "timestampUtc": "2026-10-28T04:56:53.140Z",
+  "environment": "local Node, synthetic in-memory repository and mock coordinator; not deployed Edge/Postgres/auth",
+  "results": [
+    {
+      "name": "non-isolated construction rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "plan approval required before generation",
+      "status": "PASS"
+    },
+    {
+      "name": "six ordered stages are draft only; production and delivery held",
+      "status": "PASS"
+    },
+    {
+      "name": "separate AI cost approval required",
+      "status": "PASS"
+    },
+    {
+      "name": "mock Claude annotation preserves all six stages",
+      "status": "PASS"
+    },
+    {
+      "name": "32 parallel integration requests produce one mock call and one plan/job identity",
+      "status": "PASS"
+    },
+    {
+      "name": "rules result reused without later AI escalation",
+      "status": "PASS"
+    },
+    {
+      "name": "historical linked/duplicate records left unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "oversized input blocked before mock call",
+      "status": "PASS"
+    },
+    {
+      "name": "timeout halts; retry never sends again",
+      "status": "PASS"
+    },
+    {
+      "name": "usage_missing halts; retry never sends again",
+      "status": "PASS"
+    },
+    {
+      "name": "bad_quality halts; retry never sends again",
+      "status": "PASS"
+    },
+    {
+      "name": "HTTP unauthenticated and nonadmin denied",
+      "status": "PASS"
+    },
+    {
+      "name": "HTTP tenant separation and client approval injection blocked",
+      "status": "PASS"
+    },
+    {
+      "name": "HTTP projection has no brief or synthetic annotation; source unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "live execution fail closed; no new secret or provider fetch interface",
+      "status": "PASS"
+    }
+  ],
+  "pass": 16,
+  "fail": 0,
+  "forbiddenNetworkAttempts": 0,
+  "actualProviderCalls": 0,
+  "actualApiUsd": 0,
+  "productionWrites": 0,
+  "existingTestsRerun": false,
+  "userReportedRealCall": {
+    "http": 200,
+    "calls": 1,
+    "inputTokens": 15,
+    "outputTokens": 4,
+    "responseValidation": "PASS",
+    "workspace": "SOLQ-TEST",
+    "independentlyRevalidated": false
+  }
+}

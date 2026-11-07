@@ -1,0 +1,304 @@
+{
+  "roles": [
+    {
+      "name": "authenticated",
+      "canlogin": false,
+      "bypassrls": false,
+      "superuser": false
+    },
+    {
+      "name": "anon",
+      "canlogin": false,
+      "bypassrls": false,
+      "superuser": false
+    },
+    {
+      "name": "service_role",
+      "canlogin": false,
+      "bypassrls": true,
+      "superuser": false
+    }
+  ],
+  "grants": [
+    {
+      "role": "anon",
+      "table": "applications",
+      "schema": "public",
+      "privilege": "INSERT"
+    },
+    {
+      "role": "authenticated",
+      "table": "applications",
+      "schema": "public",
+      "privilege": "INSERT"
+    },
+    {
+      "role": "authenticated",
+      "table": "applications",
+      "schema": "public",
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "applications",
+      "schema": "public",
+      "privilege": "UPDATE"
+    },
+    {
+      "role": "anon",
+      "table": "admin_users",
+      "schema": "public",
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "anon",
+      "table": "admin_users",
+      "schema": "public",
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "anon",
+      "table": "admin_users",
+      "schema": "public",
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "admin_users",
+      "schema": "public",
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "admin_users",
+      "schema": "public",
+      "privilege": "TRUNCATE"
+    },
+    {
+      "role": "authenticated",
+      "table": "admin_users",
+      "schema": "public",
+      "privilege": "REFERENCES"
+    },
+    {
+      "role": "authenticated",
+      "table": "admin_users",
+      "schema": "public",
+      "privilege": "TRIGGER"
+    },
+    {
+      "role": "authenticated",
+      "table": "inquiry_events",
+      "schema": "public",
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "ai_work_plans",
+      "schema": "public",
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "orchestrator_events",
+      "schema": "public",
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "production_events",
+      "schema": "public",
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "production_attempts",
+      "schema": "public",
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "privilege": "SELECT"
+    },
+    {
+      "role": "authenticated",
+      "table": "production_jobs",
+      "schema": "public",
+      "privilege": "SELECT"
+    }
+  ],
+  "tables": [
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "applications",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "admin_users",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "inquiry_events",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "ai_work_plans",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "support_inquiries",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "orchestrator_events",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "worker_state",
+      "schema": "nexus_orchestrator_private",
+      "force_rls": false
+    },
+    {
+      "rls": false,
+      "owner": "postgres",
+      "table": "security_backups",
+      "schema": "nexus_production_private",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "production_events",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "production_attempts",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "settings",
+      "schema": "nexus_production_private",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "access_keys",
+      "schema": "nexus_production_private",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "rls": false,
+      "owner": "postgres",
+      "table": "free_plan_settings",
+      "schema": "nexus_production_private",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "rls": true,
+      "owner": "postgres",
+      "table": "production_jobs",
+      "schema": "public",
+      "force_rls": false
+    }
+  ],
+  "backup_relations": [
+    {
+      "table": "security_backups",
+      "schema": "nexus_production_private"
+    }
+  ]
+}

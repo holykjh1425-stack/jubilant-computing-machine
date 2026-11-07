@@ -1,0 +1,72 @@
+{
+  "source": "Supabase migration history read-only 2026-11-05; text files preserve statements with a terminal newline",
+  "githubBaseCommit": "045802ebb5bd7cc5813b2857248dbe832cd4bbd7",
+  "files": [
+    {
+      "file": "20261018033557_secure_application_receipt_rpc.sql",
+      "sha256": "648858c55c6d25aecf6d5c36a7cfb332d1d4d68f7b2c1b637733e4b5a9bb4026",
+      "githubFile": null,
+      "githubTextMatchesExceptEdgeWhitespace": null
+    },
+    {
+      "file": "20261018071846_capture_new_inquiry_events.sql",
+      "sha256": "05f245b43027d959cde951f802d9d3f09a4cebae0b1dc645d0314e508e5f6407",
+      "githubFile": null,
+      "githubTextMatchesExceptEdgeWhitespace": null
+    },
+    {
+      "file": "20261020073801_add_private_written_support.sql",
+      "sha256": "98f0e920bf1641d23f1e0ce253d312c1074182eda6789897634f999e196ae7dc",
+      "githubFile": null,
+      "githubTextMatchesExceptEdgeWhitespace": null
+    },
+    {
+      "file": "20261021122602_nexus_ai_server.sql",
+      "sha256": "158dbcb200b9accfbfc4effe08d35c7ed5b29fdfe0b3c3af2609dc5386ddbcaf",
+      "githubFile": "20261021121716_nexus_ai_server.sql",
+      "githubTextMatchesExceptEdgeWhitespace": true
+    },
+    {
+      "file": "20261021131855_central_orchestrator.sql",
+      "sha256": "0520e451592d3199f53203b3145b208d519ea153e0523a693c2388b0073f97f8",
+      "githubFile": "20261021124631_central_orchestrator.sql",
+      "githubTextMatchesExceptEdgeWhitespace": true
+    },
+    {
+      "file": "20261021204847_autonomous_workers.sql",
+      "sha256": "4c932d5163b5e3043cb199fde36639dd605e3a1f53fb0e2bde8b4d7649ff280f",
+      "githubFile": "20261021204404_autonomous_workers.sql",
+      "githubTextMatchesExceptEdgeWhitespace": true
+    },
+    {
+      "file": "20261021204905_autonomous_schedule.sql",
+      "sha256": "674f0d70f3c7b5641c18da45790c7888658aca80ba948a40b2643eb7bbbf1f17",
+      "githubFile": "20261021204701_autonomous_schedule.sql",
+      "githubTextMatchesExceptEdgeWhitespace": true
+    },
+    {
+      "file": "20261021205922_worker_hardening.sql",
+      "sha256": "b4867ca43762245212116a422c61b7fd7595925ad7f398d917d261c58b2cce04",
+      "githubFile": "20261021204922_worker_hardening.sql",
+      "githubTextMatchesExceptEdgeWhitespace": true
+    },
+    {
+      "file": "20261021210407_signed_worker_dispatch.sql",
+      "sha256": "e9a2b7bffa5ca8438b7acdd0defa6246e16423d643719c75385f299e6df9f0fe",
+      "githubFile": "20261021210309_signed_worker_dispatch.sql",
+      "githubTextMatchesExceptEdgeWhitespace": true
+    },
+    {
+      "file": "20261021215655_production_core.sql",
+      "sha256": "fdb5e155a26afe728a49c76da0da05c74f62e913c33d429ce3f541611c0481c5",
+      "githubFile": "20261021213341_production_core.sql",
+      "githubTextMatchesExceptEdgeWhitespace": true
+    },
+    {
+      "file": "20261026045157_solq_automatic_free_plans_and_quote_gate.sql",
+      "sha256": "aa3159bbfdc9f7d456b93cf2e788c2c00e7d0fcb3388c239726b0c24edcb4685",
+      "githubFile": null,
+      "githubTextMatchesExceptEdgeWhitespace": null
+    }
+  ]
+}

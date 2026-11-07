@@ -1,0 +1,20 @@
+{
+  "timestampUtc": "2026-10-30T08:13:20.6210769Z",
+  "testedSource": "b93bd9d4eb3d45dcb3eeeb08d1f093c4bae2bce4",
+  "workflowRun": 41024976668,
+  "workflowJob": 123960824037,
+  "evidenceType": "retrieved workflow log summary; detailed runtime results.json was not uploaded by the runner",
+  "pass": 30,
+  "fail": 0,
+  "upstreamWriteRequests": 0,
+  "actualDockerSocketAccesses": 0,
+  "newDockerContainers": 0,
+  "old83TestsRerun": false,
+  "policyReusedUnchanged": true,
+  "windowsSocketVerified": false,
+  "actualVectorTested": false,
+  "hostTcp2375Opened": false,
+  "providerCalls": 0,
+  "actualApiUsd": 0,
+  "fixtureCleanupSucceeded": true
+}

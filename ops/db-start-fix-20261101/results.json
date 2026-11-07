@@ -1,0 +1,155 @@
+{
+  "sourceCommit": "fa6c130a8d2e1710032c1d493d6d6fb9fde67169",
+  "timestampUtc": "2026-11-01T10:02:46Z",
+  "environment": "ephemeral GitHub runner local Supabase CLI 2.122.0; internal Docker network; direct internal service routes; no published ports",
+  "pass": 33,
+  "fail": 0,
+  "checks": [
+    {
+      "name": "local passwordless fixture user creation 1",
+      "status": "PASS"
+    },
+    {
+      "name": "official local one-time sign-in link 1",
+      "status": "PASS"
+    },
+    {
+      "name": "actual local Auth passwordless JWT session 1",
+      "status": "PASS"
+    },
+    {
+      "name": "Auth server validates issued user session 1",
+      "status": "PASS"
+    },
+    {
+      "name": "local passwordless fixture user creation 2",
+      "status": "PASS"
+    },
+    {
+      "name": "official local one-time sign-in link 2",
+      "status": "PASS"
+    },
+    {
+      "name": "actual local Auth passwordless JWT session 2",
+      "status": "PASS"
+    },
+    {
+      "name": "Auth server validates issued user session 2",
+      "status": "PASS"
+    },
+    {
+      "name": "actual JWT scoped admin_users membership",
+      "status": "PASS"
+    },
+    {
+      "name": "forged user_metadata grants no administrator membership",
+      "status": "PASS"
+    },
+    {
+      "name": "Edge rejects invalid JWT",
+      "status": "PASS"
+    },
+    {
+      "name": "actual PostgREST admin RLS sees synthetic applications",
+      "status": "PASS"
+    },
+    {
+      "name": "actual RLS hides applications from anonymous",
+      "status": "PASS"
+    },
+    {
+      "name": "actual RPC denies anonymous",
+      "status": "PASS"
+    },
+    {
+      "name": "actual RLS hides applications from nonadmin with forged user_metadata",
+      "status": "PASS"
+    },
+    {
+      "name": "actual RPC denies nonadmin with forged user_metadata",
+      "status": "PASS"
+    },
+    {
+      "name": "real Edge rejects authenticated nonadmin",
+      "status": "PASS"
+    },
+    {
+      "name": "real Edge rejects missing user session",
+      "status": "PASS"
+    },
+    {
+      "name": "real Edge plus RPC rejects missing plan approval",
+      "status": "PASS"
+    },
+    {
+      "name": "real Deno Edge Auth PostgREST DB creation",
+      "status": "PASS"
+    },
+    {
+      "name": "real Edge reuses persisted plan/job without regeneration",
+      "status": "PASS"
+    },
+    {
+      "name": "actual stored six rule phases match Edge result",
+      "status": "PASS"
+    },
+    {
+      "name": "persisted job awaits separate production approval",
+      "status": "PASS"
+    },
+    {
+      "name": "mock Claude annotation separate from rules plan",
+      "status": "PASS"
+    },
+    {
+      "name": "actual nonadmin RLS hides solq_local_plans",
+      "status": "PASS"
+    },
+    {
+      "name": "actual nonadmin RLS hides solq_local_jobs",
+      "status": "PASS"
+    },
+    {
+      "name": "actual nonadmin RLS hides solq_local_annotations",
+      "status": "PASS"
+    },
+    {
+      "name": "actual Edge forced job insert failure returns no success",
+      "status": "PASS"
+    },
+    {
+      "name": "actual PostgreSQL plan insert rolled back with failed job",
+      "status": "PASS"
+    },
+    {
+      "name": "8 authenticated concurrent Edge requests create one linked pair after rollback",
+      "status": "PASS"
+    },
+    {
+      "name": "PostgreSQL final two applications have two unique linked pairs",
+      "status": "PASS"
+    },
+    {
+      "name": "local Auth session logout request 1",
+      "status": "PASS"
+    },
+    {
+      "name": "local Auth session logout request 2",
+      "status": "PASS"
+    }
+  ],
+  "realLocalSupabaseAuth": true,
+  "realLocalDenoEdge": true,
+  "realPostgrestRls": true,
+  "realPostgresStorage": true,
+  "syntheticAuthUsers": 2,
+  "productionIdentityUsed": false,
+  "newPasswordsCreatedByTest": 0,
+  "newApiKeysCreatedByTest": 0,
+  "authenticationMethod": "official local passwordless magiclink; not operating admin login",
+  "operatingProjectAccessed": false,
+  "providerCalls": 0,
+  "actualApiUsd": 0,
+  "priorTestsRerun": false,
+  "hostedDeployment": false
+}

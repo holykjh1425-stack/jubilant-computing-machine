@@ -1,0 +1,114 @@
+{
+  "generatedUtc": "2026-10-28T01:35:34.020Z",
+  "environment": {
+    "node": "v24.22.1",
+    "host": "Work scratch isolated local process, no network used"
+  },
+  "sameSyntheticTaskCount": 6,
+  "A": {
+    "status": "unverified",
+    "reason": "No Work telemetry or same-task historical baseline; no additional Work session was created",
+    "localMs": null,
+    "workUsage": null,
+    "humanActions": null,
+    "tokens": null,
+    "qualityRate": null
+  },
+  "B": {
+    "inputTasks": 6,
+    "uniqueTasks": 4,
+    "completed": 2,
+    "policyBlocked": 4,
+    "manualReviewRequiredUnique": 2,
+    "observedHumanActions": 0,
+    "simulatedApprovalEvents": 0,
+    "cacheHits": 0,
+    "simulatedCalls": 0,
+    "automaticRetries": 0,
+    "runtimeErrors": 0,
+    "metadataQualityPassed": 2,
+    "metadataQualityDenominator": 2,
+    "simulatedNano": 0,
+    "actualProviderCalls": 0,
+    "actualUsd": 0,
+    "localMs": {
+      "median": 0.14351500000000783,
+      "p95": 2.4128860000000003,
+      "min": 0.0964660000000066,
+      "samples": 30
+    },
+    "scope": "local fixture computation only; excludes model/network/human latency; no real semantic-quality evaluation"
+  },
+  "C": {
+    "inputTasks": 6,
+    "uniqueTasks": 4,
+    "completed": 6,
+    "policyBlocked": 0,
+    "manualReviewRequiredUnique": 2,
+    "observedHumanActions": 0,
+    "simulatedApprovalEvents": 2,
+    "cacheHits": 2,
+    "simulatedCalls": 2,
+    "automaticRetries": 0,
+    "runtimeErrors": 0,
+    "metadataQualityPassed": 6,
+    "metadataQualityDenominator": 6,
+    "simulatedNano": 2419200,
+    "actualProviderCalls": 0,
+    "actualUsd": 0,
+    "localMs": {
+      "median": 0.15191500000000246,
+      "p95": 0.9759920000000051,
+      "min": 0.08695299999999406,
+      "samples": 30
+    },
+    "scope": "local fixture computation only; excludes model/network/human latency; no real semantic-quality evaluation"
+  },
+  "uniqueAIPlanningCaps": [
+    {
+      "kind": "analysis",
+      "model": "claude-haiku-5-5",
+      "inputTokenPlanningBound": 643,
+      "outputTokenLimit": 512,
+      "estimatedMaxUsd": 0.0003203,
+      "tokenizerVerified": false
+    },
+    {
+      "kind": "design",
+      "model": "claude-sonnet-5-5",
+      "inputTokenPlanningBound": 636,
+      "outputTokenLimit": 1024,
+      "estimatedMaxUsd": 0.011512,
+      "tokenizerVerified": false
+    }
+  ],
+  "monthlyScenarios": [
+    {
+      "haiku": 1000,
+      "sonnet": 0,
+      "estimatedUsd": 0.456,
+      "withinPlannedFiveDollarCap": true,
+      "minDaysAtHalfDollarCap": 1
+    },
+    {
+      "haiku": 5000,
+      "sonnet": 100,
+      "estimatedUsd": 4.08,
+      "withinPlannedFiveDollarCap": true,
+      "minDaysAtHalfDollarCap": 9
+    },
+    {
+      "haiku": 0,
+      "sonnet": 1000,
+      "estimatedUsd": 18,
+      "withinPlannedFiveDollarCap": false,
+      "minDaysAtHalfDollarCap": 36
+    }
+  ],
+  "scenarioAssumptions": "All input incl system overhead: Haiku2000/output512; Sonnet4000/output1000; no cache/batch savings, retries, tools, tax or FX included. Planning only; not permission to spend.",
+  "workUsageReduction": "unverified",
+  "realClaudeLatency": "unverified",
+  "realClaudeQuality": "unverified",
+  "actualProviderCalls": 0,
+  "actualUsd": 0
+}
