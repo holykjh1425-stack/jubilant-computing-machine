@@ -1,0 +1,11 @@
+{
+  "date_kst": "2026-10-26",
+  "candidate_base": "d6457ddc41a5c8bc4d3333cc9d0b038fe11ccc16",
+  "new_tests": {"quote_client_to_real_handler_with_synthetic_backend": {"pass":9,"fail":0},"wiring_static":{"pass":1,"fail":0}},
+  "isolated_browser": {"authentication":"synthetic only","network":"connect-src none; in-memory db double","mobile_width":375,"scroll_width":375,"initial_and_lookup_writes":0,"explicit_commands":["record","record_deposit","confirm_deposit"],"application_status_after_confirmation":"received","production_approved_after_confirmation":false,"logout_hides_and_clears_panel":true},
+  "reused_evidence": ["ops/admin-integration-candidate/FINAL_REVIEW.md: 14 PostgreSQL/PGlite/API/read-only tests", "ops/final-predeploy-check/FINAL_VALIDATION_20261026.md: native concurrency/SDK/CSP/RLS", "ops/residual-validation/BLOCKER_CLOSEOUT.md: auth/backup gates and privilege recovery", "SOLQ-final-safety-evidence-20261026.zip: payment notification frontend isolation"],
+  "not_repeated":["native 100-connection concurrency","existing SQL quote/deposit guards","old API tests","old 30-second SDK timer test","payment-notification tests"],
+  "not_verified":["real administrator authentication and Edge/SQL integration","physical mobile device","protected current full operational backup restore","postdeployment cache/CSP"],
+  "production_changes":0,"production_notifications":0,"bank_transfers":0,"paid_api_calls":0,
+  "candidate_checks":"PASS (scope-limited)","deployment_readiness":"FAIL / HOLD"
+}

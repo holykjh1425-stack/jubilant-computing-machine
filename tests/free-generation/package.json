@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "@electric-sql/pglite": "0.5.11",
+    "linkedom": "0.18.12"
+  },
+  "name": "solq-free-generation-validation",
+  "private": true,
+  "scripts": {
+    "test": "node db-test.mjs && node client-test.mjs"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "run_id": 40319012831,
+  "job_id": 121558840100,
+  "commit": "4df6e76ea243a0e872d62d87eb7b0e3cf487e1ea",
+  "conclusion": "success",
+  "postgres_version": "17.11 (Debian 17.11-1.pgdg13+2)",
+  "real_sql_roles_and_policies": true,
+  "synthetic_identity_not_real_jwt": true,
+  "admin_reads": true,
+  "nonadmin_hidden_rows": true,
+  "admin_explicit_update": true,
+  "nonadmin_update_rows": 0,
+  "nonadmin_plan_insert_denied": true,
+  "anon_select_denied": true,
+  "anon_invalid_insert_denied": true,
+  "anon_valid_insert": true,
+  "production_policy_changes": 0
+}

@@ -1,0 +1,24 @@
+name: SOLQ isolated SDK integration
+on:
+  push:
+    branches: [dev/solq-automation-preservation-20261026]
+    paths:
+      - tests/sdk-integration/**
+      - .github/workflows/solq-sdk-integration.yml
+permissions:
+  contents: read
+concurrency:
+  group: solq-sdk-integration
+  cancel-in-progress: false
+jobs:
+  sdk-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - run: npm ci --prefix tests/sdk-integration --ignore-scripts
+      - run: tests/sdk-integration/node_modules/.bin/playwright install chromium
+      - name: Original CSP, real SDK, synthetic endpoints, real 30-second timer
+        run: node tests/sdk-integration/browser.mjs

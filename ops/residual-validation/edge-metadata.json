@@ -1,0 +1,47 @@
+{
+  "browser_inventory": {
+    "tabs": [
+      "about:blank"
+    ],
+    "admin_session_reused": false
+  },
+  "functions": [
+    {
+      "slug": "nexus-orchestrator",
+      "status": "ACTIVE",
+      "version": 7,
+      "verify_jwt": true,
+      "bundle_sha256": "934070fe11199743790a3773984508d835f17981da98ec9c0f336da0872aef8e",
+      "files": [
+        "index.ts",
+        "handler.mjs",
+        "engine.mjs"
+      ]
+    },
+    {
+      "slug": "nexus-agent-worker",
+      "status": "ACTIVE",
+      "version": 2,
+      "verify_jwt": false,
+      "bundle_sha256": "7715efcda17741a546ae188e8b8314a8748628a38824373e065e0e6513ccea4c",
+      "files": [
+        "index.ts",
+        "handler.mjs"
+      ]
+    },
+    {
+      "slug": "nexus-production",
+      "status": "ACTIVE",
+      "version": 1,
+      "verify_jwt": false,
+      "bundle_sha256": "b367612fdc79c4b3d4382fc2a1f16ce2f27cb6811121f12a089f592b5061d077",
+      "files": [
+        "index.ts",
+        "handler.mjs",
+        "artifact.mjs"
+      ]
+    }
+  ],
+  "production_guard_is_candidate_only": true,
+  "real_admin_jwt_verified": false
+}

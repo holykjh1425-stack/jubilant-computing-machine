@@ -1,0 +1,31 @@
+{
+  "scope": "Metadata only. No customer payload exported or restored.",
+  "snapshots": [
+    {
+      "key": "approval-gate-20261025",
+      "created_at": "2026-10-25T05:21:18.704789+00:00",
+      "applications": 6,
+      "plans": 2,
+      "bytes": 59834
+    },
+    {
+      "key": "solq_free_plan_automation_v1",
+      "created_at": "2026-10-26T04:51:57.153044+00:00",
+      "applications": 7,
+      "plans": 4,
+      "bytes": 47285
+    }
+  ],
+  "current_expected": {
+    "applications": 8,
+    "plans": 5,
+    "orchestrator_jobs": 5
+  },
+  "snapshot_payloads_have_auth_users": false,
+  "snapshot_payloads_have_sequences": false,
+  "snapshot_payloads_have_storage_objects": false,
+  "snapshot_payloads_have_orchestrator_jobs_key": false,
+  "current_full_restore_verified": false,
+  "managed_backups": "not observable with available connector capabilities",
+  "anon_and_authenticated_payload_read_write": false
+}

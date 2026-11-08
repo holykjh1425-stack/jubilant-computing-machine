@@ -1,0 +1,3216 @@
+{
+  "tables": [
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "worker_state",
+      "schema": "nexus_orchestrator_private",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "access_keys",
+      "schema": "nexus_production_private",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres"
+      ],
+      "rls": false,
+      "owner": "postgres",
+      "table": "free_plan_settings",
+      "schema": "nexus_production_private",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres"
+      ],
+      "rls": false,
+      "owner": "postgres",
+      "table": "security_backups",
+      "schema": "nexus_production_private",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "settings",
+      "schema": "nexus_production_private",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "anon=Dxtm/postgres",
+        "authenticated=rDxtm/postgres",
+        "service_role=rDxtm/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "admin_users",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "service_role=arwDxtm/postgres",
+        "authenticated=r/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "service_role=arDxtm/postgres",
+        "authenticated=r/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "ai_work_plans",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "anon=am/postgres",
+        "authenticated=arwm/postgres",
+        "service_role=arwdDxtm/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "applications",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "service_role=Dxtm/postgres",
+        "authenticated=r/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "inquiry_events",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "service_role=rDxtm/postgres",
+        "authenticated=r/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "orchestrator_events",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "service_role=rDxtm/postgres",
+        "authenticated=r/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "service_role=rDxtm/postgres",
+        "authenticated=r/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "service_role=rDxtm/postgres",
+        "authenticated=r/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "production_attempts",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "service_role=rDxtm/postgres",
+        "authenticated=r/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "production_events",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "service_role=rDxtm/postgres",
+        "authenticated=r/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "production_jobs",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "service_role=Dxtm/postgres",
+        "authenticated=r/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "authenticated=r/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "force_rls": false
+    },
+    {
+      "acl": [
+        "postgres=arwdDxtm/postgres",
+        "service_role=Dxtm/postgres"
+      ],
+      "rls": true,
+      "owner": "postgres",
+      "table": "support_inquiries",
+      "schema": "public",
+      "force_rls": false
+    }
+  ],
+  "columns": [
+    {
+      "name": "singleton",
+      "type": "boolean",
+      "table": "worker_state",
+      "schema": "nexus_orchestrator_private",
+      "default": "true",
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "cycles",
+      "type": "bigint",
+      "table": "worker_state",
+      "schema": "nexus_orchestrator_private",
+      "default": "0",
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "processed",
+      "type": "bigint",
+      "table": "worker_state",
+      "schema": "nexus_orchestrator_private",
+      "default": "0",
+      "ordinal": 3,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "last_started_at",
+      "type": "timestamp with time zone",
+      "table": "worker_state",
+      "schema": "nexus_orchestrator_private",
+      "default": null,
+      "ordinal": 4,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "last_finished_at",
+      "type": "timestamp with time zone",
+      "table": "worker_state",
+      "schema": "nexus_orchestrator_private",
+      "default": null,
+      "ordinal": 5,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "last_error",
+      "type": "text",
+      "table": "worker_state",
+      "schema": "nexus_orchestrator_private",
+      "default": null,
+      "ordinal": 6,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "test_requested",
+      "type": "boolean",
+      "table": "worker_state",
+      "schema": "nexus_orchestrator_private",
+      "default": "false",
+      "ordinal": 7,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "test_dispatched",
+      "type": "boolean",
+      "table": "worker_state",
+      "schema": "nexus_orchestrator_private",
+      "default": "false",
+      "ordinal": 8,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "dispatch_id",
+      "type": "bigint",
+      "table": "worker_state",
+      "schema": "nexus_orchestrator_private",
+      "default": null,
+      "ordinal": 9,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "dispatched_at",
+      "type": "timestamp with time zone",
+      "table": "worker_state",
+      "schema": "nexus_orchestrator_private",
+      "default": null,
+      "ordinal": 10,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "job_id",
+      "type": "uuid",
+      "table": "access_keys",
+      "schema": "nexus_production_private",
+      "default": null,
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "token_hash",
+      "type": "text",
+      "table": "access_keys",
+      "schema": "nexus_production_private",
+      "default": null,
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "request_hash",
+      "type": "text",
+      "table": "access_keys",
+      "schema": "nexus_production_private",
+      "default": null,
+      "ordinal": 3,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "singleton",
+      "type": "boolean",
+      "table": "free_plan_settings",
+      "schema": "nexus_production_private",
+      "default": "true",
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "capture_from",
+      "type": "timestamp with time zone",
+      "table": "free_plan_settings",
+      "schema": "nexus_production_private",
+      "default": "now()",
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "provider",
+      "type": "text",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "default": null,
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "enabled",
+      "type": "boolean",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "default": "false",
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "verified_at",
+      "type": "timestamp with time zone",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "default": null,
+      "ordinal": 3,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "model",
+      "type": "text",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "default": null,
+      "ordinal": 4,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "approved_micro_usd",
+      "type": "bigint",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "default": "0",
+      "ordinal": 5,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "reserved_micro_usd",
+      "type": "bigint",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "default": "0",
+      "ordinal": 6,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "input_micro_per_token",
+      "type": "integer",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "default": "0",
+      "ordinal": 7,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "output_micro_per_token",
+      "type": "integer",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "default": "0",
+      "ordinal": 8,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "approved_calls",
+      "type": "integer",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "default": "0",
+      "ordinal": 9,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "reserved_calls",
+      "type": "integer",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "default": "0",
+      "ordinal": 10,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "heartbeat_at",
+      "type": "timestamp with time zone",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "default": null,
+      "ordinal": 11,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "readiness",
+      "type": "text",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "default": "'not_connected'::text",
+      "ordinal": 12,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "backup_key",
+      "type": "text",
+      "table": "security_backups",
+      "schema": "nexus_production_private",
+      "default": null,
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "table": "security_backups",
+      "schema": "nexus_production_private",
+      "default": "now()",
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "payload",
+      "type": "jsonb",
+      "table": "security_backups",
+      "schema": "nexus_production_private",
+      "default": null,
+      "ordinal": 3,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "singleton",
+      "type": "boolean",
+      "table": "settings",
+      "schema": "nexus_production_private",
+      "default": null,
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "capture_from",
+      "type": "timestamp with time zone",
+      "table": "settings",
+      "schema": "nexus_production_private",
+      "default": "now()",
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "user_id",
+      "type": "uuid",
+      "table": "admin_users",
+      "schema": "public",
+      "default": null,
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "table": "admin_users",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "run_key",
+      "type": "text",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "requested_by",
+      "type": "uuid",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "status",
+      "type": "text",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "default": "'reserved'::text",
+      "ordinal": 3,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "model",
+      "type": "text",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "default": "'claude-haiku-5-5'::text",
+      "ordinal": 4,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "input_tokens",
+      "type": "integer",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 5,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "output_tokens",
+      "type": "integer",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 6,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "estimated_cost_usd",
+      "type": "numeric",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 7,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "error_code",
+      "type": "text",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 8,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 9,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "completed_at",
+      "type": "timestamp with time zone",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 10,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "id",
+      "type": "uuid",
+      "table": "ai_work_plans",
+      "schema": "public",
+      "default": "gen_random_uuid()",
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "application_id",
+      "type": "uuid",
+      "table": "ai_work_plans",
+      "schema": "public",
+      "default": null,
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "created_by",
+      "type": "uuid",
+      "table": "ai_work_plans",
+      "schema": "public",
+      "default": null,
+      "ordinal": 3,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "plan",
+      "type": "jsonb",
+      "table": "ai_work_plans",
+      "schema": "public",
+      "default": null,
+      "ordinal": 4,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "table": "ai_work_plans",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 5,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "id",
+      "type": "uuid",
+      "table": "applications",
+      "schema": "public",
+      "default": "gen_random_uuid()",
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "receipt_number",
+      "type": "text",
+      "table": "applications",
+      "schema": "public",
+      "default": "((('NX-'::text || to_char((now() AT TIME ZONE 'utc'::text), 'YYYYMMDD'::text)) || '-'::text) || upper(substr(replace((gen_random_uuid())::text, '-'::text, ''::text), 1, 8)))",
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "table": "applications",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 3,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "customer_name",
+      "type": "text",
+      "table": "applications",
+      "schema": "public",
+      "default": null,
+      "ordinal": 4,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "contact",
+      "type": "text",
+      "table": "applications",
+      "schema": "public",
+      "default": null,
+      "ordinal": 5,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "service_type",
+      "type": "text",
+      "table": "applications",
+      "schema": "public",
+      "default": null,
+      "ordinal": 6,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "table": "applications",
+      "schema": "public",
+      "default": null,
+      "ordinal": 7,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "privacy_consent",
+      "type": "boolean",
+      "table": "applications",
+      "schema": "public",
+      "default": null,
+      "ordinal": 8,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "status",
+      "type": "text",
+      "table": "applications",
+      "schema": "public",
+      "default": "'received'::text",
+      "ordinal": 9,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "internal_note",
+      "type": "text",
+      "table": "applications",
+      "schema": "public",
+      "default": null,
+      "ordinal": 10,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "id",
+      "type": "bigint",
+      "table": "inquiry_events",
+      "schema": "public",
+      "default": null,
+      "ordinal": 1,
+      "identity": "a",
+      "not_null": true
+    },
+    {
+      "name": "application_id",
+      "type": "uuid",
+      "table": "inquiry_events",
+      "schema": "public",
+      "default": null,
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "detected_at",
+      "type": "timestamp with time zone",
+      "table": "inquiry_events",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 3,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "source",
+      "type": "text",
+      "table": "inquiry_events",
+      "schema": "public",
+      "default": "'application_form'::text",
+      "ordinal": 4,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "id",
+      "type": "bigint",
+      "table": "orchestrator_events",
+      "schema": "public",
+      "default": null,
+      "ordinal": 1,
+      "identity": "a",
+      "not_null": true
+    },
+    {
+      "name": "job_id",
+      "type": "uuid",
+      "table": "orchestrator_events",
+      "schema": "public",
+      "default": null,
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "task_id",
+      "type": "uuid",
+      "table": "orchestrator_events",
+      "schema": "public",
+      "default": null,
+      "ordinal": 3,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "event",
+      "type": "text",
+      "table": "orchestrator_events",
+      "schema": "public",
+      "default": null,
+      "ordinal": 4,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "code",
+      "type": "text",
+      "table": "orchestrator_events",
+      "schema": "public",
+      "default": null,
+      "ordinal": 5,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "table": "orchestrator_events",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 6,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "id",
+      "type": "uuid",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "default": "gen_random_uuid()",
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "created_by",
+      "type": "uuid",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 2,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "idempotency_key",
+      "type": "uuid",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 3,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "instruction",
+      "type": "text",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 4,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "agent",
+      "type": "text",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 5,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "status",
+      "type": "text",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "default": "'queued'::text",
+      "ordinal": 6,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 7,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "updated_at",
+      "type": "timestamp with time zone",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 8,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "application_id",
+      "type": "uuid",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 9,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "free_plan_id",
+      "type": "uuid",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 10,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "id",
+      "type": "uuid",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "default": "gen_random_uuid()",
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "job_id",
+      "type": "uuid",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "default": null,
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "ordinal",
+      "type": "integer",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "default": null,
+      "ordinal": 3,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "kind",
+      "type": "text",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "default": null,
+      "ordinal": 4,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "agent",
+      "type": "text",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "default": null,
+      "ordinal": 5,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "status",
+      "type": "text",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "default": "'queued'::text",
+      "ordinal": 6,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "attempts",
+      "type": "integer",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "default": "0",
+      "ordinal": 7,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "next_attempt_at",
+      "type": "timestamp with time zone",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 8,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "lease_token",
+      "type": "uuid",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "default": null,
+      "ordinal": 9,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "lease_until",
+      "type": "timestamp with time zone",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "default": null,
+      "ordinal": 10,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "result",
+      "type": "jsonb",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "default": null,
+      "ordinal": 11,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "error_code",
+      "type": "text",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "default": null,
+      "ordinal": 12,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "verified",
+      "type": "boolean",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "default": "false",
+      "ordinal": 13,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "id",
+      "type": "uuid",
+      "table": "production_attempts",
+      "schema": "public",
+      "default": "gen_random_uuid()",
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "job_id",
+      "type": "uuid",
+      "table": "production_attempts",
+      "schema": "public",
+      "default": null,
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "provider",
+      "type": "text",
+      "table": "production_attempts",
+      "schema": "public",
+      "default": null,
+      "ordinal": 3,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "status",
+      "type": "text",
+      "table": "production_attempts",
+      "schema": "public",
+      "default": "'reserved'::text",
+      "ordinal": 4,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "reserved_micro_usd",
+      "type": "bigint",
+      "table": "production_attempts",
+      "schema": "public",
+      "default": null,
+      "ordinal": 5,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "usage",
+      "type": "jsonb",
+      "table": "production_attempts",
+      "schema": "public",
+      "default": null,
+      "ordinal": 6,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "error_code",
+      "type": "text",
+      "table": "production_attempts",
+      "schema": "public",
+      "default": null,
+      "ordinal": 7,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "table": "production_attempts",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 8,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "completed_at",
+      "type": "timestamp with time zone",
+      "table": "production_attempts",
+      "schema": "public",
+      "default": null,
+      "ordinal": 9,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "id",
+      "type": "bigint",
+      "table": "production_events",
+      "schema": "public",
+      "default": null,
+      "ordinal": 1,
+      "identity": "a",
+      "not_null": true
+    },
+    {
+      "name": "job_id",
+      "type": "uuid",
+      "table": "production_events",
+      "schema": "public",
+      "default": null,
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "event",
+      "type": "text",
+      "table": "production_events",
+      "schema": "public",
+      "default": null,
+      "ordinal": 3,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "table": "production_events",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 4,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "id",
+      "type": "uuid",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": "gen_random_uuid()",
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "application_id",
+      "type": "uuid",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "receipt_number",
+      "type": "text",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 3,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "service_type",
+      "type": "text",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 4,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "provider",
+      "type": "text",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 5,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "status",
+      "type": "text",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": "'awaiting_deposit'::text",
+      "ordinal": 6,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "plan",
+      "type": "jsonb",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 7,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "result",
+      "type": "jsonb",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 8,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "result_hash",
+      "type": "text",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 9,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "validation",
+      "type": "jsonb",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 10,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "error_code",
+      "type": "text",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 11,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "lease_token",
+      "type": "uuid",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 12,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "lease_until",
+      "type": "timestamp with time zone",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 13,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "attempt_count",
+      "type": "integer",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": "0",
+      "ordinal": 14,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "payment_observed_at",
+      "type": "timestamp with time zone",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 15,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "released_by",
+      "type": "uuid",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 16,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "released_at",
+      "type": "timestamp with time zone",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 17,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 18,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "updated_at",
+      "type": "timestamp with time zone",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 19,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "production_approved_by",
+      "type": "uuid",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 20,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "production_approved_at",
+      "type": "timestamp with time zone",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 21,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "quote_acceptance_id",
+      "type": "uuid",
+      "table": "production_jobs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 22,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "application_id",
+      "type": "uuid",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "status",
+      "type": "text",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "default": "'pending'::text",
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "attempts",
+      "type": "integer",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "default": "0",
+      "ordinal": 3,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "next_attempt_at",
+      "type": "timestamp with time zone",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 4,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "plan_id",
+      "type": "uuid",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 5,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "job_id",
+      "type": "uuid",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 6,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "error_code",
+      "type": "text",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "default": null,
+      "ordinal": 7,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "error_history",
+      "type": "jsonb",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "default": "'[]'::jsonb",
+      "ordinal": 8,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 9,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "updated_at",
+      "type": "timestamp with time zone",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 10,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "id",
+      "type": "uuid",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "default": "gen_random_uuid()",
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "application_id",
+      "type": "uuid",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "default": null,
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "quote_reference",
+      "type": "text",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "default": null,
+      "ordinal": 3,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "quote_version",
+      "type": "text",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "default": null,
+      "ordinal": 4,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "amount_krw",
+      "type": "bigint",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "default": null,
+      "ordinal": 5,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "accepted_at",
+      "type": "timestamp with time zone",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "default": null,
+      "ordinal": 6,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "evidence_reference",
+      "type": "text",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "default": null,
+      "ordinal": 7,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "verified_by",
+      "type": "uuid",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "default": null,
+      "ordinal": 8,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "recorded_at",
+      "type": "timestamp with time zone",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 9,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "id",
+      "type": "uuid",
+      "table": "support_inquiries",
+      "schema": "public",
+      "default": "gen_random_uuid()",
+      "ordinal": 1,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "access_hash",
+      "type": "text",
+      "table": "support_inquiries",
+      "schema": "public",
+      "default": null,
+      "ordinal": 2,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "question",
+      "type": "text",
+      "table": "support_inquiries",
+      "schema": "public",
+      "default": null,
+      "ordinal": 3,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "language",
+      "type": "text",
+      "table": "support_inquiries",
+      "schema": "public",
+      "default": null,
+      "ordinal": 4,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "answer",
+      "type": "text",
+      "table": "support_inquiries",
+      "schema": "public",
+      "default": "''::text",
+      "ordinal": 5,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "created_at",
+      "type": "timestamp with time zone",
+      "table": "support_inquiries",
+      "schema": "public",
+      "default": "now()",
+      "ordinal": 6,
+      "identity": "",
+      "not_null": true
+    },
+    {
+      "name": "answered_at",
+      "type": "timestamp with time zone",
+      "table": "support_inquiries",
+      "schema": "public",
+      "default": null,
+      "ordinal": 7,
+      "identity": "",
+      "not_null": false
+    },
+    {
+      "name": "consent_version",
+      "type": "text",
+      "table": "support_inquiries",
+      "schema": "public",
+      "default": "'2026-10-20-written-support'::text",
+      "ordinal": 8,
+      "identity": "",
+      "not_null": true
+    }
+  ],
+  "indexes": [
+    {
+      "indexdef": "CREATE UNIQUE INDEX worker_state_pkey ON nexus_orchestrator_private.worker_state USING btree (singleton)",
+      "indexname": "worker_state_pkey",
+      "tablename": "worker_state",
+      "schemaname": "nexus_orchestrator_private",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX access_keys_pkey ON nexus_production_private.access_keys USING btree (job_id)",
+      "indexname": "access_keys_pkey",
+      "tablename": "access_keys",
+      "schemaname": "nexus_production_private",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX access_keys_token_hash_key ON nexus_production_private.access_keys USING btree (token_hash)",
+      "indexname": "access_keys_token_hash_key",
+      "tablename": "access_keys",
+      "schemaname": "nexus_production_private",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX free_plan_settings_pkey ON nexus_production_private.free_plan_settings USING btree (singleton)",
+      "indexname": "free_plan_settings_pkey",
+      "tablename": "free_plan_settings",
+      "schemaname": "nexus_production_private",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX providers_pkey ON nexus_production_private.providers USING btree (provider)",
+      "indexname": "providers_pkey",
+      "tablename": "providers",
+      "schemaname": "nexus_production_private",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX security_backups_pkey ON nexus_production_private.security_backups USING btree (backup_key)",
+      "indexname": "security_backups_pkey",
+      "tablename": "security_backups",
+      "schemaname": "nexus_production_private",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX settings_pkey ON nexus_production_private.settings USING btree (singleton)",
+      "indexname": "settings_pkey",
+      "tablename": "settings",
+      "schemaname": "nexus_production_private",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX admin_users_pkey ON public.admin_users USING btree (user_id)",
+      "indexname": "admin_users_pkey",
+      "tablename": "admin_users",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX ai_connection_runs_pkey ON public.ai_connection_runs USING btree (run_key)",
+      "indexname": "ai_connection_runs_pkey",
+      "tablename": "ai_connection_runs",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX ai_work_plans_one_per_application ON public.ai_work_plans USING btree (application_id)",
+      "indexname": "ai_work_plans_one_per_application",
+      "tablename": "ai_work_plans",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX ai_work_plans_pkey ON public.ai_work_plans USING btree (id)",
+      "indexname": "ai_work_plans_pkey",
+      "tablename": "ai_work_plans",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX solq_one_free_plan_per_application ON public.ai_work_plans USING btree (application_id)",
+      "indexname": "solq_one_free_plan_per_application",
+      "tablename": "ai_work_plans",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX applications_pkey ON public.applications USING btree (id)",
+      "indexname": "applications_pkey",
+      "tablename": "applications",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX applications_receipt_number_key ON public.applications USING btree (receipt_number)",
+      "indexname": "applications_receipt_number_key",
+      "tablename": "applications",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX inquiry_events_application_id_key ON public.inquiry_events USING btree (application_id)",
+      "indexname": "inquiry_events_application_id_key",
+      "tablename": "inquiry_events",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX inquiry_events_pkey ON public.inquiry_events USING btree (id)",
+      "indexname": "inquiry_events_pkey",
+      "tablename": "inquiry_events",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE INDEX orchestrator_events_job ON public.orchestrator_events USING btree (job_id, id)",
+      "indexname": "orchestrator_events_job",
+      "tablename": "orchestrator_events",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX orchestrator_events_pkey ON public.orchestrator_events USING btree (id)",
+      "indexname": "orchestrator_events_pkey",
+      "tablename": "orchestrator_events",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX orchestrator_jobs_idempotency_key_key ON public.orchestrator_jobs USING btree (idempotency_key)",
+      "indexname": "orchestrator_jobs_idempotency_key_key",
+      "tablename": "orchestrator_jobs",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX orchestrator_jobs_pkey ON public.orchestrator_jobs USING btree (id)",
+      "indexname": "orchestrator_jobs_pkey",
+      "tablename": "orchestrator_jobs",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX solq_one_free_job_per_application ON public.orchestrator_jobs USING btree (application_id) WHERE (free_plan_id IS NOT NULL)",
+      "indexname": "solq_one_free_job_per_application",
+      "tablename": "orchestrator_jobs",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX orchestrator_tasks_job_id_ordinal_key ON public.orchestrator_tasks USING btree (job_id, ordinal)",
+      "indexname": "orchestrator_tasks_job_id_ordinal_key",
+      "tablename": "orchestrator_tasks",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX orchestrator_tasks_pkey ON public.orchestrator_tasks USING btree (id)",
+      "indexname": "orchestrator_tasks_pkey",
+      "tablename": "orchestrator_tasks",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE INDEX orchestrator_tasks_ready ON public.orchestrator_tasks USING btree (status, next_attempt_at)",
+      "indexname": "orchestrator_tasks_ready",
+      "tablename": "orchestrator_tasks",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE INDEX production_attempts_job ON public.production_attempts USING btree (job_id)",
+      "indexname": "production_attempts_job",
+      "tablename": "production_attempts",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX production_attempts_pkey ON public.production_attempts USING btree (id)",
+      "indexname": "production_attempts_pkey",
+      "tablename": "production_attempts",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE INDEX production_events_job ON public.production_events USING btree (job_id, id)",
+      "indexname": "production_events_job",
+      "tablename": "production_events",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX production_events_pkey ON public.production_events USING btree (id)",
+      "indexname": "production_events_pkey",
+      "tablename": "production_events",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX production_jobs_application_id_key ON public.production_jobs USING btree (application_id)",
+      "indexname": "production_jobs_application_id_key",
+      "tablename": "production_jobs",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX production_jobs_pkey ON public.production_jobs USING btree (id)",
+      "indexname": "production_jobs_pkey",
+      "tablename": "production_jobs",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX production_jobs_receipt_number_key ON public.production_jobs USING btree (receipt_number)",
+      "indexname": "production_jobs_receipt_number_key",
+      "tablename": "production_jobs",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE INDEX production_jobs_status ON public.production_jobs USING btree (status, created_at)",
+      "indexname": "production_jobs_status",
+      "tablename": "production_jobs",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX solq_free_plan_runs_pkey ON public.solq_free_plan_runs USING btree (application_id)",
+      "indexname": "solq_free_plan_runs_pkey",
+      "tablename": "solq_free_plan_runs",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX solq_quote_acceptances_application_id_quote_reference_quote_key ON public.solq_quote_acceptances USING btree (application_id, quote_reference, quote_version)",
+      "indexname": "solq_quote_acceptances_application_id_quote_reference_quote_key",
+      "tablename": "solq_quote_acceptances",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX solq_quote_acceptances_pkey ON public.solq_quote_acceptances USING btree (id)",
+      "indexname": "solq_quote_acceptances_pkey",
+      "tablename": "solq_quote_acceptances",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX support_inquiries_access_hash_key ON public.support_inquiries USING btree (access_hash)",
+      "indexname": "support_inquiries_access_hash_key",
+      "tablename": "support_inquiries",
+      "schemaname": "public",
+      "tablespace": null
+    },
+    {
+      "indexdef": "CREATE UNIQUE INDEX support_inquiries_pkey ON public.support_inquiries USING btree (id)",
+      "indexname": "support_inquiries_pkey",
+      "tablename": "support_inquiries",
+      "schemaname": "public",
+      "tablespace": null
+    }
+  ],
+  "policies": [
+    {
+      "cmd": "ALL",
+      "qual": "false",
+      "roles": [
+        "public"
+      ],
+      "tablename": "worker_state",
+      "permissive": "PERMISSIVE",
+      "policyname": "worker state private only",
+      "schemaname": "nexus_orchestrator_private",
+      "with_check": "false"
+    },
+    {
+      "cmd": "ALL",
+      "qual": "false",
+      "roles": [
+        "public"
+      ],
+      "tablename": "access_keys",
+      "permissive": "PERMISSIVE",
+      "policyname": "private_access",
+      "schemaname": "nexus_production_private",
+      "with_check": "false"
+    },
+    {
+      "cmd": "ALL",
+      "qual": "false",
+      "roles": [
+        "public"
+      ],
+      "tablename": "providers",
+      "permissive": "PERMISSIVE",
+      "policyname": "private_providers",
+      "schemaname": "nexus_production_private",
+      "with_check": "false"
+    },
+    {
+      "cmd": "ALL",
+      "qual": "false",
+      "roles": [
+        "public"
+      ],
+      "tablename": "settings",
+      "permissive": "PERMISSIVE",
+      "policyname": "private_settings",
+      "schemaname": "nexus_production_private",
+      "with_check": "false"
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "(user_id = ( SELECT auth.uid() AS uid))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "admin_users",
+      "permissive": "PERMISSIVE",
+      "policyname": "admin reads own record",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users a\n  WHERE (a.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "ai_connection_runs",
+      "permissive": "PERMISSIVE",
+      "policyname": "admins read AI connection audit",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users a\n  WHERE (a.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "ai_work_plans",
+      "permissive": "PERMISSIVE",
+      "policyname": "admins read AI work plans",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users au\n  WHERE (au.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "applications",
+      "permissive": "PERMISSIVE",
+      "policyname": "admins read applications",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users au\n  WHERE (au.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "applications",
+      "permissive": "PERMISSIVE",
+      "policyname": "admins update applications",
+      "schemaname": "public",
+      "with_check": "(EXISTS ( SELECT 1\n   FROM admin_users au\n  WHERE (au.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "cmd": "INSERT",
+      "qual": null,
+      "roles": [
+        "anon",
+        "authenticated"
+      ],
+      "tablename": "applications",
+      "permissive": "PERMISSIVE",
+      "policyname": "public submits only new applications",
+      "schemaname": "public",
+      "with_check": "((privacy_consent = true) AND (status = 'received'::text) AND (internal_note IS NULL))"
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users\n  WHERE (admin_users.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "inquiry_events",
+      "permissive": "PERMISSIVE",
+      "policyname": "admins read inquiry events",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users\n  WHERE (admin_users.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "orchestrator_events",
+      "permissive": "PERMISSIVE",
+      "policyname": "admin reads orchestration events",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users\n  WHERE (admin_users.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "orchestrator_jobs",
+      "permissive": "PERMISSIVE",
+      "policyname": "admin reads orchestration jobs",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users\n  WHERE (admin_users.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "orchestrator_tasks",
+      "permissive": "PERMISSIVE",
+      "policyname": "admin reads orchestration tasks",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users\n  WHERE (admin_users.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "production_attempts",
+      "permissive": "PERMISSIVE",
+      "policyname": "production_admin_attempts",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users\n  WHERE (admin_users.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "production_events",
+      "permissive": "PERMISSIVE",
+      "policyname": "production_admin_events",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users\n  WHERE (admin_users.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "production_jobs",
+      "permissive": "PERMISSIVE",
+      "policyname": "production_admin_jobs",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users\n  WHERE (admin_users.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "solq_free_plan_runs",
+      "permissive": "PERMISSIVE",
+      "policyname": "solq_admin_read_free_runs",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users\n  WHERE (admin_users.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "solq_quote_acceptances",
+      "permissive": "PERMISSIVE",
+      "policyname": "solq_admin_read_quote_acceptances",
+      "schemaname": "public",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users\n  WHERE (admin_users.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "support_inquiries",
+      "permissive": "PERMISSIVE",
+      "policyname": "support_admin_answer",
+      "schemaname": "public",
+      "with_check": "(EXISTS ( SELECT 1\n   FROM admin_users\n  WHERE (admin_users.user_id = ( SELECT auth.uid() AS uid))))"
+    },
+    {
+      "cmd": "SELECT",
+      "qual": "(EXISTS ( SELECT 1\n   FROM admin_users\n  WHERE (admin_users.user_id = ( SELECT auth.uid() AS uid))))",
+      "roles": [
+        "authenticated"
+      ],
+      "tablename": "support_inquiries",
+      "permissive": "PERMISSIVE",
+      "policyname": "support_admin_read",
+      "schemaname": "public",
+      "with_check": null
+    }
+  ],
+  "triggers": [
+    {
+      "name": "nexus_capture_inquiry",
+      "table": "applications",
+      "schema": "public",
+      "enabled": "O",
+      "definition": "CREATE TRIGGER nexus_capture_inquiry AFTER INSERT ON public.applications FOR EACH ROW EXECUTE FUNCTION nexus_private.capture_inquiry()"
+    },
+    {
+      "name": "solq_application_approval_guard",
+      "table": "applications",
+      "schema": "public",
+      "enabled": "O",
+      "definition": "CREATE TRIGGER solq_application_approval_guard BEFORE UPDATE OF status ON public.applications FOR EACH ROW EXECUTE FUNCTION nexus_production_private.guard_application()"
+    },
+    {
+      "name": "solq_application_quotation_guard",
+      "table": "applications",
+      "schema": "public",
+      "enabled": "O",
+      "definition": "CREATE TRIGGER solq_application_quotation_guard BEFORE UPDATE OF status ON public.applications FOR EACH ROW EXECUTE FUNCTION nexus_production_private.guard_application_quote()"
+    },
+    {
+      "name": "solq_production_approval_guard",
+      "table": "production_jobs",
+      "schema": "public",
+      "enabled": "O",
+      "definition": "CREATE TRIGGER solq_production_approval_guard BEFORE INSERT OR UPDATE ON public.production_jobs FOR EACH ROW EXECUTE FUNCTION nexus_production_private.guard_job()"
+    },
+    {
+      "name": "solq_quotation_guard",
+      "table": "production_jobs",
+      "schema": "public",
+      "enabled": "O",
+      "definition": "CREATE TRIGGER solq_quotation_guard BEFORE INSERT OR UPDATE ON public.production_jobs FOR EACH ROW EXECUTE FUNCTION nexus_production_private.guard_quote()"
+    }
+  ],
+  "functions": [
+    {
+      "acl": [
+        "postgres=X/postgres",
+        "service_role=X/postgres"
+      ],
+      "args": "",
+      "name": "claude_key",
+      "owner": "postgres",
+      "schema": "nexus_ai_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_ai_private.claude_key()\n RETURNS text\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_key text;\nbegin\n  if coalesce(auth.jwt()->>'role','') <> 'service_role' then\n    raise exception 'server role required' using errcode = '42501';\n  end if;\n  select decrypted_secret into strict v_key from vault.decrypted_secrets\n    where name = 'nexus_labs_claude_api_key';\n  return v_key;\nend;\n$function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres",
+        "service_role=X/postgres"
+      ],
+      "args": "p_action text, p_data jsonb",
+      "name": "command",
+      "owner": "postgres",
+      "schema": "nexus_orchestrator_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_orchestrator_private.command(p_action text, p_data jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare j public.orchestrator_jobs; t public.orchestrator_tasks; v_id uuid; v_status text; v_code text;\nbegin\n if coalesce(auth.jwt()->>'role','')<>'service_role' then raise exception 'server required' using errcode='42501'; end if;\n if p_action='submit' then\n  if not exists(select 1 from public.admin_users where user_id=(p_data->>'actor')::uuid) then raise exception 'admin required'; end if;\n  if (p_data->>'instruction') ~* '(sk-|sb_secret_|-----BEGIN|password\\s*[:=]|비밀번호\\s*[:=])' then raise exception 'credential input forbidden'; end if;\n  insert into public.orchestrator_jobs(created_by,idempotency_key,instruction,agent)\n  values((p_data->>'actor')::uuid,(p_data->>'key')::uuid,p_data->>'instruction',p_data->>'agent')\n  on conflict(idempotency_key) do nothing returning * into j;\n  if j.id is null then\n   select * into strict j from public.orchestrator_jobs where idempotency_key=(p_data->>'key')::uuid;\n   if j.created_by<>(p_data->>'actor')::uuid or j.instruction<>p_data->>'instruction' or j.agent<>p_data->>'agent' then raise exception 'idempotency conflict'; end if;\n   return to_jsonb(j);\n  end if;\n  insert into public.orchestrator_tasks(job_id,ordinal,kind,agent) values\n   (j.id,1,'requirements','internal'),(j.id,2,'scope',j.agent),(j.id,3,'validation','internal'),(j.id,4,'human_review','internal');\n  insert into public.orchestrator_events(job_id,event) values(j.id,'submitted');\n  return to_jsonb(j);\n elsif p_action='claim' then\n  -- Expired internal work is safe to retry. External outcomes must be reviewed, never replayed.\n  for t in select * from public.orchestrator_tasks where status='running' and lease_until<now() for update skip locked loop\n   v_status:=case when t.agent='internal' and t.attempts<3 then 'retry_wait' else 'blocked' end;\n   update public.orchestrator_tasks set status=v_status,error_code='lease_expired',lease_token=null,lease_until=null,next_attempt_at=now()+interval '5 seconds' where id=t.id;\n   update public.orchestrator_jobs set status=case when v_status='blocked' then 'blocked' else 'running' end,updated_at=now() where id=t.job_id;\n   insert into public.orchestrator_events(job_id,task_id,event,code) values(t.job_id,t.id,v_status,'lease_expired');\n  end loop;\n  select x.* into t from public.orchestrator_tasks x\n   join public.orchestrator_jobs y on y.id=x.job_id\n   where x.status in ('queued','retry_wait') and x.next_attempt_at<=now() and y.status in ('queued','running')\n   and not exists(select 1 from public.orchestrator_tasks d where d.job_id=x.job_id and d.ordinal<x.ordinal and (d.status<>'completed' or not d.verified))\n   order by y.created_at,x.ordinal for update of x skip locked limit 1;\n  if t.id is null then return 'null'::jsonb; end if;\n  update public.orchestrator_tasks set status='running',attempts=attempts+1,lease_token=gen_random_uuid(),lease_until=now()+interval '60 seconds' where id=t.id returning * into t;\n  update public.orchestrator_jobs set status='running',updated_at=now() where id=t.job_id;\n  insert into public.orchestrator_events(job_id,task_id,event) values(t.job_id,t.id,'claimed');\n  select * into strict j from public.orchestrator_jobs where id=t.job_id;\n  return to_jsonb(t)||jsonb_build_object('instruction',j.instruction,'previous',coalesce((select jsonb_agg(result order by ordinal) from public.orchestrator_tasks where job_id=t.job_id and ordinal<t.ordinal),'[]'::jsonb));\n elsif p_action='finish' then\n  select * into strict t from public.orchestrator_tasks where id=(p_data->>'task_id')::uuid for update;\n  if t.status<>'running' or t.lease_token<>(p_data->>'lease')::uuid or t.lease_until<now() or p_data->>'lease' is null then raise exception 'stale lease'; end if;\n  v_status:=p_data->>'status'; v_code:=p_data->>'code';\n  if v_status not in ('completed','blocked','failed','awaiting_approval','retry_wait') then raise exception 'invalid status'; end if;\n  if v_status='completed' and coalesce((p_data->>'verified')::boolean,false) is not true then raise exception 'verification required'; end if;\n  if v_status='retry_wait' and (t.agent<>'internal' or t.attempts>=3) then v_status:='blocked'; v_code:='retry_not_safe'; end if;\n  update public.orchestrator_tasks set status=v_status,result=p_data->'result',error_code=v_code,\n   verified=coalesce((p_data->>'verified')::boolean,false),lease_token=null,lease_until=null,\n   next_attempt_at=now()+make_interval(secs=>least(60,power(2,t.attempts)::int)) where id=t.id;\n  insert into public.orchestrator_events(job_id,task_id,event,code) values(t.job_id,t.id,v_status,v_code);\n  update public.orchestrator_jobs set status=case\n   when v_status in ('blocked','failed','awaiting_approval') then v_status\n   when not exists(select 1 from public.orchestrator_tasks where job_id=t.job_id and status<>'completed') then 'completed'\n   else 'running' end,updated_at=now() where id=t.job_id;\n  return jsonb_build_object('saved',true,'status',v_status);\n else raise exception 'unsupported command'; end if;\nend; $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres"
+      ],
+      "args": "",
+      "name": "run_cycle",
+      "owner": "postgres",
+      "schema": "nexus_orchestrator_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_orchestrator_private.run_cycle()\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare t jsonb; r jsonb; outcome text; reason text; i integer; n integer:=0; prior text; request_id bigint; v_expires bigint;\nbegin\n if not pg_try_advisory_xact_lock(68170221) then return 0; end if;\n prior:=current_setting('request.jwt.claims',true);\n update nexus_orchestrator_private.worker_state set last_started_at=clock_timestamp(),cycles=cycles+1 where singleton;\n begin\n  perform set_config('request.jwt.claims','{\"role\":\"service_role\"}',true);\n  for i in 1..8 loop\n   t:=nexus_orchestrator_private.command('claim','{}'); exit when t='null'::jsonb;\n   r:=null;reason:=null;outcome:='completed';\n   if t->>'agent'<>'internal' then\n    outcome:='blocked';reason:=case t->>'agent' when 'claude' then 'production_adapter_not_enabled' when 'openai' then 'zero_credit_paid_calls_forbidden' when 'codex' then 'runner_and_auth_not_configured' else 'no_verified_remote_control_interface' end;\n   elsif t->>'kind'='requirements' then\n    r:=jsonb_build_object('kind','requirements','instruction',t->>'instruction','requirements',jsonb_build_array('입력 요구사항 확인','완료 기준 검토'),'mode','rules_only','paid_calls',0);\n   elsif t->>'kind'='scope' then\n    r:=jsonb_build_object('kind','scope','instruction',t->>'instruction','deliverable','요청에 대한 작업 범위 초안','steps',jsonb_build_array('요구사항 확인','구현 범위 검토','검증 기준 확인','관리자 검토'),'execution_started',false,'paid_calls',0);\n   elsif t->>'kind'='validation' then\n    if jsonb_array_length(t->'previous')<>2 or exists(select 1 from jsonb_array_elements(t->'previous') p where p->>'paid_calls' is distinct from '0') then\n     outcome:='failed';reason:='invalid_upstream_result';\n    else r:=jsonb_build_object('kind','validation','passed',true,'scope','workflow_metadata_only','checks',jsonb_build_array('선행 단계 결과 존재','유료 호출 0회','실행 미시작'),'paid_calls',0);end if;\n   elsif t->>'kind'='human_review' then\n    outcome:='awaiting_approval';r:=jsonb_build_object('kind','human_review','next_action','관리자가 범위 초안을 검토해야 합니다. 실제 제작·배포는 아직 시작되지 않았습니다.','paid_calls',0);\n   else outcome:='failed';reason:='unsupported_task';end if;\n   perform nexus_orchestrator_private.command('finish',jsonb_build_object('task_id',t->>'id','lease',t->>'lease_token','status',outcome,'code',reason,'verified',outcome='completed','result',r));n:=n+1;\n  end loop;\n  -- Diagnostic only: fixed synthetic prompt, one global attempt, never customer content.\n  if exists(select 1 from nexus_orchestrator_private.worker_state where singleton and test_requested and not test_dispatched)\n   and not exists(select 1 from public.ai_connection_runs where run_key='claude-connection-v1') then\n   update nexus_orchestrator_private.worker_state set test_dispatched=true,dispatched_at=clock_timestamp() where singleton;\n   v_expires:=floor(extract(epoch from clock_timestamp()))::bigint+60;\n   select net.http_post(url:='https://elfacqmvygnwjlklqhiz.supabase.co/functions/v1/nexus-agent-worker',\n    headers:=jsonb_build_object('Content-Type','application/json','Authorization','Bearer '||(select encode(extensions.hmac('nexus-agent-worker:POST:connection_test:'||v_expires::text,decrypted_secret,'sha256'),'hex')||'.'||v_expires::text from vault.decrypted_secrets where name='nexus_orchestrator_worker_token')),\n    body:='{\"action\":\"connection_test\"}'::jsonb,timeout_milliseconds:=30000) into request_id;\n   update nexus_orchestrator_private.worker_state set dispatch_id=request_id where singleton;\n  end if;\n  update nexus_orchestrator_private.worker_state set last_finished_at=clock_timestamp(),processed=processed+n,last_error=null where singleton;\n exception when others then\n  -- Roll back this cycle's queue/dispatch changes, record only a non-sensitive SQLSTATE.\n  update nexus_orchestrator_private.worker_state set last_finished_at=clock_timestamp(),last_error='cycle_failed_'||sqlstate where singleton;n:=0;\n end;\n perform set_config('request.jwt.claims',coalesce(prior,''),true);return n;\nend $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres",
+        "service_role=X/postgres"
+      ],
+      "args": "p_action text, p_data jsonb",
+      "name": "worker_command",
+      "owner": "postgres",
+      "schema": "nexus_orchestrator_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_orchestrator_private.worker_command(p_action text, p_data jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare a uuid; v_expires bigint; v_expected text;\nbegin\n if coalesce(auth.jwt()->>'role','')<>'service_role' then raise exception 'server required' using errcode='42501'; end if;\n if p_action='authorize' then\n  if coalesce(p_data->>'token','') !~ '^[0-9a-f]{64}\\.[0-9]{10}$' then return 'false'::jsonb; end if;\n  v_expires:=split_part(p_data->>'token','.',2)::bigint;\n  if v_expires<floor(extract(epoch from clock_timestamp())) or v_expires>floor(extract(epoch from clock_timestamp()))+90 then return 'false'::jsonb; end if;\n  select encode(extensions.hmac('nexus-agent-worker:POST:connection_test:'||v_expires::text,decrypted_secret,'sha256'),'hex')||'.'||v_expires::text into v_expected from vault.decrypted_secrets where name='nexus_orchestrator_worker_token';\n  return to_jsonb(coalesce(v_expected=p_data->>'token',false));\n elsif p_action='claim_test' then\n  if not exists(select 1 from nexus_orchestrator_private.worker_state where singleton and test_requested and test_dispatched) then return 'false'::jsonb; end if;\n  select user_id into strict a from public.admin_users order by created_at limit 1;\n  return to_jsonb(public.nexus_ai_claim_test(a));\n elsif p_action='state' then\n  return jsonb_build_object('worker',(select to_jsonb(s)-'singleton' from nexus_orchestrator_private.worker_state s where singleton),\n   'claude_test',(select to_jsonb(r)-'requested_by' from public.ai_connection_runs r where run_key='claude-connection-v1'),\n   'paid_production_enabled',false);\n else raise exception 'unsupported worker command'; end if;\nend $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres",
+        "authenticated=X/postgres"
+      ],
+      "args": "p_application uuid",
+      "name": "approve",
+      "owner": "postgres",
+      "schema": "nexus_production_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_production_private.approve(p_application uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare a public.applications; j public.production_jobs; actor uuid:=auth.uid();\nbegin\n if actor is null or coalesce(auth.jwt()->>'role','') <> 'authenticated' or not exists(select 1 from public.admin_users where user_id=actor) then raise exception 'admin required' using errcode='42501';end if;\n select * into strict a from public.applications where id=p_application for update;\n if a.status not in ('deposit_confirmed','in_progress') then raise exception 'manual payment confirmation required' using errcode='42501';end if;\n select * into j from public.production_jobs where application_id=a.id for update;\n if j.id is null then perform nexus_production_private.enroll(a.id); select * into strict j from public.production_jobs where application_id=a.id for update;end if;\n if not exists(select 1 from public.solq_quote_acceptances q where q.id=j.quote_acceptance_id and q.application_id=a.id) then raise exception 'verified customer quotation acceptance required' using errcode='42501';end if;\n if j.production_approved_at is not null then return jsonb_build_object('approved',true,'duplicate',true,'job_id',j.id,'status',j.status);end if;\n if j.status<>'awaiting_deposit' or j.attempt_count<>0 then raise exception 'job is not approvable' using errcode='42501';end if;\n update public.production_jobs set production_approved_by=actor,production_approved_at=now(),payment_observed_at=now(),status='queued',updated_at=now() where id=j.id;\n update public.applications set status='in_progress' where id=a.id;\n insert into public.production_events(job_id,event) values(j.id,'separate_admin_production_approval');\n return jsonb_build_object('approved',true,'duplicate',false,'job_id',j.id,'status','queued');\nend $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres",
+        "service_role=X/postgres"
+      ],
+      "args": "p_action text, p_data jsonb",
+      "name": "command",
+      "owner": "postgres",
+      "schema": "nexus_production_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_production_private.command(p_action text, p_data jsonb)\n RETURNS jsonb\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare j public.production_jobs;a public.applications;c nexus_production_private.providers;k text;h text;r text;v uuid;cost bigint;\nbegin\n if coalesce(auth.jwt()->>'role','')<>'service_role' then raise exception 'server required' using errcode='42501';end if;\n if p_action in ('snapshot','issue_link','release') and not exists(select 1 from public.admin_users where user_id=(p_data->>'actor')::uuid) then raise exception 'admin required' using errcode='42501';end if;\n if p_action='submit' then\n  k:=p_data->>'token';\n  if k is null or k !~ '^[a-f0-9]{64}$' or p_data->>'privacy_consent' is distinct from 'true' or p_data->>'transfer_consent' is distinct from 'true'\n   or coalesce(length(btrim(p_data->>'customer_name')),0) not between 1 and 100\n   or coalesce(length(btrim(p_data->>'contact')),0) not between 3 and 200\n   or coalesce(length(btrim(p_data->>'description')),0) not between 1 and 5000\n   or coalesce(p_data->>'service_type','') not in ('website','ai_automation','custom_system','consulting') then raise exception 'invalid order';end if;\n  h:=encode(sha256(convert_to((p_data-'token')::text,'UTF8')),'hex');\n  -- Serialize the same capability so retries cannot create duplicate customer records.\n  perform pg_advisory_xact_lock(hashtextextended(k,0));\n  select p.* into j from public.production_jobs p join nexus_production_private.access_keys x on x.job_id=p.id where x.token_hash=encode(sha256(convert_to(k,'UTF8')),'hex');\n  if j.id is not null then\n   if (select request_hash from nexus_production_private.access_keys where job_id=j.id) is distinct from h then raise exception 'idempotency conflict';end if;\n  else\n   insert into public.applications(customer_name,contact,service_type,description,privacy_consent,status,internal_note)\n   values(btrim(p_data->>'customer_name'),btrim(p_data->>'contact'),p_data->>'service_type',btrim(p_data->>'description'),true,'received',null) returning * into a;\n   v:=nexus_production_private.enroll(a.id);select * into strict j from public.production_jobs where id=v;\n   insert into nexus_production_private.access_keys(job_id,token_hash,request_hash) values(j.id,encode(sha256(convert_to(k,'UTF8')),'hex'),h);\n  end if;\n  return jsonb_build_object('receipt_number',j.receipt_number,'status',j.status,'preview',j.plan-'requirements');\n elsif p_action='portal' then\n  k:=p_data->>'token';if k is null or k !~ '^[a-f0-9]{64}$' then return 'null'::jsonb;end if;\n  select p.* into j from public.production_jobs p join nexus_production_private.access_keys x on x.job_id=p.id\n   where p.receipt_number=p_data->>'receipt_number' and x.token_hash=encode(sha256(convert_to(k,'UTF8')),'hex');\n  if j.id is null then return 'null'::jsonb;end if;\n  return jsonb_build_object('receipt_number',j.receipt_number,'status',j.status,'preview',j.plan-'requirements','result',case when j.status='released' then j.result else null end,'released_at',j.released_at);\n elsif p_action='snapshot' then\n  return jsonb_build_object('jobs',(select coalesce(jsonb_agg(x),'[]'::jsonb) from(select * from public.production_jobs order by created_at desc limit 30)x),\n   'providers',(select jsonb_agg(jsonb_build_object('provider',provider,'enabled',enabled,'verified_at',verified_at,'readiness',readiness,'heartbeat_at',heartbeat_at)) from nexus_production_private.providers),\n   'attempts',(select coalesce(jsonb_agg(x),'[]'::jsonb) from(select * from public.production_attempts order by created_at desc limit 100)x),\n   'events',(select coalesce(jsonb_agg(x),'[]'::jsonb) from(select * from public.production_events order by id desc limit 100)x));\n elsif p_action='issue_link' then\n  select * into strict j from public.production_jobs where id=(p_data->>'job_id')::uuid for update;\n  k:=replace(gen_random_uuid()::text||gen_random_uuid()::text,'-','');\n  insert into nexus_production_private.access_keys(job_id,token_hash) values(j.id,encode(sha256(convert_to(k,'UTF8')),'hex')) on conflict(job_id) do update set token_hash=excluded.token_hash,request_hash=null;\n  insert into public.production_events(job_id,event) values(j.id,'customer_access_link_issued');\n  return jsonb_build_object('receipt_number',j.receipt_number,'token',k);\n elsif p_action='release' then\n  select * into strict j from public.production_jobs where id=(p_data->>'job_id')::uuid for update;\n  if j.status<>'awaiting_review' or j.result_hash is distinct from p_data->>'expected_hash' then raise exception 'review stale or result unavailable';end if;\n  if not exists(select 1 from public.applications where id=j.application_id and status in ('deposit_confirmed','in_progress','completed')) then raise exception 'payment not confirmed';end if;\n  update public.production_jobs set status='released',released_by=(p_data->>'actor')::uuid,released_at=now(),updated_at=now() where id=j.id;\n  insert into public.production_events(job_id,event) values(j.id,'reviewed_result_released_to_customer_portal');return '{\"released\":true}'::jsonb;\n elsif p_action='heartbeat' then\n  update nexus_production_private.providers set heartbeat_at=now(),readiness=case when p_data->>'ready'='true' then 'ready' else 'authentication_or_runtime_missing' end where provider=p_data->>'provider';\n  return '{\"saved\":true}'::jsonb;\n elsif p_action='claim' then\n  perform nexus_production_private.tick();\n  select * into c from nexus_production_private.providers where provider=p_data->>'provider' for update;\n  if c.provider is null then raise exception 'unsupported provider';end if;\n  if not c.enabled or c.verified_at is null or c.verified_at<now()-interval '1 hour' or c.approved_calls<=c.reserved_calls or c.model is null then return jsonb_build_object('blocked','provider_not_enabled_or_verified');end if;\n  cost:=case when c.provider='openai' then (24096::bigint*c.input_micro_per_token+4096::bigint*c.output_micro_per_token) else 0 end;\n  if c.provider='openai' and (c.input_micro_per_token<=0 or c.output_micro_per_token<=0 or c.reserved_micro_usd+cost>c.approved_micro_usd) then return jsonb_build_object('blocked','approved_budget_exhausted');end if;\n  select p.* into j from public.production_jobs p join public.applications src_app on src_app.id=p.application_id\n   where p.status='queued' and exists(select 1 from public.solq_quote_acceptances qa where qa.id=p.quote_acceptance_id and qa.application_id=p.application_id) and p.provider=c.provider and p.attempt_count=0 and p.payment_observed_at is not null and p.production_approved_at is not null and exists (select 1 from public.admin_users u where u.user_id=p.production_approved_by) and src_app.status in ('deposit_confirmed','in_progress')\n   order by p.created_at for update of p skip locked limit 1;\n  if j.id is null then return 'null'::jsonb;end if;\n  update nexus_production_private.providers set reserved_calls=reserved_calls+1,reserved_micro_usd=reserved_micro_usd+cost where provider=c.provider;\n  update public.production_jobs set status='running',attempt_count=1,lease_token=gen_random_uuid(),lease_until=now()+interval '10 minutes',updated_at=now() where id=j.id returning * into j;\n  insert into public.production_attempts(job_id,provider,reserved_micro_usd) values(j.id,c.provider,cost);\n  insert into public.production_events(job_id,event) values(j.id,'agent_execution_reserved');\n  return jsonb_build_object('id',j.id,'lease',j.lease_token,'provider',c.provider,'model',c.model,'plan',j.plan,'max_output_tokens',4096,'execution_authorized',true);\n elsif p_action='finish' then\n  select * into strict j from public.production_jobs where id=(p_data->>'job_id')::uuid for update;\n  if j.status<>'running' or j.lease_token is distinct from (p_data->>'lease')::uuid or j.lease_until<now() then raise exception 'stale execution lease';end if;\n  if p_data->>'success'='true' then\n   if jsonb_typeof(p_data->'result') is distinct from 'object' or jsonb_typeof(p_data->'result'->'files') is distinct from 'array'\n    or jsonb_array_length(p_data->'result'->'files') not between 1 and 12 or octet_length((p_data->'result')::text)>100000\n    or p_data->'validation'->>'passed' is distinct from 'true' then raise exception 'unverified result';end if;\n   update public.production_jobs set status='awaiting_review',result=p_data->'result',validation=p_data->'validation',result_hash=encode(sha256(convert_to((p_data->'result')::text,'UTF8')),'hex'),lease_token=null,lease_until=null,updated_at=now() where id=j.id;\n   update public.production_attempts set status='succeeded',usage=p_data->'usage',completed_at=now() where job_id=j.id and status='reserved';\n   insert into public.production_events(job_id,event) values(j.id,'generated_artifact_verified_awaiting_admin_review');\n  else\n   r:=case when p_data->>'error_code' in ('provider_failed_or_unknown','invalid_artifact','runtime_failed','budget_gate_closed') then p_data->>'error_code' else 'runtime_failed' end;\n   update public.production_jobs set status='failed',error_code=r,lease_token=null,lease_until=null,updated_at=now() where id=j.id;\n   update public.production_attempts set status='failed_or_unknown',error_code=r,completed_at=now() where job_id=j.id and status='reserved';\n   insert into public.production_events(job_id,event) values(j.id,'agent_execution_failed_no_auto_retry');\n  end if;\n  return '{\"saved\":true}'::jsonb;\n else raise exception 'unsupported command';end if;\nend $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres"
+      ],
+      "args": "p_application uuid",
+      "name": "enroll",
+      "owner": "postgres",
+      "schema": "nexus_production_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_production_private.enroll(p_application uuid)\n RETURNS uuid\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare a public.applications;j uuid;\nbegin\n select * into strict a from public.applications where id=p_application;\n insert into public.production_jobs(application_id,receipt_number,service_type,provider,plan,status,error_code)\n values(a.id,a.receipt_number,a.service_type,case when a.service_type in ('website','custom_system') then 'codex' else 'openai' end,\n nexus_production_private.plan(a.service_type,a.description),case when a.description ~* '(sk-|sb_secret_|-----BEGIN|password\\s*[:=]|비밀번호\\s*[:=])' then 'blocked' else 'awaiting_deposit' end,\n case when a.description ~* '(sk-|sb_secret_|-----BEGIN|password\\s*[:=]|비밀번호\\s*[:=])' then 'possible_credentials_require_redaction' else null end)\n on conflict(application_id) do nothing returning id into j;\n if j is null then select id into j from public.production_jobs where application_id=a.id;\n else insert into public.production_events(job_id,event) values(j,'classified_and_preview_ready');end if;\n return j;\nend $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres"
+      ],
+      "args": "",
+      "name": "free_cycle",
+      "owner": "postgres",
+      "schema": "nexus_production_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_production_private.free_cycle()\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare r public.solq_free_plan_runs; a public.applications; p jsonb; pid uuid; jid uuid; n integer:=0; stage jsonb;\nbegin\n if not pg_try_advisory_xact_lock(68170223) then return 0;end if;\n insert into public.solq_free_plan_runs(application_id)\n select x.id from public.applications x where x.created_at>=(select capture_from from nexus_production_private.free_plan_settings where singleton)\n and x.status<>'cancelled' and not exists(select 1 from public.solq_free_plan_runs f where f.application_id=x.id) order by x.created_at limit 100\n on conflict(application_id) do nothing;\n for r in select * from public.solq_free_plan_runs where status in ('pending','retry_wait') and attempts<3 and next_attempt_at<=now() order by created_at for update skip locked limit 50 loop\n  update public.solq_free_plan_runs set attempts=attempts+1,updated_at=clock_timestamp() where application_id=r.application_id;\n  begin\n   select * into strict a from public.applications where id=r.application_id for update;\n   select id into pid from public.ai_work_plans where application_id=a.id;\n   if pid is not null then\n    update public.solq_free_plan_runs set status='existing_plan',plan_id=pid,updated_at=clock_timestamp() where application_id=a.id;\n    continue;\n   end if;\n   p:=nexus_production_private.free_plan(a.id);\n   insert into public.ai_work_plans(application_id,created_by,plan) values(a.id,null,p) returning id into pid;\n   insert into public.orchestrator_jobs(created_by,idempotency_key,instruction,agent,status,application_id,free_plan_id)\n   values(null,a.id,'무료 규칙 기반 계획 검토: '||a.receipt_number,'internal','awaiting_approval',a.id,pid) returning id into jid;\n   for stage in select value from jsonb_array_elements(p->'details') loop\n    insert into public.orchestrator_tasks(job_id,ordinal,kind,agent,status,attempts,result,verified)\n    values(jid,(stage->>'ordinal')::integer,(p->'steps')->>((stage->>'ordinal')::integer-1),'internal',\n     case when (stage->>'ordinal')::integer=6 then 'awaiting_approval' else 'completed' end,1,\n     jsonb_build_object('application_id',a.id,'plan_id',pid,'source_hash',p->>'source_hash','stage',stage,'paid_calls',0),\n     (stage->>'ordinal')::integer<6);\n   end loop;\n   insert into public.orchestrator_events(job_id,event,code) values(jid,'free_plan_automatically_saved','rules_only'),(jid,'awaiting_approval','no_paid_execution');\n   update public.solq_free_plan_runs set status='awaiting_approval',plan_id=pid,job_id=jid,error_code=null,updated_at=clock_timestamp() where application_id=a.id;\n   n:=n+1;\n  exception when others then\n   update public.solq_free_plan_runs set status=case when attempts>=3 then 'failed' else 'retry_wait' end,\n    error_code='free_plan_failed_'||sqlstate,error_history=error_history||jsonb_build_array(jsonb_build_object('attempt',attempts,'code',sqlstate,'at',clock_timestamp())),next_attempt_at=now()+make_interval(mins=>least(10,attempts)),updated_at=clock_timestamp() where application_id=r.application_id;\n  end;\n end loop;\n return n;\nend $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres"
+      ],
+      "args": "p_application uuid",
+      "name": "free_plan",
+      "owner": "postgres",
+      "schema": "nexus_production_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_production_private.free_plan(p_application uuid)\n RETURNS jsonb\n LANGUAGE plpgsql\n STABLE\n SET search_path TO ''\nAS $function$\ndeclare a public.applications; label text; scope_text text; actions jsonb; flags jsonb; gaps jsonb; enough boolean;\nbegin\n select * into strict a from public.applications where id=p_application;\n label:=case a.service_type when 'website' then '웹사이트' when 'ai_automation' then '업무 자동화' when 'custom_system' then '맞춤 시스템' else '상담·기타 문의' end;\n flags:=jsonb_build_object('login',a.description ~* '로그인|login','payment',a.description ~* '결제|payment','integration',a.description ~* '연동|integration','notifications',a.description ~* '알림|발송|문자|이메일','classification',a.description ~* '분류|정리|문의','sensitive_input',a.description ~* '(sk-|sb_secret_|-----BEGIN|password\\s*[:=]|비밀번호\\s*[:=])');\n enough:=length(btrim(a.description))>=20;\n scope_text:=case a.service_type\n when 'website' then '신청 원문에 나온 페이지·입력 항목·모바일 동선을 목록화하고 입력 양식과 결과 화면의 초안을 검토한다.'\n when 'ai_automation' then '신청 원문에 나온 입력·분류 조건·출력 형식을 규칙표로 정리하고 반복 업무 1개의 자동화 범위를 검토한다.'\n when 'custom_system' then '신청 원문에 나온 사용자 역할·데이터·처리 흐름을 분리하고 최소 기능과 권한 경계를 검토한다.'\n else '문의에서 해결할 문제와 원하는 결과를 추출한다. 명시하지 않은 제작 기능이나 서비스를 임의 확정하지 않는다.' end;\n actions:=jsonb_build_array(scope_text,'검토할 고객 요청: '||left(a.description,500),'요청과 연결된 가상 입력 예시와 기대 결과를 작성하고 경계·누락 입력 검증 기준을 정한다.','추가 확인 질문과 포함·제외 범위를 관리자에게 전달한다. 실제 제작은 별도 승인 뒤 진행한다.');\n if a.description ~ '분류|정리' then actions:=actions||jsonb_build_array('분류·정리: 고객에게 실제 입력 예시와 분류 목록을 받아 규칙표를 작성한다. 일치하지 않는 입력은 기타·관리자 확인으로 분리하고 오분류 예시로 검증한다.');end if;\n if a.description ~ '메뉴' then actions:=actions||jsonb_build_array('메뉴 관련 요청: 고객의 실제 메뉴 목록을 기준표로 사용하고 메뉴명 누락·별칭·여러 메뉴가 섞인 문의의 처리 기준을 확인한다.');end if;\n if a.description ~ '예약' then actions:=actions||jsonb_build_array('예약 관련 요청: 날짜·시간·서비스·인원 입력 필요 여부와 중복 시간·마감·취소 처리 기준을 확인한다. 자동 확정 여부는 별도 합의한다.');end if;\n if a.description ~ '주문' then actions:=actions||jsonb_build_array('주문 관련 요청: 품목·수량·옵션 입력과 누락·중복 주문 처리 기준을 먼저 합의한다. 결제·실제 주문 전송은 실행하지 않는다.');end if;\n if a.description ~ '엑셀|스프레드시트|CSV|csv' then actions:=actions||jsonb_build_array('표 데이터 요청: 개인정보를 제거한 예시 파일의 열 이름·필수 값·중복 기준을 확인하고 입력과 결과 열 매핑을 작성한다.');end if;\n if (flags->>'login')::boolean then actions:=actions||jsonb_build_array('로그인 요청: 이용자 역할·접근 권한·인증 방식 확인을 실행 전 조건으로 둔다.');end if;\n if (flags->>'integration')::boolean then actions:=actions||jsonb_build_array('연동 요청: 대상 서비스·접근 권한·전송할 정보·요금을 확인하기 전 실제 연동을 실행하지 않는다.');end if;\n if (flags->>'payment')::boolean then actions:=actions||jsonb_build_array('결제 요청: 결제 제공사·계약·비용을 별도 견적 대상으로 분리한다.');end if;\n if (flags->>'notifications')::boolean then actions:=actions||jsonb_build_array('알림·발송 요청: 채널·수신 동의·대상·발송 비용을 확인한다. 자동 발송은 이 무료 단계에서 실행하지 않는다.');end if;\n gaps:=case when enough then jsonb_build_array('원문에 없는 입력 예시·완료 기준·예산·일정은 관리자 검토에서 확인한다.') else jsonb_build_array('요청 내용이 짧아 목적·입력 자료·원하는 결과·사용 환경을 추가 확인해야 한다. 구체 기능 확정 보류.') end;\n return jsonb_build_object('engine','solq_rules_v1','generation_method','rules_only','model_used',false,'paid_calls',0,\n 'application_id',a.id,'receipt_number',a.receipt_number,'service_type',a.service_type,\n 'source_hash',md5(a.service_type||E'\\n'||a.description),'requirements',a.description,\n 'steps',jsonb_build_array('requirements','classification','scope','implementation','validation','human_review'),\n 'details',jsonb_build_array(\n jsonb_build_object('ordinal',1,'title','고객 요청 분석','request_excerpt',left(a.description,1000),'sufficient_detail',enough,'follow_up',gaps),\n jsonb_build_object('ordinal',2,'title','서비스 유형 및 목적 분류','service',label,'classification_basis','고객 선택 service_type 기준, 키워드는 확인 항목만 추가','features',flags),\n jsonb_build_object('ordinal',3,'title','자동화 가능 범위 판단','proposed_scope',scope_text,'confirmed_scope',false,'requires_human_review',true),\n jsonb_build_object('ordinal',4,'title','구체적인 실행 단계','proposed_actions',actions,'execution_started',false),\n jsonb_build_object('ordinal',5,'title','예상 결과·제약·비용 검토','expected_result','요청별 범위 초안·확인 질문·검증 기준','limitations','무료 규칙 기반 초안이며 모델 추론·제작 결과·확정 견적이 아님','possible_costs','생성형 AI·외부 연동·발송·호스팅·제작은 별도 비용 검토. 무료 계획은 0원.'),\n jsonb_build_object('ordinal',6,'title','관리자 검토용 최종 계획','status','awaiting_approval','next_action','신청 원문과 범위·질문 검토 후 개별 견적 안내. 고객 견적 동의·실제 입금 확인·별도 제작 승인 전 실행 금지')),\n 'status','awaiting_approval','external_execution','requires_separate_approval','execution_started',false);\nend $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres"
+      ],
+      "args": "",
+      "name": "guard_application",
+      "owner": "postgres",
+      "schema": "nexus_production_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_production_private.guard_application()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if new.status is distinct from old.status and new.status in ('in_progress','completed') and not exists(select 1 from public.production_jobs j join public.admin_users u on u.user_id=j.production_approved_by where j.application_id=new.id and j.production_approved_at is not null and j.payment_observed_at is not null) then raise exception 'separate production approval required' using errcode='42501';end if;\n return new;\nend $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres"
+      ],
+      "args": "",
+      "name": "guard_application_quote",
+      "owner": "postgres",
+      "schema": "nexus_production_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_production_private.guard_application_quote()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if new.status is distinct from old.status and new.status in ('in_progress','completed') and not exists(select 1 from public.production_jobs j join public.solq_quote_acceptances q on q.id=j.quote_acceptance_id and q.application_id=j.application_id where j.application_id=new.id) then raise exception 'verified customer quotation acceptance required' using errcode='42501';end if;\n return new;\nend $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres"
+      ],
+      "args": "",
+      "name": "guard_job",
+      "owner": "postgres",
+      "schema": "nexus_production_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_production_private.guard_job()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if (TG_OP='INSERT' and (new.production_approved_at is not null or new.production_approved_by is not null))\n or (TG_OP='UPDATE' and (new.production_approved_at is distinct from old.production_approved_at or new.production_approved_by is distinct from old.production_approved_by)) then\n  if auth.uid() is null or coalesce(auth.jwt()->>'role','') <> 'authenticated' or not exists(select 1 from public.admin_users where user_id=auth.uid()) then raise exception 'authenticated admin approval required' using errcode='42501'; end if;\n  if new.production_approved_by is distinct from auth.uid() or new.production_approved_at is null then raise exception 'invalid approval identity' using errcode='42501'; end if;\n end if;\n if new.status in ('queued','running','awaiting_review','released') then\n  perform 1 from public.applications where id=new.application_id and status in ('deposit_confirmed','in_progress','completed') for update;\n  if not found or new.payment_observed_at is null or new.production_approved_at is null\n   or not exists(select 1 from public.admin_users where user_id=new.production_approved_by) then raise exception 'payment and separate production approval required' using errcode='42501'; end if;\n end if;\n if new.status='queued' and (TG_OP='INSERT' or old.status is distinct from 'queued') and coalesce(new.attempt_count,0)<>0 then raise exception 'duplicate execution prohibited' using errcode='42501';end if;\n return new;\nend $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres"
+      ],
+      "args": "",
+      "name": "guard_quote",
+      "owner": "postgres",
+      "schema": "nexus_production_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_production_private.guard_quote()\n RETURNS trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\nbegin\n if new.status in ('queued','running','awaiting_review','released') or new.production_approved_at is not null then\n  if not exists(select 1 from public.solq_quote_acceptances q where q.id=new.quote_acceptance_id and q.application_id=new.application_id) then raise exception 'verified customer quotation acceptance required' using errcode='42501';end if;\n end if;\n return new;\nend $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres"
+      ],
+      "args": "p_type text, p_description text",
+      "name": "plan",
+      "owner": "postgres",
+      "schema": "nexus_production_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_production_private.plan(p_type text, p_description text)\n RETURNS jsonb\n LANGUAGE sql\n IMMUTABLE\n SET search_path TO ''\nAS $function$\n select jsonb_build_object('classification_method','rules','service_type',p_type,'requirements',p_description,\n  'assigned_agent',case when p_type in ('website','custom_system') then 'codex' else 'openai' end,\n  'stages',jsonb_build_array('classification','preview','deposit_confirmation','generation','validation','admin_review','delivery'),\n  'features',jsonb_build_object('login',p_description ~* '로그인|login','payment',p_description ~* '결제|payment','integration',p_description ~* '연동|integration'),\n  'preview_only',true,'paid_calls',0,'claude_required',false);\n$function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres"
+      ],
+      "args": "",
+      "name": "tick",
+      "owner": "postgres",
+      "schema": "nexus_production_private",
+      "definition": "CREATE OR REPLACE FUNCTION nexus_production_private.tick()\n RETURNS integer\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare a record;j record;n int:=0;\nbegin\n if not pg_try_advisory_xact_lock(68170222) then return 0;end if;\n for a in select x.id from public.applications x where x.created_at >= (select capture_from from nexus_production_private.settings where singleton)\n and not exists(select 1 from public.production_jobs y where y.application_id=x.id) order by x.created_at limit 50 loop\n  perform nexus_production_private.enroll(a.id);n:=n+1;\n end loop;\n for j in select p.id,src_app.status from public.production_jobs p join public.applications src_app on src_app.id=p.application_id\n where p.status in ('awaiting_deposit','queued') for update of p skip locked loop\n  if j.status='cancelled' then\n   update public.production_jobs set status='cancelled',updated_at=now() where id=j.id;\n   insert into public.production_events(job_id,event) values(j.id,'application_cancelled');\n  elsif j.status in ('deposit_confirmed','in_progress') and exists (select 1 from public.production_jobs q join public.admin_users u on u.user_id=q.production_approved_by where q.id=j.id and q.production_approved_at is not null and q.payment_observed_at is not null and exists(select 1 from public.solq_quote_acceptances qa where qa.id=q.quote_acceptance_id and qa.application_id=q.application_id)) then\n   update public.production_jobs set status='queued',payment_observed_at=coalesce(payment_observed_at,now()),updated_at=now() where id=j.id and status='awaiting_deposit';\n   if found then insert into public.production_events(job_id,event) values(j.id,'admin_deposit_confirmation_observed');end if;\n  else update public.production_jobs set status='awaiting_deposit' where id=j.id and status='queued';end if;\n end loop;\n for j in select id from public.production_jobs where status='running' and lease_until<now() for update skip locked loop\n  update public.production_jobs set status='failed',error_code='execution_outcome_unknown_no_retry',lease_token=null,lease_until=null,updated_at=now() where id=j.id;\n  update public.production_attempts set status='unknown',error_code='lease_expired_no_retry',completed_at=now() where job_id=j.id and status='reserved';\n  insert into public.production_events(job_id,event) values(j.id,'execution_unknown_no_retry');\n end loop;\n perform nexus_production_private.free_cycle();\n return n;\nend $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres",
+        "service_role=X/postgres"
+      ],
+      "args": "p_admin uuid",
+      "name": "nexus_ai_claim_test",
+      "owner": "postgres",
+      "schema": "public",
+      "definition": "CREATE OR REPLACE FUNCTION public.nexus_ai_claim_test(p_admin uuid)\n RETURNS boolean\n LANGUAGE plpgsql\n SET search_path TO ''\nAS $function$\ndeclare v_count integer;\nbegin\n  if coalesce(auth.jwt()->>'role','') <> 'service_role' then\n    raise exception 'server role required' using errcode = '42501';\n  end if;\n  if not exists (select 1 from public.admin_users where user_id = p_admin) then\n    raise exception 'admin required' using errcode = '42501';\n  end if;\n  insert into public.ai_connection_runs(run_key,requested_by)\n    values ('claude-connection-v1',p_admin) on conflict do nothing;\n  get diagnostics v_count = row_count;\n  return v_count = 1;\nend;\n$function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres",
+        "service_role=X/postgres"
+      ],
+      "args": "",
+      "name": "nexus_ai_key",
+      "owner": "postgres",
+      "schema": "public",
+      "definition": "CREATE OR REPLACE FUNCTION public.nexus_ai_key()\n RETURNS text\n LANGUAGE sql\n SET search_path TO ''\nAS $function$\n  select nexus_ai_private.claude_key();\n$function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres",
+        "service_role=X/postgres"
+      ],
+      "args": "p_action text, p_data jsonb",
+      "name": "nexus_orchestrator_command",
+      "owner": "postgres",
+      "schema": "public",
+      "definition": "CREATE OR REPLACE FUNCTION public.nexus_orchestrator_command(p_action text, p_data jsonb DEFAULT '{}'::jsonb)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select nexus_orchestrator_private.command(p_action,p_data);$function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres",
+        "service_role=X/postgres"
+      ],
+      "args": "p_action text, p_data jsonb",
+      "name": "nexus_production_command",
+      "owner": "postgres",
+      "schema": "public",
+      "definition": "CREATE OR REPLACE FUNCTION public.nexus_production_command(p_action text, p_data jsonb DEFAULT '{}'::jsonb)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select nexus_production_private.command(p_action,p_data);$function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres",
+        "service_role=X/postgres"
+      ],
+      "args": "p_action text, p_data jsonb",
+      "name": "nexus_worker_command",
+      "owner": "postgres",
+      "schema": "public",
+      "definition": "CREATE OR REPLACE FUNCTION public.nexus_worker_command(p_action text, p_data jsonb DEFAULT '{}'::jsonb)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$select nexus_orchestrator_private.worker_command(p_action,p_data);$function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres",
+        "anon=X/postgres",
+        "authenticated=X/postgres"
+      ],
+      "args": "p_id uuid, p_access_token text",
+      "name": "read_support_inquiry",
+      "owner": "postgres",
+      "schema": "public",
+      "definition": "CREATE OR REPLACE FUNCTION public.read_support_inquiry(p_id uuid, p_access_token text)\n RETURNS TABLE(question text, language text, answer text, created_at timestamp with time zone, answered_at timestamp with time zone)\n LANGUAGE sql\n STABLE SECURITY DEFINER\n SET search_path TO ''\nAS $function$\n select s.question,s.language,s.answer,s.created_at,s.answered_at from public.support_inquiries s\n where s.id=p_id and length(p_access_token)=64\n and s.access_hash=encode(sha256(convert_to(p_access_token,'UTF8')),'hex');\n$function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres"
+      ],
+      "args": "",
+      "name": "rls_auto_enable",
+      "owner": "postgres",
+      "schema": "public",
+      "definition": "CREATE OR REPLACE FUNCTION public.rls_auto_enable()\n RETURNS event_trigger\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO 'pg_catalog'\nAS $function$\nDECLARE\n  cmd record;\n  tbl name;\nBEGIN\n  FOR cmd IN\n    SELECT *\n    FROM pg_event_trigger_ddl_commands()\n    WHERE command_tag IN ('CREATE TABLE', 'CREATE TABLE AS', 'SELECT INTO')\n      AND object_type IN ('table','partitioned table')\n  LOOP\n     IF cmd.schema_name IS NOT NULL AND cmd.schema_name IN ('public') AND cmd.schema_name NOT IN ('pg_catalog','information_schema') AND cmd.schema_name NOT LIKE 'pg_toast%' AND cmd.schema_name NOT LIKE 'pg_temp%' THEN\n      BEGIN\n        SELECT c.relname INTO tbl FROM pg_catalog.pg_class c WHERE c.oid = cmd.objid;\n        EXECUTE format('alter table if exists %I.%I enable row level security', cmd.schema_name, tbl);\n        RAISE LOG 'rls_auto_enable: enabled RLS on %', cmd.object_identity;\n      EXCEPTION\n        WHEN OTHERS THEN\n          RAISE LOG 'rls_auto_enable: failed to enable RLS on %', cmd.object_identity;\n      END;\n     ELSE\n        RAISE LOG 'rls_auto_enable: skip % (either system schema or not in enforced list: %.)', cmd.object_identity, cmd.schema_name;\n     END IF;\n  END LOOP;\nEND;\n$function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres",
+        "authenticated=X/postgres"
+      ],
+      "args": "p_application uuid",
+      "name": "solq_approve_production",
+      "owner": "postgres",
+      "schema": "public",
+      "definition": "CREATE OR REPLACE FUNCTION public.solq_approve_production(p_application uuid)\n RETURNS jsonb\n LANGUAGE sql\n SET search_path TO ''\nAS $function$ select nexus_production_private.approve(p_application); $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres",
+        "anon=X/postgres",
+        "authenticated=X/postgres"
+      ],
+      "args": "p_customer_name text, p_contact text, p_service_type text, p_description text, p_privacy_consent boolean",
+      "name": "submit_application",
+      "owner": "postgres",
+      "schema": "public",
+      "definition": "CREATE OR REPLACE FUNCTION public.submit_application(p_customer_name text, p_contact text, p_service_type text, p_description text, p_privacy_consent boolean)\n RETURNS text\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare v_receipt text;\nbegin\n if auth.role() not in ('anon','authenticated') then raise exception 'Unauthorized' using errcode='42501'; end if;\n if p_privacy_consent is distinct from true\n or char_length(btrim(coalesce(p_customer_name,''))) not between 1 and 100\n or char_length(btrim(coalesce(p_contact,''))) not between 3 and 200\n or p_service_type not in ('website','ai_automation','custom_system','consulting')\n or char_length(btrim(coalesce(p_description,''))) not between 1 and 5000 then\n   raise exception 'Invalid application' using errcode='22023';\n end if;\n insert into public.applications(customer_name,contact,service_type,description,privacy_consent,status,internal_note)\n values(btrim(p_customer_name),btrim(p_contact),p_service_type,btrim(p_description),true,'received',null)\n returning receipt_number into v_receipt;\n return v_receipt;\nend; $function$\n"
+    },
+    {
+      "acl": [
+        "postgres=X/postgres",
+        "anon=X/postgres",
+        "authenticated=X/postgres"
+      ],
+      "args": "p_question text, p_language text, p_access_token text, p_consent boolean, p_transfer_consent boolean",
+      "name": "submit_support_inquiry",
+      "owner": "postgres",
+      "schema": "public",
+      "definition": "CREATE OR REPLACE FUNCTION public.submit_support_inquiry(p_question text, p_language text, p_access_token text, p_consent boolean, p_transfer_consent boolean)\n RETURNS uuid\n LANGUAGE plpgsql\n SECURITY DEFINER\n SET search_path TO ''\nAS $function$\ndeclare result_id uuid; token_hash text;\nbegin\n if p_consent is distinct from true or p_transfer_consent is distinct from true\n or coalesce(length(btrim(p_question)),0) not between 5 and 4000\n or coalesce(length(btrim(p_language)),0) not between 1 and 40\n or p_access_token is null or p_access_token !~ '^[a-f0-9]{64}$' then\n raise exception 'Invalid inquiry'; end if;\n token_hash:=encode(sha256(convert_to(p_access_token,'UTF8')),'hex');\n insert into public.support_inquiries(access_hash,question,language)\n values(token_hash,btrim(p_question),btrim(p_language))\n on conflict(access_hash) do nothing returning id into result_id;\n if result_id is null then select id into result_id from public.support_inquiries where access_hash=token_hash; end if;\n return result_id;\nend; $function$\n"
+    }
+  ],
+  "extensions": [
+    {
+      "name": "pg_cron",
+      "schema": "pg_catalog",
+      "version": "1.6.4"
+    },
+    {
+      "name": "pg_net",
+      "schema": "extensions",
+      "version": "0.20.4"
+    },
+    {
+      "name": "pg_stat_statements",
+      "schema": "extensions",
+      "version": "1.11"
+    },
+    {
+      "name": "pgcrypto",
+      "schema": "extensions",
+      "version": "1.3"
+    },
+    {
+      "name": "plpgsql",
+      "schema": "pg_catalog",
+      "version": "1.0"
+    },
+    {
+      "name": "supabase_vault",
+      "schema": "vault",
+      "version": "0.3.1"
+    },
+    {
+      "name": "uuid-ossp",
+      "schema": "extensions",
+      "version": "1.1"
+    }
+  ],
+  "constraints": [
+    {
+      "name": "worker_state_pkey",
+      "type": "p",
+      "table": "worker_state",
+      "schema": "nexus_orchestrator_private",
+      "definition": "PRIMARY KEY (singleton)"
+    },
+    {
+      "name": "worker_state_singleton_check",
+      "type": "c",
+      "table": "worker_state",
+      "schema": "nexus_orchestrator_private",
+      "definition": "CHECK (singleton)"
+    },
+    {
+      "name": "access_keys_job_id_fkey",
+      "type": "f",
+      "table": "access_keys",
+      "schema": "nexus_production_private",
+      "definition": "FOREIGN KEY (job_id) REFERENCES production_jobs(id)"
+    },
+    {
+      "name": "access_keys_pkey",
+      "type": "p",
+      "table": "access_keys",
+      "schema": "nexus_production_private",
+      "definition": "PRIMARY KEY (job_id)"
+    },
+    {
+      "name": "access_keys_token_hash_key",
+      "type": "u",
+      "table": "access_keys",
+      "schema": "nexus_production_private",
+      "definition": "UNIQUE (token_hash)"
+    },
+    {
+      "name": "free_plan_settings_pkey",
+      "type": "p",
+      "table": "free_plan_settings",
+      "schema": "nexus_production_private",
+      "definition": "PRIMARY KEY (singleton)"
+    },
+    {
+      "name": "free_plan_settings_singleton_check",
+      "type": "c",
+      "table": "free_plan_settings",
+      "schema": "nexus_production_private",
+      "definition": "CHECK (singleton)"
+    },
+    {
+      "name": "providers_pkey",
+      "type": "p",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "definition": "PRIMARY KEY (provider)"
+    },
+    {
+      "name": "providers_provider_check",
+      "type": "c",
+      "table": "providers",
+      "schema": "nexus_production_private",
+      "definition": "CHECK ((provider = ANY (ARRAY['openai'::text, 'codex'::text])))"
+    },
+    {
+      "name": "security_backups_pkey",
+      "type": "p",
+      "table": "security_backups",
+      "schema": "nexus_production_private",
+      "definition": "PRIMARY KEY (backup_key)"
+    },
+    {
+      "name": "settings_pkey",
+      "type": "p",
+      "table": "settings",
+      "schema": "nexus_production_private",
+      "definition": "PRIMARY KEY (singleton)"
+    },
+    {
+      "name": "settings_singleton_check",
+      "type": "c",
+      "table": "settings",
+      "schema": "nexus_production_private",
+      "definition": "CHECK (singleton)"
+    },
+    {
+      "name": "admin_users_pkey",
+      "type": "p",
+      "table": "admin_users",
+      "schema": "public",
+      "definition": "PRIMARY KEY (user_id)"
+    },
+    {
+      "name": "admin_users_user_id_fkey",
+      "type": "f",
+      "table": "admin_users",
+      "schema": "public",
+      "definition": "FOREIGN KEY (user_id) REFERENCES auth.users(id) ON DELETE CASCADE"
+    },
+    {
+      "name": "ai_connection_runs_estimated_cost_usd_check",
+      "type": "c",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "definition": "CHECK ((estimated_cost_usd >= (0)::numeric))"
+    },
+    {
+      "name": "ai_connection_runs_input_tokens_check",
+      "type": "c",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "definition": "CHECK ((input_tokens >= 0))"
+    },
+    {
+      "name": "ai_connection_runs_model_check",
+      "type": "c",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "definition": "CHECK ((model = 'claude-haiku-5-5'::text))"
+    },
+    {
+      "name": "ai_connection_runs_output_tokens_check",
+      "type": "c",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "definition": "CHECK ((output_tokens >= 0))"
+    },
+    {
+      "name": "ai_connection_runs_pkey",
+      "type": "p",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "definition": "PRIMARY KEY (run_key)"
+    },
+    {
+      "name": "ai_connection_runs_run_key_check",
+      "type": "c",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "definition": "CHECK ((run_key = 'claude-connection-v1'::text))"
+    },
+    {
+      "name": "ai_connection_runs_status_check",
+      "type": "c",
+      "table": "ai_connection_runs",
+      "schema": "public",
+      "definition": "CHECK ((status = ANY (ARRAY['reserved'::text, 'succeeded'::text, 'failed'::text])))"
+    },
+    {
+      "name": "ai_work_plans_pkey",
+      "type": "p",
+      "table": "ai_work_plans",
+      "schema": "public",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "name": "applications_contact_check",
+      "type": "c",
+      "table": "applications",
+      "schema": "public",
+      "definition": "CHECK (((char_length(contact) >= 3) AND (char_length(contact) <= 200)))"
+    },
+    {
+      "name": "applications_customer_name_check",
+      "type": "c",
+      "table": "applications",
+      "schema": "public",
+      "definition": "CHECK (((char_length(customer_name) >= 1) AND (char_length(customer_name) <= 100)))"
+    },
+    {
+      "name": "applications_description_check",
+      "type": "c",
+      "table": "applications",
+      "schema": "public",
+      "definition": "CHECK (((char_length(description) >= 1) AND (char_length(description) <= 5000)))"
+    },
+    {
+      "name": "applications_pkey",
+      "type": "p",
+      "table": "applications",
+      "schema": "public",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "name": "applications_privacy_consent_check",
+      "type": "c",
+      "table": "applications",
+      "schema": "public",
+      "definition": "CHECK ((privacy_consent = true))"
+    },
+    {
+      "name": "applications_receipt_number_key",
+      "type": "u",
+      "table": "applications",
+      "schema": "public",
+      "definition": "UNIQUE (receipt_number)"
+    },
+    {
+      "name": "applications_service_type_check",
+      "type": "c",
+      "table": "applications",
+      "schema": "public",
+      "definition": "CHECK ((service_type = ANY (ARRAY['website'::text, 'ai_automation'::text, 'custom_system'::text, 'consulting'::text])))"
+    },
+    {
+      "name": "applications_status_check",
+      "type": "c",
+      "table": "applications",
+      "schema": "public",
+      "definition": "CHECK ((status = ANY (ARRAY['received'::text, 'reviewing'::text, 'deposit_confirmed'::text, 'in_progress'::text, 'completed'::text, 'cancelled'::text])))"
+    },
+    {
+      "name": "inquiry_events_application_id_fkey",
+      "type": "f",
+      "table": "inquiry_events",
+      "schema": "public",
+      "definition": "FOREIGN KEY (application_id) REFERENCES applications(id) ON DELETE CASCADE"
+    },
+    {
+      "name": "inquiry_events_application_id_key",
+      "type": "u",
+      "table": "inquiry_events",
+      "schema": "public",
+      "definition": "UNIQUE (application_id)"
+    },
+    {
+      "name": "inquiry_events_pkey",
+      "type": "p",
+      "table": "inquiry_events",
+      "schema": "public",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "name": "inquiry_events_source_check",
+      "type": "c",
+      "table": "inquiry_events",
+      "schema": "public",
+      "definition": "CHECK ((source = 'application_form'::text))"
+    },
+    {
+      "name": "orchestrator_events_job_id_fkey",
+      "type": "f",
+      "table": "orchestrator_events",
+      "schema": "public",
+      "definition": "FOREIGN KEY (job_id) REFERENCES orchestrator_jobs(id)"
+    },
+    {
+      "name": "orchestrator_events_pkey",
+      "type": "p",
+      "table": "orchestrator_events",
+      "schema": "public",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "name": "orchestrator_events_task_id_fkey",
+      "type": "f",
+      "table": "orchestrator_events",
+      "schema": "public",
+      "definition": "FOREIGN KEY (task_id) REFERENCES orchestrator_tasks(id)"
+    },
+    {
+      "name": "orchestrator_jobs_agent_check",
+      "type": "c",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "definition": "CHECK ((agent = ANY (ARRAY['internal'::text, 'claude'::text, 'openai'::text, 'codex'::text, 'work'::text])))"
+    },
+    {
+      "name": "orchestrator_jobs_application_id_fkey",
+      "type": "f",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "definition": "FOREIGN KEY (application_id) REFERENCES applications(id)"
+    },
+    {
+      "name": "orchestrator_jobs_free_plan_id_fkey",
+      "type": "f",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "definition": "FOREIGN KEY (free_plan_id) REFERENCES ai_work_plans(id)"
+    },
+    {
+      "name": "orchestrator_jobs_idempotency_key_key",
+      "type": "u",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "definition": "UNIQUE (idempotency_key)"
+    },
+    {
+      "name": "orchestrator_jobs_instruction_check",
+      "type": "c",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "definition": "CHECK (((length(instruction) >= 1) AND (length(instruction) <= 2000)))"
+    },
+    {
+      "name": "orchestrator_jobs_pkey",
+      "type": "p",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "name": "orchestrator_jobs_status_check",
+      "type": "c",
+      "table": "orchestrator_jobs",
+      "schema": "public",
+      "definition": "CHECK ((status = ANY (ARRAY['queued'::text, 'running'::text, 'blocked'::text, 'failed'::text, 'awaiting_approval'::text, 'completed'::text])))"
+    },
+    {
+      "name": "orchestrator_tasks_attempts_check",
+      "type": "c",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "definition": "CHECK (((attempts >= 0) AND (attempts <= 3)))"
+    },
+    {
+      "name": "orchestrator_tasks_job_id_fkey",
+      "type": "f",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "definition": "FOREIGN KEY (job_id) REFERENCES orchestrator_jobs(id)"
+    },
+    {
+      "name": "orchestrator_tasks_job_id_ordinal_key",
+      "type": "u",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "definition": "UNIQUE (job_id, ordinal)"
+    },
+    {
+      "name": "orchestrator_tasks_pkey",
+      "type": "p",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "name": "orchestrator_tasks_result_check",
+      "type": "c",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "definition": "CHECK (((result IS NULL) OR (pg_column_size(result) < 16000)))"
+    },
+    {
+      "name": "orchestrator_tasks_status_check",
+      "type": "c",
+      "table": "orchestrator_tasks",
+      "schema": "public",
+      "definition": "CHECK ((status = ANY (ARRAY['queued'::text, 'running'::text, 'retry_wait'::text, 'blocked'::text, 'failed'::text, 'awaiting_approval'::text, 'completed'::text])))"
+    },
+    {
+      "name": "production_attempts_job_id_fkey",
+      "type": "f",
+      "table": "production_attempts",
+      "schema": "public",
+      "definition": "FOREIGN KEY (job_id) REFERENCES production_jobs(id)"
+    },
+    {
+      "name": "production_attempts_pkey",
+      "type": "p",
+      "table": "production_attempts",
+      "schema": "public",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "name": "production_events_job_id_fkey",
+      "type": "f",
+      "table": "production_events",
+      "schema": "public",
+      "definition": "FOREIGN KEY (job_id) REFERENCES production_jobs(id)"
+    },
+    {
+      "name": "production_events_pkey",
+      "type": "p",
+      "table": "production_events",
+      "schema": "public",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "name": "production_jobs_application_id_key",
+      "type": "u",
+      "table": "production_jobs",
+      "schema": "public",
+      "definition": "UNIQUE (application_id)"
+    },
+    {
+      "name": "production_jobs_attempt_count_check",
+      "type": "c",
+      "table": "production_jobs",
+      "schema": "public",
+      "definition": "CHECK (((attempt_count >= 0) AND (attempt_count <= 1)))"
+    },
+    {
+      "name": "production_jobs_pkey",
+      "type": "p",
+      "table": "production_jobs",
+      "schema": "public",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "name": "production_jobs_production_approved_by_fkey",
+      "type": "f",
+      "table": "production_jobs",
+      "schema": "public",
+      "definition": "FOREIGN KEY (production_approved_by) REFERENCES admin_users(user_id)"
+    },
+    {
+      "name": "production_jobs_provider_check",
+      "type": "c",
+      "table": "production_jobs",
+      "schema": "public",
+      "definition": "CHECK ((provider = ANY (ARRAY['openai'::text, 'codex'::text])))"
+    },
+    {
+      "name": "production_jobs_quote_acceptance_id_fkey",
+      "type": "f",
+      "table": "production_jobs",
+      "schema": "public",
+      "definition": "FOREIGN KEY (quote_acceptance_id) REFERENCES solq_quote_acceptances(id)"
+    },
+    {
+      "name": "production_jobs_receipt_number_key",
+      "type": "u",
+      "table": "production_jobs",
+      "schema": "public",
+      "definition": "UNIQUE (receipt_number)"
+    },
+    {
+      "name": "production_jobs_result_check",
+      "type": "c",
+      "table": "production_jobs",
+      "schema": "public",
+      "definition": "CHECK (((result IS NULL) OR (octet_length((result)::text) <= 100000)))"
+    },
+    {
+      "name": "production_jobs_status_check",
+      "type": "c",
+      "table": "production_jobs",
+      "schema": "public",
+      "definition": "CHECK ((status = ANY (ARRAY['awaiting_deposit'::text, 'queued'::text, 'running'::text, 'awaiting_review'::text, 'released'::text, 'failed'::text, 'cancelled'::text, 'blocked'::text])))"
+    },
+    {
+      "name": "solq_free_plan_runs_application_id_fkey",
+      "type": "f",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "definition": "FOREIGN KEY (application_id) REFERENCES applications(id)"
+    },
+    {
+      "name": "solq_free_plan_runs_attempts_check",
+      "type": "c",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "definition": "CHECK (((attempts >= 0) AND (attempts <= 3)))"
+    },
+    {
+      "name": "solq_free_plan_runs_job_id_fkey",
+      "type": "f",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "definition": "FOREIGN KEY (job_id) REFERENCES orchestrator_jobs(id)"
+    },
+    {
+      "name": "solq_free_plan_runs_pkey",
+      "type": "p",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "definition": "PRIMARY KEY (application_id)"
+    },
+    {
+      "name": "solq_free_plan_runs_plan_id_fkey",
+      "type": "f",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "definition": "FOREIGN KEY (plan_id) REFERENCES ai_work_plans(id)"
+    },
+    {
+      "name": "solq_free_plan_runs_status_check",
+      "type": "c",
+      "table": "solq_free_plan_runs",
+      "schema": "public",
+      "definition": "CHECK ((status = ANY (ARRAY['pending'::text, 'retry_wait'::text, 'awaiting_approval'::text, 'failed'::text, 'existing_plan'::text])))"
+    },
+    {
+      "name": "solq_quote_acceptances_accepted_at_check",
+      "type": "c",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "definition": "CHECK ((accepted_at <= now()))"
+    },
+    {
+      "name": "solq_quote_acceptances_amount_krw_check",
+      "type": "c",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "definition": "CHECK ((amount_krw > 0))"
+    },
+    {
+      "name": "solq_quote_acceptances_application_id_fkey",
+      "type": "f",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "definition": "FOREIGN KEY (application_id) REFERENCES applications(id)"
+    },
+    {
+      "name": "solq_quote_acceptances_application_id_quote_reference_quote_key",
+      "type": "u",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "definition": "UNIQUE (application_id, quote_reference, quote_version)"
+    },
+    {
+      "name": "solq_quote_acceptances_evidence_reference_check",
+      "type": "c",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "definition": "CHECK (((length(btrim(evidence_reference)) >= 5) AND (length(btrim(evidence_reference)) <= 1000)))"
+    },
+    {
+      "name": "solq_quote_acceptances_pkey",
+      "type": "p",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "name": "solq_quote_acceptances_quote_reference_check",
+      "type": "c",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "definition": "CHECK (((length(btrim(quote_reference)) >= 1) AND (length(btrim(quote_reference)) <= 200)))"
+    },
+    {
+      "name": "solq_quote_acceptances_quote_version_check",
+      "type": "c",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "definition": "CHECK (((length(btrim(quote_version)) >= 1) AND (length(btrim(quote_version)) <= 100)))"
+    },
+    {
+      "name": "solq_quote_acceptances_verified_by_fkey",
+      "type": "f",
+      "table": "solq_quote_acceptances",
+      "schema": "public",
+      "definition": "FOREIGN KEY (verified_by) REFERENCES admin_users(user_id)"
+    },
+    {
+      "name": "support_inquiries_access_hash_key",
+      "type": "u",
+      "table": "support_inquiries",
+      "schema": "public",
+      "definition": "UNIQUE (access_hash)"
+    },
+    {
+      "name": "support_inquiries_answer_check",
+      "type": "c",
+      "table": "support_inquiries",
+      "schema": "public",
+      "definition": "CHECK ((length(answer) <= 8000))"
+    },
+    {
+      "name": "support_inquiries_language_check",
+      "type": "c",
+      "table": "support_inquiries",
+      "schema": "public",
+      "definition": "CHECK (((length(btrim(language)) >= 1) AND (length(btrim(language)) <= 40)))"
+    },
+    {
+      "name": "support_inquiries_pkey",
+      "type": "p",
+      "table": "support_inquiries",
+      "schema": "public",
+      "definition": "PRIMARY KEY (id)"
+    },
+    {
+      "name": "support_inquiries_question_check",
+      "type": "c",
+      "table": "support_inquiries",
+      "schema": "public",
+      "definition": "CHECK (((length(btrim(question)) >= 5) AND (length(btrim(question)) <= 4000)))"
+    }
+  ]
+}

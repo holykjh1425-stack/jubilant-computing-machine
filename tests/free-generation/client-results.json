@@ -1,0 +1,25 @@
+{
+  "environment": "linkedom synthetic DOM and SDK; no browser or real auth",
+  "tests": [
+    {
+      "name": "restored synthetic session renders approval controls without generation",
+      "passed": true
+    },
+    {
+      "name": "30 second poll only reads and displays new-intake notification",
+      "passed": true
+    },
+    {
+      "name": "approval click never generates, separate generate click required",
+      "passed": true
+    },
+    {
+      "name": "controller rejects repeat clicks, stale views and changed identities",
+      "passed": true
+    },
+    {
+      "name": "RPC error is not automatically retried",
+      "passed": true
+    }
+  ]
+}

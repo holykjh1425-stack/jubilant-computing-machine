@@ -1,0 +1,20 @@
+{
+  "run_date_utc": "2026-11-01",
+  "runtime": "Node.js v22.16.0, isolated non-Work container",
+  "command": "node --test candidates/protected-auth-atomicity-20261101/test.mjs",
+  "new_tests": 13,
+  "passed": 13,
+  "failed": 0,
+  "cancelled": 0,
+  "skipped": 0,
+  "synthetic_auth_api": true,
+  "actual_admin_login_tested": false,
+  "real_postgres_transaction_tested": false,
+  "actual_backup_restore_tested": false,
+  "operational_calls": 0,
+  "paid_calls": 0,
+  "sha256": {
+    "protected-contract.mjs": "cc8ed8d4d29e19bbf3c26e6a59360f6a775923af9d0833641705b56f4f2184e6",
+    "test.mjs": "8ae3ced9a56224c59fbdcaeaaea9c5029793baea62c66c03519a48d2c0754c97"
+  }
+}

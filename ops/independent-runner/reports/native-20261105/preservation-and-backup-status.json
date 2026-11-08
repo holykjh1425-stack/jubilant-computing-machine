@@ -1,0 +1,21 @@
+{
+  "observedUtc": "2026-11-05T04:05:01.097Z",
+  "counts": {
+    "jobs": 7,
+    "plans": 6,
+    "applications": 9
+  },
+  "contentFingerprintsMatchPrior": true,
+  "priorEvidence": "db0703fafa3cde15bd9541b3ad0e42e5ea4083ba/candidates/command-recovery-20261105/preservation.json",
+  "productionWritesByThisTask": 0,
+  "operatingSettingsChanges": 0,
+  "mainHead": "7768045801b18684a23689e54e673fbc7e7a8e17",
+  "operatingAdvisorWarnings": 7,
+  "operatingRowsExported": 0,
+  "actualBackupCreated": false,
+  "actualOperatingRestorePerformed": false,
+  "RPO": null,
+  "RTO": null,
+  "protectedWindowsExecutionAccessible": false,
+  "existingOwnerBrowserTabs": 0
+}

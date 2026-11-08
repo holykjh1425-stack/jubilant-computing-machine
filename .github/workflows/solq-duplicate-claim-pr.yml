@@ -1,0 +1,29 @@
+name: SOLQ isolated duplicate-claim verification
+
+on:
+  pull_request:
+    paths:
+      - 'ops/independent-runner/**'
+      - '.github/workflows/solq-duplicate-claim-pr.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: solq-duplicate-claim-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Local worker claim unit tests
+        run: python3 -m unittest discover -s ops/independent-runner -p 'test_claim.py' -v
+      - name: Mocked remote GitHub CAS client tests
+        run: python3 -m unittest discover -s ops/independent-runner -p 'test_github_claim.py' -v
+      - name: Lease recovery and next-task tests
+        run: python3 -m unittest discover -s ops/independent-runner -p 'test_recovery.py' -v
+      - name: Competing real processes in isolated runner
+        run: python3 ops/independent-runner/test_process_race.py

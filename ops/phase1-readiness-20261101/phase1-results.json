@@ -1,0 +1,64 @@
+{
+  "environment": "isolated synthetic VM/SDK fixtures; no production DB/Auth/Claude requests",
+  "tests": [
+    {
+      "name": "customer handoff binds receipt and six stages without raw personal fields",
+      "pass": true
+    },
+    {
+      "name": "handoff rejects mismatched receipt/application/job and incomplete details",
+      "pass": true
+    },
+    {
+      "name": "handoff revalidates identity and denies revoked access",
+      "pass": true
+    },
+    {
+      "name": "overlapping handoff previews do not duplicate reads",
+      "pass": true
+    },
+    {
+      "name": "handoff invalidation and network recovery fail closed",
+      "pass": true
+    },
+    {
+      "name": "concurrent quote writes are blocked before async validation",
+      "pass": true
+    },
+    {
+      "name": "lost quote acknowledgement requires re-read, then explicit recovery",
+      "pass": true
+    },
+    {
+      "name": "revoked quote permission cannot submit or auto approve production",
+      "pass": true
+    },
+    {
+      "name": "PC read checker exposes only booleans and counts",
+      "pass": true
+    },
+    {
+      "name": "PC read checker rejects unauthenticated, nonadmin, bad count and unsafe Edge",
+      "pass": true
+    },
+    {
+      "name": "PC transport denies external host, mutation and repeated login",
+      "pass": true
+    },
+    {
+      "name": "PC transport permits exact safe HEAD/capabilities/logout only",
+      "pass": true
+    },
+    {
+      "name": "new handoff UI needs preview and explicit review before copying",
+      "pass": true
+    },
+    {
+      "name": "new handoff UI blocks stale plan and detached selection",
+      "pass": true
+    }
+  ],
+  "passed": 14,
+  "actual_api_calls": 0,
+  "actual_customer_data_used": false
+}

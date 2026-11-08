@@ -1,0 +1,76 @@
+[
+  {
+    "path": "admin.html",
+    "status": "HTTP/2 200 ",
+    "headers": {
+      "content-type": "text/html",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "\"878c927082f9c83a3f1121d5e4968c4d\""
+    },
+    "candidate_hash_matches": false
+  },
+  {
+    "path": "icons/nexus-192.png",
+    "status": "HTTP/2 404 ",
+    "headers": {},
+    "candidate_hash_matches": false
+  },
+  {
+    "path": "admin-base.css",
+    "status": "HTTP/2 404 ",
+    "headers": {},
+    "candidate_hash_matches": false
+  },
+  {
+    "path": "admin-review.css",
+    "status": "HTTP/2 404 ",
+    "headers": {},
+    "candidate_hash_matches": false
+  },
+  {
+    "path": "vendor/supabase-2.118.0.js",
+    "status": "HTTP/2 200 ",
+    "headers": {
+      "content-type": "text/javascript",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "\"949995e9f79ce246a842dbf81ec29546\""
+    },
+    "candidate_hash_matches": true
+  },
+  {
+    "path": "config.js",
+    "status": "HTTP/2 200 ",
+    "headers": {
+      "content-type": "text/javascript",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "\"f5e7c62957265a35c18195c7c4a38d73\""
+    },
+    "candidate_hash_matches": false
+  },
+  {
+    "path": "free-workflow.js",
+    "status": "HTTP/2 200 ",
+    "headers": {
+      "content-type": "text/javascript",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "\"b2fcd121e83327561543deac759042f5\""
+    },
+    "candidate_hash_matches": false
+  },
+  {
+    "path": "plan-view.js",
+    "status": "HTTP/2 404 ",
+    "headers": {},
+    "candidate_hash_matches": false
+  },
+  {
+    "path": "admin.js",
+    "status": "HTTP/2 200 ",
+    "headers": {
+      "content-type": "text/javascript",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "etag": "\"136025f59fccf211602e19fe8e01dcec\""
+    },
+    "candidate_hash_matches": false
+  }
+]

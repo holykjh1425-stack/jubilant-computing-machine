@@ -1,0 +1,350 @@
+{
+  "sourceCommit": "6c92b6f90f56e9a48a0725b0cc7b6b0f1e37e6b8",
+  "startedUtc": "2026-11-05T03:58:33Z",
+  "checks": [
+    {
+      "name": "docker network has no external routing",
+      "status": "PASS"
+    },
+    {
+      "name": "native PostgreSQL major version 17",
+      "status": "PASS"
+    },
+    {
+      "name": "local Supabase administrative role exists",
+      "status": "PASS"
+    },
+    {
+      "name": "scheduler launch disabled before historical SQL replay",
+      "status": "PASS"
+    },
+    {
+      "name": "history integrity 20261018033557_secure_application_receipt_rpc.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "history integrity 20261018071846_capture_new_inquiry_events.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "history integrity 20261020073801_add_private_written_support.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "history integrity 20261021122602_nexus_ai_server.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "history integrity 20261021131855_central_orchestrator.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "history integrity 20261021204847_autonomous_workers.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "history integrity 20261021204905_autonomous_schedule.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "history integrity 20261021205922_worker_hardening.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "history integrity 20261021210407_signed_worker_dispatch.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "history integrity 20261021215655_production_core.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "history integrity 20261026045157_solq_automatic_free_plans_and_quote_gate.sql",
+      "status": "PASS"
+    },
+    {
+      "name": "eleven unmodified historical SQL files applied using genuine extensions",
+      "status": "PASS"
+    },
+    {
+      "name": "captured functional role grants restored",
+      "status": "PASS"
+    },
+    {
+      "name": "native columns match production application catalog",
+      "status": "PASS"
+    },
+    {
+      "name": "local Auth user created 0",
+      "status": "PASS"
+    },
+    {
+      "name": "local Auth sign-in 0",
+      "status": "PASS"
+    },
+    {
+      "name": "local Auth user created 1",
+      "status": "PASS"
+    },
+    {
+      "name": "local Auth sign-in 1",
+      "status": "PASS"
+    },
+    {
+      "name": "actual Auth server verifies admin identity",
+      "status": "PASS"
+    },
+    {
+      "name": "tampered JWT signature rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "forged user metadata does not grant admin access",
+      "status": "PASS"
+    },
+    {
+      "name": "public RPC returns real receipt after DB insert",
+      "status": "PASS"
+    },
+    {
+      "name": "real admin JWT reads matching receipt",
+      "status": "PASS"
+    },
+    {
+      "name": "ordinary user cannot read customer row",
+      "status": "PASS"
+    },
+    {
+      "name": "concurrency uses independent overlapping PostgreSQL connections",
+      "status": "PASS"
+    },
+    {
+      "name": "parallel free cycles create one plan and one job",
+      "status": "PASS"
+    },
+    {
+      "name": "six real persisted stages retain approval wait",
+      "status": "PASS"
+    },
+    {
+      "name": "real Edge rejects missing authentication",
+      "status": "PASS"
+    },
+    {
+      "name": "real Edge denies nonadmin identity",
+      "status": "PASS"
+    },
+    {
+      "name": "real Edge read-only list succeeds",
+      "status": "PASS"
+    },
+    {
+      "name": "missing payment and consent blocks separate approval",
+      "status": "PASS"
+    },
+    {
+      "name": "Edge stores authoritative quote",
+      "status": "PASS"
+    },
+    {
+      "name": "Edge storage failure rolls back both evidence and linkage",
+      "status": "PASS"
+    },
+    {
+      "name": "parallel authenticated Edge requests save one acceptance",
+      "status": "PASS"
+    },
+    {
+      "name": "deposit notice stored without approval",
+      "status": "PASS"
+    },
+    {
+      "name": "manual ledger confirmation stays separate from production approval",
+      "status": "PASS"
+    },
+    {
+      "name": "real admin PostgREST records manual payment state",
+      "status": "PASS"
+    },
+    {
+      "name": "separate approval succeeds after all prerequisites",
+      "status": "PASS"
+    },
+    {
+      "name": "repeat approval reuses same job without execution",
+      "status": "PASS"
+    },
+    {
+      "name": "native security candidate preserves public intake",
+      "status": "PASS"
+    },
+    {
+      "name": "public RPCs no longer use SECURITY DEFINER",
+      "status": "PASS"
+    },
+    {
+      "name": "management rights removed without intake regression",
+      "status": "PASS"
+    },
+    {
+      "name": "native public support submission remains available",
+      "status": "PASS"
+    },
+    {
+      "name": "native support rejects mismatched access token",
+      "status": "PASS"
+    },
+    {
+      "name": "native support returns only token-matched synthetic inquiry",
+      "status": "PASS"
+    },
+    {
+      "name": "private schema is not a PostgREST exposed profile",
+      "status": "PASS"
+    },
+    {
+      "name": "genuine Auth-issued short-lived JWT expires",
+      "status": "PASS"
+    }
+  ],
+  "migrations": [
+    {
+      "file": "20261018033557_secure_application_receipt_rpc.sql",
+      "status": "PASS",
+      "adapted": false
+    },
+    {
+      "file": "20261018071846_capture_new_inquiry_events.sql",
+      "status": "PASS",
+      "adapted": false
+    },
+    {
+      "file": "20261020073801_add_private_written_support.sql",
+      "status": "PASS",
+      "adapted": false
+    },
+    {
+      "file": "20261021122602_nexus_ai_server.sql",
+      "status": "PASS",
+      "adapted": false
+    },
+    {
+      "file": "20261021131855_central_orchestrator.sql",
+      "status": "PASS",
+      "adapted": false
+    },
+    {
+      "file": "20261021204847_autonomous_workers.sql",
+      "status": "PASS",
+      "adapted": false
+    },
+    {
+      "file": "20261021204905_autonomous_schedule.sql",
+      "status": "PASS",
+      "adapted": false
+    },
+    {
+      "file": "20261021205922_worker_hardening.sql",
+      "status": "PASS",
+      "adapted": false
+    },
+    {
+      "file": "20261021210407_signed_worker_dispatch.sql",
+      "status": "PASS",
+      "adapted": false
+    },
+    {
+      "file": "20261021215655_production_core.sql",
+      "status": "PASS",
+      "adapted": false
+    },
+    {
+      "file": "20261026045157_solq_automatic_free_plans_and_quote_gate.sql",
+      "status": "PASS",
+      "adapted": false
+    }
+  ],
+  "productionAccess": false,
+  "productionWrites": 0,
+  "paidApiCalls": 0,
+  "operatingBackupCreated": false,
+  "operatingBackupRestored": false,
+  "previous100ChecksRerun": false,
+  "testAdaptersUsed": false,
+  "realPlatform": {
+    "postgresVersion": "17.11",
+    "auth": true,
+    "jwtSignature": true,
+    "postgrest": true,
+    "edge": true,
+    "independentConnections": true,
+    "fullHistoricalReplay": true
+  },
+  "remaining": [
+    "production backup and actual restored data not used",
+    "provider Advisor and leaked-password configuration not changed",
+    "default ACL and managed helper differences require final review",
+    "final PC/mobile browser regression not performed"
+  ],
+  "candidateSha256": {
+    "candidates/command-recovery-20261105/security-candidate.sql": "7ac80a8fffa9931b54a5837775bec4293b7c393fdb2e591fc1a082f4d2c0d2e3",
+    "candidates/command-recovery-20261105/security-rollback.sql": "d77f3f82c2f4fff9345de92e3347361ff43ab7abc24141b03a8b03f270c5068d",
+    "supabase/functions/solq-quote-evidence/handler.mjs": "8ee90d3699093c63cd83098df77e7291bad61453fedd7c24bb3dd11a0cdad4b3",
+    "candidates/native-platform-20261105/run.py": "b9442de43504497d6bfc2b25a57f1ef8f54e48ea008dc6cce0f3be2aebdebf31",
+    "candidates/native-platform-20261105/setup.py": "f8772f2716b66cf109bd3d7e914906b033af22e1ee90ff123ff899360340572f"
+  },
+  "localDatabaseRole": "postgres:false",
+  "columnDiff": {
+    "missing": 0,
+    "extra": 0
+  },
+  "structureDiff": {
+    "constraints": {
+      "missing": 0,
+      "extra": 0
+    },
+    "indexes": {
+      "missing": 0,
+      "extra": 0
+    },
+    "policies": {
+      "missing": 0,
+      "extra": 0
+    },
+    "triggers": {
+      "missing": 0,
+      "extra": 0
+    },
+    "tables": {
+      "missing": 0,
+      "extra": 0
+    },
+    "functions": {
+      "missing": 0,
+      "extra": 0
+    }
+  },
+  "tamperedJwtResult": {
+    "httpStatus": 403,
+    "providerCode": 403
+  },
+  "intakeHttpStatus": 200,
+  "concurrentConnections": {
+    "distinctBackends": 8,
+    "maxOtherActive": 7
+  },
+  "restrictedOwnerPrivileges": {
+    "authSchema": false,
+    "authRoleExecute": true,
+    "applicationInsertName": true,
+    "applicationReceiptRead": true,
+    "privateSchemaCreate": false
+  },
+  "securityIntakeHttpStatus": 200,
+  "realIssuedJwtExpiryStatus": 403,
+  "expiryObservedSecondsAfterExp": 65,
+  "pass": 51,
+  "fail": 0,
+  "finishedUtc": "2026-11-05T04:00:47Z",
+  "workflowRunUrl": "https://github.com/holykjh1425-stack/jubilant-computing-machine/actions/runs/41964719969"
+}

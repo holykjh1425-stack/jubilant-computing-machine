@@ -1,0 +1,171 @@
+{
+  "candidate_commit": "b55ade9735854b946059080b905801e3f58890d3",
+  "sites_baseline_version": 28,
+  "sites_baseline_commit": "ab4d34c830669e69b57f0689588eb6a24b41f91e",
+  "sites28_index_sha256": "f7b8fd74a9c15d36763ac2dbc0f456e954694f60d4bcec87b336fd97386e619c",
+  "candidate_only": true,
+  "production_rollout_allowed": false,
+  "files": [
+    {
+      "path": "admin.html",
+      "git_blob": "36be056028559da5324c89270a10994c9b94287f",
+      "sha256": "d0e96b2f7ae6a6bfa879a240c9d9df99eeecc15e6b46748ba447323a25950c14",
+      "bytes": 5483,
+      "group": "admin_overlay"
+    },
+    {
+      "path": "admin.js",
+      "git_blob": "347736bcd8e1e75835f14537f21076d078c4880d",
+      "sha256": "2ba1d36d0ee60d224d073df205e347636d89c07766ad2728d1e7fe84a04f82e3",
+      "bytes": 21381,
+      "group": "admin_overlay"
+    },
+    {
+      "path": "admin-base.css",
+      "git_blob": "1d787004e944846efcd3977eca02f5e1617b5736",
+      "sha256": "2c8df3d67a6b52200abd624bdc0443aff3ad1223f5372936cf4f6ae6d55c9164",
+      "bytes": 26645,
+      "group": "admin_overlay"
+    },
+    {
+      "path": "admin-review.css",
+      "git_blob": "e6b531ccae2ef096f5a51f1965cf9f21e30c708d",
+      "sha256": "3f5b32d37d1e7489e80a9b180defa8f2ace166308f9be32a52d91bd1594932e2",
+      "bytes": 768,
+      "group": "admin_overlay"
+    },
+    {
+      "path": "free-workflow.js",
+      "git_blob": "7f24d56a186a3ef5fce83513aa577fd6fcb46b72",
+      "sha256": "d9a60250ee54607244bca74d032545da19dd11418c33e566a9a21ef6a314d3cc",
+      "bytes": 1175,
+      "group": "admin_overlay"
+    },
+    {
+      "path": "free-generation.js",
+      "git_blob": "e52758ddf7f378c931174527aae230ea6f10b333",
+      "sha256": "92e75a5022fafb53cac8d0a0c574811deaef1e8d54b5061c2792ebd13202a5b4",
+      "bytes": 1446,
+      "group": "admin_overlay"
+    },
+    {
+      "path": "plan-view.js",
+      "git_blob": "3b76c5127d3b997095a647e29b81c3ebb52338a7",
+      "sha256": "e0c8ede1d22f6877ecba30fd94b3c2c0357f198028f19a03e2217f0a17c2c7f8",
+      "bytes": 2207,
+      "group": "admin_overlay"
+    },
+    {
+      "path": "quote-flow.js",
+      "git_blob": "e95e1deabc8fa96be109df7ed0412bba488ae2bf",
+      "sha256": "ba75120ec0577fb427a78e7aadbaec448f9688b2713e70498eea80704649e30c",
+      "bytes": 4230,
+      "group": "admin_overlay"
+    },
+    {
+      "path": "quote-panel.js",
+      "git_blob": "27a6aaad1abaf0f90f2162ab9a7cb7f64f99887a",
+      "sha256": "a32fefa7c86255dbc9f01efc195bde02948da8cb795a1395b11971e9a4332689",
+      "bytes": 5468,
+      "group": "admin_overlay"
+    },
+    {
+      "path": "icons/nexus-192.png",
+      "git_blob": "c9740851e4e2dc2a8e89b56f60aafd844b634326",
+      "sha256": "4b50ec4fe67319c136bb8da1ccefcccdf7c366fc99ee27b8c1e217178118d12d",
+      "bytes": 1246,
+      "group": "admin_overlay"
+    },
+    {
+      "path": "config.js",
+      "git_blob": "e4f5224429e66fa4a4597edddcfa8240e29ef14f",
+      "sha256": "0a0051ed2c9ff8f426d90d916efb96bd4db82ed48981faa9cef4cf60c4a8b218",
+      "bytes": 260,
+      "group": "shared_unchanged"
+    },
+    {
+      "path": "vendor/supabase-2.118.0.js",
+      "git_blob": "1e2d88b8325ae7abefa608c55cabfabe73ba3866",
+      "sha256": "ee3be8de192b97cb1d73d1e95d6b82bb1f6b658c0f97c4ef757fc331996ed3d3",
+      "bytes": 218252,
+      "group": "shared_unchanged"
+    },
+    {
+      "path": "supabase/functions/nexus-orchestrator/index.ts",
+      "git_blob": "9ff021385aec5c68e53c367d9e60370b40bcee2a",
+      "sha256": "1baee21ba71eb50d7c572aff6b3944449439cf53422b58916ad140a19e0b0aff",
+      "bytes": 169,
+      "group": "edge_candidate"
+    },
+    {
+      "path": "supabase/functions/nexus-orchestrator/handler.mjs",
+      "git_blob": "01fdb67df6f18a1c0dfc5f0db7d449e34be14dfe",
+      "sha256": "c67c3df52312320dfd945968bfb2df29bcc95140600720a81b3f5cdee6f03865",
+      "bytes": 5172,
+      "group": "edge_candidate"
+    },
+    {
+      "path": "supabase/functions/nexus-orchestrator/engine.mjs",
+      "git_blob": "ce7c7ce0d4a57570d45e8ea52327ba13d2fba578",
+      "sha256": "6f14f3a14b2e207474efbfce08d6621947086f4f1280c8fc44663bfc294b4df4",
+      "bytes": 5134,
+      "group": "edge_candidate"
+    },
+    {
+      "path": "supabase/functions/solq-quote-evidence/index.ts",
+      "git_blob": "25695135f009573e6ba70985ffefdaf78394fce2",
+      "sha256": "49522523c89001f463d67b7edcd39efc2f708e73fbe45816c137e01049a04225",
+      "bytes": 175,
+      "group": "edge_candidate"
+    },
+    {
+      "path": "supabase/functions/solq-quote-evidence/handler.mjs",
+      "git_blob": "306cab8d4b7a160a3313b94741d0625a8fd680ba",
+      "sha256": "8ee90d3699093c63cd83098df77e7291bad61453fedd7c24bb3dd11a0cdad4b3",
+      "bytes": 3603,
+      "group": "edge_candidate"
+    },
+    {
+      "path": "ops/admin-integration-candidate/link-guard.sql",
+      "git_blob": "0ab21af784a66badd0ba738d46db7f0c28b24449",
+      "sha256": "f10cb3efd3e9b0ffe30a587be2f4df21d05d72cc05f4326b63adfc1318ed5769",
+      "bytes": 2944,
+      "group": "sql_candidate"
+    },
+    {
+      "path": "ops/free-plan-automation/quote-evidence.sql",
+      "git_blob": "87c627b96aae401a4aabae02d2de1f94beee8716",
+      "sha256": "2909dc800f17783d3cd0748f4db51e0cb33813eef0324d4586fbdc4953ef140c",
+      "bytes": 3041,
+      "group": "sql_candidate"
+    },
+    {
+      "path": "ops/admin-integration-candidate/quote-deposit-guard.sql",
+      "git_blob": "ae2a084177fd0e1874a3477c89531d2be1223a8f",
+      "sha256": "f443260916296acefee2a437bfc98cc86845ab1812753b0c68e550a702cf9551",
+      "bytes": 10812,
+      "group": "sql_candidate"
+    },
+    {
+      "path": "ops/free-generation-approval/approval-gate.sql",
+      "git_blob": "e5601ebfd34622f6fabf641b26b31c4b0ec49a33",
+      "sha256": "8e033adf4239217d0c20187c46a25ce7817a982f544d5c0c5d4c9f163d079093",
+      "bytes": 10031,
+      "group": "sql_candidate"
+    }
+  ],
+  "sql_order": [
+    "ops/admin-integration-candidate/link-guard.sql",
+    "ops/free-plan-automation/quote-evidence.sql",
+    "ops/admin-integration-candidate/quote-deposit-guard.sql",
+    "ops/free-generation-approval/approval-gate.sql"
+  ],
+  "required_gates": [
+    "genuine_auth_edge_candidate_integration",
+    "current_complete_encrypted_operating_backup",
+    "protected_isolated_restore",
+    "live_schema_prerequisites",
+    "explicit_approved_free_worker_policy"
+  ],
+  "server_free_cycle_note": "Existing approval candidate makes free_cycle a no-op. Do not apply silently if a separately approved automatic path must be retained. Other execution workers and cron entries are not removed."
+}

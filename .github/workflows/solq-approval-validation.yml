@@ -1,0 +1,36 @@
+name: SOLQ new approval RPC independent sessions
+on:
+  push:
+    branches: [dev/solq-automation-preservation-20261026]
+    paths:
+      - tests/free-generation/native.py
+      - .github/workflows/solq-approval-validation.yml
+permissions:
+  contents: read
+concurrency:
+  group: solq-new-approval-native
+  cancel-in-progress: false
+jobs:
+  approval-native:
+    if: github.repository == 'holykjh1425-stack/jubilant-computing-machine'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 7
+    env:
+      SOLQ_TEST_CONTAINER: solq-approval-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Disposable synthetic PostgreSQL without network or host mounts
+        run: |
+          docker run --detach --name "$SOLQ_TEST_CONTAINER" --network none --label solq.test-only=true --tmpfs /var/lib/postgresql/data -e POSTGRES_HOST_AUTH_METHOD=trust -e POSTGRES_DB=solq_isolated postgres:17.11 -c max_connections=80
+          for attempt in $(seq 1 30); do
+            if docker exec "$SOLQ_TEST_CONTAINER" pg_isready -U postgres -d solq_isolated; then exit 0; fi
+            sleep 1
+          done
+          exit 1
+      - name: New approval and generation RPC contention only
+        run: python3 tests/free-generation/native.py
+      - name: Remove disposable synthetic database
+        if: always()
+        run: docker rm --force "$SOLQ_TEST_CONTAINER"

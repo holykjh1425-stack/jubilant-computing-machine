@@ -1,0 +1,16 @@
+{
+  "before": "0de001e",
+  "after": "ab4d34c",
+  "unchanged": {
+    "app.js": true,
+    "api.js": true,
+    "admin.js": true,
+    "free-workflow.js": true,
+    "config.js": true,
+    "deposit.js": true
+  },
+  "changed_paths": [
+    "dist/index.html",
+    "dist/solq-design.css"
+  ]
+}

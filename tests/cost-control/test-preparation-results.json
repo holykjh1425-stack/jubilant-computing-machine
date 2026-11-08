@@ -1,0 +1,19 @@
+{
+  "timestampUtc": "2026-10-28T02:01:49.272400+00:00",
+  "newTestsPass": 3,
+  "newTestsFail": 0,
+  "existing33TestsRerun": false,
+  "consoleSessionAccessible": false,
+  "accountStateSource": "user last observation, not agent live verification",
+  "actualProviderCalls": 0,
+  "actualUsd": 0,
+  "secretsReadOrChanged": false,
+  "workspaceCreated": false,
+  "keyCreated": false,
+  "transportImplemented": false,
+  "sourceSha256": {
+    "candidates/cost-control/test-adapter-preparation.mjs": "f7f5199049ce0f8d7237c8d443169e024143ac0189a9de4c19a86f9e6224524e",
+    "candidates/cost-control/test-profile.example.json": "8e5aa7fde0d453bbfe9fec173da329113970a29bfede495b1b5009618e464581",
+    "tests/cost-control/test-preparation.mjs": "2215e1e9887449a81d7d08d5fd5f53b7c74a2b0256cceca8884957dae5869d72"
+  }
+}

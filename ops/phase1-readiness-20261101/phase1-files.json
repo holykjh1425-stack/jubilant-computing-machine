@@ -1,0 +1,93 @@
+{
+  "phase1_base_commit": "9170123537b374ce9eaa1550967f3eea16bdda56",
+  "server_free_cycle_modified": false,
+  "production_rollout_allowed": false,
+  "overrides": [
+    "admin.html",
+    "admin.js",
+    "quote-flow.js",
+    "plan-handoff.js"
+  ],
+  "overlay": [
+    "admin.html",
+    "admin.js",
+    "admin-base.css",
+    "admin-review.css",
+    "free-workflow.js",
+    "plan-view.js",
+    "quote-flow.js",
+    "quote-panel.js",
+    "icons/nexus-192.png",
+    "plan-handoff.js"
+  ],
+  "candidate_inputs": {
+    "admin.html": "d0e96b2f7ae6a6bfa879a240c9d9df99eeecc15e6b46748ba447323a25950c14",
+    "admin.js": "2ba1d36d0ee60d224d073df205e347636d89c07766ad2728d1e7fe84a04f82e3",
+    "admin-base.css": "2c8df3d67a6b52200abd624bdc0443aff3ad1223f5372936cf4f6ae6d55c9164",
+    "admin-review.css": "3f5b32d37d1e7489e80a9b180defa8f2ace166308f9be32a52d91bd1594932e2",
+    "free-workflow.js": "d9a60250ee54607244bca74d032545da19dd11418c33e566a9a21ef6a314d3cc",
+    "plan-view.js": "e0c8ede1d22f6877ecba30fd94b3c2c0357f198028f19a03e2217f0a17c2c7f8",
+    "quote-flow.js": "ba75120ec0577fb427a78e7aadbaec448f9688b2713e70498eea80704649e30c",
+    "quote-panel.js": "a32fefa7c86255dbc9f01efc195bde02948da8cb795a1395b11971e9a4332689",
+    "icons/nexus-192.png": "4b50ec4fe67319c136bb8da1ccefcccdf7c366fc99ee27b8c1e217178118d12d"
+  },
+  "baseline": {
+    "styles.css": "2c8df3d67a6b52200abd624bdc0443aff3ad1223f5372936cf4f6ae6d55c9164",
+    "config.js": "6a669f8014f6db0359aa187609cd9cfa03bab6fd5767a60a2dea1d438f87c287",
+    "sitemap.xml": "b16b90587362b7ebb47f19c0abc5a7357bf0063e84820279918346651db4ff45",
+    "app.js": "f1ebd6f0bee54ff5f632266b82b94d017097e90c089c160fcdeef1f20a0dcfe4",
+    "media-guide.css": "1e18233e1544e4b901c424f5212ddb012e3c930261a1b89cbf8ef6cdae08df02",
+    "legal.css": "8b50afe69c0856ab927150356a98fe3ca44923b4913af76573398851d5666a35",
+    "icon.svg": "caf62ce1fadd1eb62bfe8e0fda450e66ec1024da7067dd4212d048dc0f286aaf",
+    "faq.html": "c29fa653302328726d1b9db0f82f3944333cb5cf963000336e3fabb1dbdcb758",
+    "custom-system.html": "71d0e3bfcf27a6c5a3ee12ea50d0a9d85bef87f284cdd74e63ec7798501f521e",
+    "robots.txt": "2bed4525ff8106cfbcbe7db7255addcff11f78aaae5cebca6761ecf03c1b3ab1",
+    "support.js": "322028b1817654e17856a07804125f63ebd1abd0549973283b61ba124e5d5b85",
+    "index.html": "f7b8fd74a9c15d36763ac2dbc0f456e954694f60d4bcec87b336fd97386e619c",
+    "refund.html": "d8b0a49a1379a8432a36267d4ff2e1304408d7b672e1314be0f3aee50d11b755",
+    "business.html": "2ece7070707056f297fbe318dbe603cd6da5081ebee7b6e7aec3fdd4e2fe3daa",
+    "admin.js": "3cb27136c367752fb6c516967bab71355ffa58d72fb593da16678ff3cfd270ee",
+    "website.html": "f8b4e8fcdf93333b419c167253083c9ff485641c5809c40abe07e7a196a41762",
+    "workflow-guide.html": "51fa1197e1c53c54c782b22dcf51305e8edf5d269294b7b0fce552fd4b0bbc37",
+    "payment-guide.html": "22ca23cfca2aa174d4f2eae46c4200bcfffbcda65949bbcd09931e23014ea1d3",
+    "deposit.html": "8c29ffca7932358fd49cd5d08b73e14c66a84d420051fdb24b1404c8b4246b04",
+    "support.html": "367bc390dd7c81bacaef2bb0cf8a0bde9dd054681d92455edc68f2c5be44bc83",
+    "privacy.html": "6c210239b28accb4e35997a9e072dee1043c1d0dcac4e65d91ae0207951995f8",
+    "solq-fairy.js": "6600b76732642f2bb75dcf7ca01be2d4e500aa55b2cc2f9372434168dab8feeb",
+    "ai-automation.html": "c8d6dc0aae269ff0574e72d37d6ba1a6d82f6268f60f17263d876e35a9c9b02e",
+    "consumer-protection.html": "340b323ba0dbae24ae1109127904af350274c4562dbb647ec8278a3cfa5b5810",
+    "admin.html": "cd8b967a49f863f6b9f5c692a7c8d4c9da647630896aa0a4a8f185e6bd6a1a04",
+    "deposit.js": "8bad4c634a83790d205837e6a8cd3efef6d005e0a0d729d63e58c543dda33ecf",
+    "solq-design.js": "7f75ce8f42cb7461c53d2e9bfdfe34797a4824d8086896978e04c6679ab194d0",
+    "solq-design.css": "1a285cfafdd40f7ef23babcb92a16b6a596bffac8079dfe4b73d42e569fd3fc4",
+    "solq-dark.css": "ed4f6e607cd5b2d36578709c295f5e708a6f706086696fe2c6f2ad11d4b52c4c",
+    "terms.html": "fd6055f37be721aef27d6cd22bbc49610b450325eb7ad34bcb7561c1197b3f37",
+    "api.js": "bcf05e35e5ed7f615615f51c7561c6ba3624091838885b83176171525980f68f",
+    "free-workflow.js": "acfd48ab309bf8e07d368d598c18609f468b511929fe38fb8bee01f733aa265e",
+    "vendor/supabase-2.118.0.js": "ee3be8de192b97cb1d73d1e95d6b82bb1f6b658c0f97c4ef757fc331996ed3d3"
+  },
+  "files": {
+    "phase1-results.json": "e1ee41575f6ffaa10b2be634fb834908c5beeb0ad3e66ed182f9b3eded2ce9dc",
+    "PHASE2_PC.md": "f6280bccf969007624cd2010bb3d960f5496b401d902305929dea536944cd09e",
+    "plan-handoff.js": "0a2c6a870ab685cc30066bdd1544619bc001c100829ee564ebf12acc277961fa",
+    "phase2-sdk-results.json": "2e8d9526cc1919cbf6c5e193d7f77555705183b9479f2583c4cfc362269d824d",
+    "admin.js": "d3a271b173255eb59a779b39c5b2c41b7c0538111c72fb6a8ef30a66fe91f2d9",
+    "phase1.test.mjs": "0e7b7e538d49de15130990da7368667995dbd78d32dfea8ae0caf331ebcabbe4",
+    "assembly-results.json": "fdd833f8c087ba36888891d8ac110436103f29e80023c219dbb139f0557919e9",
+    "sdk-transport.test.mjs": "7201ec3178065b03519352c0f93e1ecd692c08bcd8ecf1c59920707384cebd8a",
+    "quote-flow.js": "b4294dec83bf96dcc010bd41ba9ce2c7c926ebd489689dd56a76d367c2cec63f",
+    "admin.html": "378f8e129d167b81dea63aee8544f442e07ecd40115585e61f38ada0746c57b8",
+    "build-phase1.py": "a34f3fbaafc005c34f6d9734a5511a45d5159f0978e4428e09339c2c38ef8dfb",
+    "REPORT.md": "387024dd159b814782150a603c13d8c9e623acee1c0d50d3098a45a31a585e98",
+    "phase2-auth.mjs": "267a7f4dd3139c689dce56186330755b1dff7c59c355e1d45df6a8d71a00fb3a",
+    "vendor/supabase-2.118.0.js": "ee3be8de192b97cb1d73d1e95d6b82bb1f6b658c0f97c4ef757fc331996ed3d3"
+  },
+  "sql_order": [
+    "ops/admin-integration-candidate/link-guard.sql",
+    "ops/free-plan-automation/quote-evidence.sql",
+    "ops/admin-integration-candidate/quote-deposit-guard.sql"
+  ],
+  "sql_excluded": [
+    "ops/free-generation-approval/approval-gate.sql"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "timestampUtc": "2026-10-30T08:44:12.813Z",
+  "result": "PASS",
+  "actualVectorBinary": "0.58.0 Linux official release",
+  "apiUsed": "1.52",
+  "actualMtls": true,
+  "syntheticCanaryReceived": true,
+  "metadataImageRetained": true,
+  "secretFieldsRemoved": true,
+  "upstreamMethods": [
+    "GET"
+  ],
+  "requestPaths": [
+    "/version",
+    "/v1.52/containers/json?filters=%7B%22id%22%3A%5B%22SYNTHETIC_ID%22%5D%7D&all=false",
+    "/v1.52/events?filters=%7B%22container%22%3A%5B%22SYNTHETIC_ID%22%5D%7D&since=1793349852",
+    "/v1.52/containers/SYNTHETIC_ID/json",
+    "/v1.52/containers/SYNTHETIC_ID/logs?follow=true&stdout=true&stderr=true&timestamps=true&since=1793349851&tail=all"
+  ],
+  "actualDockerAccesses": 0,
+  "newDockerObjects": 0,
+  "windowsDocker29_9_2Verified": false,
+  "existingVectorRecovered": false,
+  "providerCalls": 0,
+  "actualApiUsd": 0,
+  "testedSource": "09ddee3a5ba616902882b9ed163d582ae981dea7",
+  "workflowRun": 41028443643,
+  "workflowJob": 123972104759
+}

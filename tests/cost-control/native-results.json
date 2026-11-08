@@ -1,0 +1,41 @@
+{
+  "environment": "disposable network-none PostgreSQL, synthetic data and auth.uid/role fixtures only",
+  "postgres_version": "17.11 (Debian 17.11-1.pgdg13+2)",
+  "pass": 13,
+  "checks": [
+    "non-admin approval denied with fixture identity",
+    "missing approval denied",
+    "model upgrade approval required",
+    "32 independent connections never exceed daily reserved budget",
+    "32 independent duplicate requests reserve exactly once",
+    "exact cost and idempotent settlement",
+    "unapproved retry denied",
+    "monthly budget denied before reservation",
+    "unknown usage retains hold and freezes new requests",
+    "authenticated cannot read private ledger",
+    "authenticated cannot reserve paid work",
+    "live execution cannot be enabled by policy update",
+    "synthetic original 9 applications 6 plans 7 jobs and public policies unchanged"
+  ],
+  "daily_contention": {
+    "independent_backend_pids": 32,
+    "simultaneous_waiters": 32,
+    "admitted": 5,
+    "blocked": 27
+  },
+  "duplicate_contention": {
+    "independent_backend_pids": 32,
+    "simultaneous_waiters": 32,
+    "admitted": 1,
+    "blocked": 31
+  },
+  "preservation_before": "32919726943b8b24ca489772d45278f7",
+  "preservation_after": "32919726943b8b24ca489772d45278f7",
+  "production_auth_tested": false,
+  "production_data_accessed": false,
+  "real_provider_calls": 0,
+  "actual_usd": 0,
+  "tested_commit": "bd2d5152142e016c4f5e51d3d967c12e970493b6",
+  "workflow_run_id": 40615864605,
+  "workflow_job_id": 122578075133
+}

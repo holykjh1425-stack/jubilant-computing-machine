@@ -1,0 +1,45 @@
+name: SOLQ remaining quote candidate actual integration
+on:
+  push:
+    branches: [dev/solq-environment-recovery-20261101]
+    paths: [.github/workflows/solq-final-candidate.yml, candidates/final-candidate-integration-20261101/run.py, candidates/final-candidate-integration-20261101/fixture.sql, candidates/final-candidate-integration-20261101/index.ts]
+permissions:
+  contents: read
+concurrency:
+  group: solq-protected-local-recovery
+  cancel-in-progress: false
+jobs:
+  quote-candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      DO_NOT_TRACK: '1'
+      SUPABASE_INTERNAL_IMAGE_REGISTRY: ghcr.io
+      SOLQ_CLI: /tmp/solq-cli/supabase
+      SOLQ_STACK_DIR: /tmp/solq-isolated-stack
+      SOLQ_STACK_NETWORK: solq-local-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Materialize same pinned CLI dependency
+        run: |
+          mkdir -p /tmp/solq-cli "$SOLQ_STACK_DIR"
+          curl --fail --silent --show-error --location https://github.com/supabase/cli/releases/download/v2.122.0/supabase_2.122.0_linux_amd64.tar.gz --output /tmp/solq-cli/cli.tar.gz
+          echo '59ed066847b98d7461c60e9109d40cab6b9756177ce06ebb05b51338519f5136  /tmp/solq-cli/cli.tar.gz' | sha256sum --check
+          tar -xzf /tmp/solq-cli/cli.tar.gz -C /tmp/solq-cli supabase
+      - name: Prepare existing protected local stack with candidate quote Edge
+        run: |
+          docker network create --internal --opt com.docker.network.bridge.host_binding_ipv4=127.0.0.1 "$SOLQ_STACK_NETWORK"
+          python3 tests/local-supabase/setup.py
+          cp candidates/final-candidate-integration-20261101/index.ts "$SOLQ_STACK_DIR/supabase/functions/solq-local-plan/index.ts"
+          cp supabase/functions/solq-quote-evidence/handler.mjs "$SOLQ_STACK_DIR/supabase/functions/solq-local-plan/handler.mjs"
+      - name: Reuse corrected internal startup path
+        run: python3 candidates/environment-recovery-20261101/start.py
+      - name: Remaining candidate quote consent deposit approval actual integration
+        run: python3 candidates/final-candidate-integration-20261101/run.py
+      - name: Clean up only this disposable stack and aliases
+        if: always()
+        run: |
+          python3 tests/local-supabase/cleanup.py
+          sudo python3 -c "from pathlib import Path;p=Path('/etc/hosts');p.write_text('\\n'.join(l for l in p.read_text().splitlines() if '# SOLQ-CI-ROUTE-' not in l)+'\\n')"

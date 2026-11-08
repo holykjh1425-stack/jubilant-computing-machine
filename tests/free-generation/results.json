@@ -1,0 +1,72 @@
+{
+  "engine": "PGlite 0.5.11",
+  "actual_sql": true,
+  "real_auth_server": false,
+  "native_independent_connections": false,
+  "tests": [
+    {
+      "name": "migration preserves all 9/6/7 synthetic historic rows including duplicate",
+      "passed": true
+    },
+    {
+      "name": "legacy scheduled free_cycle is a no-op",
+      "passed": true
+    },
+    {
+      "name": "unauthenticated and non-admin approve/generate are rejected",
+      "passed": true
+    },
+    {
+      "name": "inspect is read-only and generation without approval fails",
+      "passed": true
+    },
+    {
+      "name": "approval does not itself generate any plan/job; repeat approval is idempotent",
+      "passed": true
+    },
+    {
+      "name": "approved generation stores one plan/job and 6 stages with approval waiting",
+      "passed": true
+    },
+    {
+      "name": "20 simultaneous calls on PGlite reuse one pair (single-engine scheduling)",
+      "passed": true
+    },
+    {
+      "name": "historical valid pair is reused without retroactive approval or writes",
+      "passed": true
+    },
+    {
+      "name": "known legacy duplicate is reported and never repaired/generated",
+      "passed": true
+    },
+    {
+      "name": "approval is bound to current request and membership, not caller assertions",
+      "passed": true
+    },
+    {
+      "name": "cancelled application cannot be approved",
+      "passed": true
+    },
+    {
+      "name": "direct unapproved inserts and legacy customer-key registration are blocked",
+      "passed": true
+    },
+    {
+      "name": "approval table is private; anonymous RPC has no execute grant",
+      "passed": true
+    },
+    {
+      "name": "unauthorized generation cannot change already generated work",
+      "passed": true
+    },
+    {
+      "name": "failed stage insert rolls back generated plan/job/tasks atomically",
+      "passed": true
+    },
+    {
+      "name": "authenticated role can inspect but removed approval author cannot generate",
+      "passed": true
+    }
+  ]
+}

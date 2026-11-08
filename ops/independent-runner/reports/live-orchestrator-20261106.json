@@ -1,0 +1,263 @@
+{
+  "observedKst": "2026-11-06 05:41–05:44",
+  "baseCommit": "866daf0a13bbe8823f029e1476aeadd4c3484b2c",
+  "cron": [
+    {
+      "observed_at": "2026-11-05 20:41:12.730965+00",
+      "jobid": 1,
+      "jobname": "nexus-free-orchestrator",
+      "schedule": "* * * * *",
+      "active": true,
+      "latest_start": "2026-11-05 20:41:00.020575+00",
+      "latest_end": "2026-11-05 20:41:00.031231+00",
+      "latest_status": "succeeded",
+      "succeeded_last_hour": 60,
+      "failed_last_hour": 0
+    },
+    {
+      "observed_at": "2026-11-05 20:41:12.730965+00",
+      "jobid": 2,
+      "jobname": "nexus-production-capture",
+      "schedule": "* * * * *",
+      "active": true,
+      "latest_start": "2026-11-05 20:41:00.020033+00",
+      "latest_end": "2026-11-05 20:41:00.030247+00",
+      "latest_status": "succeeded",
+      "succeeded_last_hour": 60,
+      "failed_last_hour": 0
+    }
+  ],
+  "counts": {
+    "counts": {
+      "plans": 6,
+      "applications": 9,
+      "production_jobs": 6,
+      "orchestrator_jobs": 7,
+      "quote_acceptances": 0,
+      "production_attempts": 0
+    },
+    "observed_at": "2026-11-05T20:41:41.565787+00:00",
+    "function_names": [
+      "nexus_production_command",
+      "solq_approve_production"
+    ],
+    "production_statuses": [
+      {
+        "count": 1,
+        "status": "cancelled"
+      },
+      {
+        "count": 5,
+        "status": "awaiting_deposit"
+      }
+    ],
+    "applications_with_plan": 6,
+    "missing_privacy_consent": 0,
+    "plans_without_application": 0
+  },
+  "worker": {
+    "worker": {
+      "cycles": 21593,
+      "has_error": false,
+      "processed": 4,
+      "test_requested": false,
+      "last_started_at": "2026-11-05T20:42:00.020338+00:00",
+      "test_dispatched": true,
+      "last_finished_at": "2026-11-05T20:42:00.025931+00:00"
+    },
+    "providers": [
+      {
+        "enabled": false,
+        "provider": "openai",
+        "approved_calls": 0,
+        "reserved_calls": 0,
+        "approved_micro_usd": 0,
+        "reserved_micro_usd": 0
+      },
+      {
+        "enabled": false,
+        "provider": "codex",
+        "approved_calls": 0,
+        "reserved_calls": 0,
+        "approved_micro_usd": 0,
+        "reserved_micro_usd": 0
+      }
+    ],
+    "six_stage_plans": 0,
+    "production_missing_conditions": 0,
+    "plan_duplicate_application_groups": 0
+  },
+  "free": {
+    "free_errors": 0,
+    "plan_shapes": [
+      {
+        "count": 4,
+        "json_type": "object",
+        "steps_count": 6,
+        "details_count": null
+      },
+      {
+        "count": 2,
+        "json_type": "object",
+        "steps_count": 6,
+        "details_count": 6
+      }
+    ],
+    "plan_task_sizes": [
+      {
+        "task_count": 6,
+        "review_count": 1
+      },
+      {
+        "task_count": 6,
+        "review_count": 1
+      }
+    ],
+    "free_run_statuses": [
+      {
+        "count": 2,
+        "status": "awaiting_approval"
+      }
+    ],
+    "missing_plan_classification": [
+      {
+        "count": 1,
+        "status": "cancelled",
+        "within_capture_window": false
+      },
+      {
+        "count": 1,
+        "status": "reviewing",
+        "within_capture_window": false
+      },
+      {
+        "count": 1,
+        "status": "received",
+        "within_capture_window": false
+      }
+    ],
+    "pending_eligible_without_plan": 0
+  },
+  "security": {
+    "rls": [
+      {
+        "table": "admin_users",
+        "enabled": true
+      },
+      {
+        "table": "ai_work_plans",
+        "enabled": true
+      },
+      {
+        "table": "applications",
+        "enabled": true
+      },
+      {
+        "table": "production_jobs",
+        "enabled": true
+      },
+      {
+        "table": "solq_quote_acceptances",
+        "enabled": true
+      }
+    ],
+    "triggers": [
+      {
+        "name": "nexus_capture_inquiry",
+        "table": "applications",
+        "enabled": "O"
+      },
+      {
+        "name": "solq_application_approval_guard",
+        "table": "applications",
+        "enabled": "O"
+      },
+      {
+        "name": "solq_application_quotation_guard",
+        "table": "applications",
+        "enabled": "O"
+      },
+      {
+        "name": "solq_production_approval_guard",
+        "table": "production_jobs",
+        "enabled": "O"
+      },
+      {
+        "name": "solq_quotation_guard",
+        "table": "production_jobs",
+        "enabled": "O"
+      }
+    ],
+    "gate_functions": [
+      {
+        "name": "approve",
+        "schema": "nexus_production_private",
+        "definer": true,
+        "search_path": [
+          "search_path=\"\""
+        ],
+        "has_quote_check": true,
+        "has_payment_check": true,
+        "has_approval_check": true
+      },
+      {
+        "name": "command",
+        "schema": "nexus_production_private",
+        "definer": true,
+        "search_path": [
+          "search_path=\"\""
+        ],
+        "has_quote_check": true,
+        "has_payment_check": true,
+        "has_approval_check": true
+      },
+      {
+        "name": "guard_application_quote",
+        "schema": "nexus_production_private",
+        "definer": true,
+        "search_path": [
+          "search_path=\"\""
+        ],
+        "has_quote_check": true,
+        "has_payment_check": false,
+        "has_approval_check": false
+      },
+      {
+        "name": "guard_quote",
+        "schema": "nexus_production_private",
+        "definer": true,
+        "search_path": [
+          "search_path=\"\""
+        ],
+        "has_quote_check": true,
+        "has_payment_check": false,
+        "has_approval_check": true
+      }
+    ]
+  },
+  "preservation": {
+    "applications": true,
+    "plans": true,
+    "jobs": true
+  },
+  "site": {
+    "version": 28,
+    "publicAccess": true,
+    "sourceCommit": "ab4d34c830669e69b57f0689588eb6a24b41f91e",
+    "deploymentStatus": "succeeded",
+    "customDomain": "https://solqtech.com",
+    "browserVerification": false
+  },
+  "productionEdge": {
+    "version": 1,
+    "allowedOrigin": "https://holykjh1425-stack.github.io",
+    "directSolqOriginDeniedBySource": true,
+    "sitesProxyPathVerified": false
+  },
+  "paidApiCallsByThisExecution": 0,
+  "productionWritesByThisExecution": 0,
+  "newApplicationsSubmitted": 0,
+  "existing51TestsRerun": false,
+  "browserAndExecutorAvailable": false,
+  "mainObserved": "42dc57eb7724111ed09b42fcf55f134faaf224e0"
+}

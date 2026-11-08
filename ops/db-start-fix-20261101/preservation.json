@@ -1,0 +1,20 @@
+{
+  "beforeUtc": "2026-11-01T09:49:18.251189Z",
+  "afterUtc": "2026-11-01T10:04:01.552833Z",
+  "before": {
+    "applications": 9,
+    "plans": 6,
+    "jobs": 7
+  },
+  "after": {
+    "applications": 9,
+    "plans": 6,
+    "jobs": 7
+  },
+  "contentFingerprintsMatch": true,
+  "rlsPolicyFingerprintMatches": true,
+  "mainSha": "c4e64b774fa216cee02d4bbad85c9fd7ad05fdee",
+  "operatingDml": 0,
+  "operatingDdl": 0,
+  "paidProviderCalls": 0
+}

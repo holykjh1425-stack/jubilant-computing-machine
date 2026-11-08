@@ -1,0 +1,26 @@
+name: SOLQ Windows synthetic encrypted stream only
+on:
+  push:
+    branches: [dev/solq-automation-preservation-20261026]
+    paths:
+      - ops/windows-backup/EncryptedStream.cs
+      - ops/windows-backup/Backup-Encrypted.ps1
+      - tests/windows-backup/**
+      - .github/workflows/solq-windows-backup.yml
+permissions:
+  contents: read
+concurrency:
+  group: solq-windows-backup-synthetic
+  cancel-in-progress: false
+jobs:
+  synthetic-windows:
+    if: github.repository == 'holykjh1425-stack/jubilant-computing-machine'
+    runs-on: windows-2022
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Windows PowerShell 5.1 binary transport and failure tests, no DB or user key
+        shell: powershell
+        run: ./tests/windows-backup/test.ps1
