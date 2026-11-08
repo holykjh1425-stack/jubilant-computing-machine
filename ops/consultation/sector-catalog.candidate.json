@@ -157,7 +157,7 @@
     "admin_addon_krw": 50000,
     "vat_excluded": true,
     "management_monthly_price_krw": null,
-    "management_monthly_policy": "운영 대행 월 고정비는 범위 확인 후 개별 견적, 금액 미확정",
+    "management_monthly_policy": "SOLQ 운영·수정 대행 월정액 별도. 업무 범위·횟수·비용 확정 전 자동 청구 금지",
     "eligibility": "간단하게 작동하는 최소 기능만. 업종 무관 일괄 확정가 아님",
     "example": "기본 100,000원 / 간편 관리자 포함 150,000원 (각 부가세 별도)",
     "exceptions": [
@@ -166,6 +166,24 @@
       "외부 API·연동",
       "복잡한 권한",
       "다중 페이지 맞춤 디자인"
-    ]
+    ],
+    "revision_policy": {
+      "included_revision_rounds": 1,
+      "revision_window": "검수 단계에 요청사항을 취합해 1회 전달",
+      "scope": "최초 합의된 문구·사진·배치의 경미한 변경",
+      "excluded": "기능 추가·구조 변경·새 페이지·기획 변경",
+      "bug_fixes": "합의된 기능의 구현 오류는 수정횟수에서 차감하지 않음",
+      "post_delivery": "납품 이후 운영·콘텐츠 변경은 별도 계약 또는 건별 견적",
+      "operating_model": "기본형은 SOLQ가 수정 대행, 고객 관리자 기능은 선택 추가",
+      "pricing_reference": "30만원 제작 패키지는 수정 1회 포함 제안, 10만원 최소기능형도 수정 1회 이내"
+    },
+    "package_300k": {
+      "price_krw": 300000,
+      "vat_excluded": true,
+      "revision_rounds": 1,
+      "operator": "SOLQ",
+      "scope": "원페이지 또는 소규모 표준형, 페이지·섹션·자료 범위는 사전 견적서에 명시",
+      "status": "candidate_pending_scope_and_production_QA"
+    }
   }
 }
