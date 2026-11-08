@@ -1,0 +1,320 @@
+{
+  "version": "KSIC-11-major-candidate-2026-11-08",
+  "status": "public_consultation_reference_not_definitive_classification",
+  "basis": {
+    "edition": 11,
+    "effective_date": "2024-07-01",
+    "source": "https://law.go.kr/LSW/flDownload.do?flSeq=136717831",
+    "scope": "21 major sections only; 77 divisions and 1205 subclasses not yet imported or validated",
+    "warning": "This is a consultation routing guide, not a legally definitive KSIC classification."
+  },
+  "general_questions": [
+    "어떤 고객 또는 이용자를 대상으로 하시나요?",
+    "홈페이지에서 가장 먼저 해결하고 싶은 업무는 무엇인가요?",
+    "공지·예약·주문·상담 중 필요한 기능이 있나요?",
+    "담당자가 내용을 직접 수정할 관리자 기능이 필요하신가요?",
+    "현재 사용하는 홈페이지나 업무 시스템이 있나요?",
+    "희망 일정과 예산 범위를 알려주실 수 있나요?"
+  ],
+  "sections": {
+    "A": {
+      "name": "농업, 임업 및 어업",
+      "solutions": "농산물·어획물·산림 상품 소개",
+      "first_question": "귀하의 주요 사업 내용과 생산품목을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "생산품목 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "판매방식 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "출하·주문 관리 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "B": {
+      "name": "광업",
+      "solutions": "기업·생산품·납품 정보",
+      "first_question": "귀하의 주요 사업 내용과 광종을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "광종 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "납품 고객 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "안전·인증 자료 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "C": {
+      "name": "제조업",
+      "solutions": "제품 카탈로그·B2B 견적·생산 관리",
+      "first_question": "귀하의 주요 사업 내용과 제조 품목을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "제조 품목 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "제품 규격 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "견적·재고·납기 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "D": {
+      "name": "전기, 가스, 증기 및 공기조절 공급업",
+      "solutions": "서비스·설비·고객 안내",
+      "first_question": "귀하의 주요 사업 내용과 공급 서비스을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "공급 서비스 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "설비 정보 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "문의·점검 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "E": {
+      "name": "수도, 하수 및 폐기물 처리, 원료 재생업",
+      "solutions": "처리 서비스·수거 신청·실적",
+      "first_question": "귀하의 주요 사업 내용과 처리 대상을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "처리 대상 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "수거 지역 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "예약·허가 안내 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "F": {
+      "name": "건설업",
+      "solutions": "시공 사례·견적·현장 문의",
+      "first_question": "귀하의 주요 사업 내용과 공종을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "공종 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "시공 지역 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "사례·견적·안전 서류 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "G": {
+      "name": "도매 및 소매업",
+      "solutions": "상품 소개·재고·주문·고객 문의",
+      "first_question": "귀하의 주요 사업 내용과 판매 품목을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "판매 품목 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "온라인 판매 여부 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "주문·재고 연동 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "H": {
+      "name": "운수 및 창고업",
+      "solutions": "배송·보관 서비스·예약·조회",
+      "first_question": "귀하의 주요 사업 내용과 운송 유형을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "운송 유형 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "배송 지역 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "접수·추적 연동 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "I": {
+      "name": "숙박 및 음식점업",
+      "solutions": "메뉴·객실·예약·방문 안내",
+      "first_question": "귀하의 주요 사업 내용과 매장 유형을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "매장 유형 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "메뉴·객실 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "예약·주문 연동 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "J": {
+      "name": "정보통신업",
+      "solutions": "서비스 소개·기술문서·고객지원",
+      "first_question": "귀하의 주요 사업 내용과 서비스 종류을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "서비스 종류 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "구독·고객지원·API 연동 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "K": {
+      "name": "금융 및 보험업",
+      "solutions": "서비스 안내·상담 신청",
+      "first_question": "귀하의 주요 사업 내용과 서비스 유형을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "서비스 유형 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "인허가·규제 준수 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "민감정보 처리 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "L": {
+      "name": "부동산업",
+      "solutions": "매물·시설 소개·상담",
+      "first_question": "귀하의 주요 사업 내용과 매물 유형을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "매물 유형 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "위치·사진 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "중개·임대 권한 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "M": {
+      "name": "전문, 과학 및 기술 서비스업",
+      "solutions": "전문 서비스·포트폴리오·예약",
+      "first_question": "귀하의 주요 사업 내용과 전문 분야을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "전문 분야 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "자격·실적 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "상담 절차 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "N": {
+      "name": "사업시설 관리, 사업 지원 및 임대 서비스업",
+      "solutions": "시설관리·견적·업무 접수",
+      "first_question": "귀하의 주요 사업 내용과 제공 서비스을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "제공 서비스 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "계약 형태 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "일정·업무 관리 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "O": {
+      "name": "공공행정, 국방 및 사회보장 행정",
+      "solutions": "민원·정보 안내",
+      "first_question": "귀하의 주요 사업 내용과 기관 업무을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "기관 업무 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "접근성·공공보안·조달 요건 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "P": {
+      "name": "교육 서비스업",
+      "solutions": "강좌 소개·신청·학습 관리",
+      "first_question": "귀하의 주요 사업 내용과 교육 대상을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "교육 대상 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "강좌·수강 신청 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "LMS 필요 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "Q": {
+      "name": "보건업 및 사회복지 서비스업",
+      "solutions": "기관 안내·예약·상담",
+      "first_question": "귀하의 주요 사업 내용과 기관 유형을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "기관 유형 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "예약 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "민감 건강정보 취급 여부 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "R": {
+      "name": "예술, 스포츠 및 여가관련 서비스업",
+      "solutions": "프로그램·행사·예약",
+      "first_question": "귀하의 주요 사업 내용과 프로그램 종류을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "프로그램 종류 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "일정·티켓·회원 관리 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "S": {
+      "name": "협회 및 단체, 수리 및 기타 개인 서비스업",
+      "solutions": "단체·서비스 안내·예약·공지",
+      "first_question": "귀하의 주요 사업 내용과 단체 유형을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "단체 유형 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "회원·후원·예약 필요 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "T": {
+      "name": "가구 내 고용활동, 자가소비 생산활동",
+      "solutions": "개별 상담",
+      "first_question": "귀하의 주요 사업 내용과 실제 사업활동을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "실제 사업활동 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "제공 서비스 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "온라인 필요 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    },
+    "U": {
+      "name": "국제 및 외국기관",
+      "solutions": "기관 안내·다국어 정보",
+      "first_question": "귀하의 주요 사업 내용과 기관 업무을(를) 간단히 알려주시겠습니까?",
+      "special_questions": [
+        "기관 업무 관련해 어떤 기능이나 정보가 필요하신가요?",
+        "언어·접근성·보안 요구 관련해 어떤 기능이나 정보가 필요하신가요?"
+      ],
+      "price_status": "individual_quote_required"
+    }
+  },
+  "aliases": {
+    "교회": "S",
+    "종교단체": "S",
+    "카페": "I",
+    "식당": "I",
+    "음식점": "I",
+    "호텔": "I",
+    "숙박": "I",
+    "쇼핑몰": "G",
+    "도소매": "G",
+    "소매": "G",
+    "공장": "C",
+    "제조": "C",
+    "건설": "F",
+    "시공": "F",
+    "운송": "H",
+    "물류": "H",
+    "학원": "P",
+    "교육원": "P",
+    "학교": "P",
+    "병원": "Q",
+    "의원": "Q",
+    "복지관": "Q",
+    "부동산": "L",
+    "중개업": "L",
+    "모듈러주택": "F",
+    "IT": "J",
+    "소프트웨어": "J",
+    "보험": "K",
+    "금융": "K",
+    "농업": "A",
+    "수산": "A",
+    "협회": "S",
+    "미용실": "S",
+    "헬스장": "R",
+    "스포츠": "R",
+    "농업, 임업 및 어업": "A",
+    "광업": "B",
+    "제조업": "C",
+    "전기, 가스, 증기 및 공기조절 공급업": "D",
+    "수도, 하수 및 폐기물 처리, 원료 재생업": "E",
+    "건설업": "F",
+    "도매 및 소매업": "G",
+    "운수 및 창고업": "H",
+    "숙박 및 음식점업": "I",
+    "정보통신업": "J",
+    "금융 및 보험업": "K",
+    "부동산업": "L",
+    "전문, 과학 및 기술 서비스업": "M",
+    "사업시설 관리, 사업 지원 및 임대 서비스업": "N",
+    "공공행정, 국방 및 사회보장 행정": "O",
+    "교육 서비스업": "P",
+    "보건업 및 사회복지 서비스업": "Q",
+    "예술, 스포츠 및 여가관련 서비스업": "R",
+    "협회 및 단체, 수리 및 기타 개인 서비스업": "S",
+    "가구 내 고용활동, 자가소비 생산활동": "T",
+    "국제 및 외국기관": "U",
+    "전기공급": "D",
+    "가스공급": "D",
+    "폐기물": "E",
+    "수도": "E",
+    "공공행정": "O",
+    "가구 내 고용": "T",
+    "국제기관": "U",
+    "외국기관": "U"
+  },
+  "policy": {
+    "classification": "고객이 사업내용을 확인하기 전 확정 분류 금지",
+    "price": "approved catalog only; otherwise individual quotation",
+    "privacy": "no sensitive information or server-side storage without consent",
+    "tone": "polite, concise, one question at a time",
+    "human_handoff": "regulated services, complex integrations, legal compliance, uncertain category"
+  }
+}

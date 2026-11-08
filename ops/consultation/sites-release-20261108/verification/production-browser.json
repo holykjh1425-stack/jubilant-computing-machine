@@ -1,0 +1,50 @@
+{
+  "executor": "CORE / single session",
+  "public_site": "https://solqtech.com/",
+  "public_chatbot": "https://solqtech.com/consultation/",
+  "saved_version": 32,
+  "deployment_id": "appgdep_6aefdf1ab0f08191afb8237651aaf9b0",
+  "deployment_UTC": "2026-11-08T02:32:06.513712+00:00",
+  "deployment_KST": "2026-11-08 11:32:06 KST",
+  "verification_method": "Chrome live browser; DOM status populated from NavigationTiming.responseStatus and actual Fetch Response.status/content-type",
+  "results": {
+    "homepage_hero_and_fixed_buttons": "PASS",
+    "document_status": 200,
+    "catalog_status": 200,
+    "catalog_MIME": "application/json",
+    "routing_status": 200,
+    "routing_MIME": "application/json",
+    "restaurant_industry_questions": "PASS",
+    "five_answers_and_summary": "PASS",
+    "prices_and_approval_procedure": "PASS",
+    "copy_summary": "PASS",
+    "existing_application_url": "https://solqtech.com/#apply",
+    "application_required_controls": 6,
+    "application_submit_enabled": true,
+    "application_submitted": false
+  },
+  "other_client_result": {
+    "urllib_HTTP": 403,
+    "body": "error code: 1010",
+    "note": "not generalized to browser or user access; no bypass attempted"
+  },
+  "current_administrator_login": "NOT_TESTED",
+  "RLS_runtime": "NOT_TESTED",
+  "physical_Android_iOS": "NOT_TESTED",
+  "customer_data_write": 0,
+  "paid_API_calls": 0,
+  "screenshots": {
+    "verification/chatbot-evidence/production-chatbot-20261108.jpg": {
+      "bytes": 66614,
+      "sha256": "6a729d8201723e0afc0e61a6e2d57f653b703f15a34652018ef0da43a0c94e32"
+    },
+    "verification/chatbot-evidence/mobile-preview-20261108.jpg": {
+      "bytes": 146003,
+      "sha256": "dd0aea22f4f004ed6178bac2ffd2ae25d87fc6915ef9e855fc73082499a24f7f"
+    },
+    "verification/chatbot-evidence/production-home-20261108.jpg": {
+      "bytes": 77177,
+      "sha256": "4cc4e1531ff56c0a174246b8e016a64130a790516dec15d5edfcf5cda118321f"
+    }
+  }
+}

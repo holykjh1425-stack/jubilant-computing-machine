@@ -1,0 +1,156 @@
+{
+  "baseline": "379d488dd977c738904fe60c3a0f3d22884ded79",
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "only existing homepage changed",
+      "result": "PASS"
+    },
+    {
+      "check": "application controls and scripts unchanged",
+      "result": "PASS"
+    },
+    {
+      "check": "application form attributes unchanged",
+      "result": "PASS"
+    },
+    {
+      "check": "homepage contains fixed and hero chatbot links",
+      "result": "PASS"
+    },
+    {
+      "check": "21 routing sections present",
+      "result": "PASS"
+    },
+    {
+      "check": "all aliases refer to valid sections",
+      "result": "PASS"
+    },
+    {
+      "check": "unapproved sector prices removed",
+      "result": "PASS"
+    },
+    {
+      "check": "approved conditional price values",
+      "result": "PASS"
+    },
+    {
+      "check": "strict same-origin chatbot CSP",
+      "result": "PASS"
+    },
+    {
+      "check": "no chatbot write API, storage or unsafe HTML sink",
+      "result": "PASS"
+    },
+    {
+      "check": "exactly two static GET manual loads",
+      "result": "PASS"
+    },
+    {
+      "check": "manual timeout and MIME validation",
+      "result": "PASS"
+    },
+    {
+      "check": "local target ../icon.svg",
+      "result": "PASS"
+    },
+    {
+      "check": "local target ../legal.css",
+      "result": "PASS"
+    },
+    {
+      "check": "local target chatbot.css",
+      "result": "PASS"
+    },
+    {
+      "check": "local target chatbot.js",
+      "result": "PASS"
+    },
+    {
+      "check": "local target ../",
+      "result": "PASS"
+    },
+    {
+      "check": "local target ../#apply",
+      "result": "PASS"
+    },
+    {
+      "check": "local anchor ../#apply",
+      "result": "PASS"
+    },
+    {
+      "check": "local target ../#apply",
+      "result": "PASS"
+    },
+    {
+      "check": "local anchor ../#apply",
+      "result": "PASS"
+    },
+    {
+      "check": "local target ../payment-guide.html",
+      "result": "PASS"
+    },
+    {
+      "check": "local target ../refund.html",
+      "result": "PASS"
+    },
+    {
+      "check": "local target ../#apply",
+      "result": "PASS"
+    },
+    {
+      "check": "local anchor ../#apply",
+      "result": "PASS"
+    },
+    {
+      "check": "local target ../support.html#new-inquiry",
+      "result": "PASS"
+    },
+    {
+      "check": "local anchor ../support.html#new-inquiry",
+      "result": "PASS"
+    },
+    {
+      "check": "local target ../privacy.html",
+      "result": "PASS"
+    },
+    {
+      "check": "local target ../data-deletion.html",
+      "result": "PASS"
+    },
+    {
+      "check": "local target ../support.html#new-inquiry",
+      "result": "PASS"
+    },
+    {
+      "check": "local anchor ../support.html#new-inquiry",
+      "result": "PASS"
+    }
+  ],
+  "files": {
+    "dist/index.html": {
+      "bytes": 20601,
+      "sha256": "c6fcd3602977fbbd6b455c459485c1a0d5663cd46e4c7df89c601a42f63de98c"
+    },
+    "dist/consultation/KSIC11-21-SECTOR-ROUTING.candidate.json": {
+      "bytes": 15349,
+      "sha256": "c5116a209d5f0b64a8cac4eaf9952093be0e571ec85c756f0a1c138b04f06545"
+    },
+    "dist/consultation/chatbot.css": {
+      "bytes": 2574,
+      "sha256": "95d904b07561ea5dab6f843dee3ba22d2db03782d787d6e004dc60a24af41cad"
+    },
+    "dist/consultation/chatbot.js": {
+      "bytes": 11441,
+      "sha256": "6019dea49bb10bdb38fdcf5ec158a33810f0203db357a0be1527fbda307c4702"
+    },
+    "dist/consultation/index.html": {
+      "bytes": 5698,
+      "sha256": "636b0803f9cf6585ee59ac30bf124c5a9f9477bd369cee27607f3919258d6df1"
+    },
+    "dist/consultation/sector-catalog.candidate.json": {
+      "bytes": 6838,
+      "sha256": "737f992327e22a5f5d36279e70683209977768f136f26325d3f35ba7dcde2e01"
+    }
+  }
+}

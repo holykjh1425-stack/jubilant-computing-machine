@@ -1,0 +1,53 @@
+{
+  "executor": "CORE (single session; no delegated worker)",
+  "scope": "real browser on isolated preview; no operational submissions",
+  "preview_results": {
+    "catalog_HTTP": 200,
+    "routing_HTTP": 200,
+    "document_HTTP": 200,
+    "catalog_MIME": "application/json; charset=utf-8",
+    "routing_MIME": "application/json; charset=utf-8",
+    "major_section_routing": "21/21 PASS",
+    "empty_industry": "PASS",
+    "empty_answer": "PASS",
+    "manufacturer_five_answers_summary_prices": "PASS",
+    "summary_copy": "PASS",
+    "application_navigation_and_six_required_controls": "PASS",
+    "privacy_and_transfer_required": "PASS",
+    "automatic_description_transfer": "absent as designed",
+    "XSS_payload": "literal text; zero injected images",
+    "church_manual_four_questions": "PASS",
+    "unapproved_church_prices": "absent",
+    "complex_request_handoff": "PASS",
+    "catalog_missing_fallback": "PASS",
+    "routing_missing_manual_selection": "PASS",
+    "restart_clears_answers_and_summary": "PASS"
+  },
+  "responsive_preview": [
+    {
+      "frame_css_width": 360,
+      "document_width": 345,
+      "scroll_width": 345,
+      "fixed_button_height": 52
+    },
+    {
+      "frame_css_width": 384,
+      "document_width": 369,
+      "scroll_width": 369,
+      "fixed_button_height": 52
+    },
+    {
+      "frame_css_width": 390,
+      "document_width": 375,
+      "scroll_width": 375,
+      "fixed_button_height": 52
+    }
+  ],
+  "mobile_390_flow": "launcher -> restaurant questions -> summary -> application consent PASS",
+  "physical_device": "NOT_TESTED",
+  "current_administrator_auth_and_RLS_runtime": "NOT_TESTED; assets/settings unchanged",
+  "customer_submissions": 0,
+  "DB_changes": 0,
+  "paid_AI_calls": 0,
+  "resources_created": 0
+}
