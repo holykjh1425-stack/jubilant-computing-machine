@@ -1,0 +1,6 @@
+{
+  "nodeModulesDir": "none",
+  "compilerOptions": {
+    "types": ["npm:@types/node@22.19.1"]
+  }
+}

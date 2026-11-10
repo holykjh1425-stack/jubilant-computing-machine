@@ -29,6 +29,6 @@ jobs:
         with:
           deno-version: v2.5.6
       - name: Check candidate Deno entry point without executing it
-        run: deno check supabase/functions/solq-notification-dispatch/index.ts
+        run: deno check --config supabase/functions/solq-notification-dispatch/deno.json supabase/functions/solq-notification-dispatch/index.ts
       - name: Deno runtime with live network and environment access denied
-        run: deno test --deny-net --deny-env tests/notification-dispatch-deno.mjs
+        run: deno test --config supabase/functions/solq-notification-dispatch/deno.json --deny-net --deny-env tests/notification-dispatch-deno.mjs
