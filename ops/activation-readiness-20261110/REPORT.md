@@ -2,6 +2,8 @@
 
 일자: 2026-11-10 KST. 기존 `4ba33fd` 작업 연속. 운영 변경·실제 발송·복원·추가 결제 0.
 
+후속 구현: [f59cd34](https://github.com/holykjh1425-stack/jubilant-computing-machine/commit/f59cd34bcd2b793d71ef8b60a89b1d3fee6e115d). [실제 CI 42740218459](https://github.com/holykjh1425-stack/jubilant-computing-machine/actions/runs/42740218459) 성공. Node 변경부9개, Deno runtime3개, Deno entry point 타입 검사 PASS. 실 Gmail 전송/운영 스키마 적용은 미실행.
+
 ## 1. 12개 연결과 7개 PASS의 의미
 
 **12는 테스트 항목 수가 아니라 독립 PostgreSQL 연결 수다. 검증 항목은 7개이며 모두 PASS다. '나머지 5개 미통과 항목'은 없다.**
@@ -37,7 +39,7 @@
 - 기본 enabled=false 및 명시적 승인 설정 필수. OAuth 설정이 없으면 큐 접근 전 중단한다. 한 호출에 1건만 처리하며 무제한 루프/새 서버를 사용하지 않는다.
 - 검증된 기존 worker의 바이트 동일 `_shared` mirror를 사용한다. 새 mirror 검사가 원본과의 차이를 막는다. 기존 worker 로직은 변경하지 않았다.
 - `schedule-candidate.sql`: 5분 주기의 검토용 템플릿. 실행하지 않았다. 실제 전환 시 전용 endpoint만 gateway JWT 검증 대신 자체 dispatch 인증을 사용하도록 검토하고, 공개 접수 함수 설정과 혼동하지 않는다. 전용 key는 기존 service_role·worker key와 분리한다.
-- 신규 Node 변경부 9개 PASS. Deno entry point와 runtime의 네트워크 차단 시험은 별도 CI 증거로 확정한다. 이는 hosted Edge에서 Gmail로 보낸 실발송 증거가 아니다.
+- 신규 Node 변경부 9개 PASS. 실제 CI의 Deno 2.5.6 entry point 타입 검사 및 runtime3개 시험도 PASS. runtime 시험은 --deny-net/--deny-env로 외부 I/O를 차단했다. 이는 hosted Edge에서 Gmail로 보낸 실발송 증거가 아니다.
 
 |경로|추가 유료 서버|판정|
 |---|---:|---|
@@ -104,7 +106,7 @@
 |4|authenticated submit_support_inquiry definer|#3의 인증 역할 노출|중간, P1. 같은 후보 및 실제 역할 회귀|
 |5|anon read_support_inquiry definer|문의 내용/답변 노출 영향은 높음. UUID+64자리 token hash 일치 시에만 읽는 capability 경계, 동적 SQL 없음|중간, P1(기밀성 영향 높음). token 비노출·wrong-token 거부·최소권한 확인. 임의 조회 가능하다고 확정하지 않음|
 |6|authenticated read_support_inquiry definer|#5의 인증 역할 노출. 인증됐다고 전체 문의를 허용하지는 않음|중간, P1. capability 경계 유지|
-|7|유출 비밀번호 보호 OFF|재사용/유출 비밀번호 위험에 대한 예방 통제 미설정. 현재 관리자 침해 증거 아님|중간, P1. 기존 Pro에서 설정 가능 여부·기존 로그인 영향 확인 후 별도 Auth 설정 승인. 무조건 요금제 업그레이드 필요하다고 하지 않음|
+|7|유출 비밀번호 보호 OFF|재사용/유출 비밀번호 위험에 대한 예방 통제 미설정. 현재 관리자 침해 증거 아님|중간, P1. 기존 Pro에서 현재 Pro에서 제공되는 기능임을 공식 문서로 확인. 기존 로그인 영향 검토 후 별도 Auth 설정 승인. 업그레이드 불필요|
 
 현재 세 함수는 postgres 소유/SECURITY DEFINER, search_path=''이고 역할 EXECUTE 권한이 있다. 기존 `security-candidate.sql`의 dedicated NOLOGIN/NOBYPASSRLS owner 및 public invoker 개선은 격리 37개 검사 근거를 재사용한다. 운영에 적용하거나 공개 함수 권한을 일괄 철회하지 않았다. API 고장 없이 최소권한 개선을 반영하려면 실제 정책/권한·소유권·롤백 영향 검토가 필요하다.
 
@@ -138,7 +140,7 @@
 |신규 신청→접수번호→대기열→관리자 조회|기존 격리 21개/브라우저 PASS 재사용. 운영 신규 알림 기능은 미설치|
 |계좌 클릭→이벤트→대기열|기존 capability/중복/RLS/상태 보존 PASS 재사용|
 |발송 실패·재시도·중복 방지|기존 21+native7 재사용; 새 서버리스의 OAuth 철회·429/5xx·ack 실패·한 번 처리 변경부9 PASS|
-|별도 유료 서버 없는 실행|기존 플랫폼 기반 확인, wrapper·schedule 후보 준비. Deno CI와 실제 hosted 전환/지연은 구분|
+|별도 유료 서버 없는 실행|기존 플랫폼 기반 확인, wrapper·schedule 후보·Deno CI PASS. 실제 hosted 전환/지연은 미검증|
 |보안 차단 근거|실제 경고·함수·정책 메타데이터 확인, 7건 분류 및 기존 개선 후보 재사용. 운영 경고는 미해소|
 |복원 차단 근거|비밀번호 경로/readonly 쓰기 경로/플랫폼 확장/자동 실행 선차단 문제 명시. 실제 PC 상태·백업 실물·복원은 미완료|
 |운영 배포/실제 고객 발송|NO-GO. GUARD 독립 승인과 별도 사용자 승인 전 미실행|
@@ -153,3 +155,7 @@
 - [Google 서버 OAuth](https://developers.google.com/identity/protocols/oauth2/web-server), [scope](https://developers.google.com/workspace/gmail/api/auth/scopes), [token 만료](https://developers.google.com/identity/protocols/oauth2), [검증 예외](https://support.google.com/cloud/answer/13464323), [API quota/비용](https://developers.google.com/workspace/gmail/api/reference/quota), [개인 Gmail 제한](https://support.google.com/mail/answer/22839?hl=ko)
 - [pg_cron의 launch_active_jobs](https://github.com/citusdata/pg_cron), [Docker readonly](https://docs.docker.com/reference/cli/docker/container/run/), [tmpfs와 swap](https://docs.docker.com/engine/storage/tmpfs)
 - [Ncloud 요금](https://www.ncloud.com/charge/region/ko), [발신번호 서류](https://www.ncloud.com/support/faq/all/2048), [카카오 공식 가이드](https://kakaobusiness.gitbook.io/main/ad/infotalk), [SOLAPI 요금](https://solapi.com/pricing)
+
+## 새 CI 실패·수정 증거
+
+첫 run 42739685587은 Deno check에서 npm:@types/node가 npm ci의 수동 node_modules에 없어서 실패했다. Node9개는 PASS였고 Deno runtime3개는 그 단계에서 SKIPPED였으므로 실패/미실행으로 기록했다. Node 호환 타입22.19.1을 고정하고 Deno 캐시 해석(nodeModulesDir=none)을 설정한 f59cd34에서 run42740218459가 성공했다. 앱 승인 조건·큐 SQL·Gmail worker 로직은 바꾸지 않았다. 새 CI 수정에 필요한 변경부 시험만 재확인했으며 기존 21/PG7은 미재실행이다.

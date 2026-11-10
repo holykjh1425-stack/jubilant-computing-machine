@@ -1,0 +1,73 @@
+{
+  "dateKst": "2026-11-10",
+  "baselineCommit": "4ba33fd6a1594310378938e10c6e00c5f9352d7f",
+  "implementationCommit": "f59cd34bcd2b793d71ef8b60a89b1d3fee6e115d",
+  "reused": {
+    "originalAutomatedPass": 21,
+    "nativePostgreSQLChecksPass": 7,
+    "nativePostgreSQLIndependentConnections": 12,
+    "unreportedRemainingFiveTests": "not applicable: connections are not test cases",
+    "baselineRun": 42737253473
+  },
+  "delta": {
+    "node": {
+      "pass": 9,
+      "fail": 0
+    },
+    "deno": {
+      "version": "2.5.6",
+      "pass": 3,
+      "fail": 0,
+      "networkPermission": "denied",
+      "envPermission": "denied",
+      "entryTypeCheck": "PASS"
+    },
+    "runId": 42740218459,
+    "jobId": 129579132499,
+    "conclusion": "success"
+  },
+  "previousFailedDelta": {
+    "runId": 42739685587,
+    "cause": "Deno npm:@types/node unavailable in manual node_modules",
+    "node": "9 PASS",
+    "denoRuntime": "SKIPPED",
+    "resolution": "pinned Node types 22.19.1; nodeModulesDir none"
+  },
+  "localDenoCheck": {
+    "result": "blocked by network environment",
+    "detail": "registry.npmjs.org connection refused; actual CI type/runtime check passed"
+  },
+  "platformReadOnly": {
+    "plan": "pro",
+    "extensions": [
+      "pg_cron",
+      "pg_net",
+      "supabase_vault"
+    ],
+    "existingActiveCronJobs": 2,
+    "existingCronFrequency": "every minute",
+    "existingActiveEdgeFunctions": 4,
+    "notificationOutboxInstalled": false,
+    "checkedVaultNotificationNamesPresent": false,
+    "adminCount": 1,
+    "authSessionMetadataCount": 15,
+    "securityWarnings": 7
+  },
+  "scheduleCandidate": {
+    "applied": false,
+    "minutes": 5,
+    "invocations30days": 8640,
+    "proIncludedInvocationsPerMonth": 2000000,
+    "currentRemainingUsage": "unverified",
+    "newServerRequired": false
+  },
+  "guard": {
+    "scopedDevelopment": "PASS",
+    "productionActivation": "NO-GO",
+    "independentFinalApproval": "not performed"
+  },
+  "productionChanges": 0,
+  "realMessages": 0,
+  "actualRestore": 0,
+  "newCosts": 0
+}
