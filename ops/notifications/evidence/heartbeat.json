@@ -1,0 +1,79 @@
+{
+  "observedAt": "2026-11-10",
+  "source": "GitHub Actions latest 100 runs; 225 total repository runs",
+  "workflow": ".github/workflows/solq-agent-heartbeat.yml",
+  "nominalCron": "7,37 * * * *",
+  "runs": [
+    {
+      "id": 42435621379,
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/actions/runs/42435621379",
+      "event": "schedule",
+      "conclusion": "success",
+      "created_at": "2026-11-08T01:45:29Z"
+    },
+    {
+      "id": 42464817031,
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/actions/runs/42464817031",
+      "event": "schedule",
+      "conclusion": "success",
+      "created_at": "2026-11-08T08:53:16Z"
+    },
+    {
+      "id": 42497197620,
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/actions/runs/42497197620",
+      "event": "schedule",
+      "conclusion": "success",
+      "created_at": "2026-11-08T15:54:58Z"
+    },
+    {
+      "id": 42519884183,
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/actions/runs/42519884183",
+      "event": "schedule",
+      "conclusion": "success",
+      "created_at": "2026-11-08T20:23:32Z"
+    },
+    {
+      "id": 42537660081,
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/actions/runs/42537660081",
+      "event": "schedule",
+      "conclusion": "success",
+      "created_at": "2026-11-08T23:57:48Z"
+    },
+    {
+      "id": 42570660001,
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/actions/runs/42570660001",
+      "event": "schedule",
+      "conclusion": "success",
+      "created_at": "2026-11-09T06:02:14Z"
+    },
+    {
+      "id": 42650294975,
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/actions/runs/42650294975",
+      "event": "schedule",
+      "conclusion": "success",
+      "created_at": "2026-11-09T16:00:12Z"
+    },
+    {
+      "id": 42726035503,
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/actions/runs/42726035503",
+      "event": "schedule",
+      "conclusion": "success",
+      "created_at": "2026-11-10T00:08:51Z"
+    }
+  ],
+  "spanHours": 46.38944444444444,
+  "maximumObservedGapSeconds": 35878,
+  "nominalSlotsWithinObservedSpan": 93,
+  "missedSlotsExact": false,
+  "coverageVerdict": "NO-GO for reliable 30-minute scheduling; successful synthetic heartbeats are not production workers",
+  "latestJobId": 129531786298,
+  "latestArtifactId": 13722132332,
+  "latestArtifactDigest": "3358903aefd9d085350a87899f04f9b8f95feb290dd43d92645e139eb8768471",
+  "latestLogPayload": {
+    "task": "synthetic_heartbeat",
+    "status": "PASS",
+    "timestamp_utc": "2026-11-10T00:08:55.721850+00:00",
+    "production_changes": 0,
+    "paid_api_calls": 0
+  }
+}

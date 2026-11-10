@@ -1,0 +1,137 @@
+TAP version 13
+# Subtest: free roles produce six-step plan and report, stopping before customer production
+ok 1 - free roles produce six-step plan and report, stopping before customer production
+  ---
+  duration_ms: 5.020301
+  type: 'test'
+  ...
+# Subtest: ambiguous and unknown requests require review instead of guessing
+ok 2 - ambiguous and unknown requests require review instead of guessing
+  ---
+  duration_ms: 0.369702
+  type: 'test'
+  ...
+# Subtest: validation rejects executed, paid, reordered, and malformed upstream plans
+ok 3 - validation rejects executed, paid, reordered, and malformed upstream plans
+  ---
+  duration_ms: 1.089538
+  type: 'test'
+  ...
+# Subtest: report cannot claim success for missing or failed validation
+ok 4 - report cannot claim success for missing or failed validation
+  ---
+  duration_ms: 0.537426
+  type: 'test'
+  ...
+# Subtest: new intake integrates with reconstructed existing quote, deposit and separate approval gates
+ok 5 - new intake integrates with reconstructed existing quote, deposit and separate approval gates
+  ---
+  duration_ms: 4829.206725
+  type: 'test'
+  ...
+# Subtest: notification database: intake, capability, outbox, fencing and RLS
+    # Subtest: delivery and capture disabled by default; no historic sends
+    ok 1 - delivery and capture disabled by default; no historic sends
+      ---
+      duration_ms: 16.787197
+      type: 'test'
+      ...
+    # Subtest: idempotent intake binds immutable payload and only hashes capability
+    ok 2 - idempotent intake binds immutable payload and only hashes capability
+      ---
+      duration_ms: 25.440221
+      type: 'test'
+      ...
+    # Subtest: notification queue outage cannot cancel a new saved application
+    ok 3 - notification queue outage cannot cancel a new saved application
+      ---
+      duration_ms: 8.723303
+      type: 'test'
+      ...
+    # Subtest: capability and receipt both required; account click cannot confirm deposit
+    ok 4 - capability and receipt both required; account click cannot confirm deposit
+      ---
+      duration_ms: 19.567466
+      type: 'test'
+      ...
+    # Subtest: reconciliation recovers requests once, excludes history and addresses
+    ok 5 - reconciliation recovers requests once, excludes history and addresses
+      ---
+      duration_ms: 28.189003
+      type: 'test'
+      ...
+    # Subtest: lease claim excludes duplicate; stale token rejected; acceptance recorded once
+    ok 6 - lease claim excludes duplicate; stale token rejected; acceptance recorded once
+      ---
+      duration_ms: 32.280377
+      type: 'test'
+      ...
+    # Subtest: expired in-flight work becomes uncertain and is never reclaimed
+    ok 7 - expired in-flight work becomes uncertain and is never reclaimed
+      ---
+      duration_ms: 18.188532
+      type: 'test'
+      ...
+    # Subtest: bounded backoff stops after three explicit rejected attempts
+    ok 8 - bounded backoff stops after three explicit rejected attempts
+      ---
+      duration_ms: 23.943845
+      type: 'test'
+      ...
+    # Subtest: anonymous and ordinary authenticated users cannot read or mutate notifications
+    ok 9 - anonymous and ordinary authenticated users cannot read or mutate notifications
+      ---
+      duration_ms: 14.205614
+      type: 'test'
+      ...
+    # Subtest: deposit event observes actual status transition, independent of send failure
+    ok 10 - deposit event observes actual status transition, independent of send failure
+      ---
+      duration_ms: 18.962555
+      type: 'test'
+      ...
+    1..10
+ok 6 - notification database: intake, capability, outbox, fencing and RLS
+  ---
+  duration_ms: 5245.026355
+  type: 'test'
+  ...
+# Subtest: worker default denial makes zero calls
+ok 7 - worker default denial makes zero calls
+  ---
+  duration_ms: 0.393799
+  type: 'test'
+  ...
+# Subtest: Gmail adapter classifies accepted, rejected, rate-limit and ambiguous outcomes
+ok 8 - Gmail adapter classifies accepted, rejected, rate-limit and ambiguous outcomes
+  ---
+  duration_ms: 6.425613
+  type: 'test'
+  ...
+# Subtest: worker rejects header injection and does not send to phone contacts
+ok 9 - worker rejects header injection and does not send to phone contacts
+  ---
+  duration_ms: 0.273467
+  type: 'test'
+  ...
+# Subtest: gateway rejects untrusted origins, oversized bodies, worker and admin impersonation
+ok 10 - gateway rejects untrusted origins, oversized bodies, worker and admin impersonation
+  ---
+  duration_ms: 8.63544
+  type: 'test'
+  ...
+# Subtest: client retries use same capability, retain no plaintext PII and never call legacy on failure
+ok 11 - client retries use same capability, retain no plaintext PII and never call legacy on failure
+  ---
+  duration_ms: 16.657009
+  type: 'test'
+  ...
+1..11
+# tests 21
+# suites 0
+# pass 21
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5579.885222

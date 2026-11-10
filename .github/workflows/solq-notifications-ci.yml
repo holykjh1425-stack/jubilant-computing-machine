@@ -1,0 +1,56 @@
+name: SOLQ isolated notification verification
+on:
+  push:
+    branches: [dev/solq-notifications-20261110]
+    paths:
+      - 'candidates/customer-notifications-20261110/**'
+      - 'supabase/functions/solq-notifications/**'
+      - 'ops/notifications/**'
+      - 'tests/notifications*.mjs'
+      - '.github/workflows/solq-notifications-ci.yml'
+      - 'package.json'
+      - 'package-lock.json'
+permissions:
+  contents: read
+jobs:
+  isolated:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_DB: solq_notifications_test
+          POSTGRES_USER: synthetic_fixture
+          POSTGRES_PASSWORD: synthetic_ci_only
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U synthetic_fixture -d solq_notifications_test"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - name: Synthetic database and approval gates; no credentials or production endpoints
+        run: node --test tests/notifications.test.mjs tests/notifications-approval.test.mjs tests/free-workflow.test.mjs
+      - name: Default worker must refuse sending
+        run: node ops/notifications/run.mjs
+      - name: Actual isolated PostgreSQL 17 competing connections
+        env:
+          SOLQ_ISOLATED_PG: 'true'
+          SOLQ_ISOLATED_PG_URL: postgresql://synthetic_fixture:synthetic_ci_only@127.0.0.1:5432/solq_notifications_test
+        run: node tests/notifications-native.mjs
+      - name: Preserve sanitized native evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: solq-notifications-native-pg17
+          path: ops/notifications/evidence/native-postgres.json
+          if-no-files-found: warn
+          retention-days: 7
