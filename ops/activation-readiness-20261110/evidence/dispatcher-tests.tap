@@ -1,0 +1,64 @@
+TAP version 13
+# Subtest: shared Edge worker is a byte-exact generated mirror of the already verified worker
+ok 1 - shared Edge worker is a byte-exact generated mirror of the already verified worker
+  ---
+  duration_ms: 9.903014
+  type: 'test'
+  ...
+# Subtest: dispatcher requires independent authentication and explicit approval before any I/O
+ok 2 - dispatcher requires independent authentication and explicit approval before any I/O
+  ---
+  duration_ms: 9.931672
+  type: 'test'
+  ...
+# Subtest: missing OAuth setup and caller-injected recipients are rejected before queue access
+ok 3 - missing OAuth setup and caller-injected recipients are rejected before queue access
+  ---
+  duration_ms: 3.466621
+  type: 'test'
+  ...
+# Subtest: empty queue does not obtain OAuth tokens or send email
+ok 4 - empty queue does not obtain OAuth tokens or send email
+  ---
+  duration_ms: 2.809387
+  type: 'test'
+  ...
+# Subtest: serverless OAuth refresh and single-item result: accepted
+ok 5 - serverless OAuth refresh and single-item result: accepted
+  ---
+  duration_ms: 5.353039
+  type: 'test'
+  ...
+# Subtest: serverless OAuth refresh and single-item result: retry_wait
+ok 6 - serverless OAuth refresh and single-item result: retry_wait
+  ---
+  duration_ms: 2.088584
+  type: 'test'
+  ...
+# Subtest: serverless OAuth refresh and single-item result: uncertain
+ok 7 - serverless OAuth refresh and single-item result: uncertain
+  ---
+  duration_ms: 1.401763
+  type: 'test'
+  ...
+# Subtest: refresh token revoked: no Gmail send; queue records authentication failure
+ok 8 - refresh token revoked: no Gmail send; queue records authentication failure
+  ---
+  duration_ms: 2.029137
+  type: 'test'
+  ...
+# Subtest: queue acknowledgement outage stops safely without an automatic second send
+ok 9 - queue acknowledgement outage stops safely without an automatic second send
+  ---
+  duration_ms: 1.886234
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 264.395825
