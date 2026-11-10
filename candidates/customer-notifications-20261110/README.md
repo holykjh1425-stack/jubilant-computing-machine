@@ -16,7 +16,7 @@ node ops/notifications/run.mjs
 
 ## 운영 적용 전에 필요한 구체 조건
 
-1. schema.sql은 새 migration이 아닌 검토용 SQL 후보이다. 검증된 독립 PostgreSQL에 적용하여 다중 연결 동시 claim·일일 quota·장애복구와 실제 권한을 검증한다. 운영에는 실행하지 않는다. Supabase CLI의 현 버전과 `--help`를 확인해 공식 migration 생성/차이 검토 절차로 전환한다.
+1. schema.sql은 새 migration이 아닌 검토용 SQL 후보이다. 실제 CI의 독립 PostgreSQL 17에서 12개 연결 동시 claim·일일 quota·연결 종료 복구를 검증했다(run 42737253473). 실제 Supabase 인증/권한·상시 실행 환경 검증은 별도다. 운영에는 실행하지 않는다. Supabase CLI의 현 버전과 `--help`를 확인해 공식 migration 생성/차이 검토 절차로 전환한다.
 2. 실제 운영에서는 기존 트리거·승인 함수·연락처 고지 및 보관정책 호환성을 대조하고, 완전한 암호화 백업/격리 복원·롤백 관문을 종결한다. 후보에는 고객 데이터 소급 발송·삭제·상태 변경이 없다.
 3. Gmail 설정은 서버 보호 Secrets에서만 구성: `SOLQ_GMAIL_CLIENT_ID`, `SOLQ_GMAIL_CLIENT_SECRET`, `SOLQ_GMAIL_REFRESH_TOKEN`. 최소 gmail.send scope로 소유자가 직접 OAuth를 완료한다. ChatGPT Gmail 연결 토큰을 추출/복사하지 않는다. 송신/관리자 수신 주소는 별도 확인한 `SOLQ_NOTIFY_SENDER`, `SOLQ_NOTIFY_ADMIN_EMAIL`이다.
 4. Edge 설정: `SOLQ_NOTIFICATIONS_ENABLED`, `SOLQ_NOTIFICATION_WORKER_KEY`(독립 32자 이상), `SOLQ_NOTIFICATION_ORIGINS`(검토된 정확한 origin만). service_role은 서버에서만 사용하며 worker key와 구분한다. 기존 설정에는 값을 추가하지 않았다. Gateway는 공개 submit/account_event와 실제 관리자 snapshot, worker reconcile/claim/finish를 구분한다. 플랫폼 공개 접근 설정과 남용 제한도 검증해야 한다.

@@ -1,0 +1,25 @@
+{
+  "sourceCommit": "3ad6da253713e9d52d96cb410d2803fcd47784f2",
+  "enabled": false,
+  "productionWrites": 0,
+  "changedFiles": [
+    "admin.html",
+    "admin.js",
+    "api.js",
+    "deposit.html",
+    "deposit.js",
+    "index.html",
+    "notification-admin-panel.js",
+    "notification-client.js"
+  ],
+  "hashes": {
+    "api.js": "69879472ea64c6a51cd1ee4bc51b9ec1866e7ea9072e04d4dd899dfb8629ca5f",
+    "admin.js": "f59241a4b4a73b16ec3e69c9eae8341266dc7639b607dc029e11242c6dfcafea",
+    "notification-admin-panel.js": "7ef944e2a15231db7fe7748b89b6f267c1a395e067bc9cf4cfbe808a8220897f",
+    "deposit.html": "7d1cb16563ed95dd20ecf5569c077989d0dbd95f64447ecbb83f839160cf6346",
+    "admin.html": "08f87293fc625e41220059f0f956f92f8ecd345652ef799c371f2ec1d0c8c680",
+    "notification-client.js": "67ede950de095576fb15978a294f0089aa451c351df2cee97d64024a56ff9fe1",
+    "index.html": "797cb03824b6ac790c9c7d0c74d461cb2eff9b04d91998b117467b1887a24680",
+    "deposit.js": "5a0122be2e1ddc49cc9de659ede3700755d5522de97880580c93e91032364925"
+  }
+}

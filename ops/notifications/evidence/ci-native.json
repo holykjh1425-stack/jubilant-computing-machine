@@ -1,0 +1,37 @@
+{
+  "run_id": 42737253473,
+  "job_id": 129569389805,
+  "commit": "ef825f97ea2c1d48973afde203595e36b9a6de8c",
+  "conclusion": "success",
+  "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/actions/runs/42737253473",
+  "automatedTests": {
+    "pass": 21,
+    "fail": 0
+  },
+  "nativePostgreSQL": {
+    "image": "postgres:17",
+    "imageDigest": "sha256:ff87138949ad9a46f32ff23bd6852b52ce024a13dffe9b4087be98292cdd3b4f",
+    "independentConnections": 12,
+    "checks": [
+      "12 independent connections create exactly one application for same token",
+      "12 competing claimers respect atomic global daily limit of 5",
+      "all five claimed jobs have distinct ids and fencing tokens",
+      "two independent completions accept exactly one winner",
+      "expired work marked uncertain even when quota exhausted",
+      "expired owner cannot finish after recovery",
+      "disconnect rolls back uncommitted reservation and a different connection recovers it"
+    ]
+  },
+  "artifact": {
+    "id": 13727726839,
+    "digest": "sha256:1949a702a2f27417349a5384bff1f03a86edcb3d51981bb88400317cc5601f92",
+    "expires": "2026-11-17T01:39:13Z"
+  },
+  "dryRun": {
+    "blocked": "not_approved",
+    "sent": 0
+  },
+  "productionWrites": 0,
+  "externalMessages": 0,
+  "source": "actual GitHub job logs and artifact metadata; full artifact JSON not downloaded"
+}
