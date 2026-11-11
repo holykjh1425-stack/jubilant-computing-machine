@@ -15,7 +15,7 @@ export function mount({adapter,fixture=false,tasks,esc,toast,legacy,localState,o
  $('#legacyCount').textContent=legacy?.error?'이전 로컬 기록 읽기 실패 · 원본 보존':`이전 로컬 기록 ${Object.keys(legacy?.notes||{}).length}개 · 원본 키 보존`;
  function clearCurrent(){current=null;onReviews([]);document.querySelectorAll('.server-private').forEach(node=>node.remove());for(const id of ['liveMetrics','liveSources','liveDetails'])$('#'+id).replaceChildren();$('#liveMetrics').innerHTML='<p class="sub">표시할 최신 운영값이 없습니다. 아래 과거 보존 기준과 구분해 주세요.</p>';$('#serverSave').disabled=true;$('#serverRead').disabled=true;$('#serverReviews').replaceChildren();}
  let controller;
- function render(event){
+ function render(event){if(event.kind==='LOADING')$('#lastAttempt').textContent=fmt(new Date());
   $('#liveState').textContent=statusLabels[event.kind]||event.kind;
   if(event.kind!=='SUCCESS'){clearCurrent();$('#lastSuccess').textContent=fmt(controller?.lastSuccess);if(['AUTH','FORBIDDEN','OFFLINE','HIDDEN'].includes(event.kind))$('#liveAuto').checked=false;return;}
   current=event.data;if(Object.values(event.data.sources).some(x=>!x.ok||!x.complete))$('#liveState').textContent='일부 조회 실패·불완전 · 출처별 확인';$('#lastSuccess').textContent=fmt(event.data.at);$('#liveSourceLabel').textContent=event.data.source;

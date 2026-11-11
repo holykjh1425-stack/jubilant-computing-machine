@@ -44,5 +44,5 @@ test('PASS requires evidence; unsafe URLs rejected; facts and next action requir
 });
 test('candidate default is fail-closed; original customer files remain untouched by candidate',async()=>{
  const flags=await readFile(new URL('./deployment.candidate.mjs',import.meta.url),'utf8');assert.match(flags,/LIVE_READ_ENABLED=false/);assert.match(flags,/SERVER_REVIEWS_ENABLED=false/);
- const page=await readFile(new URL('./SOLQ_control_recovery.html',import.meta.url),'utf8');assert.match(page,/connect-src 'none'/);assert.match(page,/solq-control-local-drafts-v2/);assert.doesNotMatch(page,/createFixtureAdapter/);assert.match(page,/@media\(max-width:700px\).*#tasks table/s);
+ const page=await readFile(new URL('./SOLQ_control_recovery.html',import.meta.url),'utf8');assert.match(page,/connect-src 'none'/);assert.match(page,/id="lastAttempt"/);assert.match(page,/solq-control-local-drafts-v2/);assert.doesNotMatch(page,/createFixtureAdapter/);assert.match(page,/@media\(max-width:700px\).*#tasks table/s);
 });

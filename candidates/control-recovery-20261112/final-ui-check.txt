@@ -1,0 +1,18 @@
+✔ auth rejects expired, missing membership, wrong identity and checks server user (4.616645ms)
+✔ single flight / pause discards in-flight response and makes no operational writes (2.562986ms)
+✔ auth failure prevents customer reads; three failures stop automatic polling (1.147068ms)
+✔ failed refresh clears data and retains last-success time only (1.823968ms)
+✔ automatic interval 60 seconds; offline / hidden cannot read; expiry clears display (1.15876ms)
+✔ request guard permits reads and reviews only; rejects RPC, workers, updates, refresh and foreign origin (5.214045ms)
+✔ partial sources and capped results never produce complete anomaly or status counts (3.27473ms)
+✔ existing v1 raw bytes preserved including invalid JSON; no writes or removes (0.738367ms)
+✔ PASS requires evidence; unsafe URLs rejected; facts and next action required (1.353927ms)
+✔ candidate default is fail-closed; original customer files remain untouched by candidate (24.209904ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 294.726209
