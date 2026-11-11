@@ -1,0 +1,20 @@
+✔ auth rejects expired, missing membership, wrong identity and checks server user (3.373651ms)
+✔ single flight / pause discards in-flight response and makes no operational writes (1.700008ms)
+✔ auth failure prevents customer reads; three failures stop automatic polling (1.146491ms)
+✔ failed refresh clears data and retains last-success time only (1.01964ms)
+✔ automatic interval 60 seconds; offline / hidden cannot read; expiry clears display (0.815146ms)
+✔ request guard permits reads and reviews only; rejects RPC, workers, updates, refresh and foreign origin (1.972851ms)
+✔ partial sources and capped results never produce complete anomaly or status counts (2.390609ms)
+✔ existing v1 raw bytes preserved including invalid JSON; no writes or removes (0.519975ms)
+✔ PASS requires evidence; unsafe URLs rejected; facts and next action required (0.680325ms)
+✔ candidate default is fail-closed; original customer files remain untouched by candidate (18.154902ms)
+✔ isolated PostgreSQL RLS: admin/nonadmin/anon; append-only writer ledger; preservation and conflict (4683.739522ms)
+✔ pinned real SDK with synthetic HTTP: login/getUser/membership/read projections; nonadmin blocks reads (78.202802ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5083.628638
