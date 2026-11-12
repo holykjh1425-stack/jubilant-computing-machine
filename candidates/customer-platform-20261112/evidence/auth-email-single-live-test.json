@@ -1,0 +1,33 @@
+{
+  "started_at_utc": "2026-11-12T09:35:41.228505+00:00",
+  "requests": 1,
+  "create_user": true,
+  "redirect_override": false,
+  "automatic_retries": 0,
+  "http_status": 200,
+  "request_accepted": true,
+  "error_code": null,
+  "duration_seconds": 10.761,
+  "finished_at_utc": "2026-11-12T09:35:51.990054+00:00",
+  "project": "elfacqmvygnwjlklqhiz",
+  "before": {
+    "test_user_count": 0,
+    "email": true,
+    "disable_signup": false,
+    "mailer_autoconfirm": false,
+    "anonymous_users": false
+  },
+  "after": {
+    "test_user_count": 1,
+    "created_during_approved_test": true,
+    "confirmation_sent_recorded": true,
+    "email_confirmed": false
+  },
+  "inbox_delivery": "AWAITING_USER_CONFIRMATION",
+  "smtp_error_in_auth_response": false,
+  "smtp_internal_logs_inspected": false,
+  "historical_54_45_10_rerun": false,
+  "existing_customer_rows_directly_modified": false,
+  "operating_settings_changed": false,
+  "new_cost": 0
+}
