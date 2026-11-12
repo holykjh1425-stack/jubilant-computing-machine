@@ -1,0 +1,66 @@
+{
+  "format": 1,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "6bae0e3b2988fcbf933fae73f616b2666a82c8cc6cd6d9afe4a5f051b323b29a"
+    },
+    {
+      "path": "READ_ONLY_CONNECTION_DESIGN.md",
+      "sha256": "50ae1df7ab2e2037c925bb6c83c92295cf1694d68e6018750a07c99540a39426"
+    },
+    {
+      "path": "fixtures.mjs",
+      "sha256": "37c71a8f374e5d55135182219bdd578def45d432721cb190531b43143d900c9a"
+    },
+    {
+      "path": "package.json",
+      "sha256": "0e9d33df9a36931abdf7ffed28a5816e5e97923c9323a245d9fe4c91384d8b99"
+    },
+    {
+      "path": "public/app.mjs",
+      "sha256": "7e45c2e3df35f19606a8465393a63db0b4295a72c2994adb30806d36727aa072"
+    },
+    {
+      "path": "public/domain.mjs",
+      "sha256": "4e44546bbda817361453238da2c15c692b71b7ebc44c8f53e79e3fe5eec51485"
+    },
+    {
+      "path": "public/index.html",
+      "sha256": "08ba6f09f33858bfdbd6644cf391986888efa3dc3a13b3ca5e776ec50e0de2b6"
+    },
+    {
+      "path": "public/qa-mobile.html",
+      "sha256": "12b47d4b2abee9336f309470a6e1071b4b2614ef61644a8cbef86a8f098ecdf5"
+    },
+    {
+      "path": "public/qa-tablet.html",
+      "sha256": "c281e18bcfbe4a771c3cac5568f14e5b2a0ac0cb2624cd5f5cd88d3c369824c0"
+    },
+    {
+      "path": "public/style.css",
+      "sha256": "f79125ae21b42ae74b2b303a5d6fd107fcddf9c76286097023fe6e25b6679ab1"
+    },
+    {
+      "path": "reader.mjs",
+      "sha256": "b2002db47575c30bfb12c1243b02e49cc0c5d41ac848cd1fc2270f3d4ddd7e62"
+    },
+    {
+      "path": "server-authenticator.mjs",
+      "sha256": "6e5a2f17f00b3abd08ec42f18fa26f9c2222574e21722f52e53b8fe716573d38"
+    },
+    {
+      "path": "server.mjs",
+      "sha256": "24956f550b78f5feac28baa2abc0f5aed38d2533e42892fdef7d9717dc16a15c"
+    },
+    {
+      "path": "workbench.test.mjs",
+      "sha256": "53cdfe03535d57a937ee9a5ea8fc35070a73917a5b909730f85b1a3ecfe7d06a"
+    },
+    {
+      "path": "PUBLIC_REVIEW.json",
+      "sha256": "a839dd1786df6627bc6822a6f4897684d97f7b4bd582792fafde344f01034aa7"
+    }
+  ],
+  "scope": "Exact source-only allowlist; the manifest itself is also included. No Git metadata or private evidence."
+}

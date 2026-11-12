@@ -1,0 +1,9 @@
+// Entirely synthetic. No production names, contacts, IDs, plans or receipt numbers.
+const steps=['요구사항 확인','현재 업무 분석','자동화 범위 설정','입력·결과 설계','검증 기준 정리','관리자 검토'];
+export const fixtures=[
+ {receipt:'DEMO-20261112-001',label:'제조업 · 합성 사례 A',type:'업무 자동화',integrity:'정상',quote:'검토 중',deposit:'미확인',approval:'미승인',answers:{0:'제조업 / 합성 사례. 기업 규모 미확인',1:'주문 접수 → 엑셀 취합 → 담당자 전달',2:'주문 정보를 반복 입력하면서 누락 발생',3:'엑셀',4:'주 5회 / 건당 시간 미확인',5:'입력 검증·누락 목록 정리 후보',6:'개인정보 포함 가능성 — 처리 범위 미확인'},plan:steps,planStatus:'초안 · 합성',audit:[{at:'2026-11-12 09:10 KST',kind:'조회',text:'합성 신청·무료 계획 연결 확인. 실제 변경 이력 아님.'}],next:'익명화된 주문 양식과 건당 소요 시간 확인',evidence:'https://example.invalid/evidence/demo-001'},
+ {receipt:'DEMO-20261112-002',label:'서비스업 · 합성 사례 B',type:'고객 관리',integrity:'미확인',quote:'자료 대기',deposit:'미확인',approval:'미확인',answers:{0:'서비스업 / 기업 규모 미확인',2:'상담 기록을 찾기 어려움'},plan:[],planStatus:'미확인',audit:[],next:'상담 접수·조회 과정과 사용 도구 확인',evidence:null},
+ {receipt:'DEMO-20261112-003',label:'유통업 · 합성 사례 C',type:'견적 관리',integrity:'중복',quote:'검토 보류',deposit:'확인 · 합성',approval:'미승인',answers:{0:'유통업 / 합성 사례',2:'견적서를 반복 작성',3:'구글 시트'},plan:steps,planStatus:'비교 필요 · 합성 2개',audit:[{at:'2026-11-12 09:15 KST',kind:'조회',text:'동일 접수번호에 계획 2개. 자동 병합하지 않음.'}],next:'두 계획의 생성 근거와 최신본을 담당자가 확인',evidence:null},
+ {receipt:'DEMO-20261112-004',label:'업종 미확인 · 합성 사례 D',type:'업무 자동화',integrity:'미연결',quote:'미확인',deposit:'미확인',approval:'미확인',answers:{},plan:[],planStatus:'연결 근거 없음',audit:[],next:'작업 application_id와 신청 연결 근거 확인',evidence:null},
+ {receipt:'DEMO-20261112-005',label:'교육업 · 합성 사례 E',type:'문서 정리',integrity:'실패',quote:'검토 완료 · 합성',deposit:'미확인',approval:'미승인',answers:{0:'교육업 / 합성 사례',2:'문서 분류 반복',6:'외부 연동 허용 범위 미확인'},plan:steps,planStatus:'조회 실패 시나리오 · 합성',audit:[{at:'2026-11-12 09:20 KST',kind:'조회',text:'실패 작업 발견. 재시도·제작 실행 안 함.'}],next:'실패 코드와 재시도 이력을 읽기 전용 확인',evidence:null}
+];

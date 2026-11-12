@@ -1,0 +1,32 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {diagnosis,matchRecords,safeEvidence} from './public/domain.mjs';
+import {createWorkbenchReader} from './reader.mjs';
+import {handler} from './server.mjs';
+import {fixtures} from './fixtures.mjs';
+const uid='11111111-1111-4111-8111-111111111111',sid='22222222-2222-4222-8222-222222222222';
+const claims={sub:uid,role:'authenticated',is_anonymous:false,session_id:sid,exp:2000000000};
+const token='synthetic.'+Buffer.from(JSON.stringify(claims)).toString('base64url')+'.not-a-real-signature';
+function setup(overrides={}){let reads=0;const options={enabled:true,clock:()=>1000000000000,auth:{getUser:async exact=>{assert.equal(exact,token);return {data:{user:{id:uid,email_confirmed_at:'synthetic-confirmed',is_anonymous:false}}}}},readSession:async()=>({id:sid,user_id:uid,not_after:null}),readAdmin:async()=>true,readSnapshot:async()=>{reads++;return {records:fixtures}},...overrides};return {reader:createWorkbenchReader(options),reads:()=>reads}}
+const call=r=>r.reader({authorization:'Bearer '+token});
+test('unknown business facts produce no invented diagnosis',()=>{const d=diagnosis();assert.equal(d.progress,0);assert.equal(d.unknown.length,8);assert.match(d.summary,/미확인/);assert.match(d.priority,/미확인/)});
+test('repetition branches into workload with explicit reason',()=>{const d=diagnosis({2:'반복 입력'});assert.ok(d.questions.some(q=>q.field===4&&q.reason.includes('반복')));assert.equal(d.progress,13)});
+test('spreadsheet and personal data constraints generate distinct follow-ups',()=>{const d=diagnosis({3:'엑셀',6:'개인정보'});assert.ok(d.questions.some(q=>q.field===3));assert.ok(d.questions.some(q=>q.field===6));assert.equal(d.priority,'보안 범위 확인 우선')});
+test('branch exploration cannot mutate source diagnosis',()=>{const before=JSON.stringify(fixtures);diagnosis({...fixtures[0].answers,2:'임시 반복'});assert.equal(JSON.stringify(fixtures),before)});
+test('receipt search and integrity filter combine without changing source',()=>{assert.equal(matchRecords(fixtures,'003','중복').length,1);assert.equal(matchRecords(fixtures,'003','실패').length,0);assert.equal(matchRecords(fixtures,'no-match','전체').length,0)});
+test('evidence rejects scripts, insecure schemes and embedded credentials',()=>{for(const u of ['javascript:alert(1)','http://example.invalid','https://user:secret@example.invalid',null])assert.equal(safeEvidence(u),null);assert.equal(safeEvidence('https://example.invalid/proof'),'https://example.invalid/proof')});
+test('live reader defaults disabled',async()=>{await assert.rejects(createWorkbenchReader()({authorization:'Bearer '+token}),{code:'NOT_DEPLOYED'})});
+test('unauthenticated request cannot read snapshot',async()=>{const f=setup();await assert.rejects(f.reader({}),{code:'AUTH_REQUIRED'});assert.equal(f.reads(),0)});
+test('verified customer without admin membership cannot read snapshot',async()=>{const f=setup({readAdmin:async()=>false});await assert.rejects(call(f),{code:'ADMIN_REQUIRED'});assert.equal(f.reads(),0)});
+test('revoked session cannot read snapshot',async()=>{const f=setup({readSession:async()=>null});await assert.rejects(call(f),{code:'AUTH_REQUIRED'});assert.equal(f.reads(),0)});
+test('session expiry blocks data read',async()=>{const f=setup({clock:()=>2100000000000});await assert.rejects(call(f),{code:'AUTH_REQUIRED'});assert.equal(f.reads(),0)});
+test('admin role revoked during query cannot return data',async()=>{let n=0;const f=setup({readAdmin:async()=>++n===1});await assert.rejects(call(f),{code:'AUTH_CHANGED'});assert.equal(f.reads(),1)});
+test('session changes during query cannot return data',async()=>{let n=0;const f=setup({readSession:async()=>++n===1?{id:sid,user_id:uid}:null});await assert.rejects(call(f),{code:'AUTH_REQUIRED'})});
+test('authorized admin reads with exact-token validation before and after',async()=>{let n=0;const f=setup({readAdmin:async()=>{n++;return true}});const d=await call(f);assert.equal(n,2);assert.equal(d.success,true);assert.equal(f.reads(),1)});
+test('read failure does not become a success snapshot',async()=>{const f=setup({readSnapshot:async()=>{throw Error('READ_FAILED')}});await assert.rejects(call(f),/READ_FAILED/)});
+test('all mutation methods are refused before auth or read',async()=>{for(const method of ['POST','PATCH','DELETE','PUT']){const f=setup();await assert.rejects(f.reader({method,authorization:'Bearer '+token}),{code:'READ_ONLY'});assert.equal(f.reads(),0)}});
+function route(url,headers={},method='GET'){let status,payload;const response={setHeader(){},writeHead(s){status=s},end(b){payload=JSON.parse(b)}};handler({url,method,headers},response);return {status,payload}}
+test('preview API denies missing and customer demo roles',()=>{assert.equal(route('/api/demo-snapshot').status,401);assert.equal(route('/api/demo-snapshot',{'x-solq-demo-role':'synthetic-customer'}).status,401)});
+test('preview cannot expose live route or mutation path',()=>{assert.equal(route('/api/live').status,403);assert.equal(route('/api/demo-snapshot',{},'POST').status,405)});
+test('preview failure modes return no historical records',()=>{for(const mode of ['offline','expired']){const r=route('/api/demo-snapshot',{'x-solq-demo-role':'synthetic-admin','x-solq-demo-error':mode});assert.ok(r.status>=400);assert.equal(r.payload.records,undefined)}});
+test('preview contains only clearly synthetic receipt fixtures',()=>{const r=route('/api/demo-snapshot',{'x-solq-demo-role':'synthetic-admin'});assert.equal(r.status,200);assert.ok(r.payload.records.every(x=>x.receipt.startsWith('DEMO-')));assert.equal(r.payload.source,'SYNTHETIC_FIXTURES_ONLY')});

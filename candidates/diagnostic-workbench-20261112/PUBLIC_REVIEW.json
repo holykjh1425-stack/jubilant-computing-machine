@@ -1,0 +1,22 @@
+{
+  "SENTINEL": "PASS_FOR_THIS_EXPORT",
+  "GUARD": "PASS_FOR_LOCAL_PRESERVATION_AND_DISABLED_LIVE_PATH",
+  "live_integration": "NOT_CONNECTED_NOT_APPROVED",
+  "sensitive_findings": 0,
+  "file_count_scanned": 14,
+  "checks": [
+    "No live project reference or raw customer receipt",
+    "Only reserved example email/domain data",
+    "No credential/JWT/private-key literals",
+    "No private row fingerprints or operational snapshots",
+    "No screenshots, hidden files, symlinks or Git history",
+    "Original source preserved; public preservation panel sanitized"
+  ],
+  "regression_tests": {
+    "pass": 20,
+    "fail": 0,
+    "scope": "synthetic candidate only"
+  },
+  "review_limit": "Pattern checks and bounded manual review do not prove absence of every possible secret. Live Auth/RLS E2E is not certified.",
+  "upload_status": "PENDING_EXPLICIT_APPROVAL"
+}
