@@ -1,0 +1,11 @@
+{
+  "dateKst":"2026-11-12",
+  "baseCommit":"58200933f458d2db2925f5dae604a7a419a9d4f0",
+  "dashboard":{"attempted":"Auth SMTP project page","outcome":"redirected to Supabase Dashboard sign-in","authenticated":false,"settingsRead":false,"settingsChanged":false,"loginAttempted":false},
+  "settings":{"SMTP":"UNVERIFIED","senderDomain":"UNVERIFIED","template":"UNVERIFIED","rateLimits":"UNVERIFIED","cost":"UNVERIFIED","redirectAllowlist":"UNVERIFIED","detailedEmailPolicy":"UNVERIFIED"},
+  "dns":{"resolvers":["Google Public DNS","Cloudflare"],"queries":[{"name":"solqtech.com","type":"TXT","status":0,"answerCount":0,"spfObserved":false},{"name":"solqtech.com","type":"MX","status":0,"answerCount":0},{"name":"_dmarc.solqtech.com","type":"TXT","status":3,"answerCount":0}],"DKIM":"UNVERIFIED: provider selector and actual sender unknown","scope":"recursive public DNS observation; no claim about all subdomains or delivery capability"},
+  "reused":{"securityWarnings":7,"advisorTimestampUtc":"2026-11-12T04:38:00Z","source":"ATLAS work order; not rerun","emailCandidateTests":54,"newRuntimeTests":0,"logsByteIdenticalTo661cfd4":true,"resolvedWarnings":0},
+  "evidenceHashes":{"verified-email-sql.txt":"a749a5460d819c8897686e866d2059858bbbc87d053f77d7d2c71b8c8ac6de31","verified-email-js.txt":"3bad180458d54c33f6dcc27ea64c68c368a4e9b4117b36fa693a3dce4ac9fcd3","verified-email-auth-regression.txt":"5395908cdb1242670a06e3422b96de776fc04bac329b91bc6e926598376c0e2b"},
+  "operatingWrites":0,"authChanges":0,"emailSends":0,"newAccounts":0,"newPaidSpendingKrw":0,"deployment":false,
+  "legacyCutoverCandidate":{"executed":false,"runtimeVerified":false,"defaultApprovalGate":"NO-GO"}
+}
