@@ -1,0 +1,57 @@
+{
+  "checked_at_utc": "2026-11-12T09:08:10.641017+00:00",
+  "baseline": "95f3e45",
+  "checks": {
+    "index.html": {
+      "sha256": "f3d71805ee93af1946d2acb439f434376aed70912741e517fee2815bb5493ef5",
+      "unchanged_from_95f3e45": true
+    },
+    "app.js": {
+      "sha256": "f3fe0dfaf8ac8c867ca16d299bed7b49a17edca139342a2c69dd71507bbf02d1",
+      "unchanged_from_95f3e45": true
+    },
+    "config.js": {
+      "sha256": "0a0051ed2c9ff8f426d90d916efb96bd4db82ed48981faa9cef4cf60c4a8b218",
+      "unchanged_from_95f3e45": true
+    },
+    "admin.html": {
+      "sha256": "34e0e345d69014444d275030b04cb79ed3b04ca1840988267e150af6f393ddb9",
+      "unchanged_from_95f3e45": true
+    },
+    "candidates/customer-platform-20261112/evidence/verified-email-sql.txt": {
+      "sha256": "a749a5460d819c8897686e866d2059858bbbc87d053f77d7d2c71b8c8ac6de31",
+      "unchanged_from_95f3e45": true
+    },
+    "candidates/customer-platform-20261112/evidence/verified-email-js.txt": {
+      "sha256": "3bad180458d54c33f6dcc27ea64c68c368a4e9b4117b36fa693a3dce4ac9fcd3",
+      "unchanged_from_95f3e45": true
+    },
+    "candidates/customer-platform-20261112/evidence/verified-email-auth-regression.txt": {
+      "sha256": "5395908cdb1242670a06e3422b96de776fc04bac329b91bc6e926598376c0e2b",
+      "unchanged_from_95f3e45": true
+    },
+    "candidates/customer-platform-20261112/evidence/email-link-js.txt": {
+      "sha256": "2fcf0b90054467f200294a80bce5f90c1ff6b2a8ee08137fa56181a4d5865504",
+      "unchanged_from_95f3e45": true
+    },
+    "candidates/customer-platform-20261112/evidence/email-link-completion-sql.txt": {
+      "sha256": "4940984e6e76eae10b027c122c8d44c120dc3616bc6c6aeb1ec7190566f10642",
+      "unchanged_from_95f3e45": true
+    }
+  },
+  "historical_tests_rerun": false,
+  "live_select_results": {
+    "designated_test_email_registered": false,
+    "verified_intake_schema_present": false,
+    "completion_outbox_schema_present": false,
+    "verified_submit_rpc_present": false
+  },
+  "public_auth_settings": {
+    "http": 200,
+    "email": true,
+    "disable_signup": false,
+    "mailer_autoconfirm": false,
+    "anonymous_users": false
+  },
+  "scope": "File preservation and read-only metadata only; no live customer-row integrity claim"
+}

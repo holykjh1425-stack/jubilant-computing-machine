@@ -9,7 +9,7 @@
   "callbackHeadersRequired": {"Referrer-Policy": "no-referrer", "Cache-Control": "no-store"},
   "callbackMustRunBeforeLegacyAppAndExternalResources": true,
   "sender": "ggwell06@gmail.com",
-  "smtp": {"host": "smtp.gmail.com", "port": 587, "requireStartTls": true, "verifyCertificate": true},
+  "smtp": {"host": "smtp.gmail.com", "port": 465, "implicitTls": true, "requireStartTls": false, "verifyCertificate": true},
   "approvals": {"authChange": false, "smtpSecretRegistration": false, "realMailTest": false, "dbMigration": false, "deployment": false, "paidService": false},
   "liveEnabled": false,
   "automaticExecution": false

@@ -1,7 +1,9 @@
 // Adapter to an already-approved SERVER SMTP transport. Does not create a connection or read secrets.
-// Configure that transport separately: smtp.gmail.com:587, STARTTLS required, cert validation ON.
+// Configure that transport separately: smtp.gmail.com:465, implicit TLS, cert validation ON.
 import {fail,normalizeEmail} from '../verified-email/service.mjs';
 import {SENDER} from './notifications.mjs';
+// Public connection profile only; credentials must be injected by the approved server secret store.
+export const SMTP_PROFILE=Object.freeze({host:'smtp.gmail.com',port:465,secure:true,tls:Object.freeze({rejectUnauthorized:true})});
 export function createSmtpProvider({enabled=false,synthetic=false,smtpApproved=false,deliveryApproved=false,costApproved=false,transport}={}){
  return {async send(message){
   if(!enabled||!transport||!synthetic&&(!smtpApproved||!deliveryApproved||!costApproved))throw fail('NOT_DEPLOYED');

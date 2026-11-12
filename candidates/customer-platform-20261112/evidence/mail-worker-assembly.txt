@@ -1,0 +1,18 @@
+✔ SMTP public profile matches saved implicit TLS port and certificate verification (2.645273ms)
+✔ construction is disabled by default and never calls a transport (0.7499ms)
+✔ every real execution approval is independently required (0.519777ms)
+✔ shared durable budget injection is mandatory (0.26574ms)
+✔ receipt reserves budget and confirms destination before SMTP acceptance (1.272274ms)
+✔ budget denial does not send and retains a definitive failure transition (0.355229ms)
+✔ completion revalidates current authority after shared reservation (0.564294ms)
+✔ ambiguous SMTP exception is unknown and never retried in this invocation (0.607475ms)
+✔ receipt and completion cannot overlap in one worker; guard clears afterwards (11.254623ms)
+✔ changed receipt recipient cancels before transport (0.696419ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 195.686266

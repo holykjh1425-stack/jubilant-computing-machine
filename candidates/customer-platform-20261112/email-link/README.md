@@ -36,3 +36,9 @@ PYTHONPATH=/tmp/solq-mail-test-deps python candidates/customer-platform-20261112
 SQL runner는 psycopg[binary] 3.2.13, PostgreSQL 17.11, 임시 cluster·loopback·확장/Cron 없음. 이전 native-multisession의 bootstrap DDL만 재사용하고 기존 54/43 체크는 실행하지 않는다. 독립 backend 47개, 20개 동시 큐/claim 검증. 합성 `.invalid` 주소만 사용. 새 npm dependency·실제 외부 API 호출·자동 스케줄러 없음.
 
 전체 보고·비용/승인: `docs/SOLQ_CUSTOMER_EMAIL_LINK_AUTONOTICE_RESULT_20261112.md`.
+
+## SMTP 활성화 이후 연결 준비 보완
+
+`mail-worker.mjs`는 기존 접수/완료 dispatcher를 현재 저장된 Gmail 465 implicit TLS profile에 맞춰 조합한다. 기본 비활성·명시적 1회 tick만 제공하며 transport/secret/timer를 만들지 않는다. receipt/completion 공통 `reserveBudget`와 완료 `authorizeCurrent`를 필수로 주입한다. 영구 quota 저장기·실제 서버 transport 연결은 아직 미완료다. 위 기존 45 PASS와 별도로 새 조립 범위만 `node --test candidates/customer-platform-20261112/email-link/mail-worker.test.mjs`에서 10 PASS를 확인했다. 기존 54/45는 재실행하지 않았다.
+
+최신 원인·운영 metadata·승인/롤백 보고: [고객 이메일 자동 발송 연결 준비 결과](../../../docs/SOLQ_AUTOMAIL_CONNECTION_PREPARATION_RESULT_20261112.md). Auth SMTP 활성화와 접수/완료 자동 발송 완료를 구분한다.
