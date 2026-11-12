@@ -1,0 +1,18 @@
+{
+  "status": "PREPARATION_ONLY_NOT_CONNECTED",
+  "sender": {"address":"ggwell06@gmail.com","displayNameProposal":"SOLQ","replyToProposal":"ggwell06@gmail.com"},
+  "gmailSmtpProposal": {"host":"smtp.gmail.com","port":587,"tls":"STARTTLS_REQUIRED","certificateVerification":true,"username":"ggwell06@gmail.com","credentialIncluded":false},
+  "channels": {
+    "authentication": {"adapter":"Supabase Auth custom SMTP","enabled":false},
+    "application_received": {"adapter":"existing trusted server receipt outbox","enabled":false},
+    "production_completed": {"adapter":"not_implemented","enabled":false},
+    "revision_completed": {"adapter":"not_implemented","enabled":false}
+  },
+  "approvals": {"googleAccountSecurityChange":false,"credentialCreationAndRegistration":false,"supabaseAuthSmtpChange":false,"testSend":false,"customerSend":false,"newCost":false,"deployment":false},
+  "transportCreated":false,
+  "automaticExecution":false,
+  "secretStorageRule":"Only approved server or Supabase protected credential input. No password, app password or token in this file, GitHub, issue, chat or logs.",
+  "limits": {"actualAccountQuota":null,"actualSupabaseLimit":null,"actualPrice":null,"proposedTestCount":null,"approvedTestCount":0},
+  "workflow": ["verified_email","application_saved_receipt_issued","receipt_email_queued","free_plan_quote","quote_accepted","deposit_confirmed","separate_production_approval","schedule_in_authenticated_chat","validated_production_completion","completion_email_queued"],
+  "payloadPolicy":"No application body, OTP outside Auth, bearer, access proof or secret token in business notifications. Recipient must be the customer's verified email, not the sender address."
+}
