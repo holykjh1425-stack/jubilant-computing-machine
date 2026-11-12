@@ -1,0 +1,104 @@
+{
+  "dateKST": "2026-11-12",
+  "legacy54Rerun": false,
+  "productionDbAccessed": false,
+  "newJsPass": 24,
+  "newSqlPass": 21,
+  "files": [
+    {
+      "path": "candidates/customer-platform-20261112/verified-email/README.md",
+      "sha256": "c8ac8f664cf3d64e47f6fbf4173e398540bc890a726c3bcd4755713474daece7",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/verified-email/client.mjs",
+      "sha256": "cfc0e42ea77135ef483312eecffd7ca8ec7b45089d1ab30784aa30c3550e111c",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/verified-email/demo.mjs",
+      "sha256": "a87837699cba8e21b601ee8dd96e46874fe3a1d088cc9b08f6c1fba4e97380fa",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/verified-email/index.html",
+      "sha256": "4fa52ed52d5a1f496e51aab5da98635cc0729d9d6c88565104408e99c7cf7d07",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/verified-email/intake.candidate.sql",
+      "sha256": "ffbbfda4608c442ad58e26f97dd73fdd407038d28cf7ec79331f5e45c4142c9d",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/verified-email/native-intake.py",
+      "sha256": "96393bbddb9d1862ba0870d8df6b292755fb0a287b9377a3161ede8862122afe",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/verified-email/outbox.mjs",
+      "sha256": "e14b7cdb66a43a3c3338ee979560192434eac81a1335b37197697b8819942fc6",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/verified-email/sender-profile.candidate.json",
+      "sha256": "dbf121b797499282489aa0e1ce016e91828ca0da23de3e6a31cc19bb8bc543a5",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/verified-email/service.mjs",
+      "sha256": "3ef755e15f39bc3979f5fcafa83d974f4e98d86163c566a6ffac63bdb3d3fbc4",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/verified-email/style.css",
+      "sha256": "afcc71b4174054b83444135d776f302fbee56d75cad106789ab35b6ce05b93af",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/verified-email/verified-email.test.mjs",
+      "sha256": "c78297fd7753ff84b8b118399a8216c6d2724924ff8b27ee3974736bfd476c20",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/security/server-authenticator.mjs",
+      "sha256": "6e5a2f17f00b3abd08ec42f18fa26f9c2222574e21722f52e53b8fe716573d38",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/worker/engine.mjs",
+      "sha256": "570b8fd3add7ada1344e8b9d3987f99870c6dc7647e915ab571aaa47b620507f",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "index.html",
+      "sha256": "f3d71805ee93af1946d2acb439f434376aed70912741e517fee2815bb5493ef5",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "app.js",
+      "sha256": "f3fe0dfaf8ac8c867ca16d299bed7b49a17edca139342a2c69dd71507bbf02d1",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "admin.html",
+      "sha256": "34e0e345d69014444d275030b04cb79ed3b04ca1840988267e150af6f393ddb9",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/evidence/verified-email-sql.txt",
+      "sha256": "a749a5460d819c8897686e866d2059858bbbc87d053f77d7d2c71b8c8ac6de31",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/evidence/verified-email-js.txt",
+      "sha256": "3bad180458d54c33f6dcc27ea64c68c368a4e9b4117b36fa693a3dce4ac9fcd3",
+      "unchangedFrom": "c0b1d70"
+    },
+    {
+      "path": "candidates/customer-platform-20261112/evidence/verified-email-auth-regression.txt",
+      "sha256": "5395908cdb1242670a06e3422b96de776fc04bac329b91bc6e926598376c0e2b",
+      "unchangedFrom": "c0b1d70"
+    }
+  ]
+}

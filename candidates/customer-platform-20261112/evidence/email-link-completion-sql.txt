@@ -1,0 +1,22 @@
+PASS draft preview cannot queue completion
+PASS non-admin deposit attestation rejected
+PASS missing quote or revision scope rejected
+PASS 20 concurrent completion events produce one durable outbox ID
+PASS completion snapshot recipient comes from verified owner, not caller
+PASS 20 concurrent dispatch claims acquire one lease
+PASS same event changed contract revision is conflict
+PASS foreign lease cannot acknowledge completion
+PASS definite failure respects retry delay
+PASS three attempts exhaust retry budget
+PASS ambiguous SMTP result never retries
+PASS lost lease becomes unknown without resend
+PASS email changed after claim cancels old destination
+PASS preview invalidated after queue blocks sending
+PASS provider accepted is terminal and does not resend
+PASS revision event has separate deduplication key
+PASS anon cannot queue/claim/read completion mail None
+PASS authenticated cannot queue/claim/read completion mail 11111111-1111-4111-8111-111111111111
+PASS authenticated cannot queue/claim/read completion mail 22222222-2222-4222-8222-222222222222
+PASS new private tables have RLS and zero customer grants
+PASS existing applications and admin grants preserved
+{"newSqlChecks": 21, "failed": 0, "independentBackendPids": 47, "actualEmails": 0, "legacy54Rerun": false}

@@ -1,0 +1,16 @@
+{
+  "status": "ISOLATED_CANDIDATE_NOT_DEPLOYED",
+  "authMode": "email_magic_link_pkce",
+  "siteUrl": "https://solqtech.com/",
+  "exactRedirectAllowlist": ["https://solqtech.com/"],
+  "afterAuthentication": "https://solqtech.com/#apply",
+  "preserveConfirmationUrlTemplates": true,
+  "sdkAuthOptions": {"flowType": "pkce", "detectSessionInUrl": false},
+  "callbackHeadersRequired": {"Referrer-Policy": "no-referrer", "Cache-Control": "no-store"},
+  "callbackMustRunBeforeLegacyAppAndExternalResources": true,
+  "sender": "ggwell06@gmail.com",
+  "smtp": {"host": "smtp.gmail.com", "port": 587, "requireStartTls": true, "verifyCertificate": true},
+  "approvals": {"authChange": false, "smtpSecretRegistration": false, "realMailTest": false, "dbMigration": false, "deployment": false, "paidService": false},
+  "liveEnabled": false,
+  "automaticExecution": false
+}

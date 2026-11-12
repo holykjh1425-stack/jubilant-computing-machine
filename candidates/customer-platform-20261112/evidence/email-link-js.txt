@@ -1,0 +1,32 @@
+✔ default-disabled real link adapter makes no send (2.39294ms)
+✔ link request fixes HTTPS callback and never enables user creation from request body (1.239483ms)
+✔ simultaneous link resend is single-flight and limiter remains shared (0.628142ms)
+✔ provider account errors have one generic reply (0.391222ms)
+✔ PKCE completion scrubs code before exchange and returns to existing apply section (0.68414ms)
+✔ foreign/local/open redirects, duplicate code, implicit tokens and error callbacks rejected (2.334796ms)
+✔ used/expired link never navigates or exposes provider error (0.494054ms)
+✔ expired exchange session or unverified user cannot unlock application (4.57822ms)
+✔ unauthenticated production application never reaches intake (0.746929ms)
+✔ account switch during submit discards receipt and clears form state (12.537499ms)
+✔ lost application response reconciles with same key and disallows changed payload (0.543877ms)
+✔ verified link -> strict server identity -> saved application -> receipt notice integration (2.414502ms)
+✔ completion bridge ignores client recipient and requires all trusted completion gates (0.8921ms)
+✔ revision notice additionally requires approved revision scope (0.158931ms)
+✔ completion mail contains minimal text and fixed sender without private preview URL (0.371788ms)
+✔ real completion dispatch denied before all approvals without touching store (0.229008ms)
+✔ budget exhaustion and revoked current contract prevent send (0.349862ms)
+✔ destination confirmation failure prevents send (0.126807ms)
+✔ SMTP acceptance, definite failure and timeout remain distinct (0.235844ms)
+✔ completion store exposes only service RPC and excludes client identity or email (0.22781ms)
+✔ existing synthetic worker completion joins approved authority and drives notice candidate (9.283874ms)
+✔ worker structural validation alone never authorizes completion notice (0.455666ms)
+✔ auth transition invalidates pending form, and dispose unsubscribes without changing Auth settings (0.86025ms)
+✔ SMTP adapter fixes sender, strips arbitrary mail fields and distinguishes envelope results (1.085794ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 206.081918
