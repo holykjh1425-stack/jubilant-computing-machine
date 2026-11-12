@@ -1,0 +1,14 @@
+✔ unapproved catalog cannot leak via caller approval flags and existing automation stays 100k (1.750487ms)
+✔ VAT-undetermined proposal cannot manufacture revenue or margin; cost includes reserve (0.559377ms)
+✔ explicit hypothetical VAT assumptions change contribution without changing cost (0.200236ms)
+✔ monthly fixed infrastructure is counted once; clients allocate variable labor and API ceilings (0.309908ms)
+✔ negative, nonfinite, fractional KRW, excess reserve and mismatched client input fail closed (0.582561ms)
+✔ UI receives copies so internal proposal mutations cannot silently change catalog (0.423376ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 115.605848

@@ -1,0 +1,20 @@
+✔ candidate is immutable synthetic-only; client approval injection rejected (2.453074ms)
+✔ synthetic server authority requires consent, deposit observation and separate admin approval (9.075438ms)
+✔ unaccepted quote blocks both approval and execution even with deposit authority (0.599756ms)
+✔ 100 repeated requests preserve one job; idempotency key rejects changed payload (6.167802ms)
+✔ A and B cannot access one another; same client key is scoped by application (1.226832ms)
+✔ contract scope, revision prerequisite, revision ceiling and contract version are enforced (2.593156ms)
+✔ revision parent version prevents stale queued changes from overwriting a newer preview (1.680973ms)
+✔ server revision classifier rejects client scope-tag spoofing and unknown requests (0.943754ms)
+✔ budget reserves maximum cost before execution; no overspend or invoice claim (0.463374ms)
+✔ failed/uncertain attempts consume reservation and retry only within backoff/attempt limit (0.806372ms)
+✔ synthetic output escapes untrusted customer content and uses existing artifact validator (1.764817ms)
+✔ isolated PostgreSQL claim/finish: CAS reservation, approvals, owner/scope binding and replay rejection (3153.677093ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3372.155886

@@ -1,0 +1,21 @@
+✔ HTTP enrollment wrapper rejects receipt/name, other account proof, replay and wrong origin; default off (17.179899ms)
+✔ proof issuer uses only authoritative intake return, creates 256-bit secret and stores hash only (7.317539ms)
+✔ proof bound to verified account; B cannot consume A proof, A exchanges once and replay fails (3.003711ms)
+✔ serialized atomic exchange model accepts exactly one concurrent redemption and expiration rejects (3.865515ms)
+✔ production issuer/store default off and receipt-only legacy intake cannot mint proof (0.573267ms)
+▶ SQL proof state: restricted server RPC, hash-only state, atomic consume+bind, cross-account, replay and rollback
+  ✔ API customers and anonymous callers cannot mint, read or exchange proof state (4.967053ms)
+  ✔ issuer checks stored application receipt and enforces maximum lifetime (6.26272ms)
+  ✔ wrong account/receipt do not consume; valid proof creates one owned case; replay rejected (4.11929ms)
+  ✔ binding conflict rolls back consumption rather than losing proof (1.879679ms)
+  ✔ expired proof not redeemable; old application rows and grants unchanged (4.055546ms)
+✔ SQL proof state: restricted server RPC, hash-only state, atomic consume+bind, cross-account, replay and rollback (2077.465342ms)
+✔ existing required intake consents remain mandatory before trusted submission (0.560709ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2257.985218

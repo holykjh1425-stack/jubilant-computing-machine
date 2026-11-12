@@ -1,0 +1,10 @@
+import {mountConsultant} from './consultant-ui.mjs';
+import {createFixtureSession,A,B} from './fixture-session.mjs';
+const questions=await(await fetch(new URL('./questions.json',import.meta.url))).json();
+const session=createFixtureSession();
+const consultant=mountConsultant({questions,customer:session.customer,preview:session.preview,sendPrivate:session.sendPrivate,mode:'synthetic'});
+const status=document.querySelector('#fixture-status');
+document.querySelector('#fixture-actor').onchange=async e=>{consultant.clearPrivate();session.setActor(e.target.value==='A'?A:B);await consultant.connect();status.textContent='합성 고객 '+e.target.value+' · 다른 고객 시안 접근 불가';};
+document.querySelector('#fixture-connect').onclick=async()=>{await consultant.connect();consultant.open();status.textContent='합성 고객 인증 · 운영 Auth 미연결';};
+for(const [id,kind] of [['#fixture-deposit','deposit'],['#fixture-approve','production']])document.querySelector(id).onclick=async()=>{try{const result=await session.confirm(kind);await consultant.refresh();status.textContent='합성 서버 상태: '+result.job.status+' · 실행 '+result.executionStarted+' · 실제 유료 호출 0';}catch(error){status.textContent='합성 검증 차단: '+error.message;}};
+document.querySelector('#fixture-expire').onclick=()=>{session.expire();consultant.clearPrivate();status.textContent='합성 인증 만료 · 고객 자료 비움';};

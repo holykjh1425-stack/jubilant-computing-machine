@@ -1,0 +1,12 @@
+{
+  "reviewedAtKst": "2026-11-12",
+  "scope": "공식 사업자·판매자 원문 읽기 조회. 시장 평균·계약 확정가 아님.",
+  "sources": [
+    {"id":"imweb-faq","url":"https://www.imweb.me/qna?mode=faq&q=72595","publisher":"아임웹","publishedAt":null,"retrievedAt":"2026-11-12","verified":"공식 FAQ 1개월 Starter 22,000원·Pro 33,000원 VAT 포함 안내","limit":"요금 페이지 우선. 동적 price 페이지는 현재 선택기간의 숫자가 추출되지 않아 결제 조건 재확인 필요"},
+    {"id":"imweb-price","url":"https://imweb.me/price","publisher":"아임웹","publishedAt":null,"retrievedAt":"2026-11-12","verified":"공식 요금 페이지 열림","limit":"기간별 동적 가격 숫자 추출 불완전. 취소선 숫자를 현행 월요금으로 사용하지 않음"},
+    {"id":"cafe24","url":"https://homebuilder.cafe24.com/","publisher":"카페24","publishedAt":null,"retrievedAt":"2026-11-12","verified":"PRO 월 19,800원(1개월 선불), OPERATE 월 440,000원(빌더 포함) 및 월 경미 수정20건/일반작업4건/상담2시간","limit":"행사와 갱신가격·세금·계약 조건은 결제 전 확인. SOLQ 유지관리 범위와 동일하지 않음"},
+    {"id":"frico","url":"https://frico.kr/imweb-guide/?bmode=view&idx=175345226","publisher":"프리코","publishedAt":"2026-10-30","updatedAt":"2026-10-30","retrievedAt":"2026-11-12","verified":"템플릿190,000원부터·AI시안490,000원부터·맞춤1,500,000원부터 VAT별도 안내","limit":"특정 업체·플랫폼·범위의 시작가격. SOLQ 전체 상품 적정가를 증명하지 않음"},
+    {"id":"kmong-763925","url":"https://kmong.com/gig/763925","publisher":"크몽 판매자 온누리문방구","publishedAt":null,"retrievedAt":"2026-11-12","verified":"1P120,000원·기본3P250,000원·기본5P500,000원. 수정1/2/3회. 4~5P 추가는 사전협의","limit":"판매자 단일사례. 호스팅/도메인/유료서비스 별도. 플랫폼 결제 부가비용과 세금 별도 확인"},
+    {"id":"kmong-420997","url":"https://kmong.com/gig/420997","publisher":"크몽 판매자 애드코리아","publishedAt":null,"retrievedAt":"2026-11-12","verified":"3P165,000원·8P660,000원·12P1,650,000원. 수정2/4/4회","limit":"판매자 단일사례. 도메인/호스팅 별도. 본문과 패키지 일부 설명 차이는 개별 계약 확인"}
+  ]
+}

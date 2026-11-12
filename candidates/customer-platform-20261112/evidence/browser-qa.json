@@ -1,0 +1,22 @@
+{
+  "dateKst": "2026-11-12",
+  "environment": "local QA copy; synthetic actors and submission stub; no live SDK",
+  "productionConnection": false,
+  "paidCalls": 0,
+  "observations": {
+    "desktopAdvisorAndWorkspace": "PASS",
+    "explicitHandoffConsentAndSyntheticReceipt": "PASS",
+    "depositOnlyBlocksAndSeparateApprovalBuildsV1": "PASS",
+    "consentedStyleRevisionBuildsV2": "PASS",
+    "accountSwitchAndExpiryClearPrivatePreview": "PASS",
+    "launcherInputCloseDoesNotReopen": "PASS",
+    "mobile390x844Client375Scroll375": "PASS",
+    "reducedHeight390x360PanelContained": "PASS",
+    "physicalAndroidKeyboard": "UNVERIFIED",
+    "maliciousPreviewDangerousElements": 0,
+    "maliciousPreviewDangerousAttributes": 0,
+    "iframeSandbox": "",
+    "iframeReferrerPolicy": "no-referrer"
+  },
+  "limits": ["Synthetic identity is not hosted Supabase Auth verification", "Single browser engine", "Static passive preview; no generated scripts run", "Reduced viewport is not a real mobile keyboard test"]
+}

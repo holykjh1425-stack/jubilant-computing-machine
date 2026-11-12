@@ -1,0 +1,223 @@
+{
+  "status": "internal_scenarios_not_approved",
+  "assumptions": {
+    "notActualBilling": true,
+    "hourlyRateKrw": 20000,
+    "contingencyRate": 0.15,
+    "vatMode": "undetermined",
+    "fixedInfrastructureKrw": 30000,
+    "aiBudgetsKrw": {
+      "landing": 5000,
+      "business": 10000,
+      "business-plus": 20000,
+      "ai-consultant": 30000
+    }
+  },
+  "production": [
+    {
+      "packageId": "landing",
+      "proposalPriceKrw": 150000,
+      "revisionCount": 1,
+      "measured": false,
+      "range": [
+        {
+          "status": "assumption_only_not_actual_cost",
+          "laborKrw": 60000,
+          "directCostKrw": 65000,
+          "contingencyKrw": 9750,
+          "plannedCostKrw": 74750,
+          "netRevenueKrw": null,
+          "contributionBeforeOtherCostsKrw": null,
+          "vatMode": "undetermined",
+          "paidCalls": 0
+        },
+        {
+          "status": "assumption_only_not_actual_cost",
+          "laborKrw": 100000,
+          "directCostKrw": 105000,
+          "contingencyKrw": 15750,
+          "plannedCostKrw": 120750,
+          "netRevenueKrw": null,
+          "contributionBeforeOtherCostsKrw": null,
+          "vatMode": "undetermined",
+          "paidCalls": 0
+        }
+      ]
+    },
+    {
+      "packageId": "business",
+      "proposalPriceKrw": 350000,
+      "revisionCount": 2,
+      "measured": false,
+      "range": [
+        {
+          "status": "assumption_only_not_actual_cost",
+          "laborKrw": 140000,
+          "directCostKrw": 150000,
+          "contingencyKrw": 22500,
+          "plannedCostKrw": 172500,
+          "netRevenueKrw": null,
+          "contributionBeforeOtherCostsKrw": null,
+          "vatMode": "undetermined",
+          "paidCalls": 0
+        },
+        {
+          "status": "assumption_only_not_actual_cost",
+          "laborKrw": 240000,
+          "directCostKrw": 250000,
+          "contingencyKrw": 37500,
+          "plannedCostKrw": 287500,
+          "netRevenueKrw": null,
+          "contributionBeforeOtherCostsKrw": null,
+          "vatMode": "undetermined",
+          "paidCalls": 0
+        }
+      ]
+    },
+    {
+      "packageId": "business-plus",
+      "proposalPriceKrw": 650000,
+      "revisionCount": 3,
+      "measured": false,
+      "range": [
+        {
+          "status": "assumption_only_not_actual_cost",
+          "laborKrw": 280000,
+          "directCostKrw": 300000,
+          "contingencyKrw": 45000,
+          "plannedCostKrw": 345000,
+          "netRevenueKrw": null,
+          "contributionBeforeOtherCostsKrw": null,
+          "vatMode": "undetermined",
+          "paidCalls": 0
+        },
+        {
+          "status": "assumption_only_not_actual_cost",
+          "laborKrw": 440000,
+          "directCostKrw": 460000,
+          "contingencyKrw": 69000,
+          "plannedCostKrw": 529000,
+          "netRevenueKrw": null,
+          "contributionBeforeOtherCostsKrw": null,
+          "vatMode": "undetermined",
+          "paidCalls": 0
+        }
+      ]
+    },
+    {
+      "packageId": "ai-consultant",
+      "proposalPriceKrw": 900000,
+      "revisionCount": null,
+      "measured": false,
+      "range": [
+        {
+          "status": "assumption_only_not_actual_cost",
+          "laborKrw": 440000,
+          "directCostKrw": 470000,
+          "contingencyKrw": 70500,
+          "plannedCostKrw": 540500,
+          "netRevenueKrw": null,
+          "contributionBeforeOtherCostsKrw": null,
+          "vatMode": "undetermined",
+          "paidCalls": 0
+        },
+        {
+          "status": "assumption_only_not_actual_cost",
+          "laborKrw": 720000,
+          "directCostKrw": 750000,
+          "contingencyKrw": 112500,
+          "plannedCostKrw": 862500,
+          "netRevenueKrw": null,
+          "contributionBeforeOtherCostsKrw": null,
+          "vatMode": "undetermined",
+          "paidCalls": 0
+        }
+      ]
+    }
+  ],
+  "monthly": {
+    "status": "assumption_only_not_actual_bill",
+    "fixedInfrastructureKrw": 30000,
+    "customerCount": 10,
+    "variableCostKrw": 465750,
+    "totalPlannedCostKrw": 495750,
+    "averagePlannedCostKrw": 49575,
+    "customers": [
+      {
+        "id": "SYNTHETIC-assurance-0",
+        "laborKrw": 15000,
+        "aiBudgetKrw": 0,
+        "reserveKrw": 2250,
+        "variableCostKrw": 17250
+      },
+      {
+        "id": "SYNTHETIC-assurance-1",
+        "laborKrw": 15000,
+        "aiBudgetKrw": 0,
+        "reserveKrw": 2250,
+        "variableCostKrw": 17250
+      },
+      {
+        "id": "SYNTHETIC-assurance-2",
+        "laborKrw": 15000,
+        "aiBudgetKrw": 0,
+        "reserveKrw": 2250,
+        "variableCostKrw": 17250
+      },
+      {
+        "id": "SYNTHETIC-standard-0",
+        "laborKrw": 35000,
+        "aiBudgetKrw": 0,
+        "reserveKrw": 5250,
+        "variableCostKrw": 40250
+      },
+      {
+        "id": "SYNTHETIC-standard-1",
+        "laborKrw": 35000,
+        "aiBudgetKrw": 0,
+        "reserveKrw": 5250,
+        "variableCostKrw": 40250
+      },
+      {
+        "id": "SYNTHETIC-standard-2",
+        "laborKrw": 35000,
+        "aiBudgetKrw": 0,
+        "reserveKrw": 5250,
+        "variableCostKrw": 40250
+      },
+      {
+        "id": "SYNTHETIC-standard-3",
+        "laborKrw": 35000,
+        "aiBudgetKrw": 0,
+        "reserveKrw": 5250,
+        "variableCostKrw": 40250
+      },
+      {
+        "id": "SYNTHETIC-business-0",
+        "laborKrw": 60000,
+        "aiBudgetKrw": 0,
+        "reserveKrw": 9000,
+        "variableCostKrw": 69000
+      },
+      {
+        "id": "SYNTHETIC-business-1",
+        "laborKrw": 60000,
+        "aiBudgetKrw": 0,
+        "reserveKrw": 9000,
+        "variableCostKrw": 69000
+      },
+      {
+        "id": "SYNTHETIC-advanced",
+        "laborKrw": 80000,
+        "aiBudgetKrw": 20000,
+        "reserveKrw": 15000,
+        "variableCostKrw": 115000
+      }
+    ],
+    "paidCalls": 0
+  },
+  "monthlyProposalSalesKrw": 760000,
+  "vatUnconfirmed": true,
+  "actualSpendInThisDevelopmentKrw": 0,
+  "actualCurrentExistingInfrastructureBillKrw": null
+}

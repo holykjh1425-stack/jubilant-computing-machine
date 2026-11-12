@@ -1,0 +1,19 @@
+{
+  "base_commit": "4e0f3f14acbd72344a0d267e86eca8a8e38ae401",
+  "sha256": {
+    "app.js": "f3fe0dfaf8ac8c867ca16d299bed7b49a17edca139342a2c69dd71507bbf02d1",
+    "order.js": "b54a9234d20df93989aaf01d96da8a2b608862847ec05011f916bb9cc8240643",
+    "order.html": "ec4710ec5c8bab73b1c52fc437edec38ad385c066d1c61da994d6864aafa5960",
+    "preview.html": "9b6290dd4b826126426fc6f23e14994abde58680c2c6ae6a93f7b7584a884630",
+    "admin.html": "34e0e345d69014444d275030b04cb79ed3b04ca1840988267e150af6f393ddb9",
+    "admin.js": "7a1fab8a9ced5509cc1f31d051f0a2c7af6c5586a1be7354ba5f699ee1e94af1",
+    "production-admin.js": "12bf33acafc31da30942d96f950bb0be423773782c49e41ca0b72533db363c62",
+    "core/providers.mjs": "ba0b515fbcd1404a54ce3308b5a858e2bf0b525af37390241b6d05cb6e395692",
+    "supabase/functions/nexus-production/handler.mjs": "a04b368ef3d1c5587652b82f676c96132de8162f84dd31e8e8734c984310f1e2",
+    "supabase/functions/nexus-production/artifact.mjs": "9b657f3489e8727cfab7ee63995cecd43e49cb93f615ff59fc68f2958b62334e",
+    "supabase-schema.sql": "a21ce5de30bd447ffb9e4d76b10253aeb5d4ef9a8c6bd3d8a799c41ba96f5798",
+    "ops/consultation/chatbot-isolated-prototype.html": "fa12d70f09b68f0c623c9f0462fe6081c1c63bdbf248bcfe47e14584c44538a7",
+    "ops/consultation/sector-catalog.candidate.json": "c9839e5d2d7467cf72fc2a11a9c55c904a23f58bfcb59a23ba39431e45604a9a",
+    "ops/consultation/KSIC11-21-SECTOR-ROUTING.candidate.json": "8c0803c9dc562f5cdb879b24fae69eb44443cbb797dbb7678cef0c8bfec9a1dd"
+  }
+}
