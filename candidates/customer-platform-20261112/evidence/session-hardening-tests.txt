@@ -1,0 +1,17 @@
+✔ server authenticator disabled by default and validates the exact bearer using getUser before claims/session lookup (2.501481ms)
+✔ server auth rejects revoked/misbound/expired/anonymous/unverified identities and ignores user_metadata privilege spoof (1.309975ms)
+✔ server auth rechecks deadline after pending session lookup, never issues on expired result (0.339983ms)
+✔ client repository fails closed on false/error session RPC even if getUser succeeds (0.904124ms)
+✔ Auth events invalidate pending reads and notify UI asynchronously; listener unsubscribes (7.237172ms)
+✔ intake returning internal ID cannot issue proof if identity/session changes while awaiting intake (0.693605ms)
+✔ server store requires session binding and sends only hash/IDs through restricted v2 RPC (1.180039ms)
+✔ HTTP errors never echo raw proof, bearer or dependency exception (5.270366ms)
+✔ passive preview boundary still denies same-origin/scripts/network and external URL-bearing attributes (2.08243ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 101.522465

@@ -1,5 +1,8 @@
 # Customer identity, chat and preview isolation — candidate only
 
+> 2026-11-12 인증·RLS 보완: [최신 실행 보고](../../../docs/SOLQ_AUTH_RLS_EXECUTION_RESULT_20261112.md). 아래 최초 49 PASS는 보존 증거다. 신규 네이티브 PostgreSQL 다중 세션 43 PASS·새 JS 보안 9 PASS·영향 회귀 5 PASS를 추가했다. 현재 서버 어댑터는 세션 결합 v2 RPC와 session-hardening.candidate.sql을 요구하며 기본 비활성이다. v1의 최대 15분/세션 미결합 설명은 이전 후보 기록이며 운영 활성화 기준은 v2 상한 5분이다. 실제 운영 연결 NO-GO는 유지한다.
+
+
 2026-11-12 KST. Not deployed, no live Auth login, no production schema/data changes, no messages sent, no paid calls. Existing customer rows, approval functions and table grants are not changed.
 
 ## Implemented boundaries

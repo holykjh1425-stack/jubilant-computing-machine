@@ -1,0 +1,29 @@
+{
+  "dateKst": "2026-11-12",
+  "project": "elfacqmvygnwjlklqhiz",
+  "scope": "Read-only policy/grant/RLS/advisor metadata only. No customer rows or Auth records read.",
+  "operatingMutations": 0,
+  "newCustomerTables": 0,
+  "existingRls": {"admin_users": true, "applications": true},
+  "policyPredicates": {
+    "admin_users.SELECT": "user_id=(SELECT auth.uid())",
+    "applications.SELECT": "EXISTS admin_users for auth.uid()",
+    "applications.UPDATE.USING": "EXISTS admin_users for auth.uid()",
+    "applications.UPDATE.WITH_CHECK": "EXISTS admin_users for auth.uid()",
+    "applications.INSERT.anon_authenticated": "privacy_consent=true AND status='received' AND internal_note IS NULL"
+  },
+  "grants": {
+    "admin_users.anon": ["REFERENCES", "TRIGGER"],
+    "admin_users.authenticated": ["REFERENCES", "SELECT", "TRIGGER"],
+    "admin_users.service_role": ["REFERENCES", "SELECT", "TRIGGER", "TRUNCATE"],
+    "applications.anon": ["INSERT"],
+    "applications.authenticated": ["INSERT", "SELECT", "UPDATE"],
+    "applications.service_role": ["DELETE", "INSERT", "REFERENCES", "SELECT", "TRIGGER", "TRUNCATE", "UPDATE"]
+  },
+  "securityAdvisor": {
+    "warningFindings": 7,
+    "groups": {"anon_security_definer_function_executable":3,"authenticated_security_definer_function_executable":3,"auth_leaked_password_protection":1},
+    "resolvedByThisWork": false
+  },
+  "limits": "No hosted Auth/PostgREST/customer A-B verification. Local fixture mirrors predicates/grants, not all operating functions/triggers or hosted configuration."
+}

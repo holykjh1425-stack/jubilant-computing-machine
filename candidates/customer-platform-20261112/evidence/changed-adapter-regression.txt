@@ -1,0 +1,13 @@
+✔ repository default refuses production connection; verified Auth identity required (2.492959ms)
+✔ account changes during listCases discard the previous account response (0.500475ms)
+✔ proof issuer uses only authoritative intake return, creates 256-bit secret and stores hash only (7.745417ms)
+✔ production issuer/store default off and receipt-only legacy intake cannot mint proof (0.800737ms)
+✔ existing required intake consents remain mandatory before trusted submission (0.353733ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 203.824427

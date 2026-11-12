@@ -4,13 +4,17 @@ const fail=code=>Object.assign(new Error(code),{code});
 export function createCustomerRepository({db,enabled=false,clock=()=>Date.now()}){
  let deadline=0,generation=0;
  function configured(){if(!enabled||!db)throw fail('NOT_DEPLOYED')}
- async function verify(){configured();if(deadline&&deadline<=clock())throw fail('AUTH_EXPIRED');
+ async function verify(){configured();const stamp=generation;if(deadline&&deadline<=clock())throw fail('AUTH_EXPIRED');
   const {data:sessionData,error:sessionError}=await db.auth.getSession();const session=sessionData?.session;
-  if(sessionError||!session||!Number.isFinite(session.expires_at)||session.expires_at*1000<=clock())throw fail('AUTH_REQUIRED');
-  const {data,error}=await db.auth.getUser();const user=data?.user;
+  if(sessionError||!session||typeof session.access_token!=='string'||session.access_token.length<20||!Number.isFinite(session.expires_at)||session.expires_at*1000<=clock())throw fail('AUTH_REQUIRED');
+  const {data,error}=await db.auth.getUser(session.access_token);const user=data?.user;
   if(error||!UUID.test(user?.id||'')||user.id!==session.user?.id)throw fail('AUTH_REQUIRED');
   // Unverified identities must not bind to existing applications.
   if(!user.email_confirmed_at&&!user.phone_confirmed_at)throw fail('VERIFIED_IDENTITY_REQUIRED');
+  const {data:active,error:checkError}=await db.rpc('solq_customer_session_active');
+  const latest=await db.auth.getSession();
+  if(checkError||active!==true)throw fail('SESSION_REVOKED');
+  if(stamp!==generation||latest.error||latest.data?.session?.user?.id!==user.id||latest.data?.session?.access_token!==session.access_token)throw fail('AUTH_CHANGED');
   if(session.expires_at*1000<=clock())throw fail('AUTH_EXPIRED');deadline=session.expires_at*1000;return {...user,expiresAt:deadline};
  }
  async function stable(user,stamp){const current=await verify();if(stamp!==generation||current.id!==user.id)throw fail('AUTH_CHANGED');}
@@ -23,7 +27,7 @@ export function createCustomerRepository({db,enabled=false,clock=()=>Date.now()}
   const stamp=generation;await ownedCase(caseId);const {data,error,count}=await db.from(table).select(columns,{count:'exact'}).eq('case_id',caseId).order(order,{ascending:false}).limit(100);
   if(error)throw fail('READ_FAILED');await ownedCase(caseId);if(stamp!==generation)throw fail('AUTH_CHANGED');return {items:data,total:count,complete:data.length===count};
  }
- const api={verify,clear(){generation++;deadline=0;},
+ const api={verify,subscribeInvalidation(listener){configured();if(typeof listener!=='function'||!db.auth.onAuthStateChange)throw fail('AUTH_EVENTS_REQUIRED');const {data}=db.auth.onAuthStateChange(()=>{generation++;deadline=0;queueMicrotask(listener)});return ()=>data?.subscription?.unsubscribe();},clear(){generation++;deadline=0;},
   async listCases(){const stamp=generation,user=await verify();const {data,error,count}=await db.from('solq_customer_cases').select('id,application_id,created_at',{count:'exact'}).eq('account_id',user.id).order('created_at',{ascending:false}).limit(100);if(error)throw fail('READ_FAILED');const reverified=await verify();if(stamp!==generation||reverified.id!==user.id)throw fail('AUTH_CHANGED');return {items:data,total:count,complete:data.length===count};},
   listMessages:caseId=>readOwn('solq_customer_messages','id,case_id,role,content,created_at',caseId),
   listRequests:caseId=>readOwn('solq_customer_requests','id,case_id,kind,message,expected_version,status,created_at',caseId),

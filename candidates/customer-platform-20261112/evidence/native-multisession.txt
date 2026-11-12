@@ -1,0 +1,44 @@
+PASS operating admin-own RLS supports provisioning without recursive/permission errors
+PASS existing admin application SELECT/UPDATE authority remains intact
+PASS A/B see only own mapping and existing applications remain admin-only
+PASS A/B cannot read foreign validated previews/artifacts or own draft
+PASS message requires own explicit chat-v1 consent
+PASS foreign insert and worker actor spoof denied
+PASS B cannot read A chat and consent
+PASS no anonymous SELECT or authenticated UPDATE DELETE TRUNCATE: solq_customer_cases
+PASS no anonymous SELECT or authenticated UPDATE DELETE TRUNCATE: solq_customer_consent_events
+PASS no anonymous SELECT or authenticated UPDATE DELETE TRUNCATE: solq_customer_messages
+PASS no anonymous SELECT or authenticated UPDATE DELETE TRUNCATE: solq_customer_requests
+PASS no anonymous SELECT or authenticated UPDATE DELETE TRUNCATE: solq_customer_previews
+PASS no anonymous SELECT or authenticated UPDATE DELETE TRUNCATE: solq_customer_artifacts
+PASS customer cannot self-provision mapping or preview/artifact
+PASS withdrawal blocks message and revision, preserves existing history
+PASS missing/malformed/expired/foreign/anonymous session fails closed {'exp': 1}
+PASS missing/malformed/expired/foreign/anonymous session fails closed {'session_id': '30000000-0000-4000-8000-000000000002'}
+PASS missing/malformed/expired/foreign/anonymous session fails closed {'session_id': 'bad'}
+PASS missing/malformed/expired/foreign/anonymous session fails closed {'is_anonymous': True}
+PASS missing/malformed/expired/foreign/anonymous session fails closed {'session_id': None}
+PASS revoked but unexpired A JWT loses all six table reads and writes next statement
+PASS authenticated cannot call server-only session/proof RPC SELECT solq_customer_security.lock_verified_session
+PASS authenticated cannot call server-only session/proof RPC SELECT public.solq_exchange_customer_enrollment_v2
+PASS clients cannot SELECT auth.sessions or private proof state
+PASS v1 unbound issuer/exchange disabled even for server role
+PASS wrong account/receipt/session cannot consume proof
+PASS 20 real concurrent DB sessions consume proof exactly once
+PASS proof replay rejected
+PASS same account on a different live session cannot consume proof
+PASS waiting session succeeds after competing exchange transaction rolls back
+PASS binding conflict rolls proof consumption back
+PASS expired five-minute proof cannot bind
+PASS revoked proof session cannot exchange or consume
+PASS issuer rejects >five-minute TTL
+PASS 20 concurrent customer inserts respect 12/minute trigger bound
+PASS original synthetic customer/admin rows, grants and policies unchanged
+PASS atomic worker claim blocks before quote/deposit/separate approval
+PASS deposit alone cannot start worker
+PASS 20 independent worker claims reserve one job within 100 budget/60 ceiling
+PASS stale lease completion denied
+PASS approval revoked during execution blocks publication and consumes reservation
+PASS new exposed tables all RLS enabled, no customer update/delete/truncate or secret grants
+PASS raw synthetic proof marker absent from SQL state and server logs
+{"postgres": "17.11 (Debian 17.11-0+deb13u1)", "passed": 43, "failed": 0, "independentBackendPids": 75, "listen": "127.0.0.1 only", "extensions": [["plpgsql"]], "scope": "SQL authorization and multi-session model; not hosted Auth/PostgREST"}

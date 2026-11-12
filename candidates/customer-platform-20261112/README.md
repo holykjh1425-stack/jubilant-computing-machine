@@ -1,5 +1,8 @@
 # SOLQ 단일 상담사·제작 공간 — 개발 후보 검증 보고
 
+> 2026-11-12 인증·RLS 보완: [최신 실행 보고](../../docs/SOLQ_AUTH_RLS_EXECUTION_RESULT_20261112.md). 아래 최초 49 PASS는 보존 증거다. 신규 네이티브 PostgreSQL 다중 세션 43 PASS·새 JS 보안 9 PASS·영향 회귀 5 PASS를 추가했다. 현재 서버 어댑터는 세션 결합 v2 RPC와 session-hardening.candidate.sql을 요구하며 기본 비활성이다. v1의 최대 15분/세션 미결합 설명은 이전 후보 기록이며 운영 활성화 기준은 v2 상한 5분이다. 실제 운영 연결 NO-GO는 유지한다.
+
+
 기준일: 2026-11-12 KST · 담당 CORE / AUTO / SENTINEL / GUARD / FIN
 
 **개발 후보 구현 및 합성 통합 검증 PASS, 실제 운영 적용 NO-GO.** 운영 사이트·DB·고객 데이터는 변경하지 않았다. 실제 고객 인증, 실제 AI 응답·제작, 공개 배포가 완료되었다는 의미가 아니다.

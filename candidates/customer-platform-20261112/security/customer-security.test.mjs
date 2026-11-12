@@ -81,7 +81,7 @@ test('isolated SQL: verified account mapping, A/B RLS, consent, immutable custom
 });
 test('repository default refuses production connection; verified Auth identity required',async()=>{
  await assert.rejects(createCustomerRepository({}).verify(),{code:'NOT_DEPLOYED'});
- const user={id:A};const db={auth:{getSession:async()=>({data:{session:{user,expires_at:9999999999}}}),getUser:async()=>({data:{user}})}};
+ const user={id:A};const db={rpc:async()=>({data:true}),auth:{getSession:async()=>({data:{session:{user,access_token:'SYNTHETIC_NOT_REAL_ACCESS_TOKEN',expires_at:9999999999}}}),getUser:async()=>({data:{user}})}};
  await assert.rejects(createCustomerRepository({db,enabled:true}).verify(),{code:'VERIFIED_IDENTITY_REQUIRED'});
  user.email_confirmed_at='2026-11-12T00:00:00Z';const repo=createCustomerRepository({db,enabled:true});assert.equal((await repo.verify()).id,A);
  await assert.rejects(repo.createCase({applicationId:'NX-RECEIPT',accountId:'customer name',verificationReference:''}),{code:'VERIFIED_LINK_REQUIRED'});
@@ -90,6 +90,6 @@ test('repository default refuses production connection; verified Auth identity r
 test('account changes during listCases discard the previous account response',async()=>{
  let current=A;const user=()=>({id:current,email_confirmed_at:'2026-11-12T00:00:00Z'});
  const query={select(){return this},eq(){return this},order(){return this},async limit(){current=B;return {data:[{id:CASE_A}],count:1}}};
- const db={auth:{getSession:async()=>({data:{session:{user:user(),expires_at:9999999999}}}),getUser:async()=>({data:{user:user()}})},from:()=>query};
+ const db={rpc:async()=>({data:true}),auth:{getSession:async()=>({data:{session:{user:user(),access_token:'SYNTHETIC_NOT_REAL_ACCESS_TOKEN',expires_at:9999999999}}}),getUser:async()=>({data:{user:user()}})},from:()=>query};
  await assert.rejects(createCustomerRepository({db,enabled:true}).listCases(),{code:'AUTH_CHANGED'});
 });
