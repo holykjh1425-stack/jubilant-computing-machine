@@ -1,0 +1,24 @@
+✔ default disabled application, OTP and mail paths make zero dependency calls (7.523374ms)
+✔ trusted server identity supplies UID/session/email; payload identity or consent tampering rejected before writes (1.333417ms)
+✔ phone-only, expired and missing verified email cannot use application path (0.538665ms)
+✔ receipt-only or mail-only result never means committed application (0.827609ms)
+✔ OTP synthetic challenge is one-use, resend and verification attempts bounded (2.351585ms)
+✔ OTP real adapter never sends without explicit gate; redirects and registration are not caller supplied (0.378277ms)
+✔ persistent limiter sends digests only and rejects untrusted network context (1.065893ms)
+✔ Origin/custom CSRF header/type/body bounds block malformed direct calls without service work (8.911599ms)
+✔ receipt email is minimal transactional notice with fixed safe login guidance (1.905268ms)
+✔ dispatch requires explicit destination validation; accepted, definite failure and ambiguity stay distinct (1.548911ms)
+✔ provider timeout is uncertain and never reported as delivery success (0.848603ms)
+✔ expired synthetic OTP provider response never unlocks application (0.70491ms)
+✔ double submit is single-flight and a late response after logout is discarded (2.319061ms)
+✔ form is locked before verified email; uncertain commit reconciles without a new application (0.850848ms)
+✔ account/email switch cannot submit previous customer form; clear removes request and receipt (0.627485ms)
+✔ new adapter has no anonymous RPC fallback or production approval side effect (21.655184ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 238.55661

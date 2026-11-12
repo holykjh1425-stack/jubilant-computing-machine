@@ -1,0 +1,36 @@
+PASS expired verified access-token deadline rejected at SQL boundary
+PASS verified email saves original application, account mapping and pending outbox atomically
+PASS same request replay returns identical receipt without duplicate application/outbox
+PASS same id different payload is conflict
+PASS client identity/consent tamper denied email
+PASS client identity/consent tamper denied account_id
+PASS client identity/consent tamper denied consent_version
+PASS client identity/consent tamper denied consent_version
+PASS client identity/consent tamper denied consent_version
+PASS phone-only/email-unconfirmed and wrong-session identities denied
+PASS unconfirmed email cannot submit
+PASS legacy anonymous receipt cannot be claimed by caller-supplied ID
+PASS outbox insert failure rolls back application, mapping and submission together
+PASS 20 real concurrent submissions: one new application, one outbox, nineteen replays
+PASS B cannot read A request status
+PASS A can reconcile committed request after lost response
+PASS email changed since server authentication rejects old email
+PASS queued receipt to old email cancelled before claim
+PASS 20 receipt dispatch claims acquire one lease only
+PASS confirmed destination only with exact live lease
+PASS stale completion cannot change receipt state
+PASS definite send failure keeps application saved and respects retry backoff
+PASS bounded retry retains outbox idempotency key and increments attempt
+PASS ambiguous delivery never automatically retries
+PASS recipient email change after claim cancels before transport confirmation
+PASS three definite failures exhaust retries without altering saved application
+PASS provider acceptance is recorded separately and never resends
+PASS lost dispatch lease becomes uncertain and cannot automatically resend
+PASS shared OTP limiter: 20 concurrent resends reserve one slot
+PASS shared OTP limiter: 20 verification attempts allow only five
+PASS anon cannot invoke trusted submit or outbox RPC
+PASS authenticated cannot invoke trusted submit or outbox RPC
+PASS own case visible through earlier customer RLS; old applications stay admin-only
+PASS all original applications and legacy grants preserved
+PASS new outbox contains no description, OTP, raw proof or bearer columns
+{"newSqlChecks": 35, "failed": 0, "independentBackendPids": 86, "actualEmails": 0, "legacySuitesRerun": false}

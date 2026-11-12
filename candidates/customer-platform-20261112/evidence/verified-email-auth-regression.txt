@@ -1,0 +1,11 @@
+✔ server authenticator disabled by default and validates the exact bearer using getUser before claims/session lookup (2.918907ms)
+✔ server auth rejects revoked/misbound/expired/anonymous/unverified identities and ignores user_metadata privilege spoof (1.073879ms)
+✔ server auth rechecks deadline after pending session lookup, never issues on expired result (0.354338ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121.123783

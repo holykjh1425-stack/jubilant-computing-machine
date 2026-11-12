@@ -36,7 +36,7 @@ def denied(fn,code='42501'):
 def claims(uid,sid,**extra):
     return dict(sub=uid,session_id=sid,role='authenticated',exp=int(time.time())+3600,is_anonymous=False,**extra)
 
-def run(binpath):
+def run(binpath,scenario=None):
   with tempfile.TemporaryDirectory(prefix='solq-native-') as temp:
     root=Path(temp);data=root/'data'
     subprocess.run([str(binpath/'initdb'),'-D',str(data),'--no-locale','--encoding=UTF8','-A','trust'],check=True,stdout=subprocess.DEVNULL)
@@ -85,6 +85,8 @@ def run(binpath):
             return [db.execute(q).fetchall() for q in ["SELECT * FROM applications ORDER BY id","SELECT * FROM admin_users ORDER BY user_id","SELECT table_name,grantee,privilege_type FROM information_schema.role_table_grants WHERE table_name IN ('admin_users','applications') ORDER BY 1,2,3","SELECT tablename,policyname,roles,cmd,qual,with_check FROM pg_policies WHERE tablename IN ('admin_users','applications') ORDER BY 1,2"]]
           before=original()
           for path in ['customer-schema.candidate.sql','enrollment-proof.candidate.sql','session-hardening.candidate.sql']:db.execute((HERE/path).read_text())
+          if scenario is not None:
+            scenario(db,conn);return
           with conn('authenticated',claims(ADMIN,SD)) as admin:
             for case,app,owner in [(CA,APP_A,A),(CB,APP_B,B)]:admin.execute("INSERT INTO solq_customer_cases(id,application_id,account_id,verification_reference) VALUES(%s,%s,%s,'SYNTHETIC_VERIFICATION')",[case,app,owner])
             check('operating admin-own RLS supports provisioning without recursive/permission errors',lambda:equal(admin.execute('SELECT count(*) FROM solq_customer_cases').fetchone()[0],2))

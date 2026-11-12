@@ -1,0 +1,20 @@
+{
+  "dateKst":"2026-11-12",
+  "project":"elfacqmvygnwjlklqhiz",
+  "method":"GET public Auth settings using existing public client key; SQL pg_get_functiondef of submit_application only",
+  "emailProviderEnabled":true,
+  "signupDisabled":false,
+  "mailerAutoconfirm":false,
+  "smtpProvider":"UNVERIFIED",
+  "template":"UNVERIFIED",
+  "actualRateLimits":"UNVERIFIED",
+  "actualBilling":"UNVERIFIED",
+  "zeroIncrementalOperatingEmailCostConfirmed":false,
+  "legacyPath":"app.js -> submit_application -> applications insert -> receipt only",
+  "legacyPrivilegesRevoked":false,
+  "customerRowsRead":0,
+  "authUsersCreated":0,
+  "emailsSent":0,
+  "operatingMutations":0,
+  "browserQA":{"mode":"synthetic memory adapters, no live SDK/network", "desktopFlow":"PASS","mobileFrame":"390x844", "mobileClientWidth":375,"mobileScrollWidth":375,"physicalKeyboard":"UNVERIFIED"}
+}

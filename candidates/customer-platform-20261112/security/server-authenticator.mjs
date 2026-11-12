@@ -16,6 +16,6 @@ export function createServerAuthenticator({enabled=false,auth,readSession,clock=
   const session=await readSession({accountId:user.id,sessionId:claims.session_id});
   const sessionEnd=session?.not_after?new Date(session.not_after).getTime():Infinity;
   if((session?.not_after&&!Number.isFinite(sessionEnd))||!session||session.id!==claims.session_id||session.user_id!==user.id||sessionEnd<=clock()||claims.exp*1000<=clock())throw deny();
-  return {id:user.id,sessionId:session.id,expiresAt:Math.min(claims.exp*1000,sessionEnd),emailConfirmed:!!user.email_confirmed_at,phoneConfirmed:!!user.phone_confirmed_at};
+  return {id:user.id,sessionId:session.id,expiresAt:Math.min(claims.exp*1000,sessionEnd),emailConfirmed:!!user.email_confirmed_at,phoneConfirmed:!!user.phone_confirmed_at,email:user.email_confirmed_at?user.email:undefined};
  };
 }
