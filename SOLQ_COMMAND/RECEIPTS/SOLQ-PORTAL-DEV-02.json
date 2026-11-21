@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "taskNumber": "SOLQ-PORTAL-DEV-02",
+  "baselineCommit": "c0a9d4b9df8ba99115b07c5105519ba650ba1d19",
+  "instructionPath": "SOLQ_COMMAND/PORTAL_DEV_02_TASK.md",
+  "instructionSha256": "95EA2CD1A094248AF74EBEE8E4BCAE0AF15A8FEB7450DB898A232D31A8F3F3B3",
+  "receiptKey": "26B97AA57C93D06B705F36E94D2C5978B5D87723FB6FCE0934CE6FBDC9F52F40",
+  "receiptStatus": "RECEIVED_VERIFIED",
+  "executionStatus": "PREPARATION_PASS",
+  "executedTasks": 0,
+  "verifiedAtUtc": "2026-11-21T07:42:53Z",
+  "reportStatus": "PREPARATION_PASS",
+  "integrationStatus": "INTEGRATION_BLOCKED",
+  "requiresApproval": true,
+  "executionAuthority": false,
+  "launchStatus": "NO_GO",
+  "evidenceRefs": [
+    {
+      "purpose": "pinned_instruction",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/c0a9d4b9df8ba99115b07c5105519ba650ba1d19/SOLQ_COMMAND/PORTAL_DEV_02_TASK.md"
+    },
+    {
+      "purpose": "prior_dev01_receipt_preserved",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/c8d8c0134dd6cd139b3ee58be85c0bf1582a1288/SOLQ_COMMAND/RECEIPTS/SOLQ-PORTAL-DEV-01.json",
+      "sha256": "04309CF101AFBD6CA84855E15E96DD1308F68E7ECADBAEE8DE6ECAD9708BCBAF"
+    },
+    {
+      "purpose": "published_candidate",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/tree/8c5ea9e2bab2daed8433077519ca28bd1ed9ea8f/candidates/portal-db-auth-rls-20261121"
+    },
+    {
+      "purpose": "integration_execution_matrix",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/8c5ea9e2bab2daed8433077519ca28bd1ed9ea8f/candidates/portal-db-auth-rls-20261121/TEST-PLAN.md"
+    }
+  ],
+  "codeCommit": "8c5ea9e2bab2daed8433077519ca28bd1ed9ea8f",
+  "codeBranch": "dev/solq-portal-db-auth-rls-20261121",
+  "preservedFiles": 11,
+  "actualDbTestsRun": 0,
+  "tests": {
+    "pass": 18,
+    "fail": 0,
+    "blocked": [
+      "PostgreSQL 17.11 migration, runtime constraints, concurrent commits and durability",
+      "Auth and PostgREST token, session and role enforcement",
+      "Actual database RLS and private Storage policy enforcement",
+      "Real isolated rollback, restart and recovery proof"
+    ],
+    "static": {
+      "pass": 4,
+      "sqlCheck": "LEXICAL_AND_STRUCTURAL_ONLY",
+      "postgresParser": "NOT_AVAILABLE"
+    },
+    "synthetic": {
+      "pass": 14,
+      "networkCalls": 0,
+      "scope": "In-process transaction, authorization and workflow fixtures; restart and concurrency are simulated."
+    },
+    "actualIntegration": {
+      "status": "INTEGRATION_BLOCKED",
+      "sqlExecuted": false,
+      "dbStarted": false,
+      "authConnected": false
+    }
+  },
+  "isolationEvidence": {
+    "windowsRuntime": {
+      "release": "EDB PostgreSQL 17.11-5 Windows x64",
+      "manifestSha256": "CF6FD0EAFF855B92BAB3419FA8B102DA034415EB27717C0948E3FDA8D2507A94",
+      "executables": [
+        {
+          "file": "postgres.exe",
+          "sha256": "F5DBFD059F8088B9511A02FC014E659369996FC7D3E88E47658B1CFA2FBB02D2",
+          "peFileVersion": "17.11",
+          "matchesManifest": true
+        },
+        {
+          "file": "initdb.exe",
+          "sha256": "D385519A50D2CD5E143E86C2C10ACFE0D44D3039D714C8211B804011BCA2409F",
+          "peFileVersion": "17.11",
+          "matchesManifest": true
+        },
+        {
+          "file": "pg_ctl.exe",
+          "sha256": "9885AC53AF9D67C76C1DDDE87C19E6B15539D7C482BCA70CD5EAD5DAD0B7CE3C",
+          "peFileVersion": "17.11",
+          "matchesManifest": true
+        },
+        {
+          "file": "psql.exe",
+          "sha256": "C290C7F0A3335F290F8C18011A1E5AFA03EE3CDD628697A5F3E767E5F1D3D10D",
+          "peFileVersion": "17.11",
+          "matchesManifest": true
+        }
+      ],
+      "companionEvidence": "Historical Approval A verified 1507 files; lib and share present in this review. Companion hashes were not rerun.",
+      "companionCounts": {
+        "total": 1511,
+        "preserveExisting": 4,
+        "addNew": 1507,
+        "binDll": 13,
+        "lib": 141,
+        "share": 1353
+      }
+    },
+    "historical": {
+      "firewallStatic": "14/14 PASS",
+      "firewallManifestSha256": "9E16971C04547E5E8881457C7F9A8044673AE919249025EEE86451D368037142",
+      "approvalAReceiptSha256": "8B5109063607EB4B5667A14DEC0F6DA48F10502D79C5B02649C7ABA61C6202D7",
+      "t01": "PASS_LOOPBACK_POSTGRES_ONLY",
+      "t01ManifestSha256": "C801868E372648818100CF3B30D5054B9F1487815336408B044DEC51134E6534",
+      "t01EvidenceFiles": 17,
+      "reused": true
+    },
+    "reviewSql": [
+      {
+        "file": "01_prepare_intake.REVIEW_ONLY.sql",
+        "sha256": "822876CF201B5DDB18E4960FC29773812FCADE4D4DE35F2FF7BE021554D7D4E5",
+        "matchesManifest": true,
+        "executed": false
+      },
+      {
+        "file": "02_activate_intake.REVIEW_ONLY.sql",
+        "sha256": "E8ABB8924EED0235908E50745F2403969AB2647BE7CB94640FF1CAC133C007AB",
+        "matchesManifest": true,
+        "executed": false
+      },
+      {
+        "file": "03_disable_intake.REVIEW_ONLY.sql",
+        "sha256": "97B71843DAB0168A299684B5051DC6EF06AC427713F97C5515527CBD12C7D4B0",
+        "matchesManifest": true,
+        "executed": false
+      }
+    ],
+    "observation": {
+      "localConfigPresent": true,
+      "configuredDatabaseMajor": 17,
+      "configuredAuthAndApi": true,
+      "listenerEvidence": "No matching listener in the selected local TCP port snapshot or named DB/Auth/API process list; no connect attempted.",
+      "scope": "Read-only. Runtime identity, separation, Auth keys, Storage installation and execution authorization not established."
+    },
+    "gate": "INTEGRATION_BLOCKED",
+    "priorDev01Evidence": "17 synthetic API and 6 offline browser checks reused; no DEV-01 regression rerun.",
+    "protectedBackupRestoreRpoRtoAndSecurityClosure": "BLOCKED_EXISTING_EVIDENCE"
+  },
+  "requiredApprovals": [
+    "Identify and attest one existing independent non-production environment with PostgreSQL 17.11, Auth, PostgREST and private Storage. Verify local-only network boundaries, isolated persistence, synthetic keys and roles, and no production linkage.",
+    "Authorize the exact environment and reviewed file hashes for synthetic startup, narrowly scoped writes, schema and rollback SQL, Auth/PostgREST/Storage calls, recovery check and safe cleanup.",
+    "Use only anonymous, A/B customers, staff and approved test operators. Record before and after evidence and verify rollback without touching existing assets."
+  ],
+  "report": {
+    "summaryKo": "신규 후보 8개 준비 PASS. 정적 4개와 합성 14개 통과. 실제 PostgreSQL 17.11·Auth·PostgREST·RLS·Storage 통합은 독립 환경과 실행 권한 미입증으로 BLOCKED. 실제 DB 시험 0건.",
+    "files": [
+      {
+        "path": "candidates/portal-db-auth-rls-20261121/adapter.mjs",
+        "bytes": 1604,
+        "sha256": "44E1BA1D91FA7273B82EFB0AF91C36D85C95E9084B30BC96EE47FE5235C3ADE2",
+        "gitBlob": "f38d7cf3358d234df0299112e9bc03a623a95187"
+      },
+      {
+        "path": "candidates/portal-db-auth-rls-20261121/README.md",
+        "bytes": 3703,
+        "sha256": "1927C158B924BD3DE22D81C0F43EF040E1F1994B42952283D7EFBE18F1DCBA9D",
+        "gitBlob": "5dbd58e4df819b864d469bc89c3410d89142faba"
+      },
+      {
+        "path": "candidates/portal-db-auth-rls-20261121/review/01_schema.REVIEW_ONLY.sql",
+        "bytes": 17568,
+        "sha256": "B9C7B6305971374E609A16B2A744999AF8C42786A3D3325DEA0701DE681642B4",
+        "gitBlob": "cc45967049da4dff4b6a35d6f6a51fa98bc922f8"
+      },
+      {
+        "path": "candidates/portal-db-auth-rls-20261121/review/02_rollback.REVIEW_ONLY.sql",
+        "bytes": 2997,
+        "sha256": "B6ED473FCE9EA26DE6FEE6F58E583523409B90F0E9D0CABFDB8A3EC9ACDBB909",
+        "gitBlob": "a08349812a2d68a825dfce463168dbd8b9cc299a"
+      },
+      {
+        "path": "candidates/portal-db-auth-rls-20261121/TEST-PLAN.md",
+        "bytes": 5070,
+        "sha256": "9B1AFF878EB49226867C439CE191B255DEC56B05E7769C571D14BB6C144677DD",
+        "gitBlob": "d4ce26248d9b6b0f95b58e3edd6d072bbe37128d"
+      },
+      {
+        "path": "candidates/portal-db-auth-rls-20261121/verify/fixture.mjs",
+        "bytes": 7698,
+        "sha256": "A03CA0BDBBA04E6CDA3ABE042DD6F51DB7AF29245849FB07526FBD00DE237ACB",
+        "gitBlob": "b7b1c77cd65ded1de860fe03892008192d84f76b"
+      },
+      {
+        "path": "candidates/portal-db-auth-rls-20261121/verify/fixture.test.mjs",
+        "bytes": 9422,
+        "sha256": "C2A4EF44FD49959C69EFFAD228B7786DF490E3DB0662ECAA8C91F0FCCBA2824F",
+        "gitBlob": "b27778f6f212b7ecf5c9d8d303619f5f20e732b3"
+      },
+      {
+        "path": "candidates/portal-db-auth-rls-20261121/verify/static.test.mjs",
+        "bytes": 4342,
+        "sha256": "8B5047BA9929F9B3DE7E8C39B688FF99339215B1115D4DF4BB11D1F5AD0B38B9",
+        "gitBlob": "1bdbb05e763c60ff01167b1ff23fbb87558e6da6"
+      }
+    ],
+    "dev01Preservation": [
+      {
+        "path": "candidates/portal-integration-20261121/client.js",
+        "sha256": "E3DA24D247B30969A86DF4FDCF9CF080623CBBD2DE7A0660C2DCFFFB553E9476",
+        "gitBlob": "588929c4d863d72f5b64488b0dfb66fb18c4cccf"
+      },
+      {
+        "path": "candidates/portal-integration-20261121/index.html",
+        "sha256": "B115B27009DAD6D3EC28AE667662E2609C3EAE90D1477A547EEB3F567320CCAC",
+        "gitBlob": "b5ebd802038d5f40ca693ee2314dca4454114687"
+      },
+      {
+        "path": "candidates/portal-integration-20261121/portal.css",
+        "sha256": "7494B357D3F9868A36BB1073FBB01BF7AF9F6360CCA5F678BEE62EED2E7F61F8",
+        "gitBlob": "8d3cc5fa4c77fdca8a5d09283eba4c5b5f296273"
+      },
+      {
+        "path": "candidates/portal-integration-20261121/README.md",
+        "sha256": "19EA78E0ADFF6DAF177E5F64EB2C126C4CA842FF0CB8D855D63B2E2D1FD15185",
+        "gitBlob": "d850644112cb1d7213aca5741f6c0e4344d33a41"
+      },
+      {
+        "path": "candidates/portal-integration-20261121/review/portal-boundaries.REVIEW_ONLY.sql",
+        "sha256": "79FE52C92A7C201FF2F430EB2CF7C30F2320B3D2BAF407584E1CA9D8F8BCD6AA",
+        "gitBlob": "d29eb697666059d369a7616dd80e0d3e8856289f"
+      },
+      {
+        "path": "candidates/portal-integration-20261121/service.js",
+        "sha256": "EBAB92B563D6C2C64474E7BB371A804F13ABA065649886ADF6A31228A7536AB0",
+        "gitBlob": "3c058bc3cc70b94cd4c680b990f32b5a641e4f5b"
+      },
+      {
+        "path": "candidates/portal-integration-20261121/ui.js",
+        "sha256": "020069CFBC481ED4600313D60AE94BD903D8E7BFBBCE65C8869E26C51E75608E",
+        "gitBlob": "a8a7e8acb9f5ea725f1a1937b54842b2f9fcc382"
+      },
+      {
+        "path": "candidates/portal-integration-20261121/vendor/dialogue.js",
+        "sha256": "414C8D3F806FB028574391FF230CDBCD65B7B3FE86092CE3EF8803BE6E949199",
+        "gitBlob": "ca0ac3307b0e96968f1430938fc1f8686323b48e"
+      },
+      {
+        "path": "candidates/portal-integration-20261121/vendor/solq-planning.js",
+        "sha256": "7039BE83A4A7613E128CE18C0959BB4FA735572B1E5C77CFFB2275C64AAF04BD",
+        "gitBlob": "0a995aeae69b83e71c2ca966dd243148572456ca"
+      },
+      {
+        "path": "candidates/portal-integration-20261121/verify/browser.cjs",
+        "sha256": "D58E019201A0F3E63A9C2246572E4D262E47A2491D3A8A8049C8A804742A4830",
+        "gitBlob": "ac2b894b4aae3c317663654bd647c2e32a9018c2"
+      },
+      {
+        "path": "candidates/portal-integration-20261121/verify/service.test.cjs",
+        "sha256": "E3DA59C25DB425E7BB5712DF1C9E1034361E2448C7BC77F75DA7D7D36F3DF2C4",
+        "gitBlob": "bce4f2c94707d3c994fc7d66363099aaabc4be12"
+      }
+    ],
+    "mutationScope": "Add-only candidate development branch and one new receipt on the approved ledger branch. No production, DEV-01, deployment, main or PR changes attempted.",
+    "adapterDefault": "OFF; in-process test transport only",
+    "sqlFilesStatus": "REVIEW_ONLY / NOT_APPLIED",
+    "costKrw": 0
+  }
+}
