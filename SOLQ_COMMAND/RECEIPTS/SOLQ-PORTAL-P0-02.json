@@ -1,0 +1,488 @@
+{
+  "schemaVersion": 1,
+  "taskNumber": "SOLQ-PORTAL-P0-02",
+  "baselineCommit": "d1b28148ae0a26062569466fb1a2167a361658f5",
+  "instructionPath": "SOLQ_COMMAND/PORTAL_AF_TASK.md",
+  "instructionSha256": "30B50083FCFB8D8367C25A3567321DAF0D62A53CDE47E17F4A3E86F5634D92AF",
+  "receiptKey": "95DB42D0DEF8B050F47253DF8B4461FD8E0630760F79049C20721F5F9675D9FC",
+  "receiptStatus": "RECEIVED_VERIFIED",
+  "executionStatus": "READ_ONLY_AUDIT_COMPLETED",
+  "executedTasks": 0,
+  "verifiedAtUtc": "2026-11-21T07:03:57Z",
+  "reportStatus": "BLOCKED",
+  "evidenceRefs": [
+    "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/d1b28148ae0a26062569466fb1a2167a361658f5/SOLQ_COMMAND/PORTAL_AF_TASK.md",
+    "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/664d6626680c6a9cd0b014a56e255fee77255ec8/SOLQ_COMMAND/RECEIPTS/SOLQ-PORTAL-P0-01.json",
+    "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/be8de8ba6b1275dc96f3c9c2afd3ea03ff1b1b01/ops/consultation/sites-release-20261108/REPORT.md",
+    "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/app.js#L14-L34",
+    "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/5e76fdbdb9ec022dd53a4f77ef8fe27d1c8ad29c/app.js#L14-L34",
+    "https://supabase.com/docs/guides/platform/backups",
+    "https://supabase.com/docs/guides/platform/clone-project"
+  ],
+  "requiresApproval": true,
+  "report": {
+    "title": "SOLQ 포털 공식 사이트·배포 소스 및 백업·복구 증거 대조",
+    "auditStatus": "COMPLETE",
+    "launchStatus": "NO_GO",
+    "verifiedAtKst": "2026-11-21T16:03:57+09:00",
+    "changeFromP001": [
+      {
+        "item": "A 공개 페이지·배포 출처",
+        "before": "현재 HTTP 연결과 공식 배포 버전 미확인",
+        "now": "두 호스트 공개 경로 10개 HTTP 200. 읽기 전용 Sites 메타데이터에서 v32·성공 배포·소스 커밋·아카이브 지문 확인"
+      },
+      {
+        "item": "A 신청 코드 경로",
+        "before": "11-19 관찰을 재사용한 경로 차이",
+        "now": "공개 JS 3개 해시와 행을 현재 확인. Sites 직접 REST와 GitHub RPC 차이 유지"
+      },
+      {
+        "item": "F 공급자 설명",
+        "before": "카탈로그·과거 부분 스냅샷 중심",
+        "now": "기존 공급자 답변과 현재 공식 문서에서 DB 복원 포함/제외 범위, 임시 인증 방식, 비용·외부 작업 위험 확인"
+      },
+      {
+        "item": "F 실제 전체 백업 및 복원",
+        "before": "BLOCKED",
+        "now": "BLOCKED 유지. 최신 관리형 백업 ID와 동일 ID의 보호 격리 복원 증거 미확인"
+      }
+    ],
+    "priorReport": {
+      "sha256": "1AEF2CC8B62481B4EA18B1EEEF7629434B5CBC486F0AF6CCCD7CE59680C04893",
+      "localRemoteBytesMatch": true,
+      "source": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/664d6626680c6a9cd0b014a56e255fee77255ec8/SOLQ_COMMAND/RECEIPTS/SOLQ-PORTAL-P0-01.json",
+      "priorManifestFiles": 96,
+      "oldTestsRerun": 0
+    },
+    "A": {
+      "owners": [
+        "CORE",
+        "SENTINEL"
+      ],
+      "status": "PARTIAL",
+      "publicConnectivity": {
+        "status": "PASS",
+        "observedAtUtc": "2026-11-21T06:58:22.9656181Z",
+        "authorizedAnonymousHttpsGet": true,
+        "webToolAccess": "조회 도구에서 접근 불가. 기존 승인 Windows 경로의 정상 TLS HTTPS 조회에서 성공하여 이 제한을 서비스 실패로 분류하지 않았다.",
+        "endpoints": [
+          {
+            "url": "https://solqtech.com/",
+            "http": 200,
+            "finalUrl": "https://solqtech.com/",
+            "sha256": "7DA4FE03FB2FDE946CC5372AC67127E57B3551E7A3836426E6C78073645F2BDE"
+          },
+          {
+            "url": "https://solqtech.com/privacy",
+            "http": 200,
+            "finalUrl": "https://solqtech.com/privacy",
+            "sha256": "17BBA674590F3494BF9884A08D52DB7679198E539AD83B30F74A3094A7EFAD63"
+          },
+          {
+            "url": "https://solqtech.com/consultation/",
+            "http": 200,
+            "finalUrl": "https://solqtech.com/consultation/",
+            "sha256": "441BB5EF0D823CF010D16E6124F19A9C41F1842525693F6384F5D7B39FBAB9AF"
+          },
+          {
+            "url": "https://solqtech.com/admin",
+            "http": 200,
+            "finalUrl": "https://solqtech.com/admin",
+            "sha256": "2562B494985F9471B417FD62D7FB70C73B3C94617A6D2AA96D1BC7392156C6AB"
+          },
+          {
+            "url": "https://solqtech.com/data-deletion",
+            "http": 200,
+            "finalUrl": "https://solqtech.com/data-deletion",
+            "sha256": "2ACDF0837CDC1A30724A098DE0BC28199A981408683578546124F8EC8645ADDF"
+          },
+          {
+            "url": "https://www.solqtech.com/",
+            "http": 200,
+            "finalUrl": "https://www.solqtech.com/",
+            "sha256": "C89AE05C7D6882ACA86D6B85AFF0DC2182AC95EB1DBDA3BE3803611A2817B703"
+          },
+          {
+            "url": "https://www.solqtech.com/privacy",
+            "http": 200,
+            "finalUrl": "https://www.solqtech.com/privacy",
+            "sha256": "A7A07EE0227234547102BBAF80DAF562790B89C17C308C99AEAB5AAC623F509B"
+          },
+          {
+            "url": "https://www.solqtech.com/consultation/",
+            "http": 200,
+            "finalUrl": "https://www.solqtech.com/consultation/",
+            "sha256": "501942BC885807994BBEFFAF2DA184E043ED2FAEA9CA7D1DD7D650CF171E0010"
+          },
+          {
+            "url": "https://www.solqtech.com/admin",
+            "http": 200,
+            "finalUrl": "https://www.solqtech.com/admin",
+            "sha256": "C1D436FFA395CE774768E3E02B464A15FF14A1CB1FE9D1F63781478ED3564E3D"
+          },
+          {
+            "url": "https://www.solqtech.com/data-deletion",
+            "http": 200,
+            "finalUrl": "https://www.solqtech.com/data-deletion",
+            "sha256": "25C623FBA3A801BC137E2BA8B974B7454D373D4AD935A2C862B42EBA0987266F"
+          }
+        ],
+        "dns": {
+          "status": "PASS",
+          "observedAtUtc": "2026-11-21T06:59:24.4855053Z",
+          "resolver": "Cloudflare public DoH",
+          "records": [
+            {
+              "host": "solqtech.com",
+              "type": "A",
+              "rcode": 0,
+              "answerTypes": [
+                1,
+                1
+              ]
+            },
+            {
+              "host": "solqtech.com",
+              "type": "AAAA",
+              "rcode": 0,
+              "answerTypes": []
+            },
+            {
+              "host": "www.solqtech.com",
+              "type": "A",
+              "rcode": 0,
+              "answerTypes": [
+                5,
+                1,
+                1
+              ]
+            },
+            {
+              "host": "www.solqtech.com",
+              "type": "AAAA",
+              "rcode": 0,
+              "answerTypes": [
+                5,
+                28,
+                28
+              ]
+            }
+          ],
+          "observation": "기본 호스트는 A 응답이 있고 AAAA 응답이 없었다. www는 CNAME을 경유한 A·AAAA 응답을 확인했다."
+        }
+      },
+      "deployment": {
+        "status": "PASS",
+        "evidence": "읽기 전용 Sites get_site, list_site_versions, get_site_version, get_deployment_status",
+        "liveCustomDomain": "https://solqtech.com",
+        "siteState": "active",
+        "version": 32,
+        "deploymentId": "appgdep_6aefdf1ab0f08191afb8237651aaf9b0",
+        "deploymentState": "succeeded",
+        "deploymentCompletedUtc": "2026-11-08T11:32:06.513712+09:00",
+        "sourceCommit": "3ad6da253713e9d52d96cb410d2803fcd47784f2",
+        "archiveSha256": "sha256:9525de2f86cbffb6116bd75ef31e2105cc81d6e4303a0a823489bfee5967cbe7",
+        "archiveFiles": 41,
+        "archiveBytes": 532480,
+        "staticDirectory": "dist",
+        "directoryBasis": "v32 공개 배포 보고서 14행",
+        "publishedHistoryRef": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/be8de8ba6b1275dc96f3c9c2afd3ea03ff1b1b01/ops/consultation/sites-release-20261108/REPORT.md",
+        "archiveHashBasis": "현재 통제면이 반환한 아카이브 메타데이터. 아카이브를 다운로드하거나 전체 런타임 파일 지문을 재연산하지 않았다.",
+        "servedHtmlByteStatus": "UNVERIFIED",
+        "servedHtmlCaveat": "배포 보관본 index.html, 현재 공개 HTML 응답 지문은 서로 다르다. 기본 호스트의 두 익명 응답도 지문이 달랐다. 주입·캐시·응답 변형의 원인과 전체 파일 단위 동일성은 확정하지 않았다.",
+        "archivedIndexSha256": "C6FCD3602977FBBD6B455C459485C1A0D5663CD46E4C7DF89C601A42F63DE98C",
+        "secondRootObservationSha256": "8F5F281758F4B9726A5FE888DE6724C37B130CCA21DB93582A2AFC79FD620263"
+      },
+      "sourceComparison": {
+        "mainCommit": "4e4a2ab06b65c39248b9eba651ac5aab92bd6a28",
+        "developmentCommit": "5e76fdbdb9ec022dd53a4f77ef8fe27d1c8ad29c",
+        "mainAppBlob": "df3503851ebf0f30d2b72ef012b054926e6b2fcb",
+        "devAppBlob": "df3503851ebf0f30d2b72ef012b054926e6b2fcb",
+        "mainAndDevelopment": "app.js 22~26행 client.rpc('submit_application'), 27~32행 접수번호 형식 확인 및 표시",
+        "currentSiteJs": [
+          {
+            "path": "/app.js",
+            "sha256": "F1EBD6F0BEE54FF5F632266B82B94D017097E90C089C160FCDEEF1F20A0DCFE4",
+            "matched20261119": true
+          },
+          {
+            "path": "/api.js",
+            "sha256": "BCF05E35E5ED7F615615F51C7561C6BA3624091838885B83176171525980F68F",
+            "matched20261119": true
+          },
+          {
+            "path": "/admin.js",
+            "sha256": "5FDAE518B830D451210DA66D342BED0741F3A4353743949D70EB3EA01F1D1CD4",
+            "matched20261119": true
+          }
+        ],
+        "mapping": [
+          {
+            "stage": "신청과 개인정보 안내",
+            "path": "공개 /#apply 및 /privacy",
+            "verifiedAt": "현재 익명 HTTP",
+            "purpose": "개인정보 수집과 국외 이전 안내. / HTML 38행에서 privacy_consent와 transfer_consent 모두 required 확인",
+            "status": "PASS"
+          },
+          {
+            "stage": "전송 직전 UI",
+            "path": "공개 app.js 8·24~29행",
+            "verifiedAt": "현재 공개 JS",
+            "purpose": "동의 필드 읽기 및 NexusAPI.buildPayload/submit 호출. 입력이나 요청 전송은 시험하지 않았다.",
+            "status": "PASS"
+          },
+          {
+            "stage": "서버 저장 계약",
+            "path": "공개 api.js 21~34행",
+            "verifiedAt": "현재 공개 JS",
+            "purpose": "설정된 Supabase의 /rest/v1/applications로 직접 INSERT하는 경로. 독립 동의 원장 없이 privacy_consent와 설명 안의 안내를 사용하는 기존 코드. 실제 저장·동의 증거는 확인되지 않았다.",
+            "status": "BLOCKED"
+          },
+          {
+            "stage": "접수번호 생성·표시",
+            "path": "공개 api.js 10~16·30~34행 및 app.js 27~38행",
+            "verifiedAt": "현재 공개 JS",
+            "purpose": "UUID 기반 번호와 UI 표시 로직. 기존 요청 충돌에서 저장된 본문 동일성을 확인했다는 현재 운영 증거는 없다.",
+            "status": "PARTIAL"
+          },
+          {
+            "stage": "관리자 조회와 승인",
+            "path": "공개 /admin, admin.js 16~18·93·100·114~123행",
+            "verifiedAt": "현재 익명 HTML과 공개 JS",
+            "purpose": "인증 사용자·admin_users 대조, applications 조회 및 별도 제작 승인 호출을 소스에서 확인. 실제 로그인·조회·RLS 검증은 미실행.",
+            "status": "PARTIAL"
+          },
+          {
+            "stage": "상담·개인정보 삭제 안내",
+            "path": "공개 /consultation/ 및 /data-deletion",
+            "verifiedAt": "현재 익명 HTTP",
+            "purpose": "화면 도달과 안내 표시. 상담 제출, 삭제 신청과 이행은 미실행.",
+            "status": "PASS"
+          }
+        ]
+      },
+      "blockers": [
+        "동일 배포의 전체 아카이브 파일과 현재 제공 파일의 개별 해시 대조 미완료",
+        "정상 저장, 독립 동의 원장, 불명확한 재시도, 관리자 동일 접수 조회는 실제 격리 E2E 미검증"
+      ],
+      "separateApprovalNeeded": [
+        "공식 아카이브 읽기·파일 지문 대조가 추가로 필요할 경우 소유자가 승인된 검증 자료를 제공",
+        "신청·관리자 기능 시험과 변경은 격리 환경 및 코드·SQL 별도 승인 필요"
+      ]
+    },
+    "F": {
+      "owners": [
+        "GUARD",
+        "SENTINEL"
+      ],
+      "status": "BLOCKED",
+      "existingProviderReplies": {
+        "firstTechnicalReplyUtc": "2026-11-05T16:16:25Z",
+        "correctedReplyUtc": "2026-11-10T16:19:11Z",
+        "summary": "이후 답변은 기존 비밀번호 재설정이 필요하다는 앞선 CLI 안내를 정정했다. 기존 승인 계정의 액세스 토큰 및 수명이 짧은 임시 DB 로그인 역할을 사용하는 경로를 안내받았다. 이 조사에서는 로그인·토큰 접근·임시 역할 생성·운영 DB 연결을 수행하지 않았다.",
+        "physicalBackup": "지원 답변에서 물리 백업은 로컬 다운로드할 수 없다고 안내했다. 실제 환경에 보유된 타입·백업 ID·시점은 확인되지 않았다.",
+        "safetyAndCost": "관리형 새 프로젝트 복원은 같은 컴퓨트·디스크로 별도 청구될 수 있다. 지원 답변상 컴퓨트는 실행 중 시간 단위로 청구된다. 복원 직후 pg_cron/pg_net 등 외부 작업이 재개될 수 있고 복원 중 사전 정지 기능이 없다. 새 프로젝트·복원·외부 통신은 승인 범위 밖이다.",
+        "sourceDisclosure": "지원 내용은 요약만 기록했다. 개인 이메일과 지원 기록 식별자는 공개하지 않았다."
+      },
+      "coverage": [
+        {
+          "item": "DB 데이터·스키마·역할과 권한",
+          "provider": "관리형 새 프로젝트 복원 범위. 사용자 정의 역할 비밀번호의 별도 설정이 필요할 수 있다.",
+          "asset": "부분 스냅샷만 문서화. 전체 DB·역할·시퀀스·동일 시점 복원 증거 미확인"
+        },
+        {
+          "item": "Auth 사용자 데이터·Vault",
+          "provider": "관리형 물리 복원에 Auth 데이터와 암호화 루트 키가 포함된다. 논리 복원에 루트 키가 자동 포함되지는 않는다.",
+          "asset": "Auth·Vault 필요 범위와 보호 키 복구·검증 근거 미확인. 실제 비밀값 취급 없음"
+        },
+        {
+          "item": "Storage 객체 및 버킷 설정",
+          "provider": "객체 본문과 프로젝트 Storage 설정은 별도 보존·재설정이 필요하다. 데이터베이스의 메타데이터와 구분한다.",
+          "asset": "누락 없는 객체·버전·무결성 목록 및 복구 결과 미확인"
+        },
+        {
+          "item": "Edge Functions·Auth 설정/키·Realtime·확장 설정·복제본",
+          "provider": "서비스별 소스·설정·비밀 보관 및 복구 참조를 별도로 검증한다.",
+          "asset": "전체 범위의 같은 시점 지문, 승인된 별도 문서·복원 증거 미확인"
+        }
+      ],
+      "recentManagedBackup": {
+        "status": "UNVERIFIED",
+        "backupId": null,
+        "createdAtUtc": null,
+        "scope": null,
+        "encryptionVerified": null,
+        "sha256": null,
+        "evidenceAccess": "기존 지원 답변과 부분 스냅샷 메타데이터 확인. 현재 읽기 경로에는 백업 목록·복원 실행 이력의 계정별 증거가 없다."
+      },
+      "historicalPartialSnapshotMetadata": {
+        "status": "PASS",
+        "proofScope": "메타데이터 문서 존재·해시 확인",
+        "metadataSha256": "FA3FD62499E0544AB7ADC8F52C525E14C25E035E03B45DA1CB118F5D5A55D74F",
+        "snapshots": [
+          {
+            "utc": "2026-10-25T05:21:18.704789Z",
+            "sizeBytes": 59834,
+            "managedBackupId": null,
+            "artifactSha256": null,
+            "encryptionVerified": null
+          },
+          {
+            "utc": "2026-10-26T04:51:57.153044Z",
+            "sizeBytes": 47285,
+            "managedBackupId": null,
+            "artifactSha256": null,
+            "encryptionVerified": null
+          }
+        ],
+        "exclusions": [
+          "Auth 사용자",
+          "시퀀스",
+          "Storage 객체 본문",
+          "오케스트레이터 작업 키"
+        ],
+        "caveat": "크기와 시각은 메타데이터 기록값이다. 메타데이터 SHA-256은 백업 파일 지문이 아니다. 백업 본문이나 키 자료에 접근하지 않았다."
+      },
+      "recoveryGates": [
+        {
+          "item": "동일 백업 ID의 격리 복원",
+          "status": "BLOCKED",
+          "note": "기존 전체 복원 보류와 보호 대상 미확인 기록을 재사용했다. 동일 ID 복원의 성공 또는 실패 원본 실행 로그는 확인하지 못했다."
+        },
+        {
+          "item": "PG17.11 및 SQL 후보",
+          "status": "PASS",
+          "note": "기존 합성 자산·준비 증거 확인 범위. T01의 합성 로컬 연결 PASS는 실제 복원 증거에 포함하지 않는다. SQL 후보는 미실행 상태다."
+        },
+        {
+          "item": "RPO/RTO",
+          "status": "UNVERIFIED",
+          "note": "승인 목표와 실측 없음. RPO는 장애 기준과 검증된 복구 지점의 차이, RTO는 승인 복구 착수부터 핵심 흐름 합격까지의 실측으로 남긴다."
+        },
+        {
+          "item": "보안 경고 종결",
+          "status": "BLOCKED",
+          "note": "11-19 경고 3건의 현재 상태·승인 조치·재진단 완료가 미확인이다."
+        },
+        {
+          "item": "통합 회귀와 Windows 보류",
+          "status": "BLOCKED",
+          "note": "접수 보완의 합성·정적 14 PASS 재사용. 실제 PostgreSQL/PostgREST/Auth/RLS·관리자 통합 미검증, W04 FAIL 및 W05·W09·S4U 차단 유지."
+        }
+      ],
+      "separateApprovalNeeded": [
+        "기존 소유자의 Backups: Read 범위로 최신 백업 및 복원 이력의 메타데이터만 확인",
+        "보호 비운영 대상과 데이터 범위·저장 통제·외부 작업 차단·비용 상한·중단/폐기 계획이 확정된 뒤 별도 복원 승인",
+        "기존 네트워크·운영 권한·자격증명 변경과 새 프로젝트는 이 단계 대상이 아니다."
+      ]
+    },
+    "priorities": [
+      {
+        "id": "SOLQ-PORTAL-P0-01-A",
+        "priority": "P0",
+        "owners": [
+          "CORE",
+          "SENTINEL"
+        ],
+        "paths": [
+          "Sites static.directory=dist의 index.html/app.js/api.js/admin.js",
+          "GitHub index.html/app.js"
+        ],
+        "dependsOn": "승인된 배포 아카이브 읽기 증거",
+        "acceptance": "공식 기본·www 도메인과 같은 v32 아카이브·소스·승인 경로를 연결하고 필요한 개별 파일의 지문 차이를 설명한다."
+      },
+      {
+        "id": "SOLQ-PORTAL-P0-01-B",
+        "priority": "P0",
+        "owners": [
+          "GUARD",
+          "CORE"
+        ],
+        "paths": [
+          "공식 index.html·privacy 안내",
+          "로컬 01_prepare_intake.REVIEW_ONLY.sql·02_activate_intake.REVIEW_ONLY.sql"
+        ],
+        "dependsOn": "A 배포 출처와 고지 원문 승인",
+        "acceptance": "두 고지 버전·해시 및 독립 동의를 각 합성 신청 원본과 서버에서 묶고, 검토용 또는 불일치 고지에서 활성화 차단."
+      },
+      {
+        "id": "SOLQ-PORTAL-P0-01-C",
+        "priority": "P0",
+        "owners": [
+          "CORE",
+          "SENTINEL"
+        ],
+        "paths": [
+          "공식 app.js/api.js",
+          "로컬 intake-client.js와 준비·전환·중단 SQL 후보"
+        ],
+        "dependsOn": "A·B, 승인된 합성 격리 환경, 운영 적용 전에 복구 관문 F",
+        "acceptance": "같은 요청의 원본·번호·관리자 조회가 일치하고 충돌·응답 유실·새로고침·구 경로 전환과 원복에서 잘못된 성공·기존 원본 변경이 0건."
+      },
+      {
+        "id": "SOLQ-PORTAL-P0-01-D",
+        "priority": "P0",
+        "owners": [
+          "GUARD",
+          "SENTINEL"
+        ],
+        "paths": [
+          "공식 admin.js",
+          "supabase-schema.sql",
+          "기존 Auth·고객 격리 후보"
+        ],
+        "dependsOn": "기존 승인된 합성 Auth/PostgREST 역할과 데이터",
+        "acceptance": "익명·일반 고객 A/B·관리자의 실제 허용/거부, 권한 회수와 기존 관리자 조회·승인 경계 확인."
+      },
+      {
+        "id": "SOLQ-PORTAL-P0-01-F",
+        "priority": "P0",
+        "owners": [
+          "GUARD",
+          "SENTINEL"
+        ],
+        "paths": [
+          "기존 백업 메타데이터와 보호 복구 증거",
+          "격리 TEST-PLAN.md"
+        ],
+        "dependsOn": "기존 소유자 읽기 권한, 복원 대상·비용·외부 작업 차단의 별도 승인",
+        "acceptance": "최신 동일 백업 ID·UTC·범위·암호화·무결성과 격리 복원 완료를 대조하고 승인된 RPO/RTO 목표 대비 결과 기록."
+      }
+    ],
+    "isolatedDevelopmentWithoutProductionData": [
+      "기존 PG17.11 자산의 지문과 보호 저장소를 확인하고 기동은 별도 승인으로 남긴다.",
+      "기존 비운영 Auth/PostgREST/DB의 식별·네트워크 경계와 합성 관리자·고객 A/B·익명 시드만 승인한다.",
+      "고지 원문 버전, 소스/SQL 후보 해시, 구 경로·중단·원복 기대 결과와 P0-01 시험 증거를 준비한다.",
+      "원본·저장 결과·접수번호 및 권한 경계를 합성으로 관찰하고 기존 통과 시험을 반복하지 않는다."
+    ],
+    "controls": {
+      "productionDbReads": 0,
+      "productionDbWrites": 0,
+      "customerDataAccesses": 0,
+      "realCustomerSubmissions": 0,
+      "sitesChanges": 0,
+      "restores": 0,
+      "newBackups": 0,
+      "dockerChanges": 0,
+      "extraBillingKrw": 0,
+      "automationsInstalled": 0,
+      "operatingTaskRuns": 0
+    },
+    "sourceReferences": {
+      "task": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/d1b28148ae0a26062569466fb1a2167a361658f5/SOLQ_COMMAND/PORTAL_AF_TASK.md",
+      "prior": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/664d6626680c6a9cd0b014a56e255fee77255ec8/SOLQ_COMMAND/RECEIPTS/SOLQ-PORTAL-P0-01.json",
+      "sitesRelease": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/be8de8ba6b1275dc96f3c9c2afd3ea03ff1b1b01/ops/consultation/sites-release-20261108/REPORT.md",
+      "sitesOriginalIndex": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/be8de8ba6b1275dc96f3c9c2afd3ea03ff1b1b01/ops/consultation/sites-release-20261108/dist/index.html",
+      "sitesHistoricBrowser": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/be8de8ba6b1275dc96f3c9c2afd3ea03ff1b1b01/ops/consultation/sites-release-20261108/verification/production-browser.json",
+      "mainApp": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/app.js#L14-L34",
+      "devApp": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/5e76fdbdb9ec022dd53a4f77ef8fe27d1c8ad29c/app.js#L14-L34",
+      "dbSchema": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/supabase-schema.sql#L3-L21",
+      "workStatus": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/491a110764f9785c98f490fed669d2d50fdc92eb/SOLQ_COMMAND/WORK_STATUS.json",
+      "backups": "https://supabase.com/docs/guides/platform/backups",
+      "clone": "https://supabase.com/docs/guides/platform/clone-project",
+      "pat": "https://supabase.com/docs/guides/platform/personal-access-tokens",
+      "billing": "https://supabase.com/docs/guides/platform/billing-on-supabase",
+      "advisor": "https://supabase.com/docs/guides/observability/advisors"
+    }
+  }
+}
