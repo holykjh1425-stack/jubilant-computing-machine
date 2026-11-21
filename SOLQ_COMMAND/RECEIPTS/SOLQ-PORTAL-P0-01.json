@@ -1,0 +1,509 @@
+{
+  "schemaVersion": 1,
+  "taskNumber": "SOLQ-PORTAL-P0-01",
+  "baselineCommit": "1eac083a66c4314f64b75ef6e5943883b2dd70dc",
+  "instructionPath": "SOLQ_COMMAND/PORTAL_P0_TASK.md",
+  "instructionSha256": "7E1D47BA0EEFD22567B9B270385744A2F38C8ECE2D81CB3E39A9355D36A86929",
+  "receiptKey": "D17F8802AA002B6E9B3A4AD99F7888CA2044EBE041638BC21F1B8B80154989A3",
+  "receiptStatus": "RECEIVED_VERIFIED",
+  "executionStatus": "READ_ONLY_AUDIT_COMPLETED",
+  "executedTasks": 0,
+  "verifiedAtUtc": "2026-11-21T06:51:08Z",
+  "reportStatus": "BLOCKED",
+  "evidenceRefs": [
+    "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/1eac083a66c4314f64b75ef6e5943883b2dd70dc/SOLQ_COMMAND/PORTAL_P0_TASK.md",
+    "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/be8de8ba6b1275dc96f3c9c2afd3ea03ff1b1b01/ops/consultation/sites-release-20261108/REPORT.md",
+    "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/be8de8ba6b1275dc96f3c9c2afd3ea03ff1b1b01/ops/consultation/sites-release-20261108/dist/index.html",
+    "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/app.js#L14-L35",
+    "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/491a110764f9785c98f490fed669d2d50fdc92eb/SOLQ_COMMAND/WORK_STATUS.json"
+  ],
+  "requiresApproval": true,
+  "report": {
+    "title": "SOLQ AI 포털 완성도 1차 조사",
+    "auditStatus": "COMPLETE",
+    "launchStatus": "NO_GO",
+    "verifiedAtKst": "2026-11-21T15:51:08+09:00",
+    "executionScope": "executedTasks는 운영·제작 작업 실행 건수다. 이번 완료 범위는 읽기 전용 조사다.",
+    "summary": "공식 Sites 접수와 GitHub 앱의 저장 경로가 다르다. 접수 원본·독립 동의·실제 권한·제작 승인·복구 통합 증거가 남아 있어 출시 및 첫 유료 파일럿은 BLOCKED다.",
+    "sourceBaseline": {
+      "taskBranch": "docs/solq-portal-p0-audit-20261121",
+      "taskCommit": "1eac083a66c4314f64b75ef6e5943883b2dd70dc",
+      "historicalDevelopmentBaseline": "379318316e6fd703203d69ea0bf8e464ad1bf860",
+      "currentMain": "4e4a2ab06b65c39248b9eba651ac5aab92bd6a28",
+      "developmentBranch": "dev/solq-customer-chat-pricing-20261112",
+      "currentDevelopment": "5e76fdbdb9ec022dd53a4f77ef8fe27d1c8ad29c",
+      "mainVersusHistorical": "main은 기준보다 2커밋 앞서며 변경은 BLOG_TRAFFIC_STATUS.md와 GROWTH_PROJECT.md 두 문서였다.",
+      "developmentVersusMain": "개발 브랜치는 main 대비 21개 앞서고 4개 뒤처진 분기다. 고객 상담·가격·인증 후보가 별도 후보 경로에 있으며 두 브랜치 app.js의 Git blob은 동일하다.",
+      "archivedSitesReleaseEvidence": "be8de8ba6b1275dc96f3c9c2afd3ea03ff1b1b01",
+      "archivedDeletionEvidence": "5fa15fd9bc717b0036dac88d2b4191b2c28bfc0f",
+      "officialDeploymentCommitNow": "UNVERIFIED",
+      "note": "2026-11-08 Sites 배포 기록과 2026-11-19 공개 읽기 관찰을 현재 운영 배포의 바이트 증거로 승격하지 않았다."
+    },
+    "dns": {
+      "checkedUtc": "2026-11-21T06:47:21.5999551Z",
+      "resolver": "Cloudflare public DoH",
+      "status": "PASS",
+      "scope": "공개 DNS 응답만 확인. 운영 HTTP·TLS 직접 연결 및 이번 배포 확인은 미실행.",
+      "observations": [
+        {
+          "host": "solqtech.com",
+          "a": "NOERROR, A 응답 있음",
+          "aaaa": "NOERROR, 응답 없음"
+        },
+        {
+          "host": "www.solqtech.com",
+          "a": "NOERROR, CNAME과 A 응답 있음",
+          "aaaa": "NOERROR, CNAME과 AAAA 응답 있음"
+        }
+      ]
+    },
+    "featureMatrix": [
+      {
+        "feature": "도메인에서 신청 양식 진입",
+        "status": "PARTIAL",
+        "implementation": "공식 Sites dist/index.html의 #apply 및 application-form. GitHub index.html에도 양식이 있다.",
+        "observation": "11-19 공개 관찰에서 기본·www 신청 화면 응답 및 양식을 확인했다. 공개 DNS는 이번에 성공했다. 실제 사이트 빌드·TLS·리디렉션의 현재 증거는 미확인이다.",
+        "sourceIds": [
+          "release",
+          "publicEntry"
+        ],
+        "needed": "A. 공식 도메인과 승인 빌드/버전/소스 지문 대조",
+        "approvalNeeded": true
+      },
+      {
+        "feature": "개인정보·국외 이전 안내와 독립 동의",
+        "status": "PARTIAL",
+        "implementation": "공식 /privacy.html → /privacy 및 두 필수 체크박스. main index.html·privacy.html의 별도 안내.",
+        "observation": "이전 공개 화면에서 양식과 안내를 확인했다. 당시 공식 저장은 privacy_consent와 안내 문구로 기록됐다. 별도 두 동의의 원문 버전·지문·서버 시각 증거는 운영에서 확인되지 않았다.",
+        "sourceIds": [
+          "release",
+          "publicEntry",
+          "rpc"
+        ],
+        "needed": "B. 승인 고지와 화면·서버 매니페스트를 묶고 두 동의의 독립 영수 증거를 검증",
+        "approvalNeeded": true
+      },
+      {
+        "feature": "신청 전송과 접수번호 표시",
+        "status": "PARTIAL",
+        "implementation": "11-19 Sites app.js의 FormData/NexusAPI → api.js → 설정된 Supabase의 /rest/v1/applications. GitHub app.js는 client.rpc('submit_application') 사용.",
+        "observation": "확인한 당시 공식 앱은 접수번호를 포맷해 표시하며, GitHub 앱은 RPC 반환 문자열을 검증해 표시한다. 서로 다른 배포 경로이며 동일한 저장 계약을 입증하지 않는다.",
+        "sourceIds": [
+          "release",
+          "rpc"
+        ],
+        "needed": "A·C. 승인 빌드와 신규 접수 계약, 관리자 조회를 동일 접수번호로 대조",
+        "approvalNeeded": true
+      },
+      {
+        "feature": "application_id·접수번호 연계와 원본 무결성",
+        "status": "BLOCKED",
+        "implementation": "applications.id PK·receipt_number UNIQUE는 소스 및 이전 카탈로그에서 확인. 로컬 P0 보완 후보 F01/F03/F04가 저장 본문 지문·재시도·구 경로 전환을 다룬다.",
+        "observation": "이전 공식 소스는 중복 판정 전에 저장된 원본 본문을 대조하는 증거가 없었다. 기존 동일 화면에서 키 재사용 증거는 서버 측 멱등성이나 다중 세션/새로고침 보장을 입증하지 않는다.",
+        "sourceIds": [
+          "rpc",
+          "guard"
+        ],
+        "needed": "C. 합성 동시 요청·응답 유실·상이한 본문·번호 충돌에서 잘못된 성공 0건 및 기존 원본 보존 확인",
+        "approvalNeeded": true
+      },
+      {
+        "feature": "관리자 로그인·신청 조회 및 최소 권한",
+        "status": "PARTIAL",
+        "implementation": "공식 /admin.html → /admin 및 admin.js Auth 경로. main admin.js의 signInWithPassword 및 applications 조회, supabase-schema.sql의 admin_users/RLS, production-admin.js의 세션과 관리자 검사.",
+        "observation": "이전 자료는 로그인 UI 및 카탈로그 근거다. 현재 Auth 성공·회수·역할별 접근·관리자 본문/상태 경계는 실제 연결에서 확인되지 않았다.",
+        "sourceIds": [
+          "admin",
+          "guard"
+        ],
+        "needed": "D. 승인된 합성 관리자·일반·익명에서 목록/상세·상태 변경·세션 종료 정책의 유효 적용 확인",
+        "approvalNeeded": true
+      },
+      {
+        "feature": "무료 6단계 계획·무료 체험",
+        "status": "PARTIAL",
+        "implementation": "로컬 solq-planning.js의 planFor/executeFree, 포털 model.js의 diagnose, 저장 후보 ai_work_plans/free_plan. main preview.html은 샘플 체험.",
+        "observation": "로컬 규칙·브라우저 PASS 및 과거 카탈로그는 존재한다. 11-19 공식 양식에는 과거 order/preview 링크가 없었고 직접 공개 경로는 404였다. 실제 신청→무료 계획 연결은 미확인이다.",
+        "sourceIds": [
+          "workFlow",
+          "release"
+        ],
+        "needed": "E·H. 합성 동일 신청의 6단계 계획 렌더링 및 유료 호출 0건 확인",
+        "approvalNeeded": true
+      },
+      {
+        "feature": "견적·입금 확인·별도 제작 승인",
+        "status": "BLOCKED",
+        "implementation": "견적 동의·입금 및 제작 승인 상태가 이전 카탈로그에 있고, 공식 admin.js에는 solq_approve_production 참조가 기록됐다. 저장소 production-admin.js와 production 구성은 검토/전달 경로 증거다.",
+        "observation": "현행 견적 동의→관리자 수동 입금 확인→별도 제작 승인 연결의 종단 간 증거가 없다. 로컬 모형의 승인 전 차단 PASS만 재사용한다.",
+        "sourceIds": [
+          "admin",
+          "workFlow",
+          "terms"
+        ],
+        "needed": "E. 동일 신청과 최신 견적을 검증하고 승인 누락·취소·비관리자에 대해 유료 실행·제작·공개가 시작되지 않음을 입증",
+        "approvalNeeded": true
+      },
+      {
+        "feature": "AI 상담 UI·기존 챗봇",
+        "status": "PARTIAL",
+        "implementation": "Sites 32 상담 chatbot.js의 규칙형 진단 및 신청 이동. 개발 consultation-core.mjs/customer-bridge.mjs와 별도 로컬 대화형 개선 후보.",
+        "observation": "11-08 공개 브라우저 동작 자료와 11-19 합성 대화 브라우저 7·규칙 6 PASS를 재사용했다. 현재 통합 상담과 실제 AI 연결은 검증되지 않았다.",
+        "sourceIds": [
+          "release",
+          "customerChat"
+        ],
+        "needed": "H. 공식 진입 하나로 통합하고 상담의 신청 전달·거부·실패 동작을 합성으로 검증",
+        "approvalNeeded": true
+      },
+      {
+        "feature": "고객 본인 인증·고객별 격리",
+        "status": "BLOCKED",
+        "implementation": "개발 security/customer-schema.candidate.sql과 verified-email 후보, main order.js의 전용 링크형 샘플 접근.",
+        "observation": "스키마·세션 설계와 기존 후보 증거가 있다. 공식 고객 인증/본인 식별, 고객 A/B 행·비공개 저장소 격리, 세션 회수·구 링크 전환은 미검증이다.",
+        "sourceIds": [
+          "customerAuth",
+          "workFlow",
+          "guard"
+        ],
+        "needed": "D. 고객 A/B·익명·관리자, 소유권·만료/철회, RLS와 저장소 권한을 승인된 합성 데이터로 검증",
+        "approvalNeeded": true
+      },
+      {
+        "feature": "PC·모바일 UI, 오류 안내, 삭제 요청",
+        "status": "PARTIAL",
+        "implementation": "Sites 상담 및 신청, 공식 privacy/admin/deposit 경로, data-deletion.html/지원 링크의 이전 보관본. main app.js의 상태 안내 및 로컬 브라우저 증거.",
+        "observation": "기존 데스크톱/390px 에뮬레이션 및 삭제 안내·이동 기록은 있다. 실기기, 장애/저장 불명 안내의 실제 최신 빌드, 삭제 접수 후 정책 준수는 미확인이다.",
+        "sourceIds": [
+          "release",
+          "deletion",
+          "publicEntry",
+          "rpc"
+        ],
+        "needed": "I. 승인된 빌드에서 키보드·모바일·오류 UX와 삭제 요청 후 처리 흐름 확인",
+        "approvalNeeded": true
+      },
+      {
+        "feature": "검증 환경과 배포 분리",
+        "status": "BLOCKED",
+        "implementation": "격리 준비 기록은 PG17 자산, 후보 SQL, 기존 PostgREST·Auth 구성만 확인했다. 기존 T01은 합성 루프백 시험 범위다.",
+        "observation": "실제 격리 PostgREST·Auth 역할과 동일 시드, 배포 아티팩트의 운영 경계가 미검증이다. 이번 조사에서는 서비스를 가동하거나 DB에 접속하지 않았다.",
+        "sourceIds": [
+          "release",
+          "gates",
+          "guard"
+        ],
+        "needed": "A·F·G. 같은 승인 스냅샷에서 합성 환경 식별 및 독립 배포 승인 관문 정의",
+        "approvalNeeded": true
+      },
+      {
+        "feature": "최신 전체 암호화 백업과 격리 복원",
+        "status": "BLOCKED",
+        "implementation": "기존 부분 스냅샷 2건 메타데이터, 전체 백업 및 복원 상태 장부.",
+        "observation": "최신 관리형 백업 존재·시점·암호화 범위는 미확인이다. 동일 ID의 격리 복원 증거는 확보되지 않았다.",
+        "sourceIds": [
+          "gates"
+        ],
+        "needed": "F. 승인 백업 ID·UTC·범위·지문으로 동일 백업을 격리 복원하고 DB/Auth/Storage·핵심 흐름 확인",
+        "approvalNeeded": true
+      },
+      {
+        "feature": "RPO·RTO, 보안 경고와 통합 회귀",
+        "status": "BLOCKED",
+        "implementation": "장부의 복구·경고·회귀 작업과 이전 P0 카탈로그/어드바이저 및 합성 회귀 기록.",
+        "observation": "RPO/RTO 목표·실측 미확인. 이전 보안 WARN 3건의 현재 상태·종결 증거 및 PostgreSQL/PostgREST/Auth·관리자 통합 회귀는 미완료다.",
+        "sourceIds": [
+          "gates",
+          "guard"
+        ],
+        "needed": "F·G. RPO/RTO 측정과 경고 재확인·종결, 격리 통합 결과 및 중단·복귀 증거 보관",
+        "approvalNeeded": true
+      },
+      {
+        "feature": "상담·홈페이지 가격과 승인 범위",
+        "status": "PARTIAL",
+        "implementation": "개발 내부 매뉴얼과 pricing 후보. 기존 업무자동화 상품 기준은 별도 유지.",
+        "observation": "신규 홈페이지 가격·관리 조건은 승인 보류. 이번 감사에서 고객 공개·청구·유료 제작을 수행하지 않았다.",
+        "sourceIds": [
+          "terms"
+        ],
+        "needed": "J. 승인된 범위·세금·견적 버전 및 공개 조건을 확정",
+        "approvalNeeded": true
+      },
+      {
+        "feature": "이전 합성·정적 증거 보존",
+        "status": "PASS",
+        "implementation": "로컬 증거 매니페스트 8종 96개 파일 해시 일치.",
+        "observation": "포털·사업성과 36, 파일럿 6, 대화 후보 13, 접수 보완 14 PASS를 각 범위에서 재사용했다. 개발·운영 종단 결과로 합산하지 않았다.",
+        "sourceIds": [
+          "gates"
+        ],
+        "needed": "G. 이미 검증된 시험은 보존하고 미검증 통합만 별도 검증",
+        "approvalNeeded": false
+      }
+    ],
+    "prioritizedWork": [
+      {
+        "id": "SOLQ-PORTAL-P0-01-A",
+        "priority": "P0",
+        "owners": [
+          "CORE",
+          "SENTINEL"
+        ],
+        "dependsOn": [],
+        "scope": "공식 도메인-배포 릴리스-소스 매핑",
+        "acceptance": "기본·www 진입과 정책 URL, 공개 아티팩트 지문, 지원할 신청 경로를 한 승인 빌드로 대조",
+        "approvalNeeded": true
+      },
+      {
+        "id": "SOLQ-PORTAL-P0-01-B",
+        "priority": "P0",
+        "owners": [
+          "GUARD",
+          "CORE"
+        ],
+        "dependsOn": [
+          "A"
+        ],
+        "scope": "개인정보·국외 이전 고지와 별도 동의 원장",
+        "acceptance": "승인 원문 둘의 버전·해시·서버 기록 시점이 저장 원본과 함께 검증되고 임시 고지가 활성화되지 않음",
+        "approvalNeeded": true
+      },
+      {
+        "id": "SOLQ-PORTAL-P0-01-C",
+        "priority": "P0",
+        "owners": [
+          "CORE",
+          "AUTO",
+          "SENTINEL"
+        ],
+        "dependsOn": [
+          "A",
+          "B",
+          "F"
+        ],
+        "scope": "접수 원본·멱등성·구 경로 전환",
+        "acceptance": "한 요청과 저장 원본, 접수번호, 관리자 조회가 일치하고 중복·다른 본문·응답 유실·원복에서 거짓 성공·기존 원본 변경 0건",
+        "approvalNeeded": true
+      },
+      {
+        "id": "SOLQ-PORTAL-P0-01-D",
+        "priority": "P0",
+        "owners": [
+          "GUARD",
+          "SENTINEL"
+        ],
+        "dependsOn": [
+          "A",
+          "F"
+        ],
+        "scope": "관리자와 고객 인증·RLS·저장소 권한",
+        "acceptance": "합성 익명·일반 고객 A/B·관리자의 허용/거부와 세션 만료·철회, 비인가 공개/상태 변경 0건",
+        "approvalNeeded": true
+      },
+      {
+        "id": "SOLQ-PORTAL-P0-01-E",
+        "priority": "P0",
+        "owners": [
+          "CORE",
+          "AUTO",
+          "GUARD"
+        ],
+        "dependsOn": [
+          "C",
+          "D"
+        ],
+        "scope": "계획·견적·수동 입금·별도 제작 승인",
+        "acceptance": "동일 신청의 무료 6단계 계획 및 최신 고객 견적 동의·수동 입금 확인·별도 관리자 승인 모두 확인 전 유료 실행 0건. 합성 납품 공개도 별도 검수",
+        "approvalNeeded": true
+      },
+      {
+        "id": "SOLQ-PORTAL-P0-01-F",
+        "priority": "P0",
+        "owners": [
+          "GUARD",
+          "SENTINEL"
+        ],
+        "dependsOn": [],
+        "scope": "최신 전체 백업·격리 복원과 RPO/RTO",
+        "acceptance": "백업 ID/범위/암호화/지문, 동일 ID 비운영 복원, 승인 목표 대비 RPO/RTO 실측, 개인정보 분리의 증거 확인",
+        "approvalNeeded": true
+      },
+      {
+        "id": "SOLQ-PORTAL-P0-01-G",
+        "priority": "P0",
+        "owners": [
+          "SENTINEL",
+          "GUARD"
+        ],
+        "dependsOn": [
+          "C",
+          "D",
+          "E",
+          "F"
+        ],
+        "scope": "보안 경고 및 통합 회귀",
+        "acceptance": "구·신 경로 선후 유효 권한과 보존 비교, 경고별 조치·재진단, 합성 브라우저/API/DB/관리 일치와 원복 성공",
+        "approvalNeeded": true
+      },
+      {
+        "id": "SOLQ-PORTAL-P0-01-H",
+        "priority": "P1",
+        "owners": [
+          "CORE",
+          "AUTO"
+        ],
+        "dependsOn": [
+          "A",
+          "C",
+          "D"
+        ],
+        "scope": "규칙형 상담과 무료 체험 연결 개선",
+        "acceptance": "대표 상담 시나리오, 취소/개인정보 경계, 명시적 제출 전 외부 전송과 유료 호출 0건",
+        "approvalNeeded": true
+      },
+      {
+        "id": "SOLQ-PORTAL-P0-01-I",
+        "priority": "P1",
+        "owners": [
+          "CORE",
+          "SENTINEL",
+          "GUARD"
+        ],
+        "dependsOn": [
+          "A",
+          "B",
+          "C"
+        ],
+        "scope": "UI·접근성·삭제 안내 보완",
+        "acceptance": "실기기 PC·모바일 및 390px, 키보드, 네트워크 실패/저장 불명 안내, 요청·처리 책임자 검증",
+        "approvalNeeded": true
+      },
+      {
+        "id": "SOLQ-PORTAL-P0-01-J",
+        "priority": "P1",
+        "owners": [
+          "CORE",
+          "GUARD"
+        ],
+        "dependsOn": [
+          "E",
+          "G"
+        ],
+        "scope": "신규 홈페이지 상품 관리 및 안내",
+        "acceptance": "별도 승인된 상품 범위·가격·세금·유효기간과 버전 견적만 노출. 기존 상품·정산 경계 보존",
+        "approvalNeeded": true
+      }
+    ],
+    "minimumValidationOrder": [
+      "도메인/DNS: 공개 리졸버에서 별칭·주소 응답을 기록한다. 별도 승인 후 공개 HTTP/TLS의 응답·리디렉션·빌드 지문을 확인한다. DNS 성공을 앱·DB 성공으로 승격하지 않는다.",
+      "애플리케이션: 공식 승인 빌드와 격리 모본의 양식·안내·스크립트·접수 및 오류 표시를 읽기 전용으로 대조한다. 그 다음 승인 후 합성만으로 접수와 관리자 조회를 연결한다.",
+      "DB/권한: 승인한 비운영 PostgreSQL/PostgREST/Auth, 격리 출처·역할을 고정한다. 스키마·유효 ACL/RLS·고유키·원본 보존·중복·동의·커밋·원복을 검증한다. 기존 고객 데이터와 운영 엔드포인트를 사용하지 않는다.",
+      "출시 관문: 최신 보호 백업의 동일 ID 복원, RPO/RTO·보안 경고·통합 회귀, 운용 승인과 제품 가격 승인을 각각 확인한다."
+    ],
+    "sourceReferences": {
+      "task": [
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/1eac083a66c4314f64b75ef6e5943883b2dd70dc/SOLQ_COMMAND/PORTAL_P0_TASK.md"
+      ],
+      "release": [
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/be8de8ba6b1275dc96f3c9c2afd3ea03ff1b1b01/ops/consultation/sites-release-20261108/REPORT.md",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/be8de8ba6b1275dc96f3c9c2afd3ea03ff1b1b01/ops/consultation/sites-release-20261108/dist/index.html",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/be8de8ba6b1275dc96f3c9c2afd3ea03ff1b1b01/ops/consultation/sites-release-20261108/verification/production-browser.json"
+      ],
+      "publicEntry": [
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/index.html#L7-L13",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/privacy.html",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/data-deletion.html"
+      ],
+      "rpc": [
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/app.js#L14-L35",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/5e76fdbdb9ec022dd53a4f77ef8fe27d1c8ad29c/app.js#L14-L35",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/supabase-schema.sql#L3-L21"
+      ],
+      "admin": [
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/admin.html",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/admin.js#L51-L94",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/admin.js#L123-L145",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/production-admin.js#L7-L22"
+      ],
+      "workFlow": [
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/preview.html#L4-L21",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/order.js#L5-L22",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/supabase/migrations/20261021213341_production_core.sql",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/supabase/functions/nexus-production/handler.mjs"
+      ],
+      "customerChat": [
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/be8de8ba6b1275dc96f3c9c2afd3ea03ff1b1b01/ops/consultation/sites-release-20261108/dist/consultation/chatbot.js",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/5e76fdbdb9ec022dd53a4f77ef8fe27d1c8ad29c/candidates/customer-platform-20261112/ui/consultation-core.mjs",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/5e76fdbdb9ec022dd53a4f77ef8fe27d1c8ad29c/candidates/customer-platform-20261112/ui/customer-bridge.mjs"
+      ],
+      "customerAuth": [
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/5e76fdbdb9ec022dd53a4f77ef8fe27d1c8ad29c/candidates/customer-platform-20261112/security/README.md",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/5e76fdbdb9ec022dd53a4f77ef8fe27d1c8ad29c/candidates/customer-platform-20261112/security/customer-schema.candidate.sql",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/5e76fdbdb9ec022dd53a4f77ef8fe27d1c8ad29c/candidates/customer-platform-20261112/verified-email/README.md"
+      ],
+      "terms": [
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/5e76fdbdb9ec022dd53a4f77ef8fe27d1c8ad29c/docs/SOLQ_WEBSITE_PRICING_AND_CHAT_MANUAL_20261112.md",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/5e76fdbdb9ec022dd53a4f77ef8fe27d1c8ad29c/candidates/customer-platform-20261112/pricing/README.md"
+      ],
+      "deletion": [
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/5fa15fd9bc717b0036dac88d2b4191b2c28bfc0f/ops/independent-runner/reports/ATLAS-20261107-data-deletion-sites30.md",
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/data-deletion.html"
+      ],
+      "guard": [
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e4a2ab06b65c39248b9eba651ac5aab92bd6a28/supabase-schema.sql#L16-L21",
+        "https://supabase.com/docs/guides/api/securing-your-api",
+        "https://supabase.com/docs/guides/database/postgres/row-level-security"
+      ],
+      "gates": [
+        "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/491a110764f9785c98f490fed669d2d50fdc92eb/SOLQ_COMMAND/WORK_STATUS.json",
+        "https://supabase.com/docs/guides/platform/backups",
+        "https://supabase.com/docs/guides/observability/advisors"
+      ]
+    },
+    "retainedEvidence": {
+      "localManifestCount": 8,
+      "verifiedFiles": 96,
+      "unchanged": true,
+      "priorTestsRerun": 0,
+      "samples": [
+        {
+          "scope": "AI 포털",
+          "browser": 12,
+          "rules": 8
+        },
+        {
+          "scope": "ATLAS 사업성과",
+          "browser": 8,
+          "rules": 8
+        },
+        {
+          "scope": "대화형 개선 후보",
+          "browser": 7,
+          "rules": 6
+        },
+        {
+          "scope": "P0·P1 합성 파일럿 추가",
+          "model": 6
+        },
+        {
+          "scope": "P0 접수 보완",
+          "syntheticAndStatic": 14
+        }
+      ]
+    },
+    "controls": {
+      "mainOrPrChanges": 0,
+      "applicationCodeChanges": 0,
+      "productionHttpOrDbConnections": 0,
+      "realSubmissionsOrCustomers": 0,
+      "operations": 0,
+      "deployments": 0,
+      "notifications": 0,
+      "paidApiCalls": 0,
+      "hooksOrScheduledChanges": 0,
+      "dockerOrFirewallChanges": 0
+    },
+    "nextApproval": "우선 승인된 공식 빌드·백업 메타데이터의 읽기 전용 대조와 합성 격리 환경 준비를 구분해 승인한다. 코드·SQL 변경, 실제 연결 시험, 제품 공개·배포·유료 제작은 각각 별도 승인 대상이다."
+  }
+}
