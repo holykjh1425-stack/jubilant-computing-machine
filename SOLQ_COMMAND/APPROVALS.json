@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "revision": 1,
+  "executionAuthority": false,
+  "records": [
+    {"id":"T01-RETEST-HISTORY","taskId":"P0-04-T01","dateUtc":"2026-11-21","status":"CONSUMED","scopeCode":"ONE_SYNTHETIC_LOOPBACK_RUN","basisCode":"DIRECT_USER_APPROVAL_HISTORY"},
+    {"id":"T02-PENDING","taskId":"P0-04-T02","dateUtc":"2026-11-21","status":"PENDING","scopeCode":"ISOLATED_OUTBOUND_TEST","basisCode":"SEPARATE_APPROVAL_REQUIRED"},
+    {"id":"T03-PENDING","taskId":"P0-04-T03","dateUtc":"2026-11-21","status":"PENDING","scopeCode":"ISOLATED_INBOUND_TEST","basisCode":"SEPARATE_APPROVAL_REQUIRED"},
+    {"id":"T04-PENDING","taskId":"P0-04-T04","dateUtc":"2026-11-21","status":"PENDING","scopeCode":"ISOLATED_CONTROL_TEST","basisCode":"SEPARATE_APPROVAL_REQUIRED"},
+    {"id":"T05-PENDING","taskId":"P0-04-T05","dateUtc":"2026-11-21","status":"PENDING","scopeCode":"FOLLOWUP_PRESERVATION_CAPTURE","basisCode":"SEPARATE_APPROVAL_REQUIRED"},
+    {"id":"LEDGER-REVIEW-HISTORY","taskId":"LEDGER-REVIEW","dateUtc":"2026-11-21","status":"RECORDED","scopeCode":"LOCAL_CANDIDATE_AND_NONEXECUTION_VALIDATION","basisCode":"DIRECT_USER_SCOPE_HISTORY"},
+    {"id":"RELEASE-NO-GO","taskId":"OPS-RELEASE","dateUtc":"2026-11-21","status":"DENIED","scopeCode":"OPERATIONS_DEPLOYMENT","basisCode":"OPERATIONAL_NO_GO"}
+  ]
+}
