@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self' file:; style-src 'self' file:; connect-src 'none'; form-action 'none'; base-uri 'none'">
+  <title>SOLQ 고객 업무 포털 · 로컬 후보</title>
+  <link rel="stylesheet" href="./portal.css">
+  <script defer src="./vendor/solq-planning.js"></script>
+  <script defer src="./vendor/dialogue.js"></script>
+  <script defer src="./service.js"></script>
+  <script defer src="./client.js"></script>
+  <script defer src="./ui.js"></script>
+</head>
+<body>
+  <header class="bar">
+    <div class="wordmark"><span>SOLQ</span> 쏠큐</div>
+    <label class="role" for="persona">합성 역할
+      <select id="persona" disabled>
+        <option value="anonymous">방문자</option>
+        <option value="a">고객 A</option>
+        <option value="b">고객 B</option>
+        <option value="admin">관리자</option>
+      </select>
+    </label>
+  </header>
+  <main>
+    <div class="intro">
+      <h1>반복 업무를 계획으로</h1>
+      <p>규칙형 상담과 무료 6단계 계획을 체험할 수 있습니다. 이 화면에서는 합성 접수와 승인만 진행합니다.</p>
+    </div>
+    <p id="status" class="status" role="status" aria-live="polite">로컬 후보를 준비하고 있습니다.</p>
+    <div class="layout">
+      <div>
+        <section class="panel" id="consult">
+          <div class="section-title"><h2>업무 상담</h2>
+            <button type="button" class="text-button" id="example">합성 예시 시작</button>
+          </div>
+          <div id="conversation" class="conversation" role="log" aria-live="polite"></div>
+          <form id="dialogue-form" class="input-line">
+            <label class="sr-only" for="answer">상담 답변</label>
+            <input id="answer" maxlength="300" required placeholder="예: 문의를 주제별로 정리하고 싶어요">
+            <button>답변</button>
+          </form>
+          <div id="suggestions" class="actions"></div>
+        </section>
+        <section class="panel" id="draft" hidden>
+          <h2>무료 6단계 계획</h2>
+          <p id="direction"></p>
+          <ol class="steps" id="preview-steps"></ol>
+          <p id="sign-in-note">접수를 시험하려면 합성 고객 A 또는 B를 선택하세요.</p>
+          <form id="intake-form" hidden>
+            <label for="service">신청 유형</label>
+            <select id="service"><option value="ai_automation">업무 자동화</option><option value="website">웹사이트</option><option value="custom_system">맞춤 시스템</option><option value="consulting">상담</option></select>
+            <label for="description">검토할 합성 신청 원본</label>
+            <textarea id="description" rows="5" maxlength="2200" required></textarea>
+            <fieldset>
+              <legend>두 동의 항목</legend>
+              <label class="checkbox"><input type="checkbox" id="privacy"><span id="privacy-notice"></span></label>
+              <label class="checkbox"><input type="checkbox" id="transfer"><span id="transfer-notice"></span></label>
+            </fieldset>
+            <label for="fault">응답 시험</label>
+            <select id="fault">
+              <option value="normal">정상 응답</option>
+              <option value="before">저장 전 연결 실패</option>
+              <option value="after">저장 후 응답 유실</option>
+            </select>
+            <div class="actions">
+              <button id="submit">합성 신청 제출</button>
+              <button type="button" class="quiet" id="new-request">새 신청 준비</button>
+            </div>
+            <p id="confirmation" aria-live="polite"></p>
+          </form>
+        </section>
+        <section class="panel" id="queue" hidden>
+          <div class="section-title"><h2>관리자 신청 목록</h2><button type="button" class="quiet" id="reload">새로고침</button></div>
+          <div id="list" class="case-list"></div>
+        </section>
+      </div>
+      <aside>
+        <section class="panel" id="lookup" hidden>
+          <h2>접수 조회</h2>
+          <form id="lookup-form" class="input-line">
+            <label class="sr-only" for="receipt">접수번호</label>
+            <input id="receipt" required maxlength="20" placeholder="NX-YYYYMMDD-XXXXXXXX">
+            <button>조회</button>
+          </form>
+          <div id="record" class="record" hidden></div>
+          <div id="record-actions" class="actions"></div>
+        </section>
+        <section class="panel offer">
+          <h2>업무 자동화 기본형</h2>
+          <strong>100,000원</strong>
+          <dl><div><dt>착수금</dt><dd>30,000원</dd></div><div><dt>잔금</dt><dd>70,000원</dd></div></dl>
+          <p>견적 동의, 수동 입금 확인, 별도 제작 승인을 순서대로 확인합니다.</p>
+          <p>로컬 합성 후보 · 실제 결제 및 제작 비활성</p>
+        </section>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>
