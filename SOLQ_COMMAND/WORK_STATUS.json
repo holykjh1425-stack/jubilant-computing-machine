@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "revision": 1,
+  "tasks": [
+    {"id":"P0-03","owner":"GUARD","action":"REVIEW","status":"PASS","requiresApproval":false,"reasonCode":"EVIDENCE_REUSED"},
+    {"id":"P0-04-T01","owner":"SENTINEL","action":"TEST","status":"PASS","requiresApproval":true,"reasonCode":"SEALED_RESULT_REUSED"},
+    {"id":"P0-04-T02","owner":"SENTINEL","action":"TEST","status":"BLOCKED","requiresApproval":true,"reasonCode":"PEER_AND_ATTRIBUTION_REQUIRED"},
+    {"id":"P0-04-T03","owner":"SENTINEL","action":"TEST","status":"BLOCKED","requiresApproval":true,"reasonCode":"PEER_AND_ATTRIBUTION_REQUIRED"},
+    {"id":"P0-04-T04","owner":"GUARD","action":"TEST","status":"BLOCKED","requiresApproval":true,"reasonCode":"PEER_AND_CONTROL_REQUIRED"},
+    {"id":"P0-04-T05","owner":"GUARD","action":"TEST","status":"BLOCKED","requiresApproval":true,"reasonCode":"FOLLOWUP_WINDOW_REQUIRED"},
+    {"id":"P0-BACKUP","owner":"GUARD","action":"RECOVERY","status":"BLOCKED","requiresApproval":true,"reasonCode":"FULL_ENCRYPTED_BACKUP_UNVERIFIED"},
+    {"id":"P0-RESTORE","owner":"GUARD","action":"RECOVERY","status":"BLOCKED","requiresApproval":true,"reasonCode":"MATCHING_RESTORE_EVIDENCE_MISSING"},
+    {"id":"P0-RPO-RTO","owner":"CORE","action":"REVIEW","status":"UNVERIFIED","requiresApproval":true,"reasonCode":"TARGETS_AND_MEASUREMENTS_UNVERIFIED"},
+    {"id":"P0-WARNINGS","owner":"GUARD","action":"REVIEW","status":"BLOCKED","requiresApproval":true,"reasonCode":"CLOSURE_EVIDENCE_MISSING"},
+    {"id":"P0-REGRESSION","owner":"CORE","action":"TEST","status":"BLOCKED","requiresApproval":true,"reasonCode":"INTEGRATED_REGRESSION_PENDING"},
+    {"id":"WIN-W04","owner":"AUTO","action":"TEST","status":"FAIL","requiresApproval":true,"reasonCode":"HISTORICAL_RESULT_RETAINED"},
+    {"id":"WIN-S4U","owner":"AUTO","action":"REVIEW","status":"BLOCKED","requiresApproval":true,"reasonCode":"REGISTRATION_CAUSE_UNCONFIRMED"},
+    {"id":"LEDGER-REVIEW","owner":"AUTO","action":"LEDGER_REVIEW","status":"READY","requiresApproval":false,"reasonCode":"READ_ONLY_INSPECTION"},
+    {"id":"OPS-RELEASE","owner":"CORE","action":"DEPLOY","status":"BLOCKED","requiresApproval":true,"reasonCode":"OPERATIONAL_NO_GO"}
+  ]
+}
