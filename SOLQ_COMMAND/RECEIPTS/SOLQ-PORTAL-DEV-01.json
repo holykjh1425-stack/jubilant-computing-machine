@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "taskNumber": "SOLQ-PORTAL-DEV-01",
+  "baselineCommit": "1079c533bb6c8963212d044cc68d913e7bd3f0a8",
+  "instructionPath": "SOLQ_COMMAND/PORTAL_DEV_TASK.md",
+  "instructionSha256": "779D87FBD6BB79B5D278CACD0C9445EBA30AF6E10B9BA04EBB6B2E2A70A87E93",
+  "receiptKey": "35210FFE98003B090ABA62BBDE986402BCF22D5AC851B4C6D86BE01CEF8B88EE",
+  "receiptStatus": "RECEIVED_VERIFIED",
+  "executionStatus": "ISOLATED_SYNTHETIC_TESTS_ONLY",
+  "executedTasks": 0,
+  "verifiedAtUtc": "2026-11-21T07:22:56Z",
+  "reportStatus": "PASS",
+  "requiresApproval": true,
+  "evidenceRefs": [
+    "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/1079c533bb6c8963212d044cc68d913e7bd3f0a8/SOLQ_COMMAND/PORTAL_DEV_TASK.md",
+    "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/664d6626680c6a9cd0b014a56e255fee77255ec8/SOLQ_COMMAND/RECEIPTS/SOLQ-PORTAL-P0-01.json",
+    "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/b6254aeb89f6960c5fc177c21c8a3f5da461064f/SOLQ_COMMAND/RECEIPTS/SOLQ-PORTAL-P0-02.json",
+    "https://github.com/holykjh1425-stack/jubilant-computing-machine/commit/6bbe674199bf9ddb970350a30e0b7623cae60b86"
+  ],
+  "report": {
+    "title": "SOLQ 통합 포털 개발 후보 완료보고",
+    "verifiedAtKst": "2026-11-21T16:22:56+09:00",
+    "candidateStatus": "PASS",
+    "operatingRelease": "NO_GO",
+    "executionScope": "executedTasks는 실제 운영·결제·제작·외부 발송 실행 건수다. 개발 검증은 합성 환경에서 수행했다.",
+    "code": {
+      "branch": "dev/solq-portal-integration-candidate-20261121",
+      "approvedOriginCommit": "5e76fdbdb9ec022dd53a4f77ef8fe27d1c8ad29c",
+      "parentCommit": "1079c533bb6c8963212d044cc68d913e7bd3f0a8",
+      "commit": "6bbe674199bf9ddb970350a30e0b7623cae60b86",
+      "referenceUpdate": "non-forced fast-forward from approved parent",
+      "path": "candidates/portal-integration-20261121",
+      "branchVerified": true,
+      "addedFilesOnly": true,
+      "remoteExactBytesVerified": 11,
+      "files": [
+        {
+          "file": "client.js",
+          "size": 1911,
+          "sha256": "E3DA24D247B30969A86DF4FDCF9CF080623CBBD2DE7A0660C2DCFFFB553E9476",
+          "gitBlob": "588929c4d863d72f5b64488b0dfb66fb18c4cccf"
+        },
+        {
+          "file": "index.html",
+          "size": 5151,
+          "sha256": "B115B27009DAD6D3EC28AE667662E2609C3EAE90D1477A547EEB3F567320CCAC",
+          "gitBlob": "b5ebd802038d5f40ca693ee2314dca4454114687"
+        },
+        {
+          "file": "portal.css",
+          "size": 3780,
+          "sha256": "7494B357D3F9868A36BB1073FBB01BF7AF9F6360CCA5F678BEE62EED2E7F61F8",
+          "gitBlob": "8d3cc5fa4c77fdca8a5d09283eba4c5b5f296273"
+        },
+        {
+          "file": "README.md",
+          "size": 5466,
+          "sha256": "19EA78E0ADFF6DAF177E5F64EB2C126C4CA842FF0CB8D855D63B2E2D1FD15185",
+          "gitBlob": "d850644112cb1d7213aca5741f6c0e4344d33a41"
+        },
+        {
+          "file": "review/portal-boundaries.REVIEW_ONLY.sql",
+          "size": 5605,
+          "sha256": "79FE52C92A7C201FF2F430EB2CF7C30F2320B3D2BAF407584E1CA9D8F8BCD6AA",
+          "gitBlob": "d29eb697666059d369a7616dd80e0d3e8856289f"
+        },
+        {
+          "file": "service.js",
+          "size": 11311,
+          "sha256": "EBAB92B563D6C2C64474E7BB371A804F13ABA065649886ADF6A31228A7536AB0",
+          "gitBlob": "3c058bc3cc70b94cd4c680b990f32b5a641e4f5b"
+        },
+        {
+          "file": "ui.js",
+          "size": 11173,
+          "sha256": "020069CFBC481ED4600313D60AE94BD903D8E7BFBBCE65C8869E26C51E75608E",
+          "gitBlob": "a8a7e8acb9f5ea725f1a1937b54842b2f9fcc382"
+        },
+        {
+          "file": "vendor/dialogue.js",
+          "size": 8340,
+          "sha256": "414C8D3F806FB028574391FF230CDBCD65B7B3FE86092CE3EF8803BE6E949199",
+          "gitBlob": "ca0ac3307b0e96968f1430938fc1f8686323b48e"
+        },
+        {
+          "file": "vendor/solq-planning.js",
+          "size": 4888,
+          "sha256": "7039BE83A4A7613E128CE18C0959BB4FA735572B1E5C77CFFB2275C64AAF04BD",
+          "gitBlob": "0a995aeae69b83e71c2ca966dd243148572456ca"
+        },
+        {
+          "file": "verify/browser.cjs",
+          "size": 10043,
+          "sha256": "D58E019201A0F3E63A9C2246572E4D262E47A2491D3A8A8049C8A804742A4830",
+          "gitBlob": "ac2b894b4aae3c317663654bd647c2e32a9018c2"
+        },
+        {
+          "file": "verify/service.test.cjs",
+          "size": 12361,
+          "sha256": "E3DA59C25DB425E7BB5712DF1C9E1034361E2448C7BC77F75DA7D7D36F3DF2C4",
+          "gitBlob": "bce4f2c94707d3c994fc7d66363099aaabc4be12"
+        }
+      ]
+    },
+    "priorEvidence": {
+      "p0_01Sha256": "1AEF2CC8B62481B4EA18B1EEEF7629434B5CBC486F0AF6CCCD7CE59680C04893",
+      "p0_02Sha256": "5C8A3199102B2B21A11C0BBE1AB75D05FCBF5D5E6FCAE3B185A3C5E5FB5F540E",
+      "relatedOriginalFilesVerified": 55,
+      "priorPassTestsRerun": 0,
+      "interpretation": "공식 Sites v32의 직접 REST와 GitHub 루트 RPC 분리 및 저장·동의·복구 차단을 그대로 재사용했다."
+    },
+    "implemented": [
+      "검증된 SOLQ 상담·6단계 계획 엔진의 바이트 동일 복사본을 재사용하고 신청 검토 흐름에 연결.",
+      "합성 세션의 신청 원본, UUID, 고유 접수번호, 독립 동의 두 건의 버전·해시·서버 UTC를 같은 신청에 연결.",
+      "같은 고객·키·원본은 같은 접수로 확인. 본문 변경, 번호 충돌·한도 소진, 저장 전후 응답 유실과 불완전 응답의 성공 표시를 차단.",
+      "관리자 목록·신청 상세, 고객 A/B 소유권, 익명 거부, 만료·철회 및 취소를 합성 API에서 처리.",
+      "무료 계획에서 견적 버전 동의, 기본형 100,000원 중 모의 착수금 30,000원 확인, 별도 제작 승인까지 연결. 세 관문 이후에도 실제 제작과 외부 동작 비활성.",
+      "규칙형 기본 공급자와 mock을 서버 측 makePlan(input) 경계로 분리. 브라우저 외부 요청은 CSP로 차단하고 실제 AI 공급자·청구를 연결하지 않음.",
+      "로컬 파일 실행과 데스크톱·390px 모바일 UI, 실패·불명·같은 번호 재확인 표시. REVIEW_ONLY/NOT_APPLIED SQL에 소유자/관리자 RLS 및 비공개 Storage 정책 후보 포함."
+    ],
+    "tests": {
+      "unitAndApiMock": {
+        "command": "node --test verify/service.test.cjs",
+        "status": "PASS",
+        "passed": 17,
+        "failed": 0,
+        "cases": [
+          "기존 규칙형 상담에서 여섯 단계가 나옴",
+          "양쪽 동의 중 하나라도 누락되면 저장하지 않음",
+          "개별 고지 버전과 SHA-256 불일치를 거부",
+          "동시 동일 키의 원본·별도 동의·접수번호·신청 ID가 하나로 연결됨",
+          "같은 키에 다른 원본을 보내면 원래 신청을 유지",
+          "접수번호 충돌 시 재할당 후 기존 접수 보존",
+          "할당 한도 소진은 오류이며 접수번호를 추가하지 않음",
+          "저장 전 실패와 저장 후 응답 유실을 동일한 키로 재확인",
+          "신청 ID가 없는 성공 응답을 저장 성공으로 표시하지 않음",
+          "다른 신청과 연결된 접수번호 응답을 성공으로 표시하지 않음",
+          "합성 고객 A/B와 익명의 역할 경계, 관리자만 목록 조회",
+          "현재 견적 동의, 모의 입금, 별도 승인 전 제작 차단 및 승인 이후에도 실제 실행 차단",
+          "견적 갱신 시 이전 버전은 무효, 모의 입금 후 견적 덮어쓰기 차단",
+          "취소는 접수 증거를 남기고 이후 전이를 모두 중지",
+          "세션 만료·철회는 읽기 및 쓰기 거부",
+          "mock 계획은 로컬이며 등록되지 않은 공급자는 시작되지 않음",
+          "SQL 후보는 미적용 및 rollback으로 표시되고 클라이언트 쓰기 권한이 없음"
+        ]
+      },
+      "browser": {
+        "command": "node verify/browser.cjs",
+        "status": "PASS",
+        "passed": 6,
+        "failed": 0,
+        "browser": "Chrome/157.0.8103.39",
+        "sizes": [
+          "1440 × 1000",
+          "390 × 844"
+        ],
+        "offline": true,
+        "externalRequests": 0,
+        "pageErrors": 0,
+        "isolatedProfileRemoved": true,
+        "cases": [
+          {
+            "name": "데스크톱 상담과 6단계 계획",
+            "status": "PASS"
+          },
+          {
+            "name": "한쪽 동의 누락 및 저장 후 응답 유실",
+            "status": "PASS"
+          },
+          {
+            "name": "고객 B 조회 차단 및 관리자 무료 계획·견적",
+            "status": "PASS"
+          },
+          {
+            "name": "고객 동의, 입금·별도 승인 전 차단 및 실행 비활성",
+            "status": "PASS"
+          },
+          {
+            "name": "390px 모바일 상담과 접수 폼",
+            "status": "PASS"
+          },
+          {
+            "name": "브라우저 오류와 외부 요청 0건",
+            "status": "PASS"
+          }
+        ],
+        "environment": "기본 샌드박스에서 Chrome이 시작 중 종료됐다. 승인된 로컬 파일 테스트 경로에서 CDP 파이프를 사용했고 HTTP/HTTPS/WS/WSS 요청은 차단했다."
+      },
+      "runtimeIntegration": {
+        "status": "BLOCKED",
+        "details": "실제 비운영 PostgreSQL/PostgREST/Auth/RLS·Storage, 독립 트랜잭션·다중 탭 내구성, 실운영 고객 UI 및 실기기 모바일 미검증. DB와 Docker는 실행하지 않았다."
+      }
+    },
+    "limits": [
+      "브라우저의 인프로세스 API 및 역할 전환은 합성 설비다. 새로고침하면 세션·데이터·요청 키가 초기화된다.",
+      "SQL 후보와 운영 고지 연결은 미적용이다. 실제 인증과 지속 저장, 원본과 동의의 원자성, RLS/저장소 및 관리자 종단 검증은 승인된 비운영 환경에서 별도 진행한다.",
+      "최신 전체 암호화 백업과 동일 ID 격리 복원, RPO/RTO, 보안 경고 종결 및 통합 회귀는 차단 유지. 공식 Sites 배포 소스·HTML 바이트 차이는 이번 코드 변경으로 해결하지 않았다."
+    ],
+    "approvalsBeforeRelease": [
+      "공식 고지 원문·버전·해시, 출시 빌드와 서버 저장 계약 연결을 승인한다.",
+      "합성 PostgreSQL/PostgREST/Auth 환경과 데이터 범위, 유효 역할·RLS·Storage·구 경로 중단 및 원복 시험을 별도로 승인한다.",
+      "전체 백업의 보호된 복원, RPO/RTO·경고 종결·운영 통합 회귀를 확인한 뒤 ATLAS가 운영 원격변경·Sites 배포를 별도로 결정한다."
+    ],
+    "rollback": "후보 사용을 중지한다. 원복 승인이 있으면 개발 브랜치에서 이 추가 커밋을 되돌리는 새 커밋으로 처리한다. 운영 앱과 DB·Sites는 적용되지 않았으며 기존 접수 경로의 재활성화나 운영 DB 복원은 이 후보 원복에 포함하지 않는다.",
+    "controls": {
+      "codeBranchWorkflowRuns": 0,
+      "codeBranchDeployments": 0,
+      "productionDbReads": 0,
+      "productionDbWrites": 0,
+      "sitesDeployments": 0,
+      "actualCustomerRecords": 0,
+      "paidApiCalls": 0,
+      "payments": 0,
+      "productionWorkerRuns": 0,
+      "customerNotifications": 0,
+      "dockerOperations": 0,
+      "newServices": 0
+    }
+  }
+}
