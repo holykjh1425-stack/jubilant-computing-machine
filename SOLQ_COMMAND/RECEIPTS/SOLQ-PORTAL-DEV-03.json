@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "taskNumber": "SOLQ-PORTAL-DEV-03",
+  "baselineCommit": "c10606513fdbf5b8f5b20624d9c6ce53e5aaf1b3",
+  "instructionPath": "SOLQ_COMMAND/PORTAL_DEV_03_TASK.md",
+  "instructionSha256": "B066E89ECEFA0A4405A623B3DA1D72936F0F6AD061E77BDB023D015D31BEF791",
+  "receiptKey": "49379D1EB677F8BA8FAC8015B63338266F4AE5101C8E0420E6FF23E9E75AE153",
+  "receiptStatus": "RECEIVED_VERIFIED",
+  "executionStatus": "READ_ONLY_AUDIT",
+  "executedTasks": 0,
+  "verifiedAtUtc": "2026-11-22T02:23:50Z",
+  "reportStatus": "BLOCKED",
+  "auditStatus": "COMPLETED",
+  "integrationStatus": "INTEGRATION_BLOCKED",
+  "requiresApproval": true,
+  "executionAuthority": false,
+  "gates": [
+    {
+      "id": "G1",
+      "name": "환경 식별",
+      "status": "BLOCKED",
+      "observed": "PostgreSQL 17.11 실행 파일 4개와 보존 패키지 명세 일치",
+      "blocker": "현행 비운영 인스턴스의 서비스 등록·실행 계정·데이터 원본·운영으로부터의 독립성 미입증"
+    },
+    {
+      "id": "G2",
+      "name": "네트워크",
+      "status": "BLOCKED",
+      "observed": "T01 역사적 루프백 PASS 및 P0-03 14/14 PASS",
+      "blocker": "이번 OS 조회에서 TCP 행 0개, 정책·라우팅 조회 불가. 실제 바인딩·포트 충돌·구성요소별 외부 송수신 차단 미입증"
+    },
+    {
+      "id": "G3",
+      "name": "데이터와 권한",
+      "status": "BLOCKED",
+      "observed": "T01 전용 계정 SID 매핑과 과거 합성 경로 확인",
+      "blocker": "보호 data/log 및 감사 원본 열람 불가, 신규 전용 경로·유효 토큰·최소 ACL·운영 공유 경로 부재 미입증"
+    },
+    {
+      "id": "G4",
+      "name": "Auth·PostgREST·RLS·Storage",
+      "status": "BLOCKED",
+      "observed": "로컬 설정의 API/Auth/Storage 활성 플래그와 검토 SQL·역할 매트릭스 확인",
+      "blocker": "설치·버전·실행·유효 DB 역할·비공개 객체 저장소·RLS 적용과 A/B/관리자/익명 시험 미입증"
+    },
+    {
+      "id": "G5",
+      "name": "원복과 보존",
+      "status": "BLOCKED",
+      "observed": "두 REVIEW_ONLY SQL과 기존 3개 검토 SQL의 체크섬 일치",
+      "blocker": "실제 대상의 사전 기준점, 검증된 격리 복원, 원복 권한·정리 전제 미입증. 운영 백업·복원·RPO/RTO 별도 BLOCKED"
+    },
+    {
+      "id": "G6",
+      "name": "별도 실행 승인",
+      "status": "NO-GO",
+      "observed": "DEV-03 읽기 전용 심사 완료",
+      "blocker": "정확한 독립 대상, 명령, 쓰기·종료·비용 범위 승인 없음"
+    }
+  ],
+  "evidenceRefs": [
+    {
+      "purpose": "instruction",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/c10606513fdbf5b8f5b20624d9c6ce53e5aaf1b3/SOLQ_COMMAND/PORTAL_DEV_03_TASK.md",
+      "sha256": "B066E89ECEFA0A4405A623B3DA1D72936F0F6AD061E77BDB023D015D31BEF791"
+    },
+    {
+      "purpose": "windows_isolation_report",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/cdbdfc725cd3b95c1fa6b4727f8432d42ae49c36/SOLQ_COMMAND/REPORTS/SOLQ-PORTAL-DEV-03-WINDOWS-ISOLATION.md",
+      "sha256": "61374E52D3E812239A96D77C6357DD92297C27AFFF93ACA3DAF1DBE5AC00CD9A"
+    },
+    {
+      "purpose": "prior_dev02_receipt",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/780c04daa4446ea380666e4d1fe37cf7a8503a7d/SOLQ_COMMAND/RECEIPTS/SOLQ-PORTAL-DEV-02.json",
+      "sha256": "F24769FF6365BE17D72BBECE32D14B24EC9ECCAD14DA35DE3977A034EE08FBC1"
+    },
+    {
+      "purpose": "dev02_test_plan",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/8c5ea9e2bab2daed8433077519ca28bd1ed9ea8f/candidates/portal-db-auth-rls-20261121/TEST-PLAN.md",
+      "sha256": "9B1AFF878EB49226867C439CE191B255DEC56B05E7769C571D14BB6C144677DD"
+    }
+  ],
+  "evidence": {
+    "reportCommit": "cdbdfc725cd3b95c1fa6b4727f8432d42ae49c36",
+    "reportSha256": "61374E52D3E812239A96D77C6357DD92297C27AFFF93ACA3DAF1DBE5AC00CD9A",
+    "localEvidenceSha256": "26FD3E61930595FACF28C0CAB2B90711555C38AADA411430B54E87C6324C03D1",
+    "protectedFiles": {
+      "dev01": 11,
+      "dev02": 8
+    },
+    "postgresqlExecutableVersion": "17.11",
+    "postgresqlExecutableHashesMatching": 4,
+    "priorFirewall": "P0-03 14/14 PASS",
+    "priorT01": "PASS_LOOPBACK_POSTGRES_ONLY",
+    "priorT01ManifestSha256": "C801868E372648818100CF3B30D5054B9F1487815336408B044DEC51134E6534",
+    "priorT01ManifestEntries": 17,
+    "blockedOriginalReadInCurrentSession": true,
+    "windowsAutomation": {
+      "W04": "FAIL",
+      "W05": "BLOCKED",
+      "W09": "BLOCKED"
+    },
+    "actualDbStarts": 0,
+    "actualDbConnections": 0,
+    "actualSqlExecutions": 0,
+    "costKrw": 0
+  },
+  "missingComponents": [
+    {
+      "component": "independent Windows integration instance",
+      "status": "UNVERIFIED",
+      "detail": "Runtime binding, ownership and separation not established."
+    },
+    {
+      "component": "PostgREST and Auth",
+      "status": "UNVERIFIED",
+      "detail": "Settings observed; executable installation and live identity not established."
+    },
+    {
+      "component": "Storage backend and RLS roles",
+      "status": "UNVERIFIED",
+      "detail": "Storage flag and candidate policies only; no actual backend, effective roles or isolated test sessions established."
+    },
+    {
+      "component": "backup and isolated restore",
+      "status": "BLOCKED",
+      "detail": "No current pre-test snapshot or independent restore evidence verified."
+    }
+  ],
+  "requestedApprovals": [
+    "After qualifying one existing independent environment, approve its explicit local-only topology, designated accounts, exact startup and stop commands, ports, candidate SQL hashes, and permitted writes.",
+    "Approve synthetic-only A/B/admin/anonymous Auth, PostgREST, RLS and Storage tests, plus conflict and transaction tests for this one environment.",
+    "Approve retention of sanitized evidence and exact recovery actions on identified test assets, with verified pre-test snapshot, cleanup limits and zero incremental charges."
+  ],
+  "productionImpact": "NONE",
+  "launchStatus": "NO_GO"
+}
