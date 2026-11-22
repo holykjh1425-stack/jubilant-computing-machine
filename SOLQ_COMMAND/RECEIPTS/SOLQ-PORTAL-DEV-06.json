@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "taskNumber": "SOLQ-PORTAL-DEV-06",
+  "baselineCommit": "1c7cc420d8798a34663ef4acc11b3cfeec64251f",
+  "instructionPath": "SOLQ_COMMAND/PORTAL_DEV_06_TASK.md",
+  "instructionSha256": "A450F454CE7C15F94D31854C152812BDDAC194EE2DE821440D1E3C687A10A7D3",
+  "receiptKey": "8875E5C6DF44688F1FE5C13D8195F804C850C7057DBBAE330761DF0D8ADDFC31",
+  "receiptStatus": "RECEIVED_VERIFIED",
+  "executionStatus": "READ_ONLY_EVIDENCE_REVIEW",
+  "executedTasks": 0,
+  "verifiedAtUtc": "2026-11-22T05:28:47Z",
+  "reportStatus": "READ_ONLY_AUDIT_COMPLETED",
+  "stageAStatus": "BLOCKED",
+  "integrationStatus": "INTEGRATION_BLOCKED",
+  "executionAuthority": false,
+  "requiresApproval": true,
+  "launchStatus": "NO_GO",
+  "productionImpact": "NONE",
+  "gates": [
+    {
+      "id": "G1",
+      "title": "원본 환경·실행 주체",
+      "status": "BLOCKED",
+      "confirmed": "대상 Windows 로컬 세션 확인. P1 기존 실행 메타데이터와 합성 데이터 연결은 DEV-05 증거 재사용.",
+      "missing": "실제 기존 서비스·프로세스, 실행 주체 SID·토큰, 실행 파일 해시·데이터 경로·클러스터 ID의 현행 대응."
+    },
+    {
+      "id": "G2",
+      "title": "로컬 네트워크",
+      "status": "BLOCKED",
+      "confirmed": "T01 PostgreSQL 루프백 PASS, P0-03 정책 14/14 PASS와 P1 과거 루프백 기록 재사용.",
+      "missing": "현재 리스너 PID의 IPv4·IPv6 실제 바인딩, 프록시와 활성 정책, 구성요소별 외부 송수신 차단."
+    },
+    {
+      "id": "G3",
+      "title": "합성 저장소·ACL",
+      "status": "BLOCKED",
+      "confirmed": "P1 소유자와 상속 활성은 이전 범위에서 확인. 기존 보호 T01 경로 접근 거부 재사용.",
+      "missing": "원본·복원 data/log/객체의 실제 경계와 전용 런타임 계정의 유효 권한, 그룹 및 쓰기 범위 증거."
+    },
+    {
+      "id": "G4",
+      "title": "Auth·PostgREST·Storage",
+      "status": "BLOCKED",
+      "confirmed": "기존 TOML 및 과거 Docker 저장 설정 증거 재사용. 과거 Docker 클러스터는 P1과 별개.",
+      "missing": "현행 기존 실행 파일·서비스·버전·합성 발급처·DB 대상·비공개 객체 저장 위치 및 구성의 실제 연결."
+    },
+    {
+      "id": "G5",
+      "title": "기존 별도 복원 대상",
+      "status": "BLOCKED",
+      "confirmed": "결과 폴더의 지정 인계 파일명 조회에서 새 증거 0건. 이전 제한 검색은 재사용.",
+      "missing": "기존 원본과 다른 검증된 클러스터·데이터 및 객체 경로·계정·포트·복원 권한. 존재 여부 확인 불가."
+    }
+  ],
+  "evidenceRefs": [
+    {
+      "purpose": "DEV-06 instructions",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/1c7cc420d8798a34663ef4acc11b3cfeec64251f/SOLQ_COMMAND/PORTAL_DEV_06_TASK.md",
+      "sha256": "A450F454CE7C15F94D31854C152812BDDAC194EE2DE821440D1E3C687A10A7D3"
+    },
+    {
+      "purpose": "DEV-06 Windows evidence report",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/c5c9d9eb71854146ab228170cec673ba403d53f8/SOLQ_COMMAND/REPORTS/SOLQ-PORTAL-DEV-06-ENVIRONMENT-EVIDENCE.md",
+      "sha256": "281CE21A5B28F53165897682FD6655A4F88A88EC2420A2777C79BB5A234CBFCC"
+    },
+    {
+      "purpose": "DEV-05 stage evidence",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4e8624e70282a8500d77e93b333b81d50abf0ece/SOLQ_COMMAND/RECEIPTS/SOLQ-PORTAL-DEV-05.json",
+      "sha256": "731B6F029FF3468857C4E64E8F1786AA93C0755AE26C64DC1E8B8CEBA6EDE226"
+    }
+  ],
+  "observations": {
+    "windowsLocalConfirmed": true,
+    "tokenObservedUtc": "2026-11-22T05:25:50.7239912Z",
+    "administratorEnabled": false,
+    "privilegedQueriesRun": 0,
+    "newAttestationFilesInScopedLookup": 0,
+    "p1": "HISTORICAL_CANDIDATE_ONLY",
+    "existingIndependentRestoreTarget": "UNVERIFIED",
+    "priorReceiptHashes": [
+      {
+        "n": "03",
+        "sha256": "02557894116127D31342DA36D7F7B48369D49013B5A937C87DA171BCDFA3803E"
+      },
+      {
+        "n": "04",
+        "sha256": "F684FDDF4DA8461A0A960683CC6B669CB1CD9086C6C91E9AD23383EF26A54F1D"
+      },
+      {
+        "n": "05",
+        "sha256": "731B6F029FF3468857C4E64E8F1786AA93C0755AE26C64DC1E8B8CEBA6EDE226"
+      }
+    ],
+    "protectedDev01Files": 11,
+    "protectedDev02Files": 8,
+    "dbStarts": 0,
+    "dbStops": 0,
+    "dbConnections": 0,
+    "sqlExecutions": 0,
+    "backupsRun": 0,
+    "restoresRun": 0,
+    "customerDataAccess": 0,
+    "costKrw": 0
+  },
+  "approvalSequence": [
+    {
+      "stage": "A",
+      "status": "BLOCKED",
+      "scope": "User-authorized Windows owner runs the prescribed read-only queries for already-approved candidates, returning sanitized source/restore identity and isolated runtime evidence."
+    },
+    {
+      "stage": "B1",
+      "status": "DEFERRED_UNTIL_A_PASS",
+      "scope": "Pin approved source ID, account, data path, loopback port, synthetic backup range, encrypted destination, tool and command hashes, expected writes, stop conditions and zero incremental cost."
+    },
+    {
+      "stage": "B2/C/D/E",
+      "status": "NOT_AUTHORIZED",
+      "scope": "Separate approvals for restore, SQL/RLS, local Auth/API/Storage integration and release review after their prerequisites pass."
+    }
+  ]
+}
