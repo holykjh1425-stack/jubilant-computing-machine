@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "taskNumber": "SOLQ-PORTAL-DEV-04",
+  "baselineCommit": "c5e84aa0639410627037ea58755bd2dc5668c90c",
+  "instructionPath": "SOLQ_COMMAND/PORTAL_DEV_04_TASK.md",
+  "instructionSha256": "BC3B9FC8FC6BC54F3DCBA379D5D5151B40A2CC2570A2CA1816576F2B0F460A38",
+  "receiptKey": "4AC0B438C4785A52CE959E6222357ABD97DC8BB7777AF50A28573A8789E0D9BB",
+  "receiptStatus": "RECEIVED_VERIFIED",
+  "executionStatus": "READ_ONLY_DISCOVERY_AND_RECOVERY_DESIGN",
+  "executedTasks": 0,
+  "verifiedAtUtc": "2026-11-22T03:00:13Z",
+  "reportStatus": "READ_ONLY_AUDIT_COMPLETED",
+  "integrationStatus": "INTEGRATION_BLOCKED",
+  "executionAuthority": false,
+  "requiresApproval": true,
+  "launchStatus": "NO_GO",
+  "productionImpact": "NONE",
+  "gates": [
+    {
+      "id": "G1",
+      "title": "환경 식별",
+      "status": "BLOCKED",
+      "finding": "P1 합성 데이터 디렉터리와 별도 설치 경로의 PostgreSQL 17.11 바이너리는 확인. P1 인스턴스는 이번에 미실행으로 관측. 독립 통합 인스턴스의 서비스·실행 토큰·현재 클러스터 ID 미입증."
+    },
+    {
+      "id": "G2",
+      "title": "로컬 네트워크",
+      "status": "BLOCKED",
+      "finding": "P1 HBA의 TCP 규칙 4개 모두 루프백 SCRAM. 과거 Docker 구성에는 와일드카드 게시와 비내부 브리지 기록이 있음. 현재 바인딩·포트 프록시·외부 송수신 제한 미확인."
+    },
+    {
+      "id": "G3",
+      "title": "합성 데이터·ACL",
+      "status": "BLOCKED",
+      "finding": "P1 데이터 소유자가 현재 작업 사용자이고 ACL 상속이 활성. 새 통합 대상의 전용 계정 유효 권한·별도 데이터/로그/객체 경로 미입증. T01·Approval A 보호 경로는 접근 거부."
+    },
+    {
+      "id": "G4",
+      "title": "Auth·PostgREST·RLS·Storage",
+      "status": "BLOCKED",
+      "finding": "기존 Docker 저장 설정의 Auth·PostgREST 버전은 확인. Windows 네이티브 실행 파일, 대상 연결, 합성 키·역할, 비공개 버킷과 Storage 백엔드는 미확인."
+    },
+    {
+      "id": "G5",
+      "title": "사전 백업·독립 복원",
+      "status": "BLOCKED",
+      "finding": "보존 패키지의 백업·복원 도구 17.11과 SHA-256 확인. 실제 기준점·별도 복원 대상·역할/객체 복구 증거 없음. 확인한 WFW 파일은 방화벽 기준선."
+    }
+  ],
+  "independentEnvironment": "UNVERIFIED",
+  "recovery": "UNVERIFIED",
+  "evidenceRefs": [
+    {
+      "purpose": "DEV-04 instruction",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/c5e84aa0639410627037ea58755bd2dc5668c90c/SOLQ_COMMAND/PORTAL_DEV_04_TASK.md",
+      "sha256": "BC3B9FC8FC6BC54F3DCBA379D5D5151B40A2CC2570A2CA1816576F2B0F460A38"
+    },
+    {
+      "purpose": "Published isolation recovery report",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/90169d913b318f80579effd7aefde6a6f6c700c7/SOLQ_COMMAND/REPORTS/SOLQ-PORTAL-DEV-04-ISOLATION-RECOVERY.md",
+      "sha256": "786C2D680FAA343DC75511614E6F423AC17CF9D78CD998FFFD22E73737770BAD"
+    },
+    {
+      "purpose": "DEV-03 prior receipt",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/0135683e971dec09636f7836cc848fa7585312a4/SOLQ_COMMAND/RECEIPTS/SOLQ-PORTAL-DEV-03.json",
+      "sha256": "02557894116127D31342DA36D7F7B48369D49013B5A937C87DA171BCDFA3803E"
+    }
+  ],
+  "evidence": {
+    "reportCommit": "90169d913b318f80579effd7aefde6a6f6c700c7",
+    "windowsLocalEvidenceSha256": "F27ACD64DA06C3701F119F0189B865E819FCE8A88DC4FE89A5E43806DEB59416",
+    "preservedDev01Files": 11,
+    "preservedDev02Files": 8,
+    "reusedT01ManifestFiles": 17,
+    "priorP0Firewall": "14/14 PASS",
+    "actualDbStarts": 0,
+    "actualDbStops": 0,
+    "actualDbConnections": 0,
+    "sqlExecutions": 0,
+    "backupsCreated": 0,
+    "restoresRun": 0,
+    "installations": 0,
+    "costKrw": 0
+  },
+  "missingComponents": [
+    {
+      "status": "UNVERIFIED",
+      "scope": "Independent source and separate restore instance, runtime service identity, process token and effective ACL"
+    },
+    {
+      "status": "UNVERIFIED",
+      "scope": "Native Auth, PostgREST, Storage installation and synthetic keys, roles and object backend"
+    },
+    {
+      "status": "UNVERIFIED",
+      "scope": "Current component network isolation, usable backup and verified separate restore"
+    },
+    {
+      "status": "PRESENT_IN_OFFLINE_ARCHIVE_ONLY",
+      "scope": "PostgreSQL 17.11 pg_dump and pg_restore were identified outside the approved stage executable directory"
+    }
+  ],
+  "requestedApprovals": [
+    "A. Read-only independently identify one existing synthetic source and one distinct restore target, using delegated Windows service, process, token, filesystem and network viewing access as needed.",
+    "B1/B2. Separately approve backup reads and encrypted archive writes, and then restricted restoration of the verified archive on the isolated empty target.",
+    "C. Approve the exact PostgreSQL SQL hashes, scopes and expected synthetic mutations after backup and restore proof and dependency validation.",
+    "D. Approve only the pinned local Auth, PostgREST and Storage services with synthetic identity and private bucket tests after separate gates pass."
+  ]
+}
