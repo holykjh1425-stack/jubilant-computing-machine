@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "taskNumber": "SOLQ-PORTAL-DEV-05",
+  "baselineCommit": "1991281b5e0d46bb1ed1ae97d522884feab0a667",
+  "instructionPath": "SOLQ_COMMAND/PORTAL_DEV_05_TASK.md",
+  "instructionSha256": "FFAAF535D6B81143BF99379A55CE4AA01877A5AFD3E332A5F2827A4ABD978B87",
+  "receiptKey": "920393579EE98648BB5C923E44EE19B98A357CC0734DA8B0EEDAEB2329B9109D",
+  "receiptStatus": "RECEIVED_VERIFIED",
+  "executionStatus": "READ_ONLY_EVIDENCE_AND_RELEASE_READINESS_PLAN",
+  "executedTasks": 0,
+  "verifiedAtUtc": "2026-11-22T05:19:15Z",
+  "reportStatus": "READ_ONLY_AUDIT_COMPLETED",
+  "integrationStatus": "INTEGRATION_BLOCKED",
+  "requiresApproval": true,
+  "executionAuthority": false,
+  "launchStatus": "NO_GO",
+  "productionImpact": "NONE",
+  "gates": [
+    {
+      "id": "G1",
+      "title": "격리 인스턴스 식별",
+      "status": "BLOCKED",
+      "reason": "기존 P1 마지막 실행 기록만 연결했다. 현재 서비스·토큰과 별도 복원 클러스터 미입증."
+    },
+    {
+      "id": "G2",
+      "title": "네트워크 독립성",
+      "status": "BLOCKED",
+      "reason": "P1의 과거 루프백 실행 근거와 T01 PASS 재사용. 현재 바인딩·포워딩·프로세스별 송수신 제한 미입증."
+    },
+    {
+      "id": "G3",
+      "title": "합성 저장소·전용 ACL",
+      "status": "BLOCKED",
+      "reason": "P1 과거 합성 data 및 상속 ACL 확인. 전용 주체의 유효 권한, 별도 원본·복원 data/log/객체 위치 미입증."
+    },
+    {
+      "id": "G4",
+      "title": "Auth·PostgREST·RLS·Storage",
+      "status": "BLOCKED",
+      "reason": "보존된 Docker 설정과 TOML 플래그만 존재. 현행 지원 런타임, 합성 세션·역할·발급처·비공개 객체 검증 미확보."
+    },
+    {
+      "id": "G5",
+      "title": "사전 백업·독립 복원",
+      "status": "BLOCKED",
+      "reason": "보존된 백업 도구 및 설계만 확인. 실제 백업 ID·범위·암호화·복원 결과·복구 시점과 소요 시간 미확보."
+    }
+  ],
+  "operationalGates": [
+    {
+      "gate": "공식 배포와 접수 원본",
+      "status": "BLOCKED",
+      "requirement": "공개 도메인 ↔ 동일 배포 ID·내용 지문·승인 빌드와 관리자 동일 접수번호를 대조할 증거 부족"
+    },
+    {
+      "gate": "개인정보 안내·독립 동의",
+      "status": "BLOCKED",
+      "requirement": "고지 승인본과 버전·해시·UTC가 포함된 독립 동의 원장, 저장과 원본 무결성 검증 필요"
+    },
+    {
+      "gate": "견적·입금·제작 승인",
+      "status": "BLOCKED",
+      "requirement": "DEV-01 모형 PASS. 최신 동일 견적에 대한 고객 동의, 담당자 입금 확인, 별도 승인 및 실행 금지 경계의 통합 검증 필요"
+    },
+    {
+      "gate": "Auth 보안·회수·오래된 인입 차단",
+      "status": "BLOCKED",
+      "requirement": "실제 최소권한과 세션 만료·철회, 구 직접 INSERT·RPC·전용 링크 경로 제한, 기존 보안 경고 종결 근거 미확보"
+    },
+    {
+      "gate": "복원·RPO/RTO",
+      "status": "BLOCKED",
+      "requirement": "DB·Auth·Storage·Edge/설정 범위의 전체 암호화 백업, 동일 ID 복원, 승인 목표와 실측 없음"
+    },
+    {
+      "gate": "회귀·롤백·관측",
+      "status": "BLOCKED",
+      "requirement": "후보 별 합성 PASS 재사용. 실제 DB 회귀, 배포 전후 스모크, 경보 담당·기준과 역전환 증거 미확보"
+    },
+    {
+      "gate": "개인정보 보관·삭제 처리",
+      "status": "BLOCKED",
+      "requirement": "삭제 요청 안내 존재. 본인 확인·보존 예외·최소 수집·삭제 감사 및 복원 후 재노출 방지 미검증"
+    },
+    {
+      "gate": "Google Play 등록",
+      "status": "BLOCKED",
+      "requirement": "삭제 안내 페이지 존재. 등록·검토·승인 증거와 앱 실기기·개인정보/데이터 안전 검증 미확보"
+    },
+    {
+      "gate": "운영 실행·배포",
+      "status": "NO-GO",
+      "requirement": "G1–G5와 관문 E 미충족. 사용자 실행 및 배포 승인 없음"
+    }
+  ],
+  "evidenceRefs": [
+    {
+      "purpose": "DEV-05 instructions",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/1991281b5e0d46bb1ed1ae97d522884feab0a667/SOLQ_COMMAND/PORTAL_DEV_05_TASK.md",
+      "sha256": "FFAAF535D6B81143BF99379A55CE4AA01877A5AFD3E332A5F2827A4ABD978B87"
+    },
+    {
+      "purpose": "DEV-05 readiness report",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/9e749a79a2daae40c7e9070837182ee50b06b9e4/SOLQ_COMMAND/REPORTS/SOLQ-PORTAL-DEV-05-READINESS.md",
+      "sha256": "B703E222EB62D1DE314F3D20BEEA16C668664E932101AEB9D7B41B2C897773A6"
+    },
+    {
+      "purpose": "prior DEV-03 receipt",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/0135683e971dec09636f7836cc848fa7585312a4/SOLQ_COMMAND/RECEIPTS/SOLQ-PORTAL-DEV-03.json",
+      "sha256": "02557894116127D31342DA36D7F7B48369D49013B5A937C87DA171BCDFA3803E"
+    },
+    {
+      "purpose": "prior DEV-04 receipt",
+      "url": "https://github.com/holykjh1425-stack/jubilant-computing-machine/blob/4657c758d886edf2ee14b3d09c011de3c7c350ba/SOLQ_COMMAND/RECEIPTS/SOLQ-PORTAL-DEV-04.json",
+      "sha256": "F684FDDF4DA8461A0A960683CC6B669CB1CD9086C6C91E9AD23383EF26A54F1D"
+    }
+  ],
+  "evidence": {
+    "reportCommit": "9e749a79a2daae40c7e9070837182ee50b06b9e4",
+    "localEvidenceSha256": "DA934A2612B8866682B8EE189A7108A25AEDBC4E4AEF0BB60D8B331048DDD8B2",
+    "priorDev01FilesPreserved": 11,
+    "priorDev02FilesPreserved": 8,
+    "t01Reused": true,
+    "p1HistoricalLaunchConfirmed": true,
+    "p1CurrentIndependentSource": "UNVERIFIED",
+    "separateRestoreTarget": "UNVERIFIED",
+    "privilegedWindowsQueries": "BLOCKED_CURRENT_TOKEN",
+    "existingMockEvidence": {
+      "dev01Api": 17,
+      "dev01Browser": 6,
+      "dev02Static": 4,
+      "dev02Synthetic": 14
+    },
+    "liveSiteRequests": 0,
+    "dbStarts": 0,
+    "dbStops": 0,
+    "dbConnections": 0,
+    "dbChanges": 0,
+    "sqlExecutions": 0,
+    "backups": 0,
+    "restores": 0,
+    "customerDataAccess": 0,
+    "costKrw": 0
+  },
+  "requestedApprovals": [
+    {
+      "stage": "A",
+      "state": "EVIDENCE_REQUIRED",
+      "scope": "Authorized read-only owner attribution of one existing independent source and one separate restore target. Exact targets and identifiers TBD."
+    },
+    {
+      "stage": "B1/B2/C/D/E",
+      "state": "DEFERRED",
+      "scope": "Do not request execution approval until separate approved targets, live isolation, privileges and exact commands are pinned by preceding gates."
+    }
+  ]
+}
